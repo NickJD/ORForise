@@ -1,0 +1,29 @@
+Genome Metrics:
+"Number of Genes in Caul: 3875
+Number of Protein Coding Genes: 3737
+Percentage of Genome which is Protein Coding: 90.16
+Number of Non-Protein Coding Genes: 138
+Percentage of Non-Protein Coding Genes in Genomes: 0.38
+ Percentage of All Genes in Genome: 90.53
+All metrics are for Protein Coding Genes
+Number of Genes on 5-prime-end: 1828
+Percentage of Genes on 5-prime-end: 48.92
+Number of Genes on 3-prime-end: 1909
+Percentage of Genes on the 3-prime-3-end: 51.08
+Number of overlapping Protein Coding Genes: 702
+Average overlap of Protein Coding Genes: 18.97
+Longest Overlap of a Protein Coding Gene: 2246","
+Percentage of Genes starting with ATG: 68.58
+Percentage of Genes starting with GTG: 17.69
+Percentage of Genes starting with TTG: 13.73
+Percentage of Genes starting with ATT: 0.00
+Percentage of Genes starting with CTG: 0.00
+Percentage of Genes starting with Alternative Start Codon: 0.00","
+Percentage of Genes ending with TAG: 32.78
+Percentage of Genes ending with TAA: 19.86
+Percentage of Genes ending with TGA: 47.36
+Percentage of Genes ending with Alternative Stop Codon: 0.00","
+Average Gene Length: 972.61
+Minimum Gene Length: 92
+Maximum Gene Length: 7439
+GC Content: 0.672"

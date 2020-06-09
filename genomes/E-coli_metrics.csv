@@ -1,0 +1,29 @@
+Genome Metrics:
+"Number of Genes in E-coli: 4257
+Number of Protein Coding Genes: 4051
+Percentage of Genome which is Protein Coding: 84.27
+Number of Non-Protein Coding Genes: 206
+Percentage of Non-Protein Coding Genes in Genomes: 2.22
+ Percentage of All Genes in Genome: 86.20
+All metrics are for Protein Coding Genes
+Number of Genes on 5-prime-end: 1961
+Percentage of Genes on 5-prime-end: 48.41
+Number of Genes on 3-prime-end: 2090
+Percentage of Genes on the 3-prime-3-end: 51.59
+Number of overlapping Protein Coding Genes: 510
+Average overlap of Protein Coding Genes: 10.91
+Longest Overlap of a Protein Coding Gene: 447","
+Percentage of Genes starting with ATG: 90.69
+Percentage of Genes starting with GTG: 7.50
+Percentage of Genes starting with TTG: 1.70
+Percentage of Genes starting with ATT: 0.05
+Percentage of Genes starting with CTG: 0.05
+Percentage of Genes starting with Alternative Start Codon: 0.00","
+Percentage of Genes ending with TAG: 6.89
+Percentage of Genes ending with TAA: 64.70
+Percentage of Genes ending with TGA: 28.41
+Percentage of Genes ending with Alternative Stop Codon: 0.00","
+Average Gene Length: 949.66
+Minimum Gene Length: 44
+Maximum Gene Length: 7076
+GC Content: 0.508"

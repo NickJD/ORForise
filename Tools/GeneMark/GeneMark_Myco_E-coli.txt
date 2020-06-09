@@ -1,0 +1,118 @@
+                              GENEMARK PREDICTIONS
+
+Sequence: Chromosome dna:chromosome chromosome:ASM2732v1:Chromosome:1:580076:1 REF
+Sequence file: seq.fna
+Sequence length: 580076
+GC Content:  31.69%
+Window length: 96
+Window step: 12
+Threshold value: 0.500
+---
+Matrix: Escherichia_coli_K_12_substr__MG1655
+Matrix author: -
+Matrix order: 4
+
+List of Open reading frames predicted as CDSs, shown with alternate starts
+(regions from start to stop codon w/ coding function >0.50)
+
+Left      Right     DNA         Coding Avg   Start
+end       end       Strand      Frame  Prob  Prob
+--------  --------  ----------  -----  ----  ----
+
+  169183    169293  direct      fr 1   0.54  0.40  
+  169186    169293  direct      fr 1   0.54  0.16  
+
+  226836    226946  direct      fr 3   0.53  0.70  
+  226839    226946  direct      fr 3   0.53  0.48  
+
+  374979    375221  complement  fr 2   0.58  0.78  
+
+List of Regions of interest
+(regions from stop to stop codon w/ a signal in between)
+
+   LEnd      REnd    Strand      Frame
+ --------  --------  ----------- -----
+    22386     23558  direct      fr 3
+    29546     30124  direct      fr 2
+    53711     54568  direct      fr 2
+    90364     90954  direct      fr 1
+    94529     95782  direct      fr 2
+    99377    101779  direct      fr 2
+   109238    109675  direct      fr 2
+   110349    110924  direct      fr 3
+   131544    132965  direct      fr 3
+   149367    150968  direct      fr 3
+   161854    162435  direct      fr 1
+   165465    167129  direct      fr 3
+   168913    169293  direct      fr 1
+   169451    169558  complement  fr 1
+   176255    177181  direct      fr 2
+   178445    179068  direct      fr 2
+   179148    179834  direct      fr 3
+   180996    182864  direct      fr 3
+   187452    187793  direct      fr 3
+   198502    199152  direct      fr 1
+   203497    203844  direct      fr 1
+   204869    205684  direct      fr 2
+   205663    206595  direct      fr 1
+   217394    218221  direct      fr 2
+   222704    223078  direct      fr 2
+   226563    226946  direct      fr 3
+   227104    227202  complement  fr 3
+   233770    234444  direct      fr 1
+   236593    237303  complement  fr 3
+   237947    239152  direct      fr 2
+   239146    239616  direct      fr 1
+   240320    242068  direct      fr 2
+   242521    244569  direct      fr 1
+   244803    245603  complement  fr 2
+   247903    248508  complement  fr 3
+   252940    253995  direct      fr 1
+   255574    256458  direct      fr 1
+   258033    258497  direct      fr 3
+   259171    262329  direct      fr 1
+   262327    264045  direct      fr 1
+   264043    264594  direct      fr 1
+   264588    265292  direct      fr 3
+   267075    268010  direct      fr 3
+   267961    269247  direct      fr 1
+   275357    276163  direct      fr 2
+   276635    278275  direct      fr 2
+   278273    278812  direct      fr 2
+   278881    279207  direct      fr 1
+   296113    296697  complement  fr 3
+   296731    297243  complement  fr 3
+   297241    297609  complement  fr 3
+   307918    308370  direct      fr 1
+   313436    313768  direct      fr 2
+   326030    327061  complement  fr 1
+   329831    331102  complement  fr 1
+   331484    332230  complement  fr 1
+   333337    334431  complement  fr 3
+   374979    376718  complement  fr 2
+   387916    390996  complement  fr 3
+   390501    390959  direct      fr 3
+   401901    402935  complement  fr 2
+   429914    430108  complement  fr 1
+   430580    432112  complement  fr 1
+   434768    435946  complement  fr 1
+   435944    438670  complement  fr 1
+   451613    452794  complement  fr 1
+   464829    465341  complement  fr 2
+   485242    488106  complement  fr 3
+   486792    487061  complement  fr 2
+   488104    488700  complement  fr 3
+   494984    496624  complement  fr 1
+   510093    510896  complement  fr 2
+   524151    525800  complement  fr 2
+   529532    531058  complement  fr 1
+   554430    555626  complement  fr 2
+   566783    567145  complement  fr 1
+
+
+--------------------
+ABOUT THE MATRIX USED:
+
+Training set derived by GeneMarkS, 4.27 September 2014
+Tue Sep 23 14:58:24 2014
+

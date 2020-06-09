@@ -1,0 +1,29 @@
+Genome Metrics:
+"Number of Genes in Myco: 559
+Number of Protein Coding Genes: 476
+Percentage of Genome which is Protein Coding: 90.57
+Number of Non-Protein Coding Genes: 83
+Percentage of Non-Protein Coding Genes in Genomes: 1.41
+ Percentage of All Genes in Genome: 91.97
+All metrics are for Protein Coding Genes
+Number of Genes on 5-prime-end: 277
+Percentage of Genes on 5-prime-end: 58.19
+Number of Genes on 3-prime-end: 199
+Percentage of Genes on the 3-prime-3-end: 41.81
+Number of overlapping Protein Coding Genes: 135
+Average overlap of Protein Coding Genes: 16.05
+Longest Overlap of a Protein Coding Gene: 76","
+Percentage of Genes starting with ATG: 88.45
+Percentage of Genes starting with GTG: 7.56
+Percentage of Genes starting with TTG: 3.99
+Percentage of Genes starting with ATT: 0.00
+Percentage of Genes starting with CTG: 0.00
+Percentage of Genes starting with Alternative Start Codon: 0.00","
+Percentage of Genes ending with TAG: 27.10
+Percentage of Genes ending with TAA: 72.90
+Percentage of Genes ending with TGA: 0.00
+Percentage of Genes ending with Alternative Stop Codon: 0.00","
+Average Gene Length: 1108.29
+Minimum Gene Length: 113
+Maximum Gene Length: 5417
+GC Content: 0.317"
