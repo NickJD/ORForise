@@ -7,14 +7,14 @@ from Comparator import tool_comparison
 parser = argparse.ArgumentParser()
 parser.add_argument('-t', '--tool', required=True, help='Which tool to compare?')
 parser.add_argument('-i', '--input_to_analyse', required=True, help='Location of tool output to compare.')
-parser.add_argument('-g', '--genome_to_compare', required=True, help='Which genome to analyse?')
+parser.add_argument('-g', '--genome_to_compare', required=True, help='Which genome to analyse? Genome files have same prefix'
+                                                                     ' - .fa and .gff appended')
 args = parser.parse_args()
 
-def comparator(tool,input_to_analyse,genome_to_compare):
 
-    global genome_seq
+def comparator(tool,input_to_analyse,genome_to_compare):
     genome_seq = ""
-    with open('genomes/'+genome_to_compare+'_dna.fa', 'r') as genome:
+    with open('genomes/'+genome_to_compare+'.fa', 'r') as genome:
         for line in genome:
             line = line.replace("\n","")
             if ">" not in line:
@@ -22,6 +22,7 @@ def comparator(tool,input_to_analyse,genome_to_compare):
     ##############################################
     genes = collections.OrderedDict()
     count = 0
+    print("He")
     with open('genomes/'+genome_to_compare+'.gff','r') as genome_gff: # Should work for GFF3
         for line in genome_gff:
             line = line.split('\t')
@@ -42,13 +43,11 @@ def comparator(tool,input_to_analyse,genome_to_compare):
 
     with open("Tools/"+tool+'/'+outname+'.csv', 'w') as out_file: # Clear write out of report
         tool_out = csv.writer(out_file, quoting=csv.QUOTE_NONE, escapechar=" ")
-        tool_out.writerow(['Representative Metric Descriptions'])
-        tool_out.writerow(rep_metric_description)
         tool_out.writerow(['Representative Metrics:'])
+        tool_out.writerow(rep_metric_description)
         tool_out.writerow(rep_metrics)
-        tool_out.writerow(['All Metric Descriptions:'])
+        tool_out.writerow(['All Metrics:'])
         tool_out.writerow(metric_description)
-        tool_out.writerow(['Metrics:'])
         tool_out.writerow(metrics)
         tool_out.writerow(['CDS Gene Coverage of Genome: '])
         tool_out.writerow([format(gene_coverage_genome,'.2f')])
@@ -60,16 +59,17 @@ def comparator(tool,input_to_analyse,genome_to_compare):
         tool_out.writerow(other_starts)
         tool_out.writerow(['Alternative Stops:'])
         tool_out.writerow(other_stops)
-        tool_out.writerow(['Mised Genes: Start-Stop-Strand-Start_Codon-Stop_Codon'])
-        tool_out.writerow(['ATG Start,GTG Start,TTG Start,ATT Start,CTG Start,Alternative Start Codon,TGA Stop,TAA Stop,TAG Stop,Alternative Stop Codon,Mean Length,Genes on Positive Strand,Genes on Negative Strand'])
+        tool_out.writerow(['Missed Gene Matrics:'])
+        tool_out.writerow(['ATG Start,GTG Start,TTG Start,ATT Start,CTG Start,Alternative Start Codon,TGA Stop,TAA Stop,TAG Stop,Alternative Stop Codon,Median Length,Genes on Positive Strand,Genes on Negative Strand'])
         tool_out.writerow(missed_gene_metrics)
+        tool_out.writerow(['Missed Genes:'])
         for key,value in missed_genes.items():
             key = key.split(',')
             id = ('>' + genome_to_compare + '_' + key[0] + '_' + key[1] + '_' + key[2])
             tool_out.writerow([id + '\n' + value])
-
-        tool_out.writerow(['\n\n\nUnmatched ORFs: Start-Stop-Strand-Start_Codon-Stop_Codon'])
-        tool_out.writerow(['ATG Start,GTG Start,TTG Start,ATT Start,CTG Start,Alternative Start Codon,TGA Stop,TAA Stop,TAG Stop,Alternative Stop Codon,Mean Length,ORFs on Positive Strand,ORFs on Negative Strand'])
+        tool_out.writerow(['\n\n\nUnmatched ORF Metrics:'])
+        tool_out.writerow(['ATG Start,GTG Start,TTG Start,ATT Start,CTG Start,Alternative Start Codon,TGA Stop,TAA Stop,TAG Stop,Alternative Stop Codon,Median Length,ORFs on Positive Strand,ORFs on Negative Strand'])
+        tool_out.writerow(['Unmatched ORFs:'])
         tool_out.writerow(unmatched_orf_metrics)
         for key, value in unmatched_orfs.items():
             key = key.split(',')

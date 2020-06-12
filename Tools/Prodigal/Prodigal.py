@@ -25,7 +25,6 @@ def Prodigal(input_to_analyse,Genome):
                     startCodon = Genome_rev[r_start:r_start + 3]
                     stopCodon = Genome_rev[r_stop - 2:r_stop + 1]
 
-
                 elif '+' in strand:
                     startCodon = Genome[start - 1:start -1 + 3]
                     stopCodon = Genome[stop - 3:stop -1 + 1]
@@ -34,8 +33,6 @@ def Prodigal(input_to_analyse,Genome):
                 orf = [strand, startCodon, stopCodon]
                 prodigalORFs.update({po:orf})
 
-    #TO make sure all ORFs are in order - Not working
-    #prodigalORFs = collections.OrderedDict(sorted(prodigalORFs.items(),key=lambda t: t[0]))
     return prodigalORFs
 
 
