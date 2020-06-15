@@ -1,1 +1,0 @@
-from .TransDecoder import TransDecoder

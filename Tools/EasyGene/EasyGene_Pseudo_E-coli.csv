@@ -1,20 +1,23 @@
-Metric  Description:
-Number  of  Predicted  ORFs,Percentage  Difference  of  Predecited  ORFs,Number  of  ORFs  Matching  a  Gene,Percentage  of  ORFs  matching  a  Gene,Number  of  Genes  Covered,Percentage  of  Genes  Covered,Average  Length  of  Predicted  ORFs,Average  Length  of  Predicted  ORFs  as  %  Difference,Minimum  Length  of  Predicted  ORFs,Minimum  Length  of  Predicted  ORFs  as  %  Difference,Maximum  Length  of  Predicted  ORFs,Maximum  Length  of  Predicted  ORFs  as  %  Difference,Number  of  Perfect  Matches,Percentage  of  Perfect  Matches,Number  of  Perfect  Starts,Percentage  of  Perfect  Starts,Number  of  Perfect  Stops,Percentage  of  Perfect  Stops,Correct  Frame  Number,Correct  Frame  Percentage,Number  of  ORFs  expanding  a  coding  region,Percentage  of  ORFs  expanding  a  coding  region,Number  of  ORFs  on  Positive  Strand,Percentage  of  ORFs  on  Positive  Strand,Number  of  ORFs  on  Negative  Strand,Percentage  of  ORFs  on  Negative  Strand,Mean  Start  Precision  of  Predicted  ORFs,Mean  Stop  Precision  of  Predicted  ORFs,ATG  Start  Percentage,GTG  Start  Percentage,TTG  Start  Percentage,ATT  Start  Percentage,CTG  Start  Percentage,Other  Start  Codon  Percentage,TAG  Stop  Percentage,TAA  Stop  Percentage,TGA  Stop  Percentage,Other  Stop  Codon  Percentage,True  Positive,False  Positive,False  Negative,Precision,Recall,False  Discovery  Rate,Nucelotide  True  Positive,Nucleotide  False  Positive,Nucelotide  True  Negative,Nucelotide  False  Negatie,Nucleotide  Precision,Nucleotide  Recall,Nucleotide  False  Discovery  Rate,ORF  nucleotide  coverage  of  Genome,Matched  ORF  nucleotide  coverage  of  Genome
-Metrics:
-4852,-6.30,4575,94.29,4575,88.35,1060.67,7.56,74,-36.21,13961,0.00,4027,88.02,4296,93.90,4306,94.12,4575,99.91,178,3.89,2443,50.35,2409,49.65,42.54,-28.88,85.76,9.71,4.53,0.00,0.00,0.00,13.89,30.81,55.30,0.00,0.88,0.05,0.12,0.94,0.88,0.06,0.80,0.04,0.12,0.04,0.95,0.95,0.05,84.29,79.67
+Representative  Metrics:
+Percentage  of  ORFs  that  Detected  a  Gene,Percentage  Difference  of  ORFs,Median  Length  Difference,Percentage  of  Perfect  Matches,Percentage  of  Perfect  Starts,Percentage  of  Perfect  Stops,Median  Start  Difference  of  Matched  ORFs,Median  Stop  Difference  of  Matched  ORFs,Precision,Recall
+94.29,-6.30,4.87,88.02,93.90,94.12,21.00,-15.00,0.94,0.88
+All  Metrics:
+Number  of  ORFs,Percentage  Difference  of  ORFs,Number  of  ORFs  that  Detected  a  Gene,Percentage  of  ORFs  that  Detected  a  Gene,Number  of  Genes  Detected,Percentage  of  Genes  Detected,Median  Length  of  All  ORFs,Median  Length  Difference,Minimum  Length  of  All  ORFs,Minimum  Length  Difference,Maximum  Length  of  All  ORFs,Maximum  Length  Difference,Number  of  Perfect  Matches,Percentage  of  Perfect  Matches,Number  of  Perfect  Starts,Percentage  of  Perfect  Starts,Number  of  Perfect  Stops,Percentage  of  Perfect  Stops,Number  of  Matched  ORFs  in  Correct  Frame,Percentage  of  Matched  ORFs  in  Correct  Frame,Number  of  Matched  ORFs  Expanding  a  Coding  Region,Percentage  of  Matched  ORFs  Expanding  a  Coding  Region,Percentage  of  Matched  ORFs  Expanding  Start  Region,Percentage  of  Matched  ORFs  Expanding  Stop  Region,Number  of  All  ORFs  on  Positive  Strand,Percentage  of  All  ORFs  on  Positive  Strand,Number  of  All  ORFs  on  Negative  Strand,Percentage  of  All  ORFs  on  Negative  Strand,Median  Start  Difference  of  Matched  ORFs,Median  Stop  Difference  of  Matched  ORFs,ATG  Start  Percentage,GTG  Start  Percentage,TTG  Start  Percentage,ATT  Start  Percentage,CTG  Start  Percentage,Other  Start  Codon  Percentage,TAG  Stop  Percentage,TAA  Stop  Percentage,TGA  Stop  Percentage,Other  Stop  Codon  Percentage,True  Positive,False  Positive,False  Negative,Precision,Recall,False  Discovery  Rate,Nucleotide  True  Positive,Nucleotide  False  Positive,Nucleotide  True  Negative,Nucleotide  False  Negative,Nucleotide  Precision,Nucleotide  Recall,Nucleotide  False  Discovery  Rate,ORF  Nucleotide  Coverage  of  Genome,Matched  ORF  Nucleotide  Coverage  of  Genome
+4852,-6.30,4575,94.29,4575,88.35,905.00,4.87,74,-36.21,13961,0.00,4027,88.02,4296,93.90,4306,94.12,4575,99.80,0.00,1.73,2.16,2443,50.35,2409,49.65,21.00,-15.00,85.76,9.71,4.53,0.00,0.00,0.00,13.89,30.81,55.30,0.00,0.88,0.05,0.12,0.94,0.88,0.06,0.95,0.05,0.14,0.05,0.95,0.95,0.05,84.35,79.73
 CDS  Gene  Coverage  of  Genome:  
-84.12738092254277
+84.20
 Start  Codon  Difference:
 42,-42,-39,-51,219,-1074,3,-21,12,267,-12,36,36,15,207,-15,132,57,33,3,195,6,-18,-42,-36,78,189,18,-6,66,9,3,-93,-18,33,30,51,123,69,6,-30,-6,-54,12,-42,-12,51,105,66,57,-24,33,159,-9,60,-87,-30,162,60,81,-96,225,162,3,48,75,336,-18,3,189,75,183,-54,-165,-12,84,51,6,-351,9,84,42,9,6,252,30,36,30,-63,-48,96,3,-102,51,117,63,-129,-42,-15,24,129,147,-60,-108,-6,39,15,30,-60,9,12,69,273,69,27,177,477,-12,-12,126,-60,42,18,27,42,12,735,-33,93,60,-42,198,168,189,-132,12,81,-78,-6,42,-6,18,-69,18,-6,54,9,-9,15,129,126,123,9,42,30,21,42,6,15,81,21,6,48,66,126,-15,36,120,-36,96,-42,180,111,6,12,135,57,21,-57,42,165,258,30,39,-21,102,9,51,48,219,-153,27,-12,297,36,633,9,-3,3,60,57,36,-27,99,9,39,18,42,135,192,-15,33,285,90,81,66,108,-30,9,-24,-12,15,21,-9,18,69,171,21,-63,9,-24,36,-3,9,-177,-3,9,48,126,6,126,195,108,-9,165,9,54,54,3,9,159,18,-12,-48,18,21,-21,-30,-12,204,138,-6,6,12,3,48,27,-78,108,-36,96,255,3,9,-33,57,39,276,156
 Stop  Codon  Difference:
 21,-45,81,-15,345,-372,-48,-138,6,6,-42,51,9,63,6,-99,21,30,-36,-15,24,57,21,-150,3,36,-36,-6,12,-6,-72,-156,288,-225,-63,-15,-3,-108,-45,48,-99,-39,-30,-27,135,-174,9,-267,15,9,6,24,-3,6,-3,123,9,-36,114,21,105,-36,-63,-66,-57,24,9,51,-123,12,-9,9,-60,-72,-249,-402,-231,84,-21,432,27,-117,-42,-3,51,-162,-18,27,27,-39,39,15,18,-21,24,-93,-51,-36,30,-72,-54,30,213,-141,-21,48,-123,-129,-15,-90,-33,-15,12,-78,57,-36,-12,-84,-171,30,-117,-105,-75,30,30,-57,-9,-9,-144,-36,-9,-9,-60,420,-174,-159,36,-159,27,-24,-3,-75,6,57,9,-27,63,9,-9,-114,-99,399,-63,132,51,18,57,-3,-96,48,-3,-135,3,36,-21,12,-87,-15,-3,-12,60,-174,15,-150,-54,-27,57,168,93,120,-36,111,-9,9,-165,-39,6,189,-9,-36,-9,-69,-6,-168,3,-102,6,-12,-144,6,-93,-132,-18,270,-45,21,-3,-123,-255,42,-114,30,-303,-120,-117,-189,-36,-81,-48,-99,-15,-69,-42,-528,-9,-9,-57,-252,-90,-6,-120,27,-105,-108,-15,12,-222,-66,-312,-24,-9,-30,-48,-51,3,-9,-303,-120,81,-162,6,-33,288,84,45,-114,-207,-33,-54,-3,-6,-12,-69,-9,27,-33,-297,-39,39
-Alternative  Starts:
+Alternative  Starts  Predicted:
 
-Alternative  Stops:
+Alternative  Stops  Predicted:
 
-Mised  Genes:  Start-Stop-Strand-Start_Codon-Stop_Codon
-ATG ,GTG ,TGG ,ATT ,CTG ,Alternative_Start ,TGA ,TAA ,TAG ,Alternative_Stop ,AvLen ,Pos ,Neg
-86.73,7.63,4.81,0.00,0.50,0.33,56.05,26.53,17.41,0.00,417.62,306,297
+Undetected  Gene  Metrics:
+ATG  Start ,GTG  Start ,TTG  Start ,ATT  Start ,CTG  Start ,Alternative  Start  Codon ,TGA  Stop ,TAA  Stop ,TAG  Stop ,Alternative  Stop  Codon ,Median  Length ,Genes  on  Positive  Strand ,Genes  on  Negative  Strand
+86.73,7.63,4.81,0.00,0.50,0.33,56.05,26.53,17.41,0.00,314.00,306,297
+Undetected  Genes:
 >Pseudo_11965_12480_+ 
 ATGCCCTCGACCCCTGCGACAAGCCCTACTGACCTGGCCACCCTGTATCAGCAACAACACCGCTGGCTGCAGCACTGGCTATGGCGTCGTCTGAACTGCTCGCAGAGCGCCGCTGACCTGGCCCAGGACACGTTCCTGCGCCTGCTTGCCAAGAATCAACCCCTTGAAGTCCAGGCTCCCCGCAGCTTTCTGGTCAAAGTCGCACAGAGCGTGCTGTCCAATCACTTTCGTCGGCAAAAGCTGGAAAAGGCCTACCTGCAAGCCTTGGCGCTGCTACCGGAAGAAGTGGCGCCCAGCGCCGAGACACAGTGGCTACTCCTGGAAACCCTGATGGCCCTCGATGAAGTGCTCAGCCGCCTGGCATTGCCGGTGCGCCAGGCTTTCCTCTGGTCCCAGCTCGAGGGCTTGAGCCACGGCGAAATTGCCGAGCGCCTGGGCACCAGCATCACTACCGTCAAGCGCTACATCGTCAAGGCCGGTGCCCAGTGCATTGTGCTCGACAGCCAGCGCCCATGA
 >Pseudo_35337_35852_- 
@@ -1224,9 +1227,10 @@ ATGAAGCGAATTTTGATAGTGCTTGTCGTCATCGCCCTTGCAGGGTGTGCCGCGACCACCAAGACAGAAGTCAAACGCGG
  
  
  
-Unmatched  ORFs:  Start-Stop-Strand-Start_Codon-Stop_Codon
-ATG ,GTG ,TGG ,ATT ,CTG ,Alternative_Start ,TGA ,TAA ,TAG ,Alternative_Stop ,AvLen ,Pos ,Neg
-68.59,18.77,12.64,0.00,0.00,0.00,54.87,28.88,16.25,63.90,1125.97,152,125
+Unmatched  ORF  Metrics:
+ATG  Start ,GTG  Start ,TTG  Start ,ATT  Start ,CTG  Start ,Alternative  Start  Codon ,TGA  Stop ,TAA  Stop ,TAG  Stop ,Alternative  Stop  Codon ,Median  Length ,ORFs  on  Positive  Strand ,ORFs  on  Negative  Strand
+Unmatched  ORFs:
+68.59,18.77,12.64,0.00,0.00,0.00,54.87,28.88,16.25,63.90,761.00,152,125
 >EasyGene_50223_50891_+ 
 TTGGCGCCATTTGCTGGGGGGCATGATCGACAACGTGCAGCAGCGTGTGGCCGAGTTGCCAATGCTCGATGCGTCGGACTACCAGCAGCAGATCCATACCTGGAACGCCACTGCCTCGGATTACCCGCAAGAGCGCAGCATTCATCGATTGATCGCCGAGCAGGTGGAGCGTCAGCCGGACGCCCTGGCCCTGACCTATGGCGCCAAGACCCTGAGCTATCGCCAACTGGACGGCCAGGCCAATCAACTGGCGCACACACTGATCGAACTGGGCGTTGGTCCCGAAGTGCGGGTCGGCGTGGCCCTGCAGCGTACCGATGCGTTGGTCGTCGCCTTGCTTGGCGTGCTCAAGGCCGGTGGCGCCTATGTGCCGCTGGACCCGGATTATCCCGCCGACCGCGTTGCCTACATGCTCGAAGACAGTCGCGCCCAGGTGCTGCTGACCGAGGCCGATTTGCTCGCAGGCCTGCCCGAGACCCCGGCGCAGGTGCTGCTGATGGATCAACTGGTCGCTTACCCGGTGACAGCACCGCTCACGGCTGTGGCGCCGGCCAACCTGGCCTATGTGATCTACACCTCCGGCTCCACCGGCAAACCCAAGGGCGTGGCCATTACCCACGGCAACGTACTGGCGCTGATCCACTGGTCGCAGCAGGTCTACAGCCGTGA
 >EasyGene_50943_51704_+ 
