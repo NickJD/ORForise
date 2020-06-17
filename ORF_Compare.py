@@ -6,7 +6,7 @@ from Comparator import tool_comparison
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-t', '--tool', required=True, help='Which tool to compare?')
-parser.add_argument('-i', '--input_to_analyse', required=True, help='Location of tool output to compare.')
+parser.add_argument('-i', '--input_to_analyse', required=True, help='File name of tool output to compare.')
 parser.add_argument('-g', '--genome_to_compare', required=True, help='Which genome to analyse? Genome files have same prefix'
                                                                      ' - .fa and .gff appended')
 args = parser.parse_args()
@@ -78,11 +78,3 @@ def comparator(tool,input_to_analyse,genome_to_compare):
 
 if __name__ == "__main__":
     comparator(**vars(args))
-
-
-
-
-
-
-
-
