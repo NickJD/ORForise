@@ -29,8 +29,8 @@ def GeneMark(input_to_analyse,Genome):
                             GeneMark_ORFs.update({po: orf})
                     elif 'direct' in strand:
                         if stop != prev_Stop:
-                            startCodon = Genome[start - 1:start - 1 + 3]
-                            stopCodon = Genome[stop - 3:stop - 1 + 1]
+                            startCodon = Genome[start - 1:start+2]
+                            stopCodon = Genome[stop - 3:stop]
                             strand = '+'
                             po = str(start) + ',' + str(stop)
                             orf = [strand, startCodon, stopCodon]

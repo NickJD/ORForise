@@ -22,8 +22,8 @@ def GLIMMER_3(input_to_analyse,Genome):
                         start = int(line[1])
                         stop = int(line[2])
                         strand = '+'
-                        startCodon = Genome[start - 1:start - 1 + 3]
-                        stopCodon = Genome[stop - 3:stop - 1 + 1]
+                        startCodon = Genome[start - 1:start+3]
+                        stopCodon = Genome[stop - 3:stop]
                     po = str(start) + ',' + str(stop)
                     orf = [strand, startCodon, stopCodon]
                     GLIMMER_ORFs.update({po: orf})

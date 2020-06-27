@@ -19,8 +19,8 @@ def MetaGene(input_to_analyse,Genome):
                     startCodon = Genome_rev[r_start:r_start + 3]
                     stopCodon = Genome_rev[r_stop - 2:r_stop + 1]
                 elif '+' in strand:
-                    startCodon = Genome[start - 1:start -1 + 3]
-                    stopCodon = Genome[stop - 3:stop -1 + 1]
+                    startCodon = Genome[start - 1:start+2]
+                    stopCodon = Genome[stop - 3:stop]
                 po = str(start) + ',' + str(stop)
                 orf = [strand, startCodon, stopCodon]
                 MetaGene_ORFs.update({po:orf})

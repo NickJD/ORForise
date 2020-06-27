@@ -1,14 +1,14 @@
 Representative  Metrics:
-Percentage  of  ORFs  that  Detected  a  Gene,Percentage  Difference  of  ORFs,Median  Length  Difference,Percentage  of  Perfect  Matches,Percentage  of  Perfect  Starts,Percentage  of  Perfect  Stops,Median  Start  Difference  of  Matched  ORFs,Median  Stop  Difference  of  Matched  ORFs,Precision,Recall
+Percentage  of  ORFs  that  Detected  a  Gene,Percentage  Difference  of  All  ORFs,Median  Length  Difference,Percentage  of  Perfect  Matches,Percentage  of  Perfect  Starts,Percentage  of  Perfect  Stops,Median  Start  Difference  of  Matched  ORFs,Median  Stop  Difference  of  Matched  ORFs,Precision,Recall
 0.00,-99.37,-87.58,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 All  Metrics:
-Number  of  ORFs,Percentage  Difference  of  ORFs,Number  of  ORFs  that  Detected  a  Gene,Percentage  of  ORFs  that  Detected  a  Gene,Number  of  Genes  Detected,Percentage  of  Genes  Detected,Median  Length  of  All  ORFs,Median  Length  Difference,Minimum  Length  of  All  ORFs,Minimum  Length  Difference,Maximum  Length  of  All  ORFs,Maximum  Length  Difference,Number  of  Perfect  Matches,Percentage  of  Perfect  Matches,Number  of  Perfect  Starts,Percentage  of  Perfect  Starts,Number  of  Perfect  Stops,Percentage  of  Perfect  Stops,Number  of  Matched  ORFs  in  Correct  Frame,Percentage  of  Matched  ORFs  in  Correct  Frame,Number  of  Matched  ORFs  Expanding  a  Coding  Region,Percentage  of  Matched  ORFs  Expanding  a  Coding  Region,Percentage  of  Matched  ORFs  Expanding  Start  Region,Percentage  of  Matched  ORFs  Expanding  Stop  Region,Number  of  All  ORFs  on  Positive  Strand,Percentage  of  All  ORFs  on  Positive  Strand,Number  of  All  ORFs  on  Negative  Strand,Percentage  of  All  ORFs  on  Negative  Strand,Median  Start  Difference  of  Matched  ORFs,Median  Stop  Difference  of  Matched  ORFs,ATG  Start  Percentage,GTG  Start  Percentage,TTG  Start  Percentage,ATT  Start  Percentage,CTG  Start  Percentage,Other  Start  Codon  Percentage,TAG  Stop  Percentage,TAA  Stop  Percentage,TGA  Stop  Percentage,Other  Stop  Codon  Percentage,True  Positive,False  Positive,False  Negative,Precision,Recall,False  Discovery  Rate,Nucleotide  True  Positive,Nucleotide  False  Positive,Nucleotide  True  Negative,Nucleotide  False  Negative,Nucleotide  Precision,Nucleotide  Recall,Nucleotide  False  Discovery  Rate,ORF  Nucleotide  Coverage  of  Genome,Matched  ORF  Nucleotide  Coverage  of  Genome
-3,-99.37,0,0.00,0,0.00,110.00,-87.58,110,-2.65,242,-95.53,0,0.00,0,0.00,0,0.00,0,0.00,0.00,0.00,0.00,2,66.67,1,33.33,0.00,0.00,33.33,66.67,0.00,0.00,0.00,0.00,0.00,0.00,100.00,0.00,0.00,0.01,1.00,0.00,0.00,1.00,0.00,0.00,0.10,1.00,0.76,0.00,0.24,0.08,0.00
+Number  of  ORFs,Percentage  Difference  of  All  ORFs,Number  of  ORFs  that  Detected  a  Gene,Percentage  of  ORFs  that  Detected  a  Gene,Number  of  Genes  Detected,Percentage  of  Genes  Detected,Median  Length  of  All  ORFs,Median  Length  Difference,Minimum  Length  of  All  ORFs,Minimum  Length  Difference,Maximum  Length  of  All  ORFs,Maximum  Length  Difference,Number  of  Perfect  Matches,Percentage  of  Perfect  Matches,Number  of  Perfect  Starts,Percentage  of  Perfect  Starts,Number  of  Perfect  Stops,Percentage  of  Perfect  Stops,Number  of  Matched  ORFs  in  Correct  Frame,Percentage  of  Matched  ORFs  in  Correct  Frame,Number  of  Matched  ORFs  Expanding  a  Coding  Region,Percentage  of  Matched  ORFs  Expanding  a  Coding  Region,Number  of  Matched  ORFs  Expanding  Start  Region,Percentage  of  Matched  ORFs  Expanding  Start  Region,Number  of  Matched  ORFs  Expanding  Stop  Region,Percentage  of  Matched  ORFs  Expanding  Stop  Region,Number  of  All  ORFs  on  Positive  Strand,Percentage  of  All  ORFs  on  Positive  Strand,Number  of  All  ORFs  on  Negative  Strand,Percentage  of  All  ORFs  on  Negative  Strand,Median  Start  Difference  of  Matched  ORFs,Median  Stop  Difference  of  Matched  ORFs,ATG  Start  Percentage,GTG  Start  Percentage,TTG  Start  Percentage,ATT  Start  Percentage,CTG  Start  Percentage,Other  Start  Codon  Percentage,TAG  Stop  Percentage,TAA  Stop  Percentage,TGA  Stop  Percentage,Other  Stop  Codon  Percentage,True  Positive,False  Positive,False  Negative,Precision,Recall,False  Discovery  Rate,Nucleotide  True  Positive,Nucleotide  False  Positive,Nucleotide  True  Negative,Nucleotide  False  Negative,Nucleotide  Precision,Nucleotide  Recall,Nucleotide  False  Discovery  Rate,ORF  Nucleotide  Coverage  of  Genome,Matched  ORF  Nucleotide  Coverage  of  Genome
+3,-99.37,0,0.00,0,0.00,110.00,-87.58,110,-2.65,242,-95.53,0,0.00,0,0.00,0,0.00,0,0.00,0,0.00,0,0.00,0,0.00,2,66.67,1,33.33,0.00,0.00,33.33,66.67,0.00,0.00,0.00,0.00,0.00,0.00,100.00,0.00,0.00,0.01,1.00,0.00,0.00,1.00,0.00,0.00,0.10,1.00,0.76,0.00,0.24,0.08,0.00
 CDS  Gene  Coverage  of  Genome:  
 90.62
-Start  Codon  Difference:
+Start  Position  Difference:
 
-Stop  Codon  Difference:
+Stop  Position  Difference:
 
 Alternative  Starts  Predicted:
 
@@ -973,13 +973,13 @@ ATGATCATTTCTTTTGTAAATAATAAAGGCGGCGTATTAAAAACTACAATGGCAACTAATGTTGCAGGATCATTGGTTAA
  
  
  
-Unmatched  ORF  Metrics:
+ORFs  without  corresponding  gene  in  Ensembl  Metrics:
 ATG  Start ,GTG  Start ,TTG  Start ,ATT  Start ,CTG  Start ,Alternative  Start  Codon ,TGA  Stop ,TAA  Stop ,TAG  Stop ,Alternative  Stop  Codon ,Median  Length ,ORFs  on  Positive  Strand ,ORFs  on  Negative  Strand
-Unmatched  ORFs:
 33.33,66.67,0.00,0.00,0.00,0.00,100.00,0.00,0.00,-3233.33,110.00,2,1
+ORFs  without  corresponding  gene  in  Ensembl:
 >GeneMark_169183_169293_+ 
 GTGATGGGTAACAGCTTTCTACCCAGCTTGTGGTACTGGGTGGTGGAGCGGAGTGCACAGGAAAATGCAAGTAACAAACCCACCTGGTTTGCTAATACCAATTTAGACTGA
 >GeneMark_226836_226946_+ 
 GTGATGGGTAACAGCTTTCTACCCAGCATGTGGTACTGGGTGGTGGAGCGGAGTGCACAGGAAAATGCAAGTAACAAACCCACCTGGTTTGCTAATACCAATTTAGACTGA
 >GeneMark_374979_375221_- 
-AAGATGATCCGTGATGCTGAAGCTAACAAGGAACGGGATAACATCATCCGTGAACGTATTGAATTACGTAATGAAGGGGAAGGTATTGTTAATACCATCAAAGAGATATTAGCAAGTCCTGATGCTAAGAATTTCCCTAAAGAAGAAAAAGAGAAGTTAGAAAAGCTAACAGGTAACATTGATGCTGCTATTAAAGCTAATGACTATGCCAAACTCAAAGTGGAAATTGAAAACTTTAAGAAGTGAAG
+ATGATCCGTGATGCTGAAGCTAACAAGGAACGGGATAACATCATCCGTGAACGTATTGAATTACGTAATGAAGGGGAAGGTATTGTTAATACCATCAAAGAGATATTAGCAAGTCCTGATGCTAAGAATTTCCCTAAAGAAGAAAAAGAGAAGTTAGAAAAGCTAACAGGTAACATTGATGCTGCTATTAAAGCTAATGACTATGCCAAACTCAAAGTGGAAATTGAAAACTTTAAGAAGTGA

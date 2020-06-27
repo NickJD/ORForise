@@ -24,7 +24,7 @@ def orf_Unmatched(o_Start, o_Stop, o_Strand):
         r_Start = comp.genome_Size - o_Stop
         r_Stop = comp.genome_Size - o_Start
         Unmatched_ORF = str(o_Start) + ',' + str(o_Stop) + ',' + o_Strand + ',' +comp.genome_Seq_Rev[r_Start:r_Start+3] + ',' +comp.genome_Seq_Rev[r_Stop - 2:r_Stop + 1]
-        seq = (comp.genome_Seq_Rev[r_Start-3:r_Stop+3])
+        seq = (comp.genome_Seq_Rev[r_Start:r_Stop+1])
         comp.unmatched_ORFs.update({Unmatched_ORF: seq})
     elif o_Strand == '+':
         Unmatched_ORF = str(o_Start) + ',' + str(o_Stop) + ',' + o_Strand + ',' + comp.genome_Seq[o_Start-1:o_Start+2] + ',' +comp.genome_Seq[o_Stop-3:o_Stop]
@@ -134,37 +134,37 @@ def tool_comparison(genes,orfs,genome):
     comp.genome_Seq = genome
     comp.genome_Seq_Rev = revCompIterative(genome)
     comp.genome_Size = len(genome)
-    #Loop through each gene to compare against predicted ORFs
-    for gene_Num, gene_Details in genes.items():
+    for gene_Num, gene_Details in genes.items(): #Loop through each gene to compare against predicted ORFs
         gene_Details = gene_Details.split(',')
         g_Start = int(gene_Details[0])
         g_Stop = int(gene_Details[1])
         g_Strand = gene_Details[2]
         gene_Length = g_Stop - g_Start
         comp.gene_Lengths.append(gene_Length)
-        gene_Set = set(range(g_Start, g_Stop + 1))
-        ####################### Checking Overlap of ORFs and pick best match - slow but confirms best match
+        gene_Set = set(range(g_Start, g_Stop + 1)) # Used to check Overlap of ORFs and pick best match - slow but confirms best match
         overlapping_ORFs = collections.OrderedDict()
         perfect_Match = False
-        for pos, orf_Details  in orfs.items(): #Check if perfect match, if not check if match covers at least 75% of gene - Loop through ALL ORFs
+        out_Frame = False
+        for pos, orf_Details  in orfs.items(): #Check if perfect match, if not check if match covers at least 75% of gene - Loop through ALL ORFs - SLOW
             o_Start = int(pos.split(',')[0])
             o_Stop = int(pos.split(',')[1])
             o_Strand = orf_Details[0]
             orf_Set = set(range(o_Start, o_Stop + 1))
-            if o_Stop <= g_Start or o_Start >= g_Stop: #Not caught up yet or ORFs may not be ordered
+            if o_Stop <= g_Start or o_Start >= g_Stop: #Not caught up yet or ORFs may not be ordered - Slow but needed for unordered ORF Predictions
                 continue
             elif o_Start == g_Start and o_Stop == g_Stop: #If perfect match, break and skip the rest of the ORFs
                 perfect_Match = True
                 break
-            elif g_Start <= o_Start < g_Stop or g_Start < o_Stop < g_Stop: # If at least ORF Stop is within gene range
+            elif g_Start <= o_Start < g_Stop or g_Start < o_Stop < g_Stop: # If ORF Start or Stop is between gene Start or Stop
                 overlap = len(gene_Set.intersection(orf_Set))
                 coverage = 100 * float(overlap) / float(len(gene_Set))
                 orf_Details.append(coverage)
                 if abs(o_Stop - g_Stop) % 3 == 0 and o_Strand == g_Strand and coverage >= 75 :  #Only continue if ORF covers at least 75% of the gene and is in frame
                     overlapping_ORFs.update({pos:orf_Details})
-                elif coverage >= 75:
+                elif coverage >= 75: # Not in frame / on same strand
                     comp.out_Of_Frame_ORFs.update({pos:orf_Details})
-            elif o_Start <= g_Start and o_Stop >= g_Stop: # If ORF is extends one or both ends of the gene
+                    out_Frame = True
+            elif o_Start <= g_Start and o_Stop >= g_Stop: # If ORF extends one or both ends of the gene
                 overlap = len(gene_Set.intersection(orf_Set))
                 coverage = 100 * float(overlap) / float(len(gene_Set))
                 orf_Details.append(coverage)
@@ -172,10 +172,10 @@ def tool_comparison(genes,orfs,genome):
                     overlapping_ORFs.update({pos:orf_Details})
                 elif coverage >= 75:
                     comp.out_Of_Frame_ORFs.update({pos:orf_Details})
+                    out_Frame = True
             else:
-                print("Unexpected Error Finding ORFs")
+                print("Unexpected Error Finding ORFs") # Should not happen
         #Now Check that we select the best ORF
-        #print(len(overlapping_ORFs))
         if perfect_Match == True: # Check if the ORF is a perfect match to the Gene
             comp.genes_Detected.update({str(gene_Details):pos})
             orf_Details.append(100)
@@ -185,7 +185,7 @@ def tool_comparison(genes,orfs,genome):
             comp.perfect_Stops += 1
             comp.correct_Frame_Number += 1
             print('Perfect Match')
-        elif perfect_Match == False and len(overlapping_ORFs) == 1: # If we do not have a perfect match but 1 ORF which has passed our filtering, we will calculate accordingly
+        elif perfect_Match == False and len(overlapping_ORFs) == 1: # If we do not have a perfect match but 1 ORF which has passed the filtering
             orf_Pos = list(overlapping_ORFs.keys())[0]
             o_Start = int(orf_Pos.split(',')[0])
             o_Stop = int(orf_Pos.split(',')[1])
@@ -201,18 +201,16 @@ def tool_comparison(genes,orfs,genome):
             comp.matched_ORFs.update({orf_Pos:orf_Details})
             comp.genes_Dected.update({str(gene_Details):orf_Pos})
             match_Statistics(o_Start,o_Stop,g_Start,g_Stop)
-            print('There was more than 1 potential Match')
-        elif len(comp.out_Of_Frame_ORFs) >=1: # Keep record of ORFs which overlap a gene but in the wrong frame
+            print('There was more than 1 potential Match - Best Chosen')
+        elif out_Frame: # Keep record of ORFs which overlap a gene but in the wrong frame
             print("Out of Frame ORF")
-            genes_Unmatched(g_Start, g_Stop, g_Strand)
+            genes_Unmatched(g_Start, g_Stop, g_Strand) #
         else:
             genes_Unmatched(g_Start, g_Stop, g_Strand) # No hit
             print("No Hit")
     for key in comp.matched_ORFs: # Remove ORFs which are out of frame if ORF was correctly matched to another Gene
         if key in comp.out_Of_Frame_ORFs:
             del comp.out_Of_Frame_ORFs[key]
-    print("Checked all predicted ORFs")
-    print(comp.genes_Detected)
     min_Gene_Length = min(comp.gene_Lengths)
     max_Gene_Length = max(comp.gene_Lengths)
     median_Gene_Length = np.median(comp.gene_Lengths)
@@ -376,12 +374,12 @@ def tool_comparison(genes,orfs,genome):
     uo_Neg = uo_Strands.count('-')
     unmatched_orf_metrics = (format(uo_ATG,'.2f'),format(uo_GTG,'.2f'),format(uo_TTG,'.2f'),format(uo_ATT,'.2f'),format(uo_CTG,'.2f'),format(uo_O_Start,'.2f'),format(uo_TGA,'.2f'),format(uo_TAA,'.2f'),format(uo_TAG,'.2f'),format(uo_O_Stop,'.2f'),format(median_uo_Len,'.2f'),uo_Pos,uo_Neg)
     #################################
-    metric_description = ['Number of ORFs',	'Percentage Difference of ORFs', 'Number of ORFs that Detected a Gene', 'Percentage of ORFs that Detected a Gene', 'Number of Genes Detected',
+    metric_description = ['Number of ORFs',	'Percentage Difference of All ORFs', 'Number of ORFs that Detected a Gene', 'Percentage of ORFs that Detected a Gene', 'Number of Genes Detected',
                         'Percentage of Genes Detected', 'Median Length of All ORFs', 'Median Length Difference', 'Minimum Length of All ORFs', 'Minimum Length Difference',
                         'Maximum Length of All ORFs', 'Maximum Length Difference', 'Number of Perfect Matches', 'Percentage of Perfect Matches', 'Number of Perfect Starts',
                         'Percentage of Perfect Starts', 'Number of Perfect Stops',	'Percentage of Perfect Stops', 'Number of Matched ORFs in Correct Frame', 'Percentage of Matched ORFs in Correct Frame',
-                        'Number of Matched ORFs Expanding a Coding Region', 'Percentage of Matched ORFs Expanding a Coding Region', 'Percentage of Matched ORFs Expanding Start Region',
-                        'Percentage of Matched ORFs Expanding Stop Region', 'Number of All ORFs on Positive Strand', 'Percentage of All ORFs on Positive Strand',
+                        'Number of Matched ORFs Expanding a Coding Region', 'Percentage of Matched ORFs Expanding a Coding Region', 'Number of Matched ORFs Expanding Start Region', 'Percentage of Matched ORFs Expanding Start Region',
+                        'Number of Matched ORFs Expanding Stop Region', 'Percentage of Matched ORFs Expanding Stop Region', 'Number of All ORFs on Positive Strand', 'Percentage of All ORFs on Positive Strand',
                         'Number of All ORFs on Negative Strand', 'Percentage of All ORFs on Negative Strand', 'Median Start Difference of Matched ORFs', 'Median Stop Difference of Matched ORFs','ATG Start Percentage',
                         'GTG Start Percentage', 'TTG Start Percentage', 'ATT Start Percentage', 'CTG Start Percentage', 'Other Start Codon Percentage', 'TAG Stop Percentage', 'TAA Stop Percentage',
                         'TGA Stop Percentage', 'Other Stop Codon Percentage', 'True Positive', 'False Positive', 'False Negative', 'Precision', 'Recall', 'False Discovery Rate',
@@ -392,13 +390,14 @@ def tool_comparison(genes,orfs,genome):
               format(genes_Detected_Percentage,'.2f'), format(median_ORF_Length,'.2f'), format(median_Length_Diff,'.2f'), min_ORF_Length, format(min_Length_Diff,'.2f'),
               max_ORF_Length, format(max_Length_Diff,'.2f'),comp.perfect_Matches, format(perfect_Matches_Percentage,'.2f'),  comp.perfect_Starts,
               format(perfect_Starts_Percentage,'.2f'), comp.perfect_Stops, format(perfect_Stops_Percentage,'.2f'), comp.correct_Frame_Number, format(correct_Frame_Percentage,'.2f'),
-              format(per_Expanded_CDS,'.2f'), format(per_Expanded_Start,'.2f'), format(per_Expanded_Stop,'.2f'), comp.pos_Strand, format(pos_Strand_Percentage,'.2f'), comp.neg_Strand, format(neg_Strand_Percentage,'.2f'),
+              comp.expanded_CDS, format(per_Expanded_CDS,'.2f'), comp.expanded_Start, format(per_Expanded_Start,'.2f'), comp.expanded_Stop, format(per_Expanded_Stop,'.2f'),
+              comp.pos_Strand, format(pos_Strand_Percentage,'.2f'), comp.neg_Strand, format(neg_Strand_Percentage,'.2f'),
               format(median_Start_Difference,'.2f'), format(median_Stop_Difference,'.2f'), format(atg_P, '.2f'), format(gtg_P,'.2f'), format(ttg_P, '.2f'), format(att_P, '.2f'), format(ctg_P, '.2f'), format(other_Start_P, '.2f'),
               format(tag_P, '.2f'), format(taa_P, '.2f'), format(tga_P, '.2f'), format(other_Stop_P,'.2f'), format(TP,'.2f'), format(FP,'.2f'), format(FN,'.2f'), format(precision,'.2f'), format(recall,'.2f'),
               format(false_Discovery_Rate,'.2f'), format(NT_TP,'.2f'), format(NT_FP,'.2f'), format(NT_TN,'.2f'), format(NT_FN,'.2f'), format(NT_Precision,'.2f'), format(NT_Recall,'.2f'),
               format(NT_False_Discovery_Rate,'.2f'),format(orf_Coverage_Genome,'.2f'),format(matched_ORF_Coverage_Genome,'.2f')]
 
-    rep_metric_description = ['Percentage of ORFs that Detected a Gene','Percentage Difference of ORFs','Median Length Difference','Percentage of Perfect Matches','Percentage of Perfect Starts','Percentage of Perfect Stops',
+    rep_metric_description = ['Percentage of ORFs that Detected a Gene','Percentage Difference of All ORFs','Median Length Difference','Percentage of Perfect Matches','Percentage of Perfect Starts','Percentage of Perfect Stops',
                                'Median Start Difference of Matched ORFs', 'Median Stop Difference of Matched ORFs','Precision', 'Recall']
 
     rep_metrics = [format(matched_ORF_Percentage,'.2f'),format(ORFs_Diff,'.2f'),format(median_Length_Diff,'.2f'),format(perfect_Matches_Percentage,'.2f'), format(perfect_Starts_Percentage,'.2f'), format(perfect_Stops_Percentage,'.2f'),
