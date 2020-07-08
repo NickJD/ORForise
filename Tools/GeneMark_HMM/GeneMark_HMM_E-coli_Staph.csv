@@ -1,9 +1,9 @@
 Representative  Metrics:
 Percentage  of  ORFs  that  Detected  a  Gene,Percentage  Difference  of  All  ORFs,Median  Length  Difference,Percentage  of  Perfect  Matches,Percentage  of  Perfect  Starts,Percentage  of  Perfect  Stops,Median  Start  Difference  of  Matched  ORFs,Median  Stop  Difference  of  Matched  ORFs,Precision,Recall
-88.81,6.49,-4.60,88.36,94.62,93.76,24.00,-31.50,0.89,0.95
+88.81,6.49,-4.60,88.34,94.60,93.74,24.00,-31.50,0.89,0.95
 All  Metrics:
 Number  of  ORFs,Percentage  Difference  of  All  ORFs,Number  of  ORFs  that  Detected  a  Gene,Percentage  of  ORFs  that  Detected  a  Gene,Number  of  Genes  Detected,Percentage  of  Genes  Detected,Median  Length  of  All  ORFs,Median  Length  Difference,Minimum  Length  of  All  ORFs,Minimum  Length  Difference,Maximum  Length  of  All  ORFs,Maximum  Length  Difference,Number  of  Perfect  Matches,Percentage  of  Perfect  Matches,Number  of  Perfect  Starts,Percentage  of  Perfect  Starts,Number  of  Perfect  Stops,Percentage  of  Perfect  Stops,Number  of  Matched  ORFs  in  Correct  Frame,Percentage  of  Matched  ORFs  in  Correct  Frame,Number  of  Matched  ORFs  Expanding  a  Coding  Region,Percentage  of  Matched  ORFs  Expanding  a  Coding  Region,Number  of  Matched  ORFs  Expanding  Start  Region,Percentage  of  Matched  ORFs  Expanding  Start  Region,Number  of  Matched  ORFs  Expanding  Stop  Region,Percentage  of  Matched  ORFs  Expanding  Stop  Region,Number  of  All  ORFs  on  Positive  Strand,Percentage  of  All  ORFs  on  Positive  Strand,Number  of  All  ORFs  on  Negative  Strand,Percentage  of  All  ORFs  on  Negative  Strand,Median  Start  Difference  of  Matched  ORFs,Median  Stop  Difference  of  Matched  ORFs,ATG  Start  Percentage,GTG  Start  Percentage,TTG  Start  Percentage,ATT  Start  Percentage,CTG  Start  Percentage,Other  Start  Codon  Percentage,TAG  Stop  Percentage,TAA  Stop  Percentage,TGA  Stop  Percentage,Other  Stop  Codon  Percentage,True  Positive,False  Positive,False  Negative,Precision,Recall,False  Discovery  Rate,Nucleotide  True  Positive,Nucleotide  False  Positive,Nucleotide  True  Negative,Nucleotide  False  Negative,Nucleotide  Precision,Nucleotide  Recall,Nucleotide  False  Discovery  Rate,ORF  Nucleotide  Coverage  of  Genome,Matched  ORF  Nucleotide  Coverage  of  Genome
-4315,6.49,3832,88.81,3833,94.60,809.00,-4.60,80,81.82,7076,0.00,3386,88.36,3626,94.62,3593,93.76,3833,99.53,0,0.00,68,1.77,78,2.03,2101,48.69,2214,51.31,24.00,-31.50,84.96,9.59,5.45,0.00,0.00,0.00,7.86,62.69,29.46,0.00,0.95,0.12,0.05,0.89,0.95,0.11,0.98,0.05,0.14,0.02,0.95,0.98,0.05,86.81,81.91
+4315,6.49,3832,88.81,3833,94.60,809.00,-4.60,80,81.82,7076,0.00,3386,88.34,3626,94.60,3593,93.74,3833,99.53,0,0.00,68,1.77,78,2.03,2101,48.69,2214,51.31,24.00,-31.50,84.96,9.59,5.45,0.00,0.00,0.00,7.86,62.69,29.46,0.00,0.95,0.12,0.05,0.89,0.95,0.11,0.98,0.05,0.14,0.02,0.95,0.98,0.05,86.81,81.91
 CDS  Gene  Coverage  of  Genome:  
 84.35
 Start  Position  Difference:
@@ -1429,3 +1429,6 @@ TTGGTAGACGCGCTAGCTTCAGGTGTTAGTGTCCTTACGGACGTGGGGGTTCAAGTCCCCCCCCTCGCACCAAAAACCAC
 ATGGCGGCGTTTGCGATTACGCAAGTGGTGCTGGATGAAGCTACATTGTTCAATATTGCGGTCGATCCTGACTATCAGCGTCAGGGATTGGGAAGGGCGCTGCTGGAACATCTGATCGACGAACTGGAAAAACGCGGCGTGGCGACACTATGGCTGGAAGTCCGTGCTTCAAACGCTGCCGCCATTGCCCTGTACGAAAGTTTAGGCTTTAACGAGGCGACGATTCGCCGCAATTACTACCCCACCACGGACGGTCGCGAAGACGCCATCATCATGGCGTTGCCAATCAGTATGTAA
 >GeneMark_HMM_4545589_4545756_+ 
 ATGAGTTTTTTTGATGAGTTGAAAACCTCTCTGGAAGAGGCTGTCGAGATTAAACAAGGTTTGAAAAAACCTGCACGGGTGACCCGCCACGAAATTGAGGATGCTAAGGCTGTTGTAGACCGGAAACGGTGTTCACGCCGCATCCGGCATTCGGTGCTCAATGCCTGA
+ 
+ORFs  Which  Detected  more  than  one  Gene:
+ORF:2652100-2652990_Gene:2652100-2652990
