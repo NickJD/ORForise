@@ -177,6 +177,7 @@ def tool_comparison(genes,orfs,genome):
             else:
                 print("Unexpected Error Finding ORFs") # Should not happen
         #Now Check that we select the best ORF
+                                                                                                                        ### Multi_Match_ORFs Should contain All genes found by a specific ORF
         if perfect_Match == True: # Check if the ORF is a perfect match to the Gene
             if g_pos in comp.matched_ORFs.keys():
                 comp.multi_Matched_ORFs.update(({g_pos:(orf_Details,g_pos)}))
@@ -404,10 +405,10 @@ def tool_comparison(genes,orfs,genome):
               format(false_Discovery_Rate,'.2f'), format(NT_TP,'.2f'), format(NT_FP,'.2f'), format(NT_TN,'.2f'), format(NT_FN,'.2f'), format(NT_Precision,'.2f'), format(NT_Recall,'.2f'),
               format(NT_False_Discovery_Rate,'.2f'),format(orf_Coverage_Genome,'.2f'),format(matched_ORF_Coverage_Genome,'.2f')]
 
-    rep_metric_description = ['Percentage of ORFs that Detected a Gene','Percentage Difference of All ORFs','Median Length Difference','Percentage of Perfect Matches','Percentage of Perfect Starts','Percentage of Perfect Stops',
-                               'Median Start Difference of Matched ORFs', 'Median Stop Difference of Matched ORFs','Precision', 'Recall']
+    rep_metric_description = ['Percentage of Genes Detected','Percentage Difference of All ORFs','Median Length Difference','Percentage of Perfect Matches','Percentage of Matched ORFs Expanding a Coding Region',
+                               'Median Start Difference of Matched ORFs', 'Median Stop Difference of Matched ORFs','Precision', 'Recall','False Discovery Rate']
 
-    rep_metrics = [format(matched_ORF_Percentage,'.2f'),format(ORFs_Diff,'.2f'),format(median_Length_Diff,'.2f'),format(perfect_Matches_Percentage,'.2f'), format(perfect_Starts_Percentage,'.2f'), format(perfect_Stops_Percentage,'.2f'),
-                   format(median_Start_Difference,'.2f'), format(median_Stop_Difference,'.2f'),format(precision,'.2f'), format(recall,'.2f')]
+    rep_metrics = [format(genes_Detected_Percentage,'.2f'),format(ORFs_Diff,'.2f'),format(median_Length_Diff,'.2f'),format(perfect_Matches_Percentage,'.2f'), format(per_Expanded_CDS,'.2f'),
+                   format(median_Start_Difference,'.2f'), format(median_Stop_Difference,'.2f'),format(precision,'.2f'), format(recall,'.2f'), format(false_Discovery_Rate,'.2f')]
 
     return metric_description, metrics, rep_metric_description, rep_metrics, start_Difference, stop_Difference, other_Starts, other_Stops, comp.genes_Undetected, comp.unmatched_ORFs, Missed_Gene_Metrics, unmatched_orf_metrics,gene_Coverage_Genome, comp.multi_Matched_ORFs
