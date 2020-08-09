@@ -13935,7 +13935,7 @@ Chromosome	ena	miRNA	3019277	3020375	.	-	.	ID=transcript:AIZ52688;Parent=gene:ER
 Chromosome	ena	exon	3019277	3020299	.	-	.	Parent=transcript:AIZ52688;Name=AIZ52688-2;constitutive=1;ensembl_end_phase=0;ensembl_phase=0;exon_id=AIZ52688-2;rank=2
 Chromosome	ena	CDS	3019277	3020299	.	-	0	ID=CDS:AIZ52688;Parent=transcript:AIZ52688;protein_id=AIZ52688
 Chromosome	ena	exon	3020301	3020375	.	-	.	Parent=transcript:AIZ52688;Name=AIZ52688-1;constitutive=1;ensembl_end_phase=0;ensembl_phase=0;exon_id=AIZ52688-1;rank=1
-Chromosome	ena	CDS	3020301	3020375	.	-	0	ID=CDS:AIZ52688;Parent=transcript:AIZ52688;protein_id=AIZ52688
+Chromosome	ena	CDS	3020301	3020375	.	-	0	ID=CDS:Already bee;Parent=transcript:AIZ52688;protein_id=AIZ52688
 ###
 Chromosome	ena	gene	3020466	3022199	.	-	.	ID=gene:ER3413_2978;Name=recJ;biotype=protein_coding;description=ssDNA exonuclease%2C 5'--> 3'-specific;gene_id=ER3413_2978;logic_name=ena
 Chromosome	ena	miRNA	3020466	3022199	.	-	.	ID=transcript:AIZ52689;Parent=gene:ER3413_2978;Name=recJ-1;biotype=protein_coding;transcript_id=AIZ52689

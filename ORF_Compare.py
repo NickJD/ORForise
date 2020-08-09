@@ -19,18 +19,21 @@ def comparator(tool,input_to_analyse,genome_to_compare):
             if not line.startswith('>'):
                 genome_Seq += str(line)
     ##############################################
-    genes = collections.OrderedDict()
+    genes = collections.OrderedDict() # Order is important
     count = 0
     with open('genomes/'+genome_to_compare+'.gff','r') as genome_gff: # Should work for GFF3
         for line in genome_gff:
             line = line.split('\t')
-            if "CDS" in line and len(line) == 9:
-                start = int(line[3])
-                stop = int(line[4])
-                strand = line[6]
-                gene = str(start) + ',' + str(stop) + ',' + strand
-                genes.update({count: gene})
-                count +=1
+            try:
+                if "CDS" in line[2] and len(line) == 9:
+                    start = int(line[3])
+                    stop = int(line[4])
+                    strand = line[6]
+                    gene = str(start) + ',' + str(stop) + ',' + strand
+                    genes.update({count: gene})
+                    count +=1
+            except IndexError:
+                continue
     #############################################
     tool_predictions = import_module('Tools.'+tool+'.'+tool)
     tool_predictions = getattr(tool_predictions,tool)
