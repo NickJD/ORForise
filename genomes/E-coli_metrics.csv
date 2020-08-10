@@ -1,5 +1,5 @@
 Genome Metrics:
-"Number of Protein Coding Genes in E-coli : 4052, Median Length of PCGs: 848.0, Min Length of PCGs: 44, Max Length of PCGs: 7076, Number of PCGs on Pos Strand: 1961, Number of PCGs on Neg Strand: 2091, Median GC of PCGs: 51.85, Number of Overlapping PCGS: 510, Median PCG Overlap: 3.0, Longest PCG Olap: 447, Number of PCGs less than 100nt: 41
+"Number of Protein Coding Genes in E-coli : 4052, Median Length of PCGs: 848.0, Min Length of PCGs: 44, Max Length of PCGs: 7076, Number of PCGs on Pos Strand: 1961, Number of PCGs on Neg Strand: 2091, Median GC of PCGs: 51.85, Number of Overlapping PCGS: 510, Longest PCG Olap: 447, Median PCG Overlap: 3.0, Number of PCGs less than 100nt: 41
 Percentage of Genome which is Protein Coding: 84.35, Number of Non-PCGs: 206, Percentage of Genome Non-PCG: 2.22, Percentage of All Genes in Genome: 86.20
 Percentage of Genes starting with ATG: 90.67
 Percentage of Genes starting with GTG: 7.50

@@ -77,6 +77,7 @@ def genome_Metrics(genome_to_compare):
                     length = stop-start
                     if length < 100:
                         short_PCGs.append(gene)
+                        print(line)
                     n_per, gc = gc_count(seq)
                     pcg_GC.append(gc)
                     lengths_PCG.append(length)
@@ -175,8 +176,8 @@ def genome_Metrics(genome_to_compare):
     other_Stop_Percentage = float(Other) * float(100) / float(len(lengths_PCG))
 
     output = ("Number of Protein Coding Genes in " + genome_to_compare + " : " + str(len(lengths_PCG)) + ", Median Length of PCGs: " + str(median_PCG) + ", Min Length of PCGs: " + str(min(lengths_PCG)) + ", Max Length of PCGs: " + str(max(lengths_PCG)) +
-              ", Number of PCGs on Pos Strand: " + str(strands['+']) + ", Number of PCGs on Neg Strand: " + str(strands['-']) + ", Median GC of PCGs: " + format(np.median(pcg_GC), '.2f') + ", Number of Overlapping PCGS: " + str(len(gene_Overlaps)) + ", Median PCG Overlap: " +
-              str(median_PCG_Olap) + ", Longest PCG Olap: " + str(longest_Olap) + ", Number of PCGs less than 100nt: " + str(len(short_PCGs)) +
+              ", Number of PCGs on Pos Strand: " + str(strands['+']) + ", Number of PCGs on Neg Strand: " + str(strands['-']) + ", Median GC of PCGs: " + format(np.median(pcg_GC), '.2f') + ", Number of Overlapping PCGS: " + str(len(gene_Overlaps)) +
+               ", Longest PCG Olap: " + str(longest_Olap) + ", Median PCG Overlap: " + str(median_PCG_Olap)  + ", Number of PCGs less than 100nt: " + str(len(short_PCGs)) +
 
             '\nPercentage of Genome which is Protein Coding: ' + format(coding_Percentage, '.2f') +', Number of Non-PCGs: ' + str(len(non_protein_coding_genes)) + ', Percentage of Genome Non-PCG: ' +format(non_coding_Percentage, '.2f') +
             ', Percentage of All Genes in Genome: ' + format(all_gene_Percentage,'.2f') +
