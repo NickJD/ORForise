@@ -260,9 +260,9 @@ def tool_comparison(genes,orfs,genome):
     atg_P, gtg_P, ttg_P, att_P, ctg_P, other_Start_P,other_Starts = start_Codon_Count(orfs)
     tag_P, taa_P, tga_P, other_Stop_P,other_Stops = stop_Codon_Count(orfs)
     # Count nucleotides found from ALL ORFs
-    gene_Nuc_Count = np.zeros((comp.genome_Size), dtype=np.int)
-    orf_Nuc_Count = np.zeros((comp.genome_Size), dtype=np.int)
-    matched_ORF_Nuc_Count = np.zeros((comp.genome_Size), dtype=np.int)
+    gene_Nuc_Array = np.zeros((comp.genome_Size), dtype=np.int)
+    orf_Nuc_Array = np.zeros((comp.genome_Size), dtype=np.int)
+    matched_ORF_Nuc_Array = np.zeros((comp.genome_Size), dtype=np.int)
 
     gene_Prev_Stop = 0
     for gene_Num, gene_Details in genes.items(): #Loop through each gene to compare against predicted ORFs
@@ -272,7 +272,7 @@ def tool_comparison(genes,orfs,genome):
         g_Strand = gene_Details[2]
         gene_Length = (g_Stop - g_Start)
         comp.gene_Lengths.append(gene_Length)
-        gene_Nuc_Count[g_Start-1:g_Stop] = [1] # Changing all between the two positions to 1's
+        gene_Nuc_Array[g_Start-1:g_Stop] = [1] # Changing all between the two positions to 1's
         if gene_Prev_Stop > g_Start: #Check if prev gene overlaps current gene
             if '+' in g_Strand:
                 comp.gene_Pos_Olap.append(gene_Prev_Stop - g_Start)
@@ -293,7 +293,7 @@ def tool_comparison(genes,orfs,genome):
         o_Strand = orf_Details[0]
         orf_Length = (o_Stop - o_Start)
         comp.orf_Lengths.append(orf_Length)
-        orf_Nuc_Count[o_Start-1:o_Stop] = [1] # Changing all between the two positions to 1's
+        orf_Nuc_Array[o_Start-1:o_Stop] = [1] # Changing all between the two positions to 1's
         if orf_Prev_Stop > o_Start: #Check if prev orf overlaps current orf
             if '+' in o_Strand:
                 comp.orf_Pos_Olap.append(orf_Prev_Stop - o_Start)
@@ -316,28 +316,28 @@ def tool_comparison(genes,orfs,genome):
     for o_Positions in comp.matched_ORFs.keys():
         o_Start = int(o_Positions.split(',')[0])
         o_Stop = int(o_Positions.split(',')[1])
-        matched_ORF_Nuc_Count[o_Start-1 :o_Stop] = [1] # Changing all between the two positions to 1's
-    gene_Coverage_Genome = 100 * float(np.count_nonzero(gene_Nuc_Count)) / float(comp.genome_Size)
-    orf_Coverage_Genome = 100 * float(np.count_nonzero(orf_Nuc_Count)) / float(comp.genome_Size)
-    matched_ORF_Coverage_Genome = 100 * float(np.count_nonzero(matched_ORF_Nuc_Count)) / float(comp.genome_Size)
+        matched_ORF_Nuc_Array[o_Start-1 :o_Stop] = [1] # Changing all between the two positions to 1's
+    gene_Coverage_Genome = 100 * float(np.count_nonzero(gene_Nuc_Array)) / float(comp.genome_Size)
+    orf_Coverage_Genome = 100 * float(np.count_nonzero(orf_Nuc_Array)) / float(comp.genome_Size)
+    matched_ORF_Coverage_Genome = 100 * float(np.count_nonzero(matched_ORF_Nuc_Array)) / float(comp.genome_Size)
 
-    # gene and orf nucleotide union
-    gene_count = np.count_nonzero(gene_Nuc_Count)
-    orf_count = np.count_nonzero(orf_Nuc_Count)
-    gene_ORF_Nuc_Union_Count = np.count_nonzero(gene_Nuc_Count & orf_Nuc_Count)
+    # gene and orf nucleotide Intersection
+    gene_count = np.count_nonzero(gene_Nuc_Array)
+    orf_count = np.count_nonzero(orf_Nuc_Array)
+    gene_ORF_Nuc_Intersection = np.count_nonzero(gene_Nuc_Array & orf_Nuc_Array)
     #not gene but orf nucleotides
-    not_Gene_Nuc = np.logical_not(gene_Nuc_Count) + [0 for i in range(len(gene_Nuc_Count))]
-    not_Gene_Nuc_And_ORF_Count = np.count_nonzero(not_Gene_Nuc & orf_Nuc_Count)
+    not_Gene_Nuc = np.logical_not(gene_Nuc_Array) + [0 for i in range(len(gene_Nuc_Array))] #End part to keep array as 1,0 not T,F
+    not_Gene_Nuc_And_ORF_Count = np.count_nonzero(not_Gene_Nuc & orf_Nuc_Array)
     #not orf nucleotides but gene
-    not_ORF_Nuc = np.logical_not(orf_Nuc_Count) + [0 for i in range(len(orf_Nuc_Count))]
-    not_ORF_Nuc_And_Gene_Count = np.count_nonzero(not_ORF_Nuc & gene_Nuc_Count)
+    not_ORF_Nuc = np.logical_not(orf_Nuc_Array) + [0 for i in range(len(orf_Nuc_Array))] #End part to keep array as 1,0 not T,F
+    not_ORF_Nuc_And_Gene_Count = np.count_nonzero(not_ORF_Nuc & gene_Nuc_Array)
     #not gene or orf nucleotides
     not_Gene_Nuc_Not_ORF_Nuc_Count = np.count_nonzero(not_Gene_Nuc & not_ORF_Nuc)
     #Nucleotide 'accuracy'
-    NT_TP = (float(gene_ORF_Nuc_Union_Count)  / float(np.count_nonzero(gene_Nuc_Count)))
-    NT_FP = (float(not_Gene_Nuc_And_ORF_Count) / float(np.count_nonzero(gene_Nuc_Count)))
-    NT_FN = (float(not_ORF_Nuc_And_Gene_Count) / float(np.count_nonzero(gene_Nuc_Count)))
-    NT_TN = (float(not_Gene_Nuc_Not_ORF_Nuc_Count) / float(np.count_nonzero(gene_Nuc_Count)))
+    NT_TP = (float(gene_ORF_Nuc_Intersection)  / float(np.count_nonzero(gene_Nuc_Array)))
+    NT_FP = (float(not_Gene_Nuc_And_ORF_Count) / float(np.count_nonzero(gene_Nuc_Array)))
+    NT_FN = (float(not_ORF_Nuc_And_Gene_Count) / float(np.count_nonzero(gene_Nuc_Array)))
+    NT_TN = (float(not_Gene_Nuc_Not_ORF_Nuc_Count) / float(np.count_nonzero(gene_Nuc_Array)))
     NT_Precision = NT_TP / (NT_TP + NT_FP)
     NT_Recall = NT_TP / (NT_TP + NT_FN)
     NT_False_Discovery_Rate = NT_FP / (NT_FP + NT_TP)
