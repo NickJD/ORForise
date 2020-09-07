@@ -1,5 +1,5 @@
 import collections
-from ..DNA_Reverse_Compliment import revCompIterative
+from ..utils import revCompIterative
 
 def MetaGeneMark(input_to_analyse,Genome):
     metaGeneMarkORFs = collections.OrderedDict()

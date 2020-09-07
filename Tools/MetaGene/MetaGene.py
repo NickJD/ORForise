@@ -1,6 +1,6 @@
 import collections
 
-from ..DNA_Reverse_Compliment import revCompIterative
+from ..utils import revCompIterative
 
 def MetaGene(input_to_analyse,Genome):
     MetaGene_ORFs = collections.OrderedDict()

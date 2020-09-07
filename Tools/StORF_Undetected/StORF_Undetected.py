@@ -1,5 +1,5 @@
 import collections
-from ..DNA_Reverse_Compliment import revCompIterative
+from ..utils import revCompIterative
 
 def StORF_Undetected(tool,genome):
     storf_orfs = collections.OrderedDict()

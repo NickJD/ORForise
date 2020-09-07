@@ -1,5 +1,5 @@
 import collections
-from ..DNA_Reverse_Compliment import revCompIterative
+from ..utils import revCompIterative
 
 def GeneMark_HA(input_to_analyse,Genome):
     GeneMark_HA_ORFs = collections.OrderedDict()

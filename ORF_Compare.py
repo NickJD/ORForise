@@ -38,10 +38,16 @@ def comparator(tool,input_to_analyse,genome_to_compare):
     tool_predictions = import_module('Tools.'+tool+'.'+tool)
     tool_predictions = getattr(tool_predictions,tool)
     orfs = tool_predictions(input_to_analyse,genome_Seq)
-    metric_description,metrics, rep_metric_description, rep_metrics, start_precision, stop_precision,other_starts, other_stops, missed_genes, unmatched_orfs, undetected_gene_metrics, unmatched_orf_metrics, gene_coverage_genome, multi_Matched_ORFs = tool_comparison(genes,orfs,genome_Seq)
+    all_Metrics, all_rep_Metrics, start_precision, stop_precision,other_starts, other_stops, missed_genes, unmatched_orfs, undetected_gene_metrics, unmatched_orf_metrics, gene_coverage_genome, multi_Matched_ORFs = tool_comparison(genes,orfs,genome_Seq)
     outname = input_to_analyse.split('.')[0]
+    metric_description = list(all_Metrics.keys())
+    metrics = list(all_Metrics.values())
+    rep_metric_description = list(all_rep_Metrics.keys())
+    rep_metrics = list(all_rep_Metrics.values())
     with open("Tools/"+tool+'/'+outname+'.csv', 'w', newline='\n', encoding='utf-8') as out_file: # Clear write out of report
         tool_out = csv.writer(out_file, quoting=csv.QUOTE_NONE, escapechar=" ")
+        #tool_out.writerow(['Abbreviations:']) Future Work
+        #tool_out.writerow(['PD:Percentage Difference,MO:Matched ORFs,'])
         tool_out.writerow(['Representative Metrics:'])
         tool_out.writerow(rep_metric_description)
         tool_out.writerow(rep_metrics)
@@ -49,7 +55,7 @@ def comparator(tool,input_to_analyse,genome_to_compare):
         tool_out.writerow(metric_description)
         tool_out.writerow(metrics)
         tool_out.writerow(['CDS Gene Coverage of Genome: '])
-        tool_out.writerow([format(gene_coverage_genome,'.2f')])
+        tool_out.writerow([gene_coverage_genome])
         tool_out.writerow(['Start Position Difference:'])
         tool_out.writerow(start_precision)
         tool_out.writerow(['Stop Position Difference:'])
@@ -75,11 +81,16 @@ def comparator(tool,input_to_analyse,genome_to_compare):
             id = ('>'+tool+'_'+key[0]+'_'+key[1]+'_'+key[2])
             tool_out.writerow([id + '\n' + value])
         tool_out.writerow(['\nORFs Which Detected more than one Gene:'])
-        for key, value in multi_Matched_ORFs.items():
-            key = key.split(',') # Temp fix
-            value = value[1].split(',')
-            multi = ('ORF:'+key[0]+'-'+key[1]+'_Gene:'+value[0]+'-'+value[1])
-            tool_out.writerow([multi])
+
+        try:
+            for key, value in multi_Matched_ORFs.items():
+                key = key.split(',') # Temp fix
+                value = value[1].split(',')
+                multi = ('ORF:'+key[0]+'-'+key[1]+'_Gene:'+value[0]+'-'+value[1])
+                tool_out.writerow([multi])
+        except IndexError:
+            pass
+
 
 
 if __name__ == "__main__":

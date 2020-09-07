@@ -1,5 +1,5 @@
 import collections
-from ..DNA_Reverse_Compliment import revCompIterative
+from ..utils import revCompIterative
 
 def EasyGene(input_to_analyse,Genome):
     EasyGene_ORFs = collections.OrderedDict()

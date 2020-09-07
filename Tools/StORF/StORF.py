@@ -1,7 +1,7 @@
 import collections
 import sys
 sys.path.append('../')
-from ..DNA_Reverse_Compliment import revCompIterative
+from ..utils import revCompIterative
 
 def StORF(input_to_analyse,genome):
     storf_orfs = collections.OrderedDict()

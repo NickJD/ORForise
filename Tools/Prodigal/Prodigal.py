@@ -1,5 +1,5 @@
 import collections
-from ..DNA_Reverse_Compliment import  revCompIterative
+from ..utils import  revCompIterative
 
 def Prodigal(input_to_analyse,Genome):
     prodigalORFs = collections.OrderedDict()

@@ -1,5 +1,6 @@
 import collections
-from ..DNA_Reverse_Compliment import revCompIterative
+from ..utils import revCompIterative
+from ..utils import sortORFs
 
 def TransDecoder(input_to_analyse,Genome):
     transDecoder_ORFs = collections.OrderedDict()
@@ -23,6 +24,9 @@ def TransDecoder(input_to_analyse,Genome):
                 po = str(start) + ',' + str(stop)
                 orf = [strand, startCodon, stopCodon]
                 transDecoder_ORFs.update({po:orf})
+
+    transDecoder_ORFs = sortORFs(transDecoder_ORFs)
+
     return transDecoder_ORFs
 
 
