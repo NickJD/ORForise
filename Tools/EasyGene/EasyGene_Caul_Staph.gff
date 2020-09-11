@@ -1,11 +1,11 @@
 
-	    	
+
 EasyGene 1.2 Server - prediction results
 Technical University of Denmark
 
 ##gff-version 2
 ##source-version easygene-1.2b
-##date 2019-08-01
+##date 2020-09-08
 ##Type DNA
 # model:  SAM03 Staphylococcus aureus MU50
 # seqname		model	feature	start	end	   score       +/-	?	startc	    odds
@@ -951,4 +951,3 @@ Chromosome	SAM03	CDS	4012689	4013105	1.92161	-	0	#GTG	-45.5882
 # --------------------------------------------------------------------------------------------------------------
 
 Explain the output.  Go back.
-

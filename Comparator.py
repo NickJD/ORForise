@@ -1,6 +1,8 @@
 import collections
+
 import numpy as np
-from Tools.utils import  revCompIterative
+from Tools.utils import revCompIterative
+
 
 class comparator:  # Class to hold global-type variables
     def __init__(self, perfect_Starts=0, perfect_Stops=0, perfect_Matches=0, genome_Seq='',
@@ -243,7 +245,7 @@ def tool_comparison(genes,orfs,genome):
             if orf_Pos in comp.matched_ORFs.keys():
                 comp.multi_Matched_ORFs.update(({g_pos:m_ORF_Details}))
             comp.matched_ORFs.update({orf_Pos:m_ORF_Details})
-            comp.genes_Dected.update({str(gene_Details):orf_Pos})
+            comp.genes_Detected.update({str(gene_Details):orf_Pos})
             match_Statistics(o_Start,o_Stop,g_Start,g_Stop)
             print('There was more than 1 potential Match - Best Chosen')
         elif out_Frame: # Keep record of ORFs which overlap a gene but in the wrong frame
@@ -409,7 +411,7 @@ def tool_comparison(genes,orfs,genome):
         median_ORF_Overlap = format(np.median(all_ORF_Olap), '.2f')
 
     else:
-        overlap_Difference = 'N/A'
+        overlap_Difference = -100
         matched_Overlap_Difference = 'N/A'
         num_All_ORF_Olap = 0
         max_Matched_ORF_Olap = 'N/A'
@@ -417,18 +419,19 @@ def tool_comparison(genes,orfs,genome):
         median_ORF_Overlap = 'N/A'
         matched_Median_ORF_Overlap = 'N/A'
 
-    if comp.orf_Short and comp.gene_Short: # if no short ORFs
+
+    if comp.orf_Short and comp.gene_Short: # IF Short-ORFs/Genes
         short_ORF_Difference = format(100 * (len(comp.orf_Short) - len(comp.gene_Short))/ len(comp.gene_Short),'.2f')
         matched_Short_ORF_Difference = format(100 * (len(comp.m_ORF_Short) - len(comp.gene_Short))/ len(comp.gene_Short),'.2f')
         num_ORF_Short = len(comp.orf_Short)
         num_Matched_ORF_Short = len(comp.m_ORF_Short)
-    elif comp.orf_Short:
+    elif comp.orf_Short: # If only Short-ORFs
         num_ORF_Short = len(comp.orf_Short)
         num_Matched_ORF_Short = len(comp.m_ORF_Short)
-        short_ORF_Difference = 'N/A'
+        short_ORF_Difference = (num_ORF_Short*100)
         matched_Short_ORF_Difference = 'N/A'
-    else:
-        short_ORF_Difference = 'N/A'
+    elif comp.gene_Short: # If only Short-Genes
+        short_ORF_Difference = -100
         matched_Short_ORF_Difference = 'N/A'
         num_ORF_Short = 0
         num_Matched_ORF_Short = 'N/A'
@@ -546,7 +549,6 @@ def tool_comparison(genes,orfs,genome):
                                            'Precision':precision, 'Recall':recall,'False Discovery Rate':false_Discovery_Rate})
 
     #quick fix  - nan = 0
-    import math
 
     for key,value in all_Metrics.items():
         if 'nan' == value:

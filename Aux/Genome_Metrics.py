@@ -1,7 +1,8 @@
-import collections
 import argparse
-import numpy as np
+import collections
 import csv
+
+import numpy as np
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-g', '--genome_to_compare', default='', help='Which genome to analyse?')

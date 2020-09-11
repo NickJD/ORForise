@@ -1,21 +1,19 @@
-# This output was generated with AUGUSTUS (version 3.3.1).
+# This output was generated with AUGUSTUS (version 3.3.3).
 # AUGUSTUS is a gene prediction tool written by M. Stanke (mario.stanke@uni-greifswald.de),
 # O. Keller, S. König, L. Gerischer, L. Romoth and Katharina Hoff.
 # Please cite: Mario Stanke, Mark Diekhans, Robert Baertsch, David Haussler (2008),
 # Using native and syntenically mapped cDNA alignments to improve de novo gene finding
 # Bioinformatics 24: 637-644, doi 10.1093/bioinformatics/btn013
 # No extrinsic information on sequences given.
-# Initialising the parameters using config directory /data/www/augustus/augustus/config/ ...
+# Initializing the parameters using config directory /data/www/augustus/augustus/config/ ...
 # E_coli_K12 version. Using species specific transition matrix: /data/www/augustus/augustus/config/species/E_coli_K12/E_coli_K12_trans_shadow_bacterium.pbl
 # Using species specific overlap length distribution: /data/www/augustus/augustus/config/species/E_coli_K12/E_coli_K12_ovlp_len.pbl
 # admissible start codons and their probabilities: ATA(0), ATC(0), ATG(0.915), ATT(0), CTG(0.000562), GTG(0.0703), TTG(0.0141)
-# Looks like /data/www/augustus/webservice/data/AUG-1846375229/input.fa is in fasta format.
+# Looks like /data/www/augustus/webservice/data/AUG-1368590952/input.fa is in fasta format.
 # We have hints for 0 sequences and for 0 of the sequences in the input set.
 #
 # ----- prediction on sequence number 1 (length = 580076, name = Chromosome) -----
 #
-# Constraints/Hints:
-# (none)
 # Predicted genes for sequence number 1 on both strands
 # start gene g1
 Chromosome	AUGUSTUS	gene	3739	4557	0.99	+	.	g1
@@ -151,12 +149,26 @@ Chromosome	AUGUSTUS	stop_codon	24133	24135	.	+	0	transcript_id "g6.t1"; gene_id 
 # end gene g6
 ###
 # start gene g7
-Chromosome	AUGUSTUS	gene	26500	27030	0.42	+	.	g7
-Chromosome	AUGUSTUS	transcript	26500	27030	0.42	+	.	g7.t1
-Chromosome	AUGUSTUS	start_codon	26500	26502	.	+	0	transcript_id "g7.t1"; gene_id "g7";
-Chromosome	AUGUSTUS	single	26500	27030	0.42	+	0	transcript_id "g7.t1"; gene_id "g7";
-Chromosome	AUGUSTUS	CDS	26500	27030	0.42	+	0	transcript_id "g7.t1"; gene_id "g7";
+Chromosome	AUGUSTUS	gene	26479	27030	0.95	+	.	g7
+Chromosome	AUGUSTUS	transcript	26479	27030	0.53	+	.	g7.t1
+Chromosome	AUGUSTUS	start_codon	26479	26481	.	+	0	transcript_id "g7.t1"; gene_id "g7";
+Chromosome	AUGUSTUS	single	26479	27030	0.53	+	0	transcript_id "g7.t1"; gene_id "g7";
+Chromosome	AUGUSTUS	CDS	26479	27030	0.53	+	0	transcript_id "g7.t1"; gene_id "g7";
 Chromosome	AUGUSTUS	stop_codon	27028	27030	.	+	0	transcript_id "g7.t1"; gene_id "g7";
+# coding sequence = [atgcttgttaactttaaattgatgcttcaaaaagcaaagctaggtaaatatgcaatccctcacattaacatcaataact
+# atgaatgggccaaagctgttttaacagcagcaaatcaagctaatagcccaattattgtttcagtatctgaaggtgctttaaagtacatgtctggttat
+# agtgttgttatcccgcttgttaagggtttaattgaatcactaagtgttaaagtaccagtgacattacatttagatcatggtagttatgatgcatgtat
+# ccaagcattacaggctggatttagttcagtaatgtttgatggttcacatttaccatttgaagaaaatttcaataaatctaaaaagttaatagagatag
+# cacaaaaaacaaatgcttctgttgaacttgaagttggtactattggtggagaagaagatggtgttataggacaaggtgagttagctaatgttgatgaa
+# tgtaaacaaatcgctagtttaaaaccagatgctttagcagcaggaattggtaatatccatggtatctatcctaagaattga]
+# protein sequence = [MLVNFKLMLQKAKLGKYAIPHININNYEWAKAVLTAANQANSPIIVSVSEGALKYMSGYSVVIPLVKGLIESLSVKVP
+# VTLHLDHGSYDACIQALQAGFSSVMFDGSHLPFEENFNKSKKLIEIAQKTNASVELEVGTIGGEEDGVIGQGELANVDECKQIASLKPDALAAGIGNI
+# HGIYPKN]
+Chromosome	AUGUSTUS	transcript	26500	27030	0.42	+	.	g7.t2
+Chromosome	AUGUSTUS	start_codon	26500	26502	.	+	0	transcript_id "g7.t2"; gene_id "g7";
+Chromosome	AUGUSTUS	single	26500	27030	0.42	+	0	transcript_id "g7.t2"; gene_id "g7";
+Chromosome	AUGUSTUS	CDS	26500	27030	0.42	+	0	transcript_id "g7.t2"; gene_id "g7";
+Chromosome	AUGUSTUS	stop_codon	27028	27030	.	+	0	transcript_id "g7.t2"; gene_id "g7";
 # coding sequence = [atgcttcaaaaagcaaagctaggtaaatatgcaatccctcacattaacatcaataactatgaatgggccaaagctgttt
 # taacagcagcaaatcaagctaatagcccaattattgtttcagtatctgaaggtgctttaaagtacatgtctggttatagtgttgttatcccgcttgtt
 # aagggtttaattgaatcactaagtgttaaagtaccagtgacattacatttagatcatggtagttatgatgcatgtatccaagcattacaggctggatt
@@ -3037,12 +3049,29 @@ Chromosome	AUGUSTUS	start_codon	325877	325879	.	-	0	transcript_id "g157.t1"; gen
 # end gene g157
 ###
 # start gene g158
-Chromosome	AUGUSTUS	gene	326030	326872	0.41	-	.	g158
-Chromosome	AUGUSTUS	transcript	326030	326872	0.41	-	.	g158.t1
+Chromosome	AUGUSTUS	gene	326030	326872	0.93	-	.	g158
+Chromosome	AUGUSTUS	transcript	326030	326797	0.52	-	.	g158.t1
 Chromosome	AUGUSTUS	stop_codon	326030	326032	.	-	0	transcript_id "g158.t1"; gene_id "g158";
-Chromosome	AUGUSTUS	single	326030	326872	0.41	-	0	transcript_id "g158.t1"; gene_id "g158";
-Chromosome	AUGUSTUS	CDS	326030	326872	0.41	-	0	transcript_id "g158.t1"; gene_id "g158";
-Chromosome	AUGUSTUS	start_codon	326870	326872	.	-	0	transcript_id "g158.t1"; gene_id "g158";
+Chromosome	AUGUSTUS	single	326030	326797	0.52	-	0	transcript_id "g158.t1"; gene_id "g158";
+Chromosome	AUGUSTUS	CDS	326030	326797	0.52	-	0	transcript_id "g158.t1"; gene_id "g158";
+Chromosome	AUGUSTUS	start_codon	326795	326797	.	-	0	transcript_id "g158.t1"; gene_id "g158";
+# coding sequence = [ttgcaagaacaacttaaggtacgcttggaaggagagattaaccgtcaagttcaacagaacagcgaacttttctcacaac
+# tcaaacaaagtgaaagtgaaattatccaaatgcagcagctggtagaagcaaaagaacaccaaattgaagcattaaataaacagttacatgcaataaaa
+# gaagccaataagaaactaattgaagaacatgaaagtattaatgtagaggaattgttaaaggaatatgaagtgcagtgtaatgaagcaatttataaacg
+# tgatcaacacatccaaaccgtatttgaagacaagttagcacttaaagatggggaaattagtgaaacccaatcacttttaaaaaccgctgaaaaagaaa
+# agcaagcattaaaaaaagcatataagttagttgtaaattcgcttcaaaaacaccaaaagctcaccaccgaaatagaaattgatttcaccaagcttgat
+# gagattattgcaaccatttttgatgaaactaagaatccaaagactggctttactaacttcattaagcagtttgaaaaaaccaaagcaaaactaacaaa
+# aaagatagctgaaattactaaacttgatcattcaacgccaacaaattatcaacaagaaactccagcgtcacaacagcaattagatcaagagaatgaac
+# cgatcaaaccatctaaaaaatcaaattcaagttcattgcctagaggcactacacaacccaaatccaattctattaacagggttagtaaattaattgat
+# taa]
+# protein sequence = [MQEQLKVRLEGEINRQVQQNSELFSQLKQSESEIIQMQQLVEAKEHQIEALNKQLHAIKEANKKLIEEHESINVEELL
+# KEYEVQCNEAIYKRDQHIQTVFEDKLALKDGEISETQSLLKTAEKEKQALKKAYKLVVNSLQKHQKLTTEIEIDFTKLDEIIATIFDETKNPKTGFTN
+# FIKQFEKTKAKLTKKIAEITKLDHSTPTNYQQETPASQQQLDQENEPIKPSKKSNSSSLPRGTTQPKSNSINRVSKLID]
+Chromosome	AUGUSTUS	transcript	326030	326872	0.41	-	.	g158.t2
+Chromosome	AUGUSTUS	stop_codon	326030	326032	.	-	0	transcript_id "g158.t2"; gene_id "g158";
+Chromosome	AUGUSTUS	single	326030	326872	0.41	-	0	transcript_id "g158.t2"; gene_id "g158";
+Chromosome	AUGUSTUS	CDS	326030	326872	0.41	-	0	transcript_id "g158.t2"; gene_id "g158";
+Chromosome	AUGUSTUS	start_codon	326870	326872	.	-	0	transcript_id "g158.t2"; gene_id "g158";
 # coding sequence = [atgcttgttttgttattaaaaaagtttggtcctgaagcgagaagtgaaaaagaacgtttaaaaaggatcttaagtttgc
 # aagaacaacttaaggtacgcttggaaggagagattaaccgtcaagttcaacagaacagcgaacttttctcacaactcaaacaaagtgaaagtgaaatt
 # atccaaatgcagcagctggtagaagcaaaagaacaccaaattgaagcattaaataaacagttacatgcaataaaagaagccaataagaaactaattga
@@ -3266,27 +3295,39 @@ Chromosome	AUGUSTUS	start_codon	344848	344850	.	-	0	transcript_id "g168.t1"; gen
 # end gene g168
 ###
 # start gene g169
-Chromosome	AUGUSTUS	gene	364535	364867	0.92	-	.	g169
-Chromosome	AUGUSTUS	transcript	364535	364867	0.92	-	.	g169.t1
-Chromosome	AUGUSTUS	stop_codon	364535	364537	.	-	0	transcript_id "g169.t1"; gene_id "g169";
-Chromosome	AUGUSTUS	single	364535	364867	0.92	-	0	transcript_id "g169.t1"; gene_id "g169";
-Chromosome	AUGUSTUS	CDS	364535	364867	0.92	-	0	transcript_id "g169.t1"; gene_id "g169";
-Chromosome	AUGUSTUS	start_codon	364865	364867	.	-	0	transcript_id "g169.t1"; gene_id "g169";
+Chromosome	AUGUSTUS	gene	352892	353035	0.5	-	.	g169
+Chromosome	AUGUSTUS	transcript	352892	353035	0.5	-	.	g169.t1
+Chromosome	AUGUSTUS	stop_codon	352892	352894	.	-	0	transcript_id "g169.t1"; gene_id "g169";
+Chromosome	AUGUSTUS	single	352892	353035	0.5	-	0	transcript_id "g169.t1"; gene_id "g169";
+Chromosome	AUGUSTUS	CDS	352892	353035	0.5	-	0	transcript_id "g169.t1"; gene_id "g169";
+Chromosome	AUGUSTUS	start_codon	353033	353035	.	-	0	transcript_id "g169.t1"; gene_id "g169";
+# coding sequence = [atggattttgaagttgattatgaaggtggtaacaacactgttaacttgcaatttgatttaaaagcccaaacttctaatt
+# ttttgaatttacaagagttgcaaaatagctttaatggtaacgatctaaatacccaattgttttga]
+# protein sequence = [MDFEVDYEGGNNTVNLQFDLKAQTSNFLNLQELQNSFNGNDLNTQLF]
+# end gene g169
+###
+# start gene g170
+Chromosome	AUGUSTUS	gene	364535	364867	0.92	-	.	g170
+Chromosome	AUGUSTUS	transcript	364535	364867	0.92	-	.	g170.t1
+Chromosome	AUGUSTUS	stop_codon	364535	364537	.	-	0	transcript_id "g170.t1"; gene_id "g170";
+Chromosome	AUGUSTUS	single	364535	364867	0.92	-	0	transcript_id "g170.t1"; gene_id "g170";
+Chromosome	AUGUSTUS	CDS	364535	364867	0.92	-	0	transcript_id "g170.t1"; gene_id "g170";
+Chromosome	AUGUSTUS	start_codon	364865	364867	.	-	0	transcript_id "g170.t1"; gene_id "g170";
 # coding sequence = [atgaatgaattgcaaaaaatttatcaaattattcaaaaggtaagtggaagtgaacctagtgaaacacttttagttttag
 # atggtacagtaggtcaaacaggactatcacaagcaaaggtatttaatgaattttccaaactaacagggattgttttaactaaaatggatggttctgct
 # aagggtggaattattttagctattaaagatatgtttaacctgcctgttaaactgataggttttggtgaaaaaactagtgatttagctatctttgatct
 # ggaaaaatatgttttaggtttacttaataacttaaacttagataataaagaaaattag]
 # protein sequence = [MNELQKIYQIIQKVSGSEPSETLLVLDGTVGQTGLSQAKVFNEFSKLTGIVLTKMDGSAKGGIILAIKDMFNLPVKLI
 # GFGEKTSDLAIFDLEKYVLGLLNNLNLDNKEN]
-# end gene g169
+# end gene g170
 ###
-# start gene g170
-Chromosome	AUGUSTUS	gene	365018	365575	0.99	-	.	g170
-Chromosome	AUGUSTUS	transcript	365018	365575	0.99	-	.	g170.t1
-Chromosome	AUGUSTUS	stop_codon	365018	365020	.	-	0	transcript_id "g170.t1"; gene_id "g170";
-Chromosome	AUGUSTUS	single	365018	365575	0.99	-	0	transcript_id "g170.t1"; gene_id "g170";
-Chromosome	AUGUSTUS	CDS	365018	365575	0.99	-	0	transcript_id "g170.t1"; gene_id "g170";
-Chromosome	AUGUSTUS	start_codon	365573	365575	.	-	0	transcript_id "g170.t1"; gene_id "g170";
+# start gene g171
+Chromosome	AUGUSTUS	gene	365018	365575	0.99	-	.	g171
+Chromosome	AUGUSTUS	transcript	365018	365575	0.99	-	.	g171.t1
+Chromosome	AUGUSTUS	stop_codon	365018	365020	.	-	0	transcript_id "g171.t1"; gene_id "g171";
+Chromosome	AUGUSTUS	single	365018	365575	0.99	-	0	transcript_id "g171.t1"; gene_id "g171";
+Chromosome	AUGUSTUS	CDS	365018	365575	0.99	-	0	transcript_id "g171.t1"; gene_id "g171";
+Chromosome	AUGUSTUS	start_codon	365573	365575	.	-	0	transcript_id "g171.t1"; gene_id "g171";
 # coding sequence = [atgggctttttaagcaagttaattgccaaactaaaaccaaaaaaatcagttgctaaacagcttaaagaagaagttgaaa
 # aacaaagcctttttcaaaccaataataaaacttactatcagggtttgaaaaaatctgctacaactttcgctaaaactattaatgaactgtcaaaacga
 # tatgttaatgttgacgaacagtttaaagaaaatctatttgaagggctagttttgcttgatgttggttatcatgctgcaaacaaaatttgtgatgctat
@@ -3296,15 +3337,15 @@ Chromosome	AUGUSTUS	start_codon	365573	365575	.	-	0	transcript_id "g170.t1"; gen
 # protein sequence = [MGFLSKLIAKLKPKKSVAKQLKEEVEKQSLFQTNNKTYYQGLKKSATTFAKTINELSKRYVNVDEQFKENLFEGLVLL
 # DVGYHAANKICDAIIEQIKLNRITDFQLIKELIIDQIIVYYIQDKLFDTDLIVKPNFTNVYLFVGVNGVGKTTTLAKIADFFIKQNKRVLLVAGDTFR
 # AGAIEQLNQ]
-# end gene g170
+# end gene g171
 ###
-# start gene g171
-Chromosome	AUGUSTUS	gene	365582	366313	0.88	-	.	g171
-Chromosome	AUGUSTUS	transcript	365582	366313	0.88	-	.	g171.t1
-Chromosome	AUGUSTUS	stop_codon	365582	365584	.	-	0	transcript_id "g171.t1"; gene_id "g171";
-Chromosome	AUGUSTUS	single	365582	366313	0.88	-	0	transcript_id "g171.t1"; gene_id "g171";
-Chromosome	AUGUSTUS	CDS	365582	366313	0.88	-	0	transcript_id "g171.t1"; gene_id "g171";
-Chromosome	AUGUSTUS	start_codon	366311	366313	.	-	0	transcript_id "g171.t1"; gene_id "g171";
+# start gene g172
+Chromosome	AUGUSTUS	gene	365582	366313	0.88	-	.	g172
+Chromosome	AUGUSTUS	transcript	365582	366313	0.88	-	.	g172.t1
+Chromosome	AUGUSTUS	stop_codon	365582	365584	.	-	0	transcript_id "g172.t1"; gene_id "g172";
+Chromosome	AUGUSTUS	single	365582	366313	0.88	-	0	transcript_id "g172.t1"; gene_id "g172";
+Chromosome	AUGUSTUS	CDS	365582	366313	0.88	-	0	transcript_id "g172.t1"; gene_id "g172";
+Chromosome	AUGUSTUS	start_codon	366311	366313	.	-	0	transcript_id "g172.t1"; gene_id "g172";
 # coding sequence = [atgacaatggagtttgctattgctaatcacaacaaaccagttaaactctcttctatgcaagcccataacaagattgcta
 # aactacaaaatcaattgaatgaaatgggggtaattaacatggaatcaattgctgagataagtgaaaagcaaaagcgctttgatgatattaacgctgaa
 # tatgaatcagctcaacaagcagttgaaaatttgcaaaaagctattactgaaattgatgaaattgctagcaatgagtttgatcaactgatccaaaaatt
@@ -3316,15 +3357,15 @@ Chromosome	AUGUSTUS	start_codon	366311	366313	.	-	0	transcript_id "g171.t1"; gen
 # protein sequence = [MTMEFAIANHNKPVKLSSMQAHNKIAKLQNQLNEMGVINMESIAEISEKQKRFDDINAEYESAQQAVENLQKAITEID
 # EIASNEFDQLIQKLNQELPKTFKYLFGGGSCQIRYTDPSNVLVSGIDVFANPPGKNIANLMLLSGGEKTLVALSVLFSILKVSAFPLVILDEAESALD
 # PANVERFANIIKTASKNTQFLIITHRQGTMMKCDMLLGAAMQTKGVTKTFAVELENAEKYVSENDSN]
-# end gene g171
+# end gene g172
 ###
-# start gene g172
-Chromosome	AUGUSTUS	gene	366527	367861	0.6	-	.	g172
-Chromosome	AUGUSTUS	transcript	366527	367861	0.6	-	.	g172.t1
-Chromosome	AUGUSTUS	stop_codon	366527	366529	.	-	0	transcript_id "g172.t1"; gene_id "g172";
-Chromosome	AUGUSTUS	single	366527	367861	0.6	-	0	transcript_id "g172.t1"; gene_id "g172";
-Chromosome	AUGUSTUS	CDS	366527	367861	0.6	-	0	transcript_id "g172.t1"; gene_id "g172";
-Chromosome	AUGUSTUS	start_codon	367859	367861	.	-	0	transcript_id "g172.t1"; gene_id "g172";
+# start gene g173
+Chromosome	AUGUSTUS	gene	366527	367861	0.6	-	.	g173
+Chromosome	AUGUSTUS	transcript	366527	367861	0.6	-	.	g173.t1
+Chromosome	AUGUSTUS	stop_codon	366527	366529	.	-	0	transcript_id "g173.t1"; gene_id "g173";
+Chromosome	AUGUSTUS	single	366527	367861	0.6	-	0	transcript_id "g173.t1"; gene_id "g173";
+Chromosome	AUGUSTUS	CDS	366527	367861	0.6	-	0	transcript_id "g173.t1"; gene_id "g173";
+Chromosome	AUGUSTUS	start_codon	367859	367861	.	-	0	transcript_id "g173.t1"; gene_id "g173";
 # coding sequence = [ttgaaagagttggaacttgctgttttggttggggaatatctccaagcacaaactgaacttgataagtttaattttcaga
 # ttaacagtagtgaacatgactttaaaatacacgaaccccaactagagttgttagaagaacagattgttatctttaatagtcgctttcatagtgctgat
 # atgcaatctaatgaattgcaaaaagagttacaagatatttaccaaaagatcaatgaattggaacaacgtaaagtcattattgatgtgcagttaagaca
@@ -3344,30 +3385,30 @@ Chromosome	AUGUSTUS	start_codon	367859	367861	.	-	0	transcript_id "g172.t1"; gen
 # KKTNNANILVKNANALTGILNTLGTFLKFDKQYEKAILKALGKSIGYLVVNNNNAAIQAIDFLVKNEIGKVTFLPLDDVASDTKITNEHMEILKQLDG
 # FLGVCSDHVKCDPLFQPVVNTLLAQVIIAKDLNSAINLSNYTYKLYRIVTLDGETVYAGGIINGGFEKTNLSDGYLSSASLDNEQNINKLENNERELK
 # KELTELEVKLDEMNRKLKYEELLQAKFIERIVQIKKIILELKMEYEQLTNTTFDGKKAVASEAELIHSLNSA]
-# end gene g172
+# end gene g173
 ###
-# start gene g173
-Chromosome	AUGUSTUS	gene	368081	368371	0.79	-	.	g173
-Chromosome	AUGUSTUS	transcript	368081	368371	0.79	-	.	g173.t1
-Chromosome	AUGUSTUS	stop_codon	368081	368083	.	-	0	transcript_id "g173.t1"; gene_id "g173";
-Chromosome	AUGUSTUS	single	368081	368371	0.79	-	0	transcript_id "g173.t1"; gene_id "g173";
-Chromosome	AUGUSTUS	CDS	368081	368371	0.79	-	0	transcript_id "g173.t1"; gene_id "g173";
-Chromosome	AUGUSTUS	start_codon	368369	368371	.	-	0	transcript_id "g173.t1"; gene_id "g173";
+# start gene g174
+Chromosome	AUGUSTUS	gene	368081	368371	0.79	-	.	g174
+Chromosome	AUGUSTUS	transcript	368081	368371	0.79	-	.	g174.t1
+Chromosome	AUGUSTUS	stop_codon	368081	368083	.	-	0	transcript_id "g174.t1"; gene_id "g174";
+Chromosome	AUGUSTUS	single	368081	368371	0.79	-	0	transcript_id "g174.t1"; gene_id "g174";
+Chromosome	AUGUSTUS	CDS	368081	368371	0.79	-	0	transcript_id "g174.t1"; gene_id "g174";
+Chromosome	AUGUSTUS	start_codon	368369	368371	.	-	0	transcript_id "g174.t1"; gene_id "g174";
 # coding sequence = [atgaaacatctccgtagtaaatcaggtgatgatatgatcttttttggctctaaagacaaacctgctagtaagttagctg
 # aaatagagctaacctttgataattccaaccgtttattacatgattcaagaaaagagataagcgtgatgcgtagggtttatagagggagtggccagagt
 # gaatattttattaactccaatccagcaactttaaaagaaattagcggtatttttgctgatattggtcttgaaaaaggttcacttggaattatttcaca
 # agggagtgtctcttga]
 # protein sequence = [MKHLRSKSGDDMIFFGSKDKPASKLAEIELTFDNSNRLLHDSRKEISVMRRVYRGSGQSEYFINSNPATLKEISGIFA
 # DIGLEKGSLGIISQGSVS]
-# end gene g173
+# end gene g174
 ###
-# start gene g174
-Chromosome	AUGUSTUS	gene	368937	369590	1	-	.	g174
-Chromosome	AUGUSTUS	transcript	368937	369590	1	-	.	g174.t1
-Chromosome	AUGUSTUS	stop_codon	368937	368939	.	-	0	transcript_id "g174.t1"; gene_id "g174";
-Chromosome	AUGUSTUS	single	368937	369590	1	-	0	transcript_id "g174.t1"; gene_id "g174";
-Chromosome	AUGUSTUS	CDS	368937	369590	1	-	0	transcript_id "g174.t1"; gene_id "g174";
-Chromosome	AUGUSTUS	start_codon	369588	369590	.	-	0	transcript_id "g174.t1"; gene_id "g174";
+# start gene g175
+Chromosome	AUGUSTUS	gene	368937	369590	1	-	.	g175
+Chromosome	AUGUSTUS	transcript	368937	369590	1	-	.	g175.t1
+Chromosome	AUGUSTUS	stop_codon	368937	368939	.	-	0	transcript_id "g175.t1"; gene_id "g175";
+Chromosome	AUGUSTUS	single	368937	369590	1	-	0	transcript_id "g175.t1"; gene_id "g175";
+Chromosome	AUGUSTUS	CDS	368937	369590	1	-	0	transcript_id "g175.t1"; gene_id "g175";
+Chromosome	AUGUSTUS	start_codon	369588	369590	.	-	0	transcript_id "g175.t1"; gene_id "g175";
 # coding sequence = [atgcttaatgaatctaagctgatccaacctgcagttatctttcataatcgtcaggaaatccctgcaaattttgataaaa
 # aaataactcattatgtgattgatgagatggatttaactagctatgctaactttgtctatgaaaaacgtaagcataaggggatggatttaaaagaagca
 # caaaagtttgtacgtgatcctagttctttagctgctaccttagttgctctaaaggttgttgatggtgaggtttgtggtaaagaatatgctacaaaaga
@@ -3378,15 +3419,15 @@ Chromosome	AUGUSTUS	start_codon	369588	369590	.	-	0	transcript_id "g174.t1"; gen
 # protein sequence = [MLNESKLIQPAVIFHNRQEIPANFDKKITHYVIDEMDLTSYANFVYEKRKHKGMDLKEAQKFVRDPSSLAATLVALKV
 # VDGEVCGKEYATKDTLRPALQLLATGNFVSSVFIMEKGEERLYFTDCAFAVYPNSQELATIAENTFNFAKSLNEDEIKMAFLSYSTLGSGKGEMVDKV
 # VLATKLFLEKHPELHQSVCGELQFDAAFVEKVRLQKAPQLT]
-# end gene g174
+# end gene g175
 ###
-# start gene g175
-Chromosome	AUGUSTUS	gene	369956	370627	0.96	-	.	g175
-Chromosome	AUGUSTUS	transcript	369956	370627	0.96	-	.	g175.t1
-Chromosome	AUGUSTUS	stop_codon	369956	369958	.	-	0	transcript_id "g175.t1"; gene_id "g175";
-Chromosome	AUGUSTUS	single	369956	370627	0.96	-	0	transcript_id "g175.t1"; gene_id "g175";
-Chromosome	AUGUSTUS	CDS	369956	370627	0.96	-	0	transcript_id "g175.t1"; gene_id "g175";
-Chromosome	AUGUSTUS	start_codon	370625	370627	.	-	0	transcript_id "g175.t1"; gene_id "g175";
+# start gene g176
+Chromosome	AUGUSTUS	gene	369956	370627	0.96	-	.	g176
+Chromosome	AUGUSTUS	transcript	369956	370627	0.96	-	.	g176.t1
+Chromosome	AUGUSTUS	stop_codon	369956	369958	.	-	0	transcript_id "g176.t1"; gene_id "g176";
+Chromosome	AUGUSTUS	single	369956	370627	0.96	-	0	transcript_id "g176.t1"; gene_id "g176";
+Chromosome	AUGUSTUS	CDS	369956	370627	0.96	-	0	transcript_id "g176.t1"; gene_id "g176";
+Chromosome	AUGUSTUS	start_codon	370625	370627	.	-	0	transcript_id "g176.t1"; gene_id "g176";
 # coding sequence = [gtgcaagcattagcattcggtgaaatccttctccttgaaaacactcgctattgtgatgtaaacgataaaggagaaattg
 # ttaaattagaaagtaaaaatgatcctgaactagcgaaattctgggctagtttaggggaaatttttgttaatgatgcatttggtactgcccatagaaaa
 # catgcttctaatgcaggaattgcaaagtatgttgcaaaatcctgtattgggtttttaatggaaaaagaactaaagaacctctcttacctaattcaaag
@@ -3398,15 +3439,15 @@ Chromosome	AUGUSTUS	start_codon	370625	370627	.	-	0	transcript_id "g175.t1"; gen
 # protein sequence = [MQALAFGEILLLENTRYCDVNDKGEIVKLESKNDPELAKFWASLGEIFVNDAFGTAHRKHASNAGIAKYVAKSCIGFL
 # MEKELKNLSYLIQSPQKPFVVVLGGAKVSDKLKVVENLLKLADNILIGGGMVNTFLKAKGKATANSLVEKELIDVAKQILDKDTHNKIVLAIDQVMGS
 # EFKDQTGITLDVSDKIQEQYQSYMSLDVGSKTIALFESYLKTAKTIF]
-# end gene g175
+# end gene g176
 ###
-# start gene g176
-Chromosome	AUGUSTUS	gene	370950	371963	0.82	-	.	g176
-Chromosome	AUGUSTUS	transcript	370950	371963	0.82	-	.	g176.t1
-Chromosome	AUGUSTUS	stop_codon	370950	370952	.	-	0	transcript_id "g176.t1"; gene_id "g176";
-Chromosome	AUGUSTUS	single	370950	371963	0.82	-	0	transcript_id "g176.t1"; gene_id "g176";
-Chromosome	AUGUSTUS	CDS	370950	371963	0.82	-	0	transcript_id "g176.t1"; gene_id "g176";
-Chromosome	AUGUSTUS	start_codon	371961	371963	.	-	0	transcript_id "g176.t1"; gene_id "g176";
+# start gene g177
+Chromosome	AUGUSTUS	gene	370950	371963	0.82	-	.	g177
+Chromosome	AUGUSTUS	transcript	370950	371963	0.82	-	.	g177.t1
+Chromosome	AUGUSTUS	stop_codon	370950	370952	.	-	0	transcript_id "g177.t1"; gene_id "g177";
+Chromosome	AUGUSTUS	single	370950	371963	0.82	-	0	transcript_id "g177.t1"; gene_id "g177";
+Chromosome	AUGUSTUS	CDS	370950	371963	0.82	-	0	transcript_id "g177.t1"; gene_id "g177";
+Chromosome	AUGUSTUS	start_codon	371961	371963	.	-	0	transcript_id "g177.t1"; gene_id "g177";
 # coding sequence = [atggcagcaaagaatagaaccattaaggttgcaatcaatggttttggaagaattggaagacttgtttttcgttctcttc
 # tcagtaaggcaaatgttgaagttgtagcaattaatgatttgacccaacctgaagttttagcgcacctgttgaaatatgattcagctcatggtgaattg
 # aaaagaaagattactgttaaacaaaacatcttgcaaattgatagaaaaaaggtttatgtttttagtgaaaaagatccccaaaatttaccttgggatga
@@ -3422,30 +3463,30 @@ Chromosome	AUGUSTUS	start_codon	371961	371963	.	-	0	transcript_id "g176.t1"; gen
 # VFSEKDPQNLPWDEHDIDVVIESTGRFVSEEGASLHLKAGAKRVIISAPAKEKTIRTVVYNVNHKTISSDDKIISAASCTTNCLAPLVHVLEKNFGIV
 # YGTMLTVHAYTADQRLQDAPHNDLRRARAAAVNIVPTTTGAAKAIGLVVPEANGKLNGMSLRVPVLTGSIVELSVVLEKSPSVEQVNQAMKRFASASF
 # KYCEDPIVSSDVVSSEYGSIFDSKLTNIVEVDGMKLYKVYAWYDNESSYVHQLVRVVSYCAKL]
-# end gene g176
+# end gene g177
 ###
-# start gene g177
-Chromosome	AUGUSTUS	gene	373981	374310	0.41	-	.	g177
-Chromosome	AUGUSTUS	transcript	373981	374310	0.41	-	.	g177.t1
-Chromosome	AUGUSTUS	stop_codon	373981	373983	.	-	0	transcript_id "g177.t1"; gene_id "g177";
-Chromosome	AUGUSTUS	single	373981	374310	0.41	-	0	transcript_id "g177.t1"; gene_id "g177";
-Chromosome	AUGUSTUS	CDS	373981	374310	0.41	-	0	transcript_id "g177.t1"; gene_id "g177";
-Chromosome	AUGUSTUS	start_codon	374308	374310	.	-	0	transcript_id "g177.t1"; gene_id "g177";
+# start gene g178
+Chromosome	AUGUSTUS	gene	373981	374310	0.41	-	.	g178
+Chromosome	AUGUSTUS	transcript	373981	374310	0.41	-	.	g178.t1
+Chromosome	AUGUSTUS	stop_codon	373981	373983	.	-	0	transcript_id "g178.t1"; gene_id "g178";
+Chromosome	AUGUSTUS	single	373981	374310	0.41	-	0	transcript_id "g178.t1"; gene_id "g178";
+Chromosome	AUGUSTUS	CDS	373981	374310	0.41	-	0	transcript_id "g178.t1"; gene_id "g178";
+Chromosome	AUGUSTUS	start_codon	374308	374310	.	-	0	transcript_id "g178.t1"; gene_id "g178";
 # coding sequence = [atgcttgataataagatcagcaataaacttaaaaaatttgtgtttgataccatcaaaaaacaaaacaaaatagttatca
 # atattacccatgattttaatgatctgtttctagcagatgagattatctttttaagtaaaggatcgctaattaaaaagtttgctcctgaagcgatatat
 # gagcagcttgatttgtttcataaccaccactttaatctcccttttccacttttattggcccataaggtggctaaacaaataaacaaaaaaacaccaag
 # tttaagttttgaattgaatgatgtagttaactggatatgcaaacacctcaaataa]
 # protein sequence = [MLDNKISNKLKKFVFDTIKKQNKIVINITHDFNDLFLADEIIFLSKGSLIKKFAPEAIYEQLDLFHNHHFNLPFPLLL
 # AHKVAKQINKKTPSLSFELNDVVNWICKHLK]
-# end gene g177
+# end gene g178
 ###
-# start gene g178
-Chromosome	AUGUSTUS	gene	374979	376706	0.82	-	.	g178
-Chromosome	AUGUSTUS	transcript	374979	376706	0.82	-	.	g178.t1
-Chromosome	AUGUSTUS	stop_codon	374979	374981	.	-	0	transcript_id "g178.t1"; gene_id "g178";
-Chromosome	AUGUSTUS	single	374979	376706	0.82	-	0	transcript_id "g178.t1"; gene_id "g178";
-Chromosome	AUGUSTUS	CDS	374979	376706	0.82	-	0	transcript_id "g178.t1"; gene_id "g178";
-Chromosome	AUGUSTUS	start_codon	376704	376706	.	-	0	transcript_id "g178.t1"; gene_id "g178";
+# start gene g179
+Chromosome	AUGUSTUS	gene	374979	376706	0.82	-	.	g179
+Chromosome	AUGUSTUS	transcript	374979	376706	0.82	-	.	g179.t1
+Chromosome	AUGUSTUS	stop_codon	374979	374981	.	-	0	transcript_id "g179.t1"; gene_id "g179";
+Chromosome	AUGUSTUS	single	374979	376706	0.82	-	0	transcript_id "g179.t1"; gene_id "g179";
+Chromosome	AUGUSTUS	CDS	374979	376706	0.82	-	0	transcript_id "g179.t1"; gene_id "g179";
+Chromosome	AUGUSTUS	start_codon	376704	376706	.	-	0	transcript_id "g179.t1"; gene_id "g179";
 # coding sequence = [atgagtgcagacaatggtttaattattggcattgaccttggaactaccaattcttgtgtttctgtaatggaaggtggga
 # gacctgttgtattagaaaatcctgaaggtaaaagaacaacaccttccattgtttcctataaaaacaatgaaattatagtaggtgatgctgctaaaaga
 # cagatggttacaaacccaaataccattgtctccatcaagaggttgatgggtacctcaaataaagtaaaagtccaaaatgctgatggtacaactaagga
@@ -3471,15 +3512,15 @@ Chromosome	AUGUSTUS	start_codon	376704	376706	.	-	0	transcript_id "g178.t1"; gen
 # LDVTPLTLSIETLGGVATPLIKRNTTIPVSKSQIFSTAQDNQESVDVVVCQGERPMSRDNKSLGRFNLGGIQPAPKGKPQIEITFSLDANGILNVKAK
 # DLTTQKENSITISDNGNLSEEEIQKMIRDAEANKERDNIIRERIELRNEGEGIVNTIKEILASPDAKNFPKEEKEKLEKLTGNIDAAIKANDYAKLKV
 # EIENFKK]
-# end gene g178
+# end gene g179
 ###
-# start gene g179
-Chromosome	AUGUSTUS	gene	384148	385446	0.97	-	.	g179
-Chromosome	AUGUSTUS	transcript	384148	385446	0.97	-	.	g179.t1
-Chromosome	AUGUSTUS	stop_codon	384148	384150	.	-	0	transcript_id "g179.t1"; gene_id "g179";
-Chromosome	AUGUSTUS	single	384148	385446	0.97	-	0	transcript_id "g179.t1"; gene_id "g179";
-Chromosome	AUGUSTUS	CDS	384148	385446	0.97	-	0	transcript_id "g179.t1"; gene_id "g179";
-Chromosome	AUGUSTUS	start_codon	385444	385446	.	-	0	transcript_id "g179.t1"; gene_id "g179";
+# start gene g180
+Chromosome	AUGUSTUS	gene	384148	385446	0.97	-	.	g180
+Chromosome	AUGUSTUS	transcript	384148	385446	0.97	-	.	g180.t1
+Chromosome	AUGUSTUS	stop_codon	384148	384150	.	-	0	transcript_id "g180.t1"; gene_id "g180";
+Chromosome	AUGUSTUS	single	384148	385446	0.97	-	0	transcript_id "g180.t1"; gene_id "g180";
+Chromosome	AUGUSTUS	CDS	384148	385446	0.97	-	0	transcript_id "g180.t1"; gene_id "g180";
+Chromosome	AUGUSTUS	start_codon	385444	385446	.	-	0	transcript_id "g180.t1"; gene_id "g180";
 # coding sequence = [atgtttgatacctttgatcctagcttttcagcagcttttatccagggctatttagctttacaaaaaaaatccaaaggtg
 # cagaacaaactgaatacactaaattagaaaaagataaatcaatcattgaaaatttctttgttgaaaataattcagctaaggctgcaatgaaaagtgca
 # agtagtagttcacaaacaactactgttcataaaacagatctagctaagatctttaaagaaaatgaaactactaaatcaacagatgtttttaaaggtga
@@ -3499,15 +3540,15 @@ Chromosome	AUGUSTUS	start_codon	385444	385446	.	-	0	transcript_id "g179.t1"; gen
 # IDTNTTYDFKLFDEVKKHFDKNRVLFLFNALFKLVDSKESNFLSFPQFKKFSDSIITVKNELKDLVESQYQQIVFNEVATAENKVALKLAERNQPFID
 # NERNKQIWMNGLAAVLPYEQDSKTGHYNELGIYYKDIIDKVSSNTSNSNSNSNSSSSDPFSKKIIDKLKENKKKVEAAVKKHVDELKVSVIPSPQYSQ
 # IILVDTKLSSDPRNTSLALNLALNAVLSSDELQNTIRRDYFVNDDQFKQAIDLDKLTFKN]
-# end gene g179
+# end gene g180
 ###
-# start gene g180
-Chromosome	AUGUSTUS	gene	387916	390051	0.98	-	.	g180
-Chromosome	AUGUSTUS	transcript	387916	390051	0.98	-	.	g180.t1
-Chromosome	AUGUSTUS	stop_codon	387916	387918	.	-	0	transcript_id "g180.t1"; gene_id "g180";
-Chromosome	AUGUSTUS	single	387916	390051	0.98	-	0	transcript_id "g180.t1"; gene_id "g180";
-Chromosome	AUGUSTUS	CDS	387916	390051	0.98	-	0	transcript_id "g180.t1"; gene_id "g180";
-Chromosome	AUGUSTUS	start_codon	390049	390051	.	-	0	transcript_id "g180.t1"; gene_id "g180";
+# start gene g181
+Chromosome	AUGUSTUS	gene	387916	390051	0.98	-	.	g181
+Chromosome	AUGUSTUS	transcript	387916	390051	0.98	-	.	g181.t1
+Chromosome	AUGUSTUS	stop_codon	387916	387918	.	-	0	transcript_id "g181.t1"; gene_id "g181";
+Chromosome	AUGUSTUS	single	387916	390051	0.98	-	0	transcript_id "g181.t1"; gene_id "g181";
+Chromosome	AUGUSTUS	CDS	387916	390051	0.98	-	0	transcript_id "g181.t1"; gene_id "g181";
+Chromosome	AUGUSTUS	start_codon	390049	390051	.	-	0	transcript_id "g181.t1"; gene_id "g181";
 # coding sequence = [gtgcattatgaaagtaaatctgaaccaattcatgactataaatttgggagtgatttatctcaatcaaacagcaataatt
 # cgttagagtctgaacctgttaagtttaatagtgaaactgcacctgatgcacactttgaaagtcaatctgaaccagttgatcaagttcaatacgacatt
 # tatcaaaatgaagagctaaaaccaactcttgaccagccttcttcagatgattattttgcaaaacaaccaactgatgaaaactatggttttgataacga
@@ -3538,15 +3579,15 @@ Chromosome	AUGUSTUS	start_codon	390049	390051	.	-	0	transcript_id "g180.t1"; gen
 # QISERYLIIKKELQSELSRLIDQNENLNVQFNNAKNLTTLQKEEMIRSLASDFAIAYKPSNSYEQLQKSGEIMRHVQRAITENEKKIESIQGSLKQLK
 # TVYNSCCETIMNNINKLDNTLRFAKKEKDPLLLSNFDSVTDNGLVEPNQLMDDLIDFSNTFDNISNEQLDDFIYENMDRNIDFEFEGFNNDFVDIDAK
 # VMDSMSAFSVNDLDIETLVPDRTSNFSSLLDEDLFESSGDFSLDY]
-# end gene g180
+# end gene g181
 ###
-# start gene g181
-Chromosome	AUGUSTUS	gene	390564	390959	0.98	+	.	g181
-Chromosome	AUGUSTUS	transcript	390564	390959	0.98	+	.	g181.t1
-Chromosome	AUGUSTUS	start_codon	390564	390566	.	+	0	transcript_id "g181.t1"; gene_id "g181";
-Chromosome	AUGUSTUS	single	390564	390959	0.98	+	0	transcript_id "g181.t1"; gene_id "g181";
-Chromosome	AUGUSTUS	CDS	390564	390959	0.98	+	0	transcript_id "g181.t1"; gene_id "g181";
-Chromosome	AUGUSTUS	stop_codon	390957	390959	.	+	0	transcript_id "g181.t1"; gene_id "g181";
+# start gene g182
+Chromosome	AUGUSTUS	gene	390564	390959	0.98	+	.	g182
+Chromosome	AUGUSTUS	transcript	390564	390959	0.98	+	.	g182.t1
+Chromosome	AUGUSTUS	start_codon	390564	390566	.	+	0	transcript_id "g182.t1"; gene_id "g182";
+Chromosome	AUGUSTUS	single	390564	390959	0.98	+	0	transcript_id "g182.t1"; gene_id "g182";
+Chromosome	AUGUSTUS	CDS	390564	390959	0.98	+	0	transcript_id "g182.t1"; gene_id "g182";
+Chromosome	AUGUSTUS	stop_codon	390957	390959	.	+	0	transcript_id "g182.t1"; gene_id "g182";
 # coding sequence = [ttggttgaggtaaatcactgtcaaagctgtagctatcagttgttgattcaggttgttttgcaaaatgatcatctgaaga
 # aggttggtcaacaactgattcaggttgttttacttctggtggtaggtcgttatcaaaaccatagttttcatcagttggttgttttgcaaaataatcat
 # ctgaagaaggctggtcaacaactgattcaggttgttttacttctggtggtaggtcgttatcaaaaccatagttatcttcaactgattcaggttgtttt
@@ -3554,44 +3595,44 @@ Chromosome	AUGUSTUS	stop_codon	390957	390959	.	+	0	transcript_id "g181.t1"; gene
 # atcagttggttgagattctttag]
 # protein sequence = [MVEVNHCQSCSYQLLIQVVLQNDHLKKVGQQLIQVVLLLVVGRYQNHSFHQLVVLQNNHLKKAGQQLIQVVLLLVVGR
 # YQNHSYLQLIQVVLLLVVNRYQNHSYLQLIQVVLLLVVNHCQNHSFHQLVEIL]
-# end gene g181
+# end gene g182
 ###
-# start gene g182
-Chromosome	AUGUSTUS	gene	390994	391335	0.78	-	.	g182
-Chromosome	AUGUSTUS	transcript	390994	391335	0.78	-	.	g182.t1
-Chromosome	AUGUSTUS	stop_codon	390994	390996	.	-	0	transcript_id "g182.t1"; gene_id "g182";
-Chromosome	AUGUSTUS	single	390994	391335	0.78	-	0	transcript_id "g182.t1"; gene_id "g182";
-Chromosome	AUGUSTUS	CDS	390994	391335	0.78	-	0	transcript_id "g182.t1"; gene_id "g182";
-Chromosome	AUGUSTUS	start_codon	391333	391335	.	-	0	transcript_id "g182.t1"; gene_id "g182";
+# start gene g183
+Chromosome	AUGUSTUS	gene	390994	391335	0.78	-	.	g183
+Chromosome	AUGUSTUS	transcript	390994	391335	0.78	-	.	g183.t1
+Chromosome	AUGUSTUS	stop_codon	390994	390996	.	-	0	transcript_id "g183.t1"; gene_id "g183";
+Chromosome	AUGUSTUS	single	390994	391335	0.78	-	0	transcript_id "g183.t1"; gene_id "g183";
+Chromosome	AUGUSTUS	CDS	390994	391335	0.78	-	0	transcript_id "g183.t1"; gene_id "g183";
+Chromosome	AUGUSTUS	start_codon	391333	391335	.	-	0	transcript_id "g183.t1"; gene_id "g183";
 # coding sequence = [atggctaaaaacaagcaatcggtttttgaagaaaaaaactatacccaaaccgaacctgaaaacatttttggtgatcttt
 # atgatggtaaatccactgttgaagaagaccctaatattaaggtagcatatgatgctgatggtaatggctattatatagcttttaacaaagaaacaggg
 # gtttactatgatccttatggagatactgaatatgatatctcccaactctttgatgaaaatgggaatccgtttgtttttgatgaaaagcaagaagagaa
 # tgattatttaaagtatgttggtaaccctgactatggttcttatgatgaaaatggtgagtgggtttga]
 # protein sequence = [MAKNKQSVFEEKNYTQTEPENIFGDLYDGKSTVEEDPNIKVAYDADGNGYYIAFNKETGVYYDPYGDTEYDISQLFDE
 # NGNPFVFDEKQEENDYLKYVGNPDYGSYDENGEWV]
-# end gene g182
+# end gene g183
 ###
-# start gene g183
-Chromosome	AUGUSTUS	gene	397439	397702	0.65	-	.	g183
-Chromosome	AUGUSTUS	transcript	397439	397702	0.65	-	.	g183.t1
-Chromosome	AUGUSTUS	stop_codon	397439	397441	.	-	0	transcript_id "g183.t1"; gene_id "g183";
-Chromosome	AUGUSTUS	single	397439	397702	0.65	-	0	transcript_id "g183.t1"; gene_id "g183";
-Chromosome	AUGUSTUS	CDS	397439	397702	0.65	-	0	transcript_id "g183.t1"; gene_id "g183";
-Chromosome	AUGUSTUS	start_codon	397700	397702	.	-	0	transcript_id "g183.t1"; gene_id "g183";
+# start gene g184
+Chromosome	AUGUSTUS	gene	397439	397702	0.65	-	.	g184
+Chromosome	AUGUSTUS	transcript	397439	397702	0.65	-	.	g184.t1
+Chromosome	AUGUSTUS	stop_codon	397439	397441	.	-	0	transcript_id "g184.t1"; gene_id "g184";
+Chromosome	AUGUSTUS	single	397439	397702	0.65	-	0	transcript_id "g184.t1"; gene_id "g184";
+Chromosome	AUGUSTUS	CDS	397439	397702	0.65	-	0	transcript_id "g184.t1"; gene_id "g184";
+Chromosome	AUGUSTUS	start_codon	397700	397702	.	-	0	transcript_id "g184.t1"; gene_id "g184";
 # coding sequence = [atgcagcgccctgggtttaatccaaacatgcaacaacgccctggttttaaccaaccaaaccaacagttccaaccacaca
 # ataatttcaacccaaggatgaacccaaacatgcaacgccctggatttaaccaaccccatcctaaccaatttgcacaaccaaataactttaatccaaac
 # atgcaacaacgccctgggtttaatccaaatatgcaacaacgtcctaacccatcacaattgatgccaaaaggcggtttaaaaccctaa]
 # protein sequence = [MQRPGFNPNMQQRPGFNQPNQQFQPHNNFNPRMNPNMQRPGFNQPHPNQFAQPNNFNPNMQQRPGFNPNMQQRPNPSQ
 # LMPKGGLKP]
-# end gene g183
+# end gene g184
 ###
-# start gene g184
-Chromosome	AUGUSTUS	gene	401901	402923	0.69	-	.	g184
-Chromosome	AUGUSTUS	transcript	401901	402923	0.69	-	.	g184.t1
-Chromosome	AUGUSTUS	stop_codon	401901	401903	.	-	0	transcript_id "g184.t1"; gene_id "g184";
-Chromosome	AUGUSTUS	single	401901	402923	0.69	-	0	transcript_id "g184.t1"; gene_id "g184";
-Chromosome	AUGUSTUS	CDS	401901	402923	0.69	-	0	transcript_id "g184.t1"; gene_id "g184";
-Chromosome	AUGUSTUS	start_codon	402921	402923	.	-	0	transcript_id "g184.t1"; gene_id "g184";
+# start gene g185
+Chromosome	AUGUSTUS	gene	401901	402923	0.69	-	.	g185
+Chromosome	AUGUSTUS	transcript	401901	402923	0.69	-	.	g185.t1
+Chromosome	AUGUSTUS	stop_codon	401901	401903	.	-	0	transcript_id "g185.t1"; gene_id "g185";
+Chromosome	AUGUSTUS	single	401901	402923	0.69	-	0	transcript_id "g185.t1"; gene_id "g185";
+Chromosome	AUGUSTUS	CDS	401901	402923	0.69	-	0	transcript_id "g185.t1"; gene_id "g185";
+Chromosome	AUGUSTUS	start_codon	402921	402923	.	-	0	transcript_id "g185.t1"; gene_id "g185";
 # coding sequence = [atgaaattaaaaaaaagatacttgttgctcggttctacactgacagttagtgcagcactaatcctaagtgcttgtgcat
 # cctcacagttaaacaaaggggtgtttttcacctcttcttcagcagatttgttaaagaacaactctgttccattgagcatgtttaacgtttcacccact
 # tcatctttttttggtaatgcttatgcagggttaactaactatgttgctactggtacaaaccgtgatgatggggttaatgttactgaccaaattaaaga
@@ -3607,15 +3648,15 @@ Chromosome	AUGUSTUS	start_codon	402921	402923	.	-	0	transcript_id "g184.t1"; gen
 # NRDDGVNVTDQIKEKLVLELALSVTGYKKTTHSGLKGRAQKNGSTDSSDGSSKNDYTKFNEWDAIGTIYRDSSKSITEDPNYHKITQEATRYEFTINT
 # SLSWVDNAGREVKQNNQPVKLSSKDFERGFETYILSSNLGFNRNGYFIDLMGLDVEKTVGMDKTNGSSDGNGKGIEITDENYDVENYRSVDDNKFNVY
 # LTSPFPFFLSMMSKEFFFPIPHTHPKVKALKLGKDSPLKYNQNNNRKILDQANTNFDGIYGGGVNA]
-# end gene g184
+# end gene g185
 ###
-# start gene g185
-Chromosome	AUGUSTUS	gene	405456	406139	0.94	+	.	g185
-Chromosome	AUGUSTUS	transcript	405456	406139	0.94	+	.	g185.t1
-Chromosome	AUGUSTUS	start_codon	405456	405458	.	+	0	transcript_id "g185.t1"; gene_id "g185";
-Chromosome	AUGUSTUS	single	405456	406139	0.94	+	0	transcript_id "g185.t1"; gene_id "g185";
-Chromosome	AUGUSTUS	CDS	405456	406139	0.94	+	0	transcript_id "g185.t1"; gene_id "g185";
-Chromosome	AUGUSTUS	stop_codon	406137	406139	.	+	0	transcript_id "g185.t1"; gene_id "g185";
+# start gene g186
+Chromosome	AUGUSTUS	gene	405456	406139	0.94	+	.	g186
+Chromosome	AUGUSTUS	transcript	405456	406139	0.94	+	.	g186.t1
+Chromosome	AUGUSTUS	start_codon	405456	405458	.	+	0	transcript_id "g186.t1"; gene_id "g186";
+Chromosome	AUGUSTUS	single	405456	406139	0.94	+	0	transcript_id "g186.t1"; gene_id "g186";
+Chromosome	AUGUSTUS	CDS	405456	406139	0.94	+	0	transcript_id "g186.t1"; gene_id "g186";
+Chromosome	AUGUSTUS	stop_codon	406137	406139	.	+	0	transcript_id "g186.t1"; gene_id "g186";
 # coding sequence = [atgaaacgtgcagatttttgcattattggtttaggtagatttgggatgcaggttgcacaatcactaaaagaaaacaact
 # ttaacttacttttaattgatcttgatgataaaaaaactgacaccgcctcgcaacagtttgattatgttatttgttgtgatgctagtaatctaactgct
 # ttagaagagttacaaattgatgaatttgctggggttattgttggggttaccaacatagaagcgagcatcatgatatgtgctaatttaagggaattagg
@@ -3627,15 +3668,15 @@ Chromosome	AUGUSTUS	stop_codon	406137	406139	.	+	0	transcript_id "g185.t1"; gene
 # protein sequence = [MKRADFCIIGLGRFGMQVAQSLKENNFNLLLIDLDDKKTDTASQQFDYVICCDASNLTALEELQIDEFAGVIVGVTNI
 # EASIMICANLRELGQKNIIAKAKNEVHKRVLSTMGIREALIPEKIVGKNLVIRLIHGLENEIINLGNEIIFIRSAVNNKAFFNKRLEEINFRQNTDAN
 # IISIMRSNKTVVFPLGPNTEIQPGDIITAVCQQKSLNKYLNYINPKTKNKN]
-# end gene g185
+# end gene g186
 ###
-# start gene g186
-Chromosome	AUGUSTUS	gene	407759	408319	0.67	-	.	g186
-Chromosome	AUGUSTUS	transcript	407759	408319	0.67	-	.	g186.t1
-Chromosome	AUGUSTUS	stop_codon	407759	407761	.	-	0	transcript_id "g186.t1"; gene_id "g186";
-Chromosome	AUGUSTUS	single	407759	408319	0.67	-	0	transcript_id "g186.t1"; gene_id "g186";
-Chromosome	AUGUSTUS	CDS	407759	408319	0.67	-	0	transcript_id "g186.t1"; gene_id "g186";
-Chromosome	AUGUSTUS	start_codon	408317	408319	.	-	0	transcript_id "g186.t1"; gene_id "g186";
+# start gene g187
+Chromosome	AUGUSTUS	gene	407759	408319	0.67	-	.	g187
+Chromosome	AUGUSTUS	transcript	407759	408319	0.67	-	.	g187.t1
+Chromosome	AUGUSTUS	stop_codon	407759	407761	.	-	0	transcript_id "g187.t1"; gene_id "g187";
+Chromosome	AUGUSTUS	single	407759	408319	0.67	-	0	transcript_id "g187.t1"; gene_id "g187";
+Chromosome	AUGUSTUS	CDS	407759	408319	0.67	-	0	transcript_id "g187.t1"; gene_id "g187";
+Chromosome	AUGUSTUS	start_codon	408317	408319	.	-	0	transcript_id "g187.t1"; gene_id "g187";
 # coding sequence = [atgactgagcttttcatttcacaatggattactaatgagcttgtgaagcagggtggggctaaaaactcatttgatccta
 # tagtagctactggtaaaaacggtgctaacccacatcacaaaccaaccaaaacaatagttaaggaaggtgattttatcacttgtgattttggcaccatt
 # tacaacggttattgctctgatattacaagaacctttttagttggtaaaaaacctaaaagtgcaaagttattatctgcatacaaaaaagttgaagaggc
@@ -3645,15 +3686,15 @@ Chromosome	AUGUSTUS	start_codon	408317	408319	.	-	0	transcript_id "g186.t1"; gen
 # protein sequence = [MTELFISQWITNELVKQGGAKNSFDPIVATGKNGANPHHKPTKTIVKEGDFITCDFGTIYNGYCSDITRTFLVGKKPK
 # SAKLLSAYKKVEEANLAGINAVNTTLTGSQVDKVCRDIIENSEFKDFFVHSTGHGVGIDIHEMPNVSQSYNKLLCENGVVTIEPGIYIPNLGGIRIED
 # MVLVKKEKSV]
-# end gene g186
+# end gene g187
 ###
-# start gene g187
-Chromosome	AUGUSTUS	gene	409466	409858	1	-	.	g187
-Chromosome	AUGUSTUS	transcript	409466	409858	1	-	.	g187.t1
-Chromosome	AUGUSTUS	stop_codon	409466	409468	.	-	0	transcript_id "g187.t1"; gene_id "g187";
-Chromosome	AUGUSTUS	single	409466	409858	1	-	0	transcript_id "g187.t1"; gene_id "g187";
-Chromosome	AUGUSTUS	CDS	409466	409858	1	-	0	transcript_id "g187.t1"; gene_id "g187";
-Chromosome	AUGUSTUS	start_codon	409856	409858	.	-	0	transcript_id "g187.t1"; gene_id "g187";
+# start gene g188
+Chromosome	AUGUSTUS	gene	409466	409858	1	-	.	g188
+Chromosome	AUGUSTUS	transcript	409466	409858	1	-	.	g188.t1
+Chromosome	AUGUSTUS	stop_codon	409466	409468	.	-	0	transcript_id "g188.t1"; gene_id "g188";
+Chromosome	AUGUSTUS	single	409466	409858	1	-	0	transcript_id "g188.t1"; gene_id "g188";
+Chromosome	AUGUSTUS	CDS	409466	409858	1	-	0	transcript_id "g188.t1"; gene_id "g188";
+Chromosome	AUGUSTUS	start_codon	409856	409858	.	-	0	transcript_id "g188.t1"; gene_id "g188";
 # coding sequence = [atgaagaaaacagctatcatcactgattcaactgcttctattaaacctggggagattaacggcgtttacatcttgcctt
 # tacaagtaattgttgatggtgaaaaaagctttcgtgatgggatagaaattgattatgatcatgttcataaacttctaaaagaaaacccacatggactt
 # aacatctcaacttccttaccacgtcaaagtgatcttcttaagatctttgaagagattaaaactaagtatgatcgctttatttttctgcctttaagtaa
@@ -3661,15 +3702,15 @@ Chromosome	AUGUSTUS	start_codon	409856	409858	.	-	0	transcript_id "g187.t1"; gen
 # ttgctatttctctaaaatga]
 # protein sequence = [MKKTAIITDSTASIKPGEINGVYILPLQVIVDGEKSFRDGIEIDYDHVHKLLKENPHGLNISTSLPRQSDLLKIFEEI
 # KTKYDRFIFLPLSKGLSGTYDMLVQLAKELSEQNKDKEFLVFETSDIAISLK]
-# end gene g187
+# end gene g188
 ###
-# start gene g188
-Chromosome	AUGUSTUS	gene	410664	411443	1	-	.	g188
-Chromosome	AUGUSTUS	transcript	410664	411443	1	-	.	g188.t1
-Chromosome	AUGUSTUS	stop_codon	410664	410666	.	-	0	transcript_id "g188.t1"; gene_id "g188";
-Chromosome	AUGUSTUS	single	410664	411443	1	-	0	transcript_id "g188.t1"; gene_id "g188";
-Chromosome	AUGUSTUS	CDS	410664	411443	1	-	0	transcript_id "g188.t1"; gene_id "g188";
-Chromosome	AUGUSTUS	start_codon	411441	411443	.	-	0	transcript_id "g188.t1"; gene_id "g188";
+# start gene g189
+Chromosome	AUGUSTUS	gene	410664	411443	1	-	.	g189
+Chromosome	AUGUSTUS	transcript	410664	411443	1	-	.	g189.t1
+Chromosome	AUGUSTUS	stop_codon	410664	410666	.	-	0	transcript_id "g189.t1"; gene_id "g189";
+Chromosome	AUGUSTUS	single	410664	411443	1	-	0	transcript_id "g189.t1"; gene_id "g189";
+Chromosome	AUGUSTUS	CDS	410664	411443	1	-	0	transcript_id "g189.t1"; gene_id "g189";
+Chromosome	AUGUSTUS	start_codon	411441	411443	.	-	0	transcript_id "g189.t1"; gene_id "g189";
 # coding sequence = [ctgcaagacaaaattgcagagttagaagaatggaatgaagagaagagtaatttaaataccaatcagttagtaaatctcc
 # aacagcaactcaaagactctcaaaatctttttaatgttgctcaagataaattagccacgcttgaagaagttaatttagcacttaatgaaaaaattaat
 # gatttagaagatgaattatcaggctctgagaatagcaataacttattagcaaagctccaagctgatcatgaaatcttacaagaaagctatggcaaatt
@@ -3682,15 +3723,15 @@ Chromosome	AUGUSTUS	start_codon	411441	411443	.	-	0	transcript_id "g188.t1"; gen
 # protein sequence = [MQDKIAELEEWNEEKSNLNTNQLVNLQQQLKDSQNLFNVAQDKLATLEEVNLALNEKINDLEDELSGSENSNNLLAKL
 # QADHEILQESYGKLKTDFEKLKKNKLNDANEQYQDLLSAFEETNSELEKAKQSLSASDSENNQLKQQINSLENAKKELQFTPVTSDEHLDELETLKIE
 # KEQLFLENQALQNQLQYFNDISANQTEEIKEASDEDKPVEIKKPRIKKRDFVIQNKDDKLAKLSKKERIQAYAERLAKINANE]
-# end gene g188
+# end gene g189
 ###
-# start gene g189
-Chromosome	AUGUSTUS	gene	411549	412610	0.84	-	.	g189
-Chromosome	AUGUSTUS	transcript	411549	412610	0.84	-	.	g189.t1
-Chromosome	AUGUSTUS	stop_codon	411549	411551	.	-	0	transcript_id "g189.t1"; gene_id "g189";
-Chromosome	AUGUSTUS	single	411549	412610	0.84	-	0	transcript_id "g189.t1"; gene_id "g189";
-Chromosome	AUGUSTUS	CDS	411549	412610	0.84	-	0	transcript_id "g189.t1"; gene_id "g189";
-Chromosome	AUGUSTUS	start_codon	412608	412610	.	-	0	transcript_id "g189.t1"; gene_id "g189";
+# start gene g190
+Chromosome	AUGUSTUS	gene	411549	412610	0.84	-	.	g190
+Chromosome	AUGUSTUS	transcript	411549	412610	0.84	-	.	g190.t1
+Chromosome	AUGUSTUS	stop_codon	411549	411551	.	-	0	transcript_id "g190.t1"; gene_id "g190";
+Chromosome	AUGUSTUS	single	411549	412610	0.84	-	0	transcript_id "g190.t1"; gene_id "g190";
+Chromosome	AUGUSTUS	CDS	411549	412610	0.84	-	0	transcript_id "g190.t1"; gene_id "g190";
+Chromosome	AUGUSTUS	start_codon	412608	412610	.	-	0	transcript_id "g190.t1"; gene_id "g190";
 # coding sequence = [atggcttttcaagaagttgatgatcaatcagttttaaccaaggaaattaaaactggttttcaggaactaaaaccatcag
 # tgattactgctgaagatgataaggatgagataaaaccagaagctactaaacaagtatcttttgaagagttgtttaaccaacctagtgaagagattaat
 # gaaacaaaaaaaccagaagttcaaatattttcaactgataaggttaaagaacctgaacaatttgatgatttctattccattgaaaatttaaccaaagc
@@ -3707,15 +3748,15 @@ Chromosome	AUGUSTUS	start_codon	412608	412610	.	-	0	transcript_id "g189.t1"; gen
 # QFDDFYSIENLTKAINPVHKTIQYDQNDDQPFVVKRILKEQHPTKKVDELDDYNNKELLLENADLKKQIDDLKENNNDQIFDLEQEIDDLKRRLSEEK
 # SKHLHTKKLQDDLLQENRDLYEQLQNKPVAINPLSDEVNEELENLKQEKALLSDQLDALKNKSSNVQQQLALLPVLNNQINELQNQLLTAREANQRLD
 # LVEQENDFLKNELKKLHDNTSNDENEKYDDLLNQYELLFDENETKFDKLQVKQQALNLDYQKTISALKHENDVLLDEIE]
-# end gene g189
+# end gene g190
 ###
-# start gene g190
-Chromosome	AUGUSTUS	gene	415611	416153	0.99	-	.	g190
-Chromosome	AUGUSTUS	transcript	415611	416153	0.99	-	.	g190.t1
-Chromosome	AUGUSTUS	stop_codon	415611	415613	.	-	0	transcript_id "g190.t1"; gene_id "g190";
-Chromosome	AUGUSTUS	single	415611	416153	0.99	-	0	transcript_id "g190.t1"; gene_id "g190";
-Chromosome	AUGUSTUS	CDS	415611	416153	0.99	-	0	transcript_id "g190.t1"; gene_id "g190";
-Chromosome	AUGUSTUS	start_codon	416151	416153	.	-	0	transcript_id "g190.t1"; gene_id "g190";
+# start gene g191
+Chromosome	AUGUSTUS	gene	415611	416153	0.99	-	.	g191
+Chromosome	AUGUSTUS	transcript	415611	416153	0.99	-	.	g191.t1
+Chromosome	AUGUSTUS	stop_codon	415611	415613	.	-	0	transcript_id "g191.t1"; gene_id "g191";
+Chromosome	AUGUSTUS	single	415611	416153	0.99	-	0	transcript_id "g191.t1"; gene_id "g191";
+Chromosome	AUGUSTUS	CDS	415611	416153	0.99	-	0	transcript_id "g191.t1"; gene_id "g191";
+Chromosome	AUGUSTUS	start_codon	416151	416153	.	-	0	transcript_id "g191.t1"; gene_id "g191";
 # coding sequence = [atggattcaattaaaagaaatatccatggtagtgaaaaagatacaactaaaattagcgagttttgttatgagatttttg
 # gaccaaatggtgttggaattattgtgtttggactaactgataatcctaaccgtttactcagtagtttaaacggttatttagctaaactaaaaggacaa
 # ttagccaagccaaatagcgtcaagattaattttcaagaagaagggattatctttgttaataaaaataactatttgaaagatgatctaattgaattatt
@@ -3725,56 +3766,56 @@ Chromosome	AUGUSTUS	start_codon	416151	416153	.	-	0	transcript_id "g190.t1"; gen
 # protein sequence = [MDSIKRNIHGSEKDTTKISEFCYEIFGPNGVGIIVFGLTDNPNRLLSSLNGYLAKLKGQLAKPNSVKINFQEEGIIFV
 # NKNNYLKDDLIELLILDNINLIDVDYDEECFEISLHSNSYFHAKELLKKNNFSIVDSEIKLVPLLTVDLDRNQQTLLSRFLNACEEDDDIQFVVHNAN
 # PWEE]
-# end gene g190
+# end gene g191
 ###
-# start gene g191
-Chromosome	AUGUSTUS	gene	420053	420274	0.92	-	.	g191
-Chromosome	AUGUSTUS	transcript	420053	420274	0.92	-	.	g191.t1
-Chromosome	AUGUSTUS	stop_codon	420053	420055	.	-	0	transcript_id "g191.t1"; gene_id "g191";
-Chromosome	AUGUSTUS	single	420053	420274	0.92	-	0	transcript_id "g191.t1"; gene_id "g191";
-Chromosome	AUGUSTUS	CDS	420053	420274	0.92	-	0	transcript_id "g191.t1"; gene_id "g191";
-Chromosome	AUGUSTUS	start_codon	420272	420274	.	-	0	transcript_id "g191.t1"; gene_id "g191";
+# start gene g192
+Chromosome	AUGUSTUS	gene	420053	420274	0.92	-	.	g192
+Chromosome	AUGUSTUS	transcript	420053	420274	0.92	-	.	g192.t1
+Chromosome	AUGUSTUS	stop_codon	420053	420055	.	-	0	transcript_id "g192.t1"; gene_id "g192";
+Chromosome	AUGUSTUS	single	420053	420274	0.92	-	0	transcript_id "g192.t1"; gene_id "g192";
+Chromosome	AUGUSTUS	CDS	420053	420274	0.92	-	0	transcript_id "g192.t1"; gene_id "g192";
+Chromosome	AUGUSTUS	start_codon	420272	420274	.	-	0	transcript_id "g192.t1"; gene_id "g192";
 # coding sequence = [atgaatgatctagcacttgcattaggtttaggtatccctctttcgcttttggtgggaatgattcttggttattttattt
 # ctataaaaatctttaaaaaacagatgcgtgacaatccacctattactgaaaatcaaattaaagcaatgtatgcaaaaatgggtagaaaattatctgaa
 # acccaggtaaaagagataatgcgctccattaaaaaccaaaaataa]
 # protein sequence = [MNDLALALGLGIPLSLLVGMILGYFISIKIFKKQMRDNPPITENQIKAMYAKMGRKLSETQVKEIMRSIKNQK]
-# end gene g191
+# end gene g192
 ###
-# start gene g192
-Chromosome	AUGUSTUS	gene	429607	429900	0.64	+	.	g192
-Chromosome	AUGUSTUS	transcript	429607	429900	0.64	+	.	g192.t1
-Chromosome	AUGUSTUS	start_codon	429607	429609	.	+	0	transcript_id "g192.t1"; gene_id "g192";
-Chromosome	AUGUSTUS	single	429607	429900	0.64	+	0	transcript_id "g192.t1"; gene_id "g192";
-Chromosome	AUGUSTUS	CDS	429607	429900	0.64	+	0	transcript_id "g192.t1"; gene_id "g192";
-Chromosome	AUGUSTUS	stop_codon	429898	429900	.	+	0	transcript_id "g192.t1"; gene_id "g192";
+# start gene g193
+Chromosome	AUGUSTUS	gene	429607	429900	0.64	+	.	g193
+Chromosome	AUGUSTUS	transcript	429607	429900	0.64	+	.	g193.t1
+Chromosome	AUGUSTUS	start_codon	429607	429609	.	+	0	transcript_id "g193.t1"; gene_id "g193";
+Chromosome	AUGUSTUS	single	429607	429900	0.64	+	0	transcript_id "g193.t1"; gene_id "g193";
+Chromosome	AUGUSTUS	CDS	429607	429900	0.64	+	0	transcript_id "g193.t1"; gene_id "g193";
+Chromosome	AUGUSTUS	stop_codon	429898	429900	.	+	0	transcript_id "g193.t1"; gene_id "g193";
 # coding sequence = [atggaagtggaatcttcttcctctttcaaccccacccaaaggttgcaaaaagatagtccggtgaaggattcaaacaaag
 # acagtgagaaactcagtgaaacaactgcttcatccatgagtggtatggctacatctcctcgcaaagccctcaaagtggaggtgaaaaaacaaagtgga
 # tcaagtgacaccctcaccaaaaacgactttgctaaaaagccactgcagcataagaacagtagtgggacagaggtgaagttagatgcgagtggggagtt
 # tggtgacaacaaagcctga]
 # protein sequence = [MEVESSSSFNPTQRLQKDSPVKDSNKDSEKLSETTASSMSGMATSPRKALKVEVKKQSGSSDTLTKNDFAKKPLQHKN
 # SSGTEVKLDASGEFGDNKA]
-# end gene g192
+# end gene g193
 ###
-# start gene g193
-Chromosome	AUGUSTUS	gene	429914	430105	0.39	-	.	g193
-Chromosome	AUGUSTUS	transcript	429914	430105	0.39	-	.	g193.t1
-Chromosome	AUGUSTUS	stop_codon	429914	429916	.	-	0	transcript_id "g193.t1"; gene_id "g193";
-Chromosome	AUGUSTUS	single	429914	430105	0.39	-	0	transcript_id "g193.t1"; gene_id "g193";
-Chromosome	AUGUSTUS	CDS	429914	430105	0.39	-	0	transcript_id "g193.t1"; gene_id "g193";
-Chromosome	AUGUSTUS	start_codon	430103	430105	.	-	0	transcript_id "g193.t1"; gene_id "g193";
+# start gene g194
+Chromosome	AUGUSTUS	gene	429914	430105	0.39	-	.	g194
+Chromosome	AUGUSTUS	transcript	429914	430105	0.39	-	.	g194.t1
+Chromosome	AUGUSTUS	stop_codon	429914	429916	.	-	0	transcript_id "g194.t1"; gene_id "g194";
+Chromosome	AUGUSTUS	single	429914	430105	0.39	-	0	transcript_id "g194.t1"; gene_id "g194";
+Chromosome	AUGUSTUS	CDS	429914	430105	0.39	-	0	transcript_id "g194.t1"; gene_id "g194";
+Chromosome	AUGUSTUS	start_codon	430103	430105	.	-	0	transcript_id "g194.t1"; gene_id "g194";
 # coding sequence = [gtgatcattgatttaaccccaacattgatgttagaaaaagtggggaggggggttgaggaagtagaagtagtagtagtag
 # tagtagtagtagaagaagaagaagaagaagaagaagaagaagaagaagaagaagaagaaggggagggggagttggcatccccatcctcttctctcttg
 # ctatttgctcggtag]
 # protein sequence = [MIIDLTPTLMLEKVGRGVEEVEVVVVVVVVEEEEEEEEEEEEEEEEGEGELASPSSSLLLFAR]
-# end gene g193
+# end gene g194
 ###
-# start gene g194
-Chromosome	AUGUSTUS	gene	430580	432103	0.89	-	.	g194
-Chromosome	AUGUSTUS	transcript	430580	432103	0.89	-	.	g194.t1
-Chromosome	AUGUSTUS	stop_codon	430580	430582	.	-	0	transcript_id "g194.t1"; gene_id "g194";
-Chromosome	AUGUSTUS	single	430580	432103	0.89	-	0	transcript_id "g194.t1"; gene_id "g194";
-Chromosome	AUGUSTUS	CDS	430580	432103	0.89	-	0	transcript_id "g194.t1"; gene_id "g194";
-Chromosome	AUGUSTUS	start_codon	432101	432103	.	-	0	transcript_id "g194.t1"; gene_id "g194";
+# start gene g195
+Chromosome	AUGUSTUS	gene	430580	432103	0.89	-	.	g195
+Chromosome	AUGUSTUS	transcript	430580	432103	0.89	-	.	g195.t1
+Chromosome	AUGUSTUS	stop_codon	430580	430582	.	-	0	transcript_id "g195.t1"; gene_id "g195";
+Chromosome	AUGUSTUS	single	430580	432103	0.89	-	0	transcript_id "g195.t1"; gene_id "g195";
+Chromosome	AUGUSTUS	CDS	430580	432103	0.89	-	0	transcript_id "g195.t1"; gene_id "g195";
+Chromosome	AUGUSTUS	start_codon	432101	432103	.	-	0	transcript_id "g195.t1"; gene_id "g195";
 # coding sequence = [gtgaaagaaaaagtatctgatgagatccaaaacttaattaaacaagaacagtaccgtgataattccattgtggtaatgg
 # ctgattcaggtgctagatgtaacatttctaactttacccagttatttgggatgcgaggcttaatgtctaaaagctttaactatgaaagaaataaccaa
 # tctaagatcattaaagatacgatagaagttcctattaaacactccttttttgaaggtttgaccattaatgaatacttcaactcttcttatggagcgag
@@ -3797,15 +3838,15 @@ Chromosome	AUGUSTUS	start_codon	432101	432103	.	-	0	transcript_id "g194.t1"; gen
 # TPKDFEKAVISEVKGTVKSITTVQNAQEVVIKSNVDERIYTIPFSAQIRVHVGDQVSPGSKITEGSVDIKQLLRIAGIQRVRQYMIVEIQKVYRIQGI
 # DIADKYVEIIIRQLTNLLQVTDAGNSNLFVGQLVHSHYLNELNKSLLLAGKMPVIAINQVFGIDEAASKSNSFLSAASFQDTKKILTDAAVKNQVDYL
 # LGLKENVIIGGKIPAGTGFLTDEELTFLGSKTVAEEY]
-# end gene g194
+# end gene g195
 ###
-# start gene g195
-Chromosome	AUGUSTUS	gene	432110	433204	0.53	-	.	g195
-Chromosome	AUGUSTUS	transcript	432110	433204	0.53	-	.	g195.t1
-Chromosome	AUGUSTUS	stop_codon	432110	432112	.	-	0	transcript_id "g195.t1"; gene_id "g195";
-Chromosome	AUGUSTUS	single	432110	433204	0.53	-	0	transcript_id "g195.t1"; gene_id "g195";
-Chromosome	AUGUSTUS	CDS	432110	433204	0.53	-	0	transcript_id "g195.t1"; gene_id "g195";
-Chromosome	AUGUSTUS	start_codon	433202	433204	.	-	0	transcript_id "g195.t1"; gene_id "g195";
+# start gene g196
+Chromosome	AUGUSTUS	gene	432110	433204	0.53	-	.	g196
+Chromosome	AUGUSTUS	transcript	432110	433204	0.53	-	.	g196.t1
+Chromosome	AUGUSTUS	stop_codon	432110	432112	.	-	0	transcript_id "g196.t1"; gene_id "g196";
+Chromosome	AUGUSTUS	single	432110	433204	0.53	-	0	transcript_id "g196.t1"; gene_id "g196";
+Chromosome	AUGUSTUS	CDS	432110	433204	0.53	-	0	transcript_id "g196.t1"; gene_id "g196";
+Chromosome	AUGUSTUS	start_codon	433202	433204	.	-	0	transcript_id "g196.t1"; gene_id "g196";
 # coding sequence = [gtggttggccctgaattgaagatgtatgaagttgggatcccagcactaatgatcttaaagctgtttaaaccctttatta
 # tccatggattgatcaataagtttgatgaaaatggtaatgagattagaccaattgccgcttccatcagacaagctgaagatatgattaaaaaccaggat
 # gatcttatctggggaatagtttatgatgttatcaaagatcgtcccgttttactaaatcgtgctccaaccctacataggttagggatccaagcatttga
@@ -3822,15 +3863,15 @@ Chromosome	AUGUSTUS	start_codon	433202	433204	.	-	0	transcript_id "g195.t1"; gen
 # RAPTLHRLGIQAFEPRIVDGKAIRLHPLVTTAFNADFDGDQMAVHVPLSENAVNEARAVLLASKHILGLKDGRPIVTPTQDMVLGNYYLTTERKGQLG
 # EGIIFSTVYEARAAYESQKVHLHAIVGISTKAFPNKKFACQGTLITTVGKIIFNDVLGNNVPYINDGEFDENACPEKFIVKQGEDVRQSILKHQIIPA
 # FSKKVISKLIDLLYLLLEFKDLPKTLDNIKALGFKYSTFSSTTVSVFDIPKYTNKQNYFDSADQQVLKYKQFYNKGLLTDDERYKRVVKL]
-# end gene g195
+# end gene g196
 ###
-# start gene g196
-Chromosome	AUGUSTUS	gene	434768	435844	0.74	-	.	g196
-Chromosome	AUGUSTUS	transcript	434768	435844	0.74	-	.	g196.t1
-Chromosome	AUGUSTUS	stop_codon	434768	434770	.	-	0	transcript_id "g196.t1"; gene_id "g196";
-Chromosome	AUGUSTUS	single	434768	435844	0.74	-	0	transcript_id "g196.t1"; gene_id "g196";
-Chromosome	AUGUSTUS	CDS	434768	435844	0.74	-	0	transcript_id "g196.t1"; gene_id "g196";
-Chromosome	AUGUSTUS	start_codon	435842	435844	.	-	0	transcript_id "g196.t1"; gene_id "g196";
+# start gene g197
+Chromosome	AUGUSTUS	gene	434768	435844	0.74	-	.	g197
+Chromosome	AUGUSTUS	transcript	434768	435844	0.74	-	.	g197.t1
+Chromosome	AUGUSTUS	stop_codon	434768	434770	.	-	0	transcript_id "g197.t1"; gene_id "g197";
+Chromosome	AUGUSTUS	single	434768	435844	0.74	-	0	transcript_id "g197.t1"; gene_id "g197";
+Chromosome	AUGUSTUS	CDS	434768	435844	0.74	-	0	transcript_id "g197.t1"; gene_id "g197";
+Chromosome	AUGUSTUS	start_codon	435842	435844	.	-	0	transcript_id "g197.t1"; gene_id "g197";
 # coding sequence = [ttgtctactaaaaatggtgatgaacaaattacccgtgatatccctaatgttagtgatgcaaacaaacgctatcttgatg
 # agaatggcatcattatggtgggtgctgaagttaaagaaggggatgttttggttggtaaagtttcccctaaaggtcaagtcgaagtctctcctgaagaa
 # aagctatttaaagccatcttccctgaaagtgttcaaaacgtgagagactcttcacttaaagtttcccatggtggggatggtattgtttcagctgtaaa
@@ -3847,15 +3888,15 @@ Chromosome	AUGUSTUS	start_codon	435842	435844	.	-	0	transcript_id "g196.t1"; gen
 # KVSHGGDGIVSAVKRFSIANGDELNDGVIEMIKVYVVQKRKIQIGDKLAGRHGNKGVISKVVPIEDMPHLEDGTPVDILLNPLGVPSRMNIGQIFETH
 # LGYAAHKLAVRSLISSCFDQNKAKEFAIEINQPQARVERLIKGLKNQINDRNIKSEKEALEKLDNSDISLVLKEIGMSFDDLIYKIATPIFQGVNFLD
 # LQDVMQEAGLDPQKNQGKFKLIDGRSGMPFERPISLGIMYMMKLNHMVDDKIHARAVGPYSKITQQPLGGKSQNGGQRFGEMEV]
-# end gene g196
+# end gene g197
 ###
-# start gene g197
-Chromosome	AUGUSTUS	gene	435944	438157	0.75	-	.	g197
-Chromosome	AUGUSTUS	transcript	435944	438157	0.75	-	.	g197.t1
-Chromosome	AUGUSTUS	stop_codon	435944	435946	.	-	0	transcript_id "g197.t1"; gene_id "g197";
-Chromosome	AUGUSTUS	single	435944	438157	0.75	-	0	transcript_id "g197.t1"; gene_id "g197";
-Chromosome	AUGUSTUS	CDS	435944	438157	0.75	-	0	transcript_id "g197.t1"; gene_id "g197";
-Chromosome	AUGUSTUS	start_codon	438155	438157	.	-	0	transcript_id "g197.t1"; gene_id "g197";
+# start gene g198
+Chromosome	AUGUSTUS	gene	435944	438157	0.75	-	.	g198
+Chromosome	AUGUSTUS	transcript	435944	438157	0.75	-	.	g198.t1
+Chromosome	AUGUSTUS	stop_codon	435944	435946	.	-	0	transcript_id "g198.t1"; gene_id "g198";
+Chromosome	AUGUSTUS	single	435944	438157	0.75	-	0	transcript_id "g198.t1"; gene_id "g198";
+Chromosome	AUGUSTUS	CDS	435944	438157	0.75	-	0	transcript_id "g198.t1"; gene_id "g198";
+Chromosome	AUGUSTUS	start_codon	438155	438157	.	-	0	transcript_id "g198.t1"; gene_id "g198";
 # coding sequence = [atgctaacaaaatcccaactaaaactatccaactcccgtaaaagagtacaggaaggttatgtttgtgaggttttacctg
 # ctaatggttcagtgatgcttatatacatctccaataaaaaaaagattgaagatgcttttgtacaaattcttttaagagatgcggtaagagaaggtgct
 # aagattttccctattacaacacttttaaaagcgtttggtttaaataatcgtgagatccttaaaatctttaaaaacaatgaatttatcaaacgttcatt
@@ -3887,15 +3928,15 @@ Chromosome	AUGUSTUS	start_codon	438155	438157	.	-	0	transcript_id "g197.t1"; gen
 # PGGISREDPNLDIRDVHYSQYGRICPIETPEGMNIGLIMSLASFAKIDENGFLMAPYRKIKAGVITDEVEYLTALREDEHIIAEISSLVNISNDNKIL
 # DKEIIGRYRSMQGLYDPLKIDYIDVAPHQVVSIGSSLIPFLENDDSARALMGTNMQRQAYPLIKPYAPAVGTGQEHKIASDSGLTMSSPCSGVVSYVD
 # NSKIIITSDSSKKETVNLVKFERSNQNTCYNHKPIVEIGQRVNKDEIIVDGPAVNKSELALGQNVLVAFTT]
-# end gene g197
+# end gene g198
 ###
-# start gene g198
-Chromosome	AUGUSTUS	gene	438730	439236	0.46	-	.	g198
-Chromosome	AUGUSTUS	transcript	438730	439236	0.46	-	.	g198.t1
-Chromosome	AUGUSTUS	stop_codon	438730	438732	.	-	0	transcript_id "g198.t1"; gene_id "g198";
-Chromosome	AUGUSTUS	single	438730	439236	0.46	-	0	transcript_id "g198.t1"; gene_id "g198";
-Chromosome	AUGUSTUS	CDS	438730	439236	0.46	-	0	transcript_id "g198.t1"; gene_id "g198";
-Chromosome	AUGUSTUS	start_codon	439234	439236	.	-	0	transcript_id "g198.t1"; gene_id "g198";
+# start gene g199
+Chromosome	AUGUSTUS	gene	438730	439236	0.46	-	.	g199
+Chromosome	AUGUSTUS	transcript	438730	439236	0.46	-	.	g199.t1
+Chromosome	AUGUSTUS	stop_codon	438730	438732	.	-	0	transcript_id "g199.t1"; gene_id "g199";
+Chromosome	AUGUSTUS	single	438730	439236	0.46	-	0	transcript_id "g199.t1"; gene_id "g199";
+Chromosome	AUGUSTUS	CDS	438730	439236	0.46	-	0	transcript_id "g199.t1"; gene_id "g199";
+Chromosome	AUGUSTUS	start_codon	439234	439236	.	-	0	transcript_id "g199.t1"; gene_id "g199";
 # coding sequence = [atgtcaaaagatcaaaagtcattaattttaatgctctccaattcgcaacattccattaacaggaaatttgctaatgaat
 # taaaacattctttaagttgtgaattgattgagttaaaagactatcaagttgatttttattctgttgatttagaagcaactaactttcctgacaaaatt
 # aaaactttagttagaaaaatcaaagaacatagcaatttaatttttgttacccctgaacacaacggttttatccctgcttttgctaaaaacatcattga
@@ -3904,15 +3945,15 @@ Chromosome	AUGUSTUS	start_codon	439234	439236	.	-	0	transcript_id "g198.t1"; gen
 # aagccttttattgaacaagttaaaaaattaatataa]
 # protein sequence = [MSKDQKSLILMLSNSQHSINRKFANELKHSLSCELIELKDYQVDFYSVDLEATNFPDKIKTLVRKIKEHSNLIFVTPE
 # HNGFIPAFAKNIIDWMTRDEQYGRNQFLKGLNGVICCVTPATAGGGKTVLELLDKFLSFSGLNVKGTVLVNGYHENFDFKPFIEQVKKLI]
-# end gene g198
+# end gene g199
 ###
-# start gene g199
-Chromosome	AUGUSTUS	gene	456872	457372	1	+	.	g199
-Chromosome	AUGUSTUS	transcript	456872	457372	1	+	.	g199.t1
-Chromosome	AUGUSTUS	start_codon	456872	456874	.	+	0	transcript_id "g199.t1"; gene_id "g199";
-Chromosome	AUGUSTUS	single	456872	457372	1	+	0	transcript_id "g199.t1"; gene_id "g199";
-Chromosome	AUGUSTUS	CDS	456872	457372	1	+	0	transcript_id "g199.t1"; gene_id "g199";
-Chromosome	AUGUSTUS	stop_codon	457370	457372	.	+	0	transcript_id "g199.t1"; gene_id "g199";
+# start gene g200
+Chromosome	AUGUSTUS	gene	456872	457372	1	+	.	g200
+Chromosome	AUGUSTUS	transcript	456872	457372	1	+	.	g200.t1
+Chromosome	AUGUSTUS	start_codon	456872	456874	.	+	0	transcript_id "g200.t1"; gene_id "g200";
+Chromosome	AUGUSTUS	single	456872	457372	1	+	0	transcript_id "g200.t1"; gene_id "g200";
+Chromosome	AUGUSTUS	CDS	456872	457372	1	+	0	transcript_id "g200.t1"; gene_id "g200";
+Chromosome	AUGUSTUS	stop_codon	457370	457372	.	+	0	transcript_id "g200.t1"; gene_id "g200";
 # coding sequence = [ttggaaaaaaataagcaaattttttgtcatattattaaaaaaattgtcgctaaccaaattatagaagaggcttttgcct
 # ttaatactctagaagaaaaagagtggttctgtagattaatagaactcaatggtattggtagtaaaactgcacttaatttgctcaataatgaccttgag
 # gaaattaaacaatacattctggaaaataactacagtgcattatgtggtattaacggtgtaaataacaaaatagctcgtgcacttttatcacttgaaat
@@ -3921,30 +3962,30 @@ Chromosome	AUGUSTUS	stop_codon	457370	457372	.	+	0	transcript_id "g199.t1"; gene
 # aataatgaaattacaaataaaaccgcctaa]
 # protein sequence = [MEKNKQIFCHIIKKIVANQIIEEAFAFNTLEEKEWFCRLIELNGIGSKTALNLLNNDLEEIKQYILENNYSALCGING
 # VNNKIARALLSLEIFEKSENNKNIKGVQVADGYDELFETLKSLGYKQQEIQDALKMIEVKPDFDISQLVAEVIKLMSFKNNEITNKTA]
-# end gene g199
+# end gene g200
 ###
-# start gene g200
-Chromosome	AUGUSTUS	gene	460126	460494	0.92	+	.	g200
-Chromosome	AUGUSTUS	transcript	460126	460494	0.92	+	.	g200.t1
-Chromosome	AUGUSTUS	start_codon	460126	460128	.	+	0	transcript_id "g200.t1"; gene_id "g200";
-Chromosome	AUGUSTUS	single	460126	460494	0.92	+	0	transcript_id "g200.t1"; gene_id "g200";
-Chromosome	AUGUSTUS	CDS	460126	460494	0.92	+	0	transcript_id "g200.t1"; gene_id "g200";
-Chromosome	AUGUSTUS	stop_codon	460492	460494	.	+	0	transcript_id "g200.t1"; gene_id "g200";
+# start gene g201
+Chromosome	AUGUSTUS	gene	460126	460494	0.92	+	.	g201
+Chromosome	AUGUSTUS	transcript	460126	460494	0.92	+	.	g201.t1
+Chromosome	AUGUSTUS	start_codon	460126	460128	.	+	0	transcript_id "g201.t1"; gene_id "g201";
+Chromosome	AUGUSTUS	single	460126	460494	0.92	+	0	transcript_id "g201.t1"; gene_id "g201";
+Chromosome	AUGUSTUS	CDS	460126	460494	0.92	+	0	transcript_id "g201.t1"; gene_id "g201";
+Chromosome	AUGUSTUS	stop_codon	460492	460494	.	+	0	transcript_id "g201.t1"; gene_id "g201";
 # coding sequence = [atgggaaaactagataaaaaacaattaattgaatctctaaaagagatgactatagttgaaattgatgaaataatcaagg
 # ctgttgaagaagcatttggtgtaactgcaactccaatagtagctgctggcgcagctggtgctacacaagaagctgctagcgaagttagtgtaaaggta
 # acaggatatgctgataatgctaagttagctgttttaaaactttatcgtgaaattactggagttggtttaatggaagctaaaactgcagttgaaaaatt
 # accttgcgttgtaaaacaagatattaaaccagaagaagcagaagaacttaaaaagcgttttgttgaagttggtgcaactgttgaagttaaataa]
 # protein sequence = [MGKLDKKQLIESLKEMTIVEIDEIIKAVEEAFGVTATPIVAAGAAGATQEAASEVSVKVTGYADNAKLAVLKLYREIT
 # GVGLMEAKTAVEKLPCVVKQDIKPEEAEELKKRFVEVGATVEVK]
-# end gene g200
+# end gene g201
 ###
-# start gene g201
-Chromosome	AUGUSTUS	gene	475099	475479	0.75	-	.	g201
-Chromosome	AUGUSTUS	transcript	475099	475479	0.75	-	.	g201.t1
-Chromosome	AUGUSTUS	stop_codon	475099	475101	.	-	0	transcript_id "g201.t1"; gene_id "g201";
-Chromosome	AUGUSTUS	single	475099	475479	0.75	-	0	transcript_id "g201.t1"; gene_id "g201";
-Chromosome	AUGUSTUS	CDS	475099	475479	0.75	-	0	transcript_id "g201.t1"; gene_id "g201";
-Chromosome	AUGUSTUS	start_codon	475477	475479	.	-	0	transcript_id "g201.t1"; gene_id "g201";
+# start gene g202
+Chromosome	AUGUSTUS	gene	475099	475479	0.75	-	.	g202
+Chromosome	AUGUSTUS	transcript	475099	475479	0.75	-	.	g202.t1
+Chromosome	AUGUSTUS	stop_codon	475099	475101	.	-	0	transcript_id "g202.t1"; gene_id "g202";
+Chromosome	AUGUSTUS	single	475099	475479	0.75	-	0	transcript_id "g202.t1"; gene_id "g202";
+Chromosome	AUGUSTUS	CDS	475099	475479	0.75	-	0	transcript_id "g202.t1"; gene_id "g202";
+Chromosome	AUGUSTUS	start_codon	475477	475479	.	-	0	transcript_id "g202.t1"; gene_id "g202";
 # coding sequence = [atggctactaatcttaaatctattgcaaagttgcaaaaacctattcagtatgataaggtaattgaagttgatcgtattt
 # ttgcagatcctgcttttattgagcaacatcggcaaagaattttagcttcttttaaagatgctaaggaaagtgctctttaccacgaactaactcatatt
 # gttattaaagataatttgttttcagcagcaatgaatgaaattgttagttattttgaatttcaaattaaccctgaagagttaaaaaatgttgttgaagg
@@ -3952,15 +3993,15 @@ Chromosome	AUGUSTUS	start_codon	475477	475479	.	-	0	transcript_id "g201.t1"; gen
 # aggaatga]
 # protein sequence = [MATNLKSIAKLQKPIQYDKVIEVDRIFADPAFIEQHRQRILASFKDAKESALYHELTHIVIKDNLFSAAMNEIVSYFE
 # FQINPEELKNVVEGLKRDVVKDADEKTIQSIAEKIIKKALVFNFLQKE]
-# end gene g201
+# end gene g202
 ###
-# start gene g202
-Chromosome	AUGUSTUS	gene	485242	487647	1	-	.	g202
-Chromosome	AUGUSTUS	transcript	485242	487647	1	-	.	g202.t1
-Chromosome	AUGUSTUS	stop_codon	485242	485244	.	-	0	transcript_id "g202.t1"; gene_id "g202";
-Chromosome	AUGUSTUS	single	485242	487647	1	-	0	transcript_id "g202.t1"; gene_id "g202";
-Chromosome	AUGUSTUS	CDS	485242	487647	1	-	0	transcript_id "g202.t1"; gene_id "g202";
-Chromosome	AUGUSTUS	start_codon	487645	487647	.	-	0	transcript_id "g202.t1"; gene_id "g202";
+# start gene g203
+Chromosome	AUGUSTUS	gene	485242	487647	1	-	.	g203
+Chromosome	AUGUSTUS	transcript	485242	487647	1	-	.	g203.t1
+Chromosome	AUGUSTUS	stop_codon	485242	485244	.	-	0	transcript_id "g203.t1"; gene_id "g203";
+Chromosome	AUGUSTUS	single	485242	487647	1	-	0	transcript_id "g203.t1"; gene_id "g203";
+Chromosome	AUGUSTUS	CDS	485242	487647	1	-	0	transcript_id "g203.t1"; gene_id "g203";
+Chromosome	AUGUSTUS	start_codon	487645	487647	.	-	0	transcript_id "g203.t1"; gene_id "g203";
 # coding sequence = [ttggaatataaagtagatttccttgaaactgaaccaaaatcattatttgatgaaaaaacaacaatagttgtagaaagtg
 # aaccacctttcattcaacctgacctatcacttgaattagattctgtaaatgatgttgataaatcattagaaactaaaactacatctgttgaattaaat
 # catgaagaaattggtaatgaatttattaatttagatgtttctgaaaaagaagttcaagaacaaccaacaacacaactagaaactgatagtgagttcgt
@@ -3995,15 +4036,15 @@ Chromosome	AUGUSTUS	start_codon	487645	487647	.	-	0	transcript_id "g202.t1"; gen
 # PEIQPVESQPEATFDTVQPEQTPQEAKFDSPVETVEQPEFSSEPTQQHVESEASFDEPNYDFDEPNYDFDQPSYDSDLQPSEPQYDVDEPNYDFDEPN
 # YEIESKPSEPQFEPQVEQQPGEAVFEPSAEAKFDSPVESVQDSQPEPLLEEVQTQPEIQPVESQPEATFDTVQPEQTPQEAKFDSPVETIQEPQVSSE
 # PEVVVQPNFEERKPETVLEEPQADEIQPEASEEESLD]
-# end gene g202
+# end gene g203
 ###
-# start gene g203
-Chromosome	AUGUSTUS	gene	494984	496615	0.96	-	.	g203
-Chromosome	AUGUSTUS	transcript	494984	496615	0.96	-	.	g203.t1
-Chromosome	AUGUSTUS	stop_codon	494984	494986	.	-	0	transcript_id "g203.t1"; gene_id "g203";
-Chromosome	AUGUSTUS	single	494984	496615	0.96	-	0	transcript_id "g203.t1"; gene_id "g203";
-Chromosome	AUGUSTUS	CDS	494984	496615	0.96	-	0	transcript_id "g203.t1"; gene_id "g203";
-Chromosome	AUGUSTUS	start_codon	496613	496615	.	-	0	transcript_id "g203.t1"; gene_id "g203";
+# start gene g204
+Chromosome	AUGUSTUS	gene	494984	496615	0.96	-	.	g204
+Chromosome	AUGUSTUS	transcript	494984	496615	0.96	-	.	g204.t1
+Chromosome	AUGUSTUS	stop_codon	494984	494986	.	-	0	transcript_id "g204.t1"; gene_id "g204";
+Chromosome	AUGUSTUS	single	494984	496615	0.96	-	0	transcript_id "g204.t1"; gene_id "g204";
+Chromosome	AUGUSTUS	CDS	494984	496615	0.96	-	0	transcript_id "g204.t1"; gene_id "g204";
+Chromosome	AUGUSTUS	start_codon	496613	496615	.	-	0	transcript_id "g204.t1"; gene_id "g204";
 # coding sequence = [atggcaaaggaattaatctttggtaaagatgcgagaacccgcttgttgcagggtattaataagatagcaaatgctgtta
 # aagtaacagtaggtcctaaaggccaaaatgttattttagagagaaaatttgcaaacccattaattactaacgatggggttacaatcgcaaaagaaata
 # gaacttagtgatccagttgaaaatattggtgctaaggttatttcagttgctgcagtgtcaactaatgacattgctggggatggtacaacaacagctac
@@ -4027,30 +4068,30 @@ Chromosome	AUGUSTUS	start_codon	496613	496615	.	-	0	transcript_id "g203.t1"; gen
 # KCNEYGERQKAALEDLAISSGTLAYNNEINSGFKDVTVDNLGDARKVQIAKEKTTVIGGKGNKDKIKKHVELLNGRLKQTTDKYDSDLIKERIAYLSQ
 # GVAVIRVGGATELAQKELKLRIEDALNSTKAAVEEGIIAGGGVGLLNASCVLTNSKLKERYENETSVENIKEILLGFEIVQKSLEAPARQIIQNSGVD
 # PVKILSELKNEKTGVGFDAETKKKVDMIANGIIDPTKVTKTALEKAASVASSLITTNVAVYDVKERKDNSFSE]
-# end gene g203
+# end gene g204
 ###
-# start gene g204
-Chromosome	AUGUSTUS	gene	496628	496960	0.85	-	.	g204
-Chromosome	AUGUSTUS	transcript	496628	496960	0.85	-	.	g204.t1
-Chromosome	AUGUSTUS	stop_codon	496628	496630	.	-	0	transcript_id "g204.t1"; gene_id "g204";
-Chromosome	AUGUSTUS	single	496628	496960	0.85	-	0	transcript_id "g204.t1"; gene_id "g204";
-Chromosome	AUGUSTUS	CDS	496628	496960	0.85	-	0	transcript_id "g204.t1"; gene_id "g204";
-Chromosome	AUGUSTUS	start_codon	496958	496960	.	-	0	transcript_id "g204.t1"; gene_id "g204";
+# start gene g205
+Chromosome	AUGUSTUS	gene	496628	496960	0.85	-	.	g205
+Chromosome	AUGUSTUS	transcript	496628	496960	0.85	-	.	g205.t1
+Chromosome	AUGUSTUS	stop_codon	496628	496630	.	-	0	transcript_id "g205.t1"; gene_id "g205";
+Chromosome	AUGUSTUS	single	496628	496960	0.85	-	0	transcript_id "g205.t1"; gene_id "g205";
+Chromosome	AUGUSTUS	CDS	496628	496960	0.85	-	0	transcript_id "g205.t1"; gene_id "g205";
+Chromosome	AUGUSTUS	start_codon	496958	496960	.	-	0	transcript_id "g205.t1"; gene_id "g205";
 # coding sequence = [atgaacataacgccaattcatgacaacgtcttggtttcacttgtggaatcaaacaaagaagaagtctcaaaaaaaggga
 # ttattacctcattggcaagtaatgataaaagcgatgctaatgctaataaagggattgtaattgctcttggtgctggtcctgcatatggcaaaacagaa
 # aaaccaaaatatgcttttggtgttggtgatattatttactttaaggagtatagtggtatctcttttgagaatgagggaaacaagtacaaaattattgg
 # atttgaggatgtacttgcctttgaaaaaccagaaagtggtaagcaaagaaaaagataa]
 # protein sequence = [MNITPIHDNVLVSLVESNKEEVSKKGIITSLASNDKSDANANKGIVIALGAGPAYGKTEKPKYAFGVGDIIYFKEYSG
 # ISFENEGNKYKIIGFEDVLAFEKPESGKQRKR]
-# end gene g204
+# end gene g205
 ###
-# start gene g205
-Chromosome	AUGUSTUS	gene	500720	501487	0.94	-	.	g205
-Chromosome	AUGUSTUS	transcript	500720	501487	0.94	-	.	g205.t1
-Chromosome	AUGUSTUS	stop_codon	500720	500722	.	-	0	transcript_id "g205.t1"; gene_id "g205";
-Chromosome	AUGUSTUS	single	500720	501487	0.94	-	0	transcript_id "g205.t1"; gene_id "g205";
-Chromosome	AUGUSTUS	CDS	500720	501487	0.94	-	0	transcript_id "g205.t1"; gene_id "g205";
-Chromosome	AUGUSTUS	start_codon	501485	501487	.	-	0	transcript_id "g205.t1"; gene_id "g205";
+# start gene g206
+Chromosome	AUGUSTUS	gene	500720	501487	0.94	-	.	g206
+Chromosome	AUGUSTUS	transcript	500720	501487	0.94	-	.	g206.t1
+Chromosome	AUGUSTUS	stop_codon	500720	500722	.	-	0	transcript_id "g206.t1"; gene_id "g206";
+Chromosome	AUGUSTUS	single	500720	501487	0.94	-	0	transcript_id "g206.t1"; gene_id "g206";
+Chromosome	AUGUSTUS	CDS	500720	501487	0.94	-	0	transcript_id "g206.t1"; gene_id "g206";
+Chromosome	AUGUSTUS	start_codon	501485	501487	.	-	0	transcript_id "g206.t1"; gene_id "g206";
 # coding sequence = [gtggttgaaaatattgatgattttcgtaatcaaattcaacaatatgaaaagaaaaatgagcttttaaaaacaacaatta
 # aagccattgaattagtgttccaaaatgaaacagatgtgcatgatttaattattgagcttaatgagaactgcgatctaattactaaaaatattaataac
 # ttaaaccatcaaagtttagctcagaatcaaatcaattatgaaaaactgttttacttgatgagtcaaacaaatcaagctttagaaaaactgaaaaattc
@@ -4063,15 +4104,15 @@ Chromosome	AUGUSTUS	start_codon	501485	501487	.	-	0	transcript_id "g205.t1"; gen
 # protein sequence = [MVENIDDFRNQIQQYEKKNELLKTTIKAIELVFQNETDVHDLIIELNENCDLITKNINNLNHQSLAQNQINYEKLFYL
 # MSQTNQALEKLKNSLTDLLNLAVNKFDDYRFFVYTLDDFRFKFFQIENLISDQDLKVPAKTLQVINKSKLELDNIFTEANNNYLGTFNLFSEKIDLLQ
 # IQLTEVICDVVSLVNLRLMCKQAFLFANKYRQKSSHIDRSLEQLTKLYNRQNYPDTLEGLINLLTKIKTNTKQDYLELN]
-# end gene g205
+# end gene g206
 ###
-# start gene g206
-Chromosome	AUGUSTUS	gene	504260	504655	0.51	-	.	g206
-Chromosome	AUGUSTUS	transcript	504260	504655	0.51	-	.	g206.t1
-Chromosome	AUGUSTUS	stop_codon	504260	504262	.	-	0	transcript_id "g206.t1"; gene_id "g206";
-Chromosome	AUGUSTUS	single	504260	504655	0.51	-	0	transcript_id "g206.t1"; gene_id "g206";
-Chromosome	AUGUSTUS	CDS	504260	504655	0.51	-	0	transcript_id "g206.t1"; gene_id "g206";
-Chromosome	AUGUSTUS	start_codon	504653	504655	.	-	0	transcript_id "g206.t1"; gene_id "g206";
+# start gene g207
+Chromosome	AUGUSTUS	gene	504260	504655	0.51	-	.	g207
+Chromosome	AUGUSTUS	transcript	504260	504655	0.51	-	.	g207.t1
+Chromosome	AUGUSTUS	stop_codon	504260	504262	.	-	0	transcript_id "g207.t1"; gene_id "g207";
+Chromosome	AUGUSTUS	single	504260	504655	0.51	-	0	transcript_id "g207.t1"; gene_id "g207";
+Chromosome	AUGUSTUS	CDS	504260	504655	0.51	-	0	transcript_id "g207.t1"; gene_id "g207";
+Chromosome	AUGUSTUS	start_codon	504653	504655	.	-	0	transcript_id "g207.t1"; gene_id "g207";
 # coding sequence = [atggatgcatttaaagagtttaaacttgatcgaatttgtatggtttacactaaatttaaaaactcattaatccaacaat
 # ctcagctctttcaagtttttcctttcgatgttgaaacttttaaaactttaaatccggttgtaactgatcaacaacttgattttgagccagatcaagcc
 # acgataattaatttaattactccacagttttttgatgtggctctgtatggtggccttgttgaaactaagttatgtgaatcagcttctagacaaaatgc
@@ -4079,15 +4120,15 @@ Chromosome	AUGUSTUS	start_codon	504653	504655	.	-	0	transcript_id "g206.t1"; gen
 # aagttataggaggtatgaattaa]
 # protein sequence = [MDAFKEFKLDRICMVYTKFKNSLIQQSQLFQVFPFDVETFKTLNPVVTDQQLDFEPDQATIINLITPQFFDVALYGGL
 # VETKLCESASRQNAMEAATKNAKDLLDKYTLQFNKLRQNSITEEIIEVIGGMN]
-# end gene g206
+# end gene g207
 ###
-# start gene g207
-Chromosome	AUGUSTUS	gene	505099	505626	0.29	-	.	g207
-Chromosome	AUGUSTUS	transcript	505099	505626	0.29	-	.	g207.t1
-Chromosome	AUGUSTUS	stop_codon	505099	505101	.	-	0	transcript_id "g207.t1"; gene_id "g207";
-Chromosome	AUGUSTUS	single	505099	505626	0.29	-	0	transcript_id "g207.t1"; gene_id "g207";
-Chromosome	AUGUSTUS	CDS	505099	505626	0.29	-	0	transcript_id "g207.t1"; gene_id "g207";
-Chromosome	AUGUSTUS	start_codon	505624	505626	.	-	0	transcript_id "g207.t1"; gene_id "g207";
+# start gene g208
+Chromosome	AUGUSTUS	gene	505099	505626	0.29	-	.	g208
+Chromosome	AUGUSTUS	transcript	505099	505626	0.29	-	.	g208.t1
+Chromosome	AUGUSTUS	stop_codon	505099	505101	.	-	0	transcript_id "g208.t1"; gene_id "g208";
+Chromosome	AUGUSTUS	single	505099	505626	0.29	-	0	transcript_id "g208.t1"; gene_id "g208";
+Chromosome	AUGUSTUS	CDS	505099	505626	0.29	-	0	transcript_id "g208.t1"; gene_id "g208";
+Chromosome	AUGUSTUS	start_codon	505624	505626	.	-	0	transcript_id "g208.t1"; gene_id "g208";
 # coding sequence = [atggttagtagtctatttaacgctggacaacgccctgcaattcaaattggtttatcagtttcaagggttggtagtgcag
 # cacaaacaaaagcgattaaacagcaaactggcagtttaaaactagaacttgctcagtatagtgaacttgatagttttagtcaatttggtagtgatctt
 # gatgaaaatacaaaaaaggttttagagcatggtaaaagagtaatggaaatgattaaacaaccaaatggtaaaccttactctcaagtccatgaagcatt
@@ -4096,15 +4137,15 @@ Chromosome	AUGUSTUS	start_codon	505624	505626	.	-	0	transcript_id "g207.t1"; gen
 # agtacattaacagattatgatattaccaaatttggtagtattgaggaacttaattaa]
 # protein sequence = [MVSSLFNAGQRPAIQIGLSVSRVGSAAQTKAIKQQTGSLKLELAQYSELDSFSQFGSDLDENTKKVLEHGKRVMEMIK
 # QPNGKPYSQVHEALFLFAINKAFIKFIPVDEIAKFKQRITEEFNGSHPLFKELSNKKEFTEDLESKTKTAFKMLVKRFISTLTDYDITKFGSIEELN]
-# end gene g207
+# end gene g208
 ###
-# start gene g208
-Chromosome	AUGUSTUS	gene	505909	506655	0.93	-	.	g208
-Chromosome	AUGUSTUS	transcript	505909	506655	0.93	-	.	g208.t1
-Chromosome	AUGUSTUS	stop_codon	505909	505911	.	-	0	transcript_id "g208.t1"; gene_id "g208";
-Chromosome	AUGUSTUS	single	505909	506655	0.93	-	0	transcript_id "g208.t1"; gene_id "g208";
-Chromosome	AUGUSTUS	CDS	505909	506655	0.93	-	0	transcript_id "g208.t1"; gene_id "g208";
-Chromosome	AUGUSTUS	start_codon	506653	506655	.	-	0	transcript_id "g208.t1"; gene_id "g208";
+# start gene g209
+Chromosome	AUGUSTUS	gene	505909	506655	0.93	-	.	g209
+Chromosome	AUGUSTUS	transcript	505909	506655	0.93	-	.	g209.t1
+Chromosome	AUGUSTUS	stop_codon	505909	505911	.	-	0	transcript_id "g209.t1"; gene_id "g209";
+Chromosome	AUGUSTUS	single	505909	506655	0.93	-	0	transcript_id "g209.t1"; gene_id "g209";
+Chromosome	AUGUSTUS	CDS	505909	506655	0.93	-	0	transcript_id "g209.t1"; gene_id "g209";
+Chromosome	AUGUSTUS	start_codon	506653	506655	.	-	0	transcript_id "g209.t1"; gene_id "g209";
 # coding sequence = [atggcagataaactaaatgaatacgtagcattaatcaaaactgaaattaaaaagtattccaaaaaaatatttaacagtg
 # aaattggtcaagtcattagtgttgctgatggaattgccaaggttagtggacttgaaaatgctttattaaatgagttaattcaatttgaaaataatatt
 # caaggaatagtattaaaccttgaacaaaatacagtcggaatagcactttttggtgactattcttcgttacgagaaggcagtaccgctaaaagaaccca
@@ -4116,30 +4157,30 @@ Chromosome	AUGUSTUS	start_codon	506653	506655	.	-	0	transcript_id "g208.t1"; gen
 # protein sequence = [MADKLNEYVALIKTEIKKYSKKIFNSEIGQVISVADGIAKVSGLENALLNELIQFENNIQGIVLNLEQNTVGIALFGD
 # YSSLREGSTAKRTHSVMKTPVGDVMLGRIVNALGEAIDGRGDIKATEYDQIEKIAPGVMKRKSVNQPLETGILTIDALFPIGKGQRELIVGDRQTGKT
 # AIAIDTIINQKDKDVYCVYVAIGQKNSSVAQIVHQLEVNDSMKYTTVVCATASDSDSMVYLSPFTGITIAEY]
-# end gene g208
+# end gene g209
 ###
-# start gene g209
-Chromosome	AUGUSTUS	gene	507823	508131	0.88	-	.	g209
-Chromosome	AUGUSTUS	transcript	507823	508131	0.88	-	.	g209.t1
-Chromosome	AUGUSTUS	stop_codon	507823	507825	.	-	0	transcript_id "g209.t1"; gene_id "g209";
-Chromosome	AUGUSTUS	single	507823	508131	0.88	-	0	transcript_id "g209.t1"; gene_id "g209";
-Chromosome	AUGUSTUS	CDS	507823	508131	0.88	-	0	transcript_id "g209.t1"; gene_id "g209";
-Chromosome	AUGUSTUS	start_codon	508129	508131	.	-	0	transcript_id "g209.t1"; gene_id "g209";
+# start gene g210
+Chromosome	AUGUSTUS	gene	507823	508131	0.88	-	.	g210
+Chromosome	AUGUSTUS	transcript	507823	508131	0.88	-	.	g210.t1
+Chromosome	AUGUSTUS	stop_codon	507823	507825	.	-	0	transcript_id "g210.t1"; gene_id "g210";
+Chromosome	AUGUSTUS	single	507823	508131	0.88	-	0	transcript_id "g210.t1"; gene_id "g210";
+Chromosome	AUGUSTUS	CDS	507823	508131	0.88	-	0	transcript_id "g210.t1"; gene_id "g210";
+Chromosome	AUGUSTUS	start_codon	508129	508131	.	-	0	transcript_id "g210.t1"; gene_id "g210";
 # coding sequence = [atggaacatgttaatgaaattttagctacagttggtgttatattacaacaaactcaaactacccaggatgttaacgcta
 # gtgctaagctaggtgcttatataggtgctggtgttactatgattgcaggttcaactgtagggattggacaaggttatatttttggtaaagctgttgag
 # gcaatagcaagaaatcctgaagttgaaaaacaggtttttaaactaattttcattggttctgctgtttctgaatctacagcaatttatggacttttaat
 # ttcctttatcttaatttttgtagcaggagcttaa]
 # protein sequence = [MEHVNEILATVGVILQQTQTTQDVNASAKLGAYIGAGVTMIAGSTVGIGQGYIFGKAVEAIARNPEVEKQVFKLIFIG
 # SAVSESTAIYGLLISFILIFVAGA]
-# end gene g209
+# end gene g210
 ###
-# start gene g210
-Chromosome	AUGUSTUS	gene	509502	509876	0.97	-	.	g210
-Chromosome	AUGUSTUS	transcript	509502	509876	0.97	-	.	g210.t1
-Chromosome	AUGUSTUS	stop_codon	509502	509504	.	-	0	transcript_id "g210.t1"; gene_id "g210";
-Chromosome	AUGUSTUS	single	509502	509876	0.97	-	0	transcript_id "g210.t1"; gene_id "g210";
-Chromosome	AUGUSTUS	CDS	509502	509876	0.97	-	0	transcript_id "g210.t1"; gene_id "g210";
-Chromosome	AUGUSTUS	start_codon	509874	509876	.	-	0	transcript_id "g210.t1"; gene_id "g210";
+# start gene g211
+Chromosome	AUGUSTUS	gene	509502	509876	0.97	-	.	g211
+Chromosome	AUGUSTUS	transcript	509502	509876	0.97	-	.	g211.t1
+Chromosome	AUGUSTUS	stop_codon	509502	509504	.	-	0	transcript_id "g211.t1"; gene_id "g211";
+Chromosome	AUGUSTUS	single	509502	509876	0.97	-	0	transcript_id "g211.t1"; gene_id "g211";
+Chromosome	AUGUSTUS	CDS	509502	509876	0.97	-	0	transcript_id "g211.t1"; gene_id "g211";
+Chromosome	AUGUSTUS	start_codon	509874	509876	.	-	0	transcript_id "g211.t1"; gene_id "g211";
 # coding sequence = [atgaaccaattaactaaaaccataggtagccatattcaaattgttggtgatgacacttactgtactaatgcagaacttg
 # ctaaaaaaggtgttgcacaaaatacaacaaactcgatattgattaaattaaatcaaattggttctattagtgaaacgattcaaacaattgaagttgca
 # aaaaaagctaactggagtcaagtaatttcacatcgcagtggtgaaacagaagatacaactattgctgatttggcagttgctgcccaaactggtcaaat
@@ -4147,15 +4188,15 @@ Chromosome	AUGUSTUS	start_codon	509874	509876	.	-	0	transcript_id "g210.t1"; gen
 # ga]
 # protein sequence = [MNQLTKTIGSHIQIVGDDTYCTNAELAKKGVAQNTTNSILIKLNQIGSISETIQTIEVAKKANWSQVISHRSGETEDT
 # TIADLAVAAQTGQIKTGSMSRSERIAKYNRLLYIEIELGDKGKYLG]
-# end gene g210
+# end gene g211
 ###
-# start gene g211
-Chromosome	AUGUSTUS	gene	510093	510707	0.98	-	.	g211
-Chromosome	AUGUSTUS	transcript	510093	510707	0.98	-	.	g211.t1
-Chromosome	AUGUSTUS	stop_codon	510093	510095	.	-	0	transcript_id "g211.t1"; gene_id "g211";
-Chromosome	AUGUSTUS	single	510093	510707	0.98	-	0	transcript_id "g211.t1"; gene_id "g211";
-Chromosome	AUGUSTUS	CDS	510093	510707	0.98	-	0	transcript_id "g211.t1"; gene_id "g211";
-Chromosome	AUGUSTUS	start_codon	510705	510707	.	-	0	transcript_id "g211.t1"; gene_id "g211";
+# start gene g212
+Chromosome	AUGUSTUS	gene	510093	510707	0.98	-	.	g212
+Chromosome	AUGUSTUS	transcript	510093	510707	0.98	-	.	g212.t1
+Chromosome	AUGUSTUS	stop_codon	510093	510095	.	-	0	transcript_id "g212.t1"; gene_id "g212";
+Chromosome	AUGUSTUS	single	510093	510707	0.98	-	0	transcript_id "g212.t1"; gene_id "g212";
+Chromosome	AUGUSTUS	CDS	510093	510707	0.98	-	0	transcript_id "g212.t1"; gene_id "g212";
+Chromosome	AUGUSTUS	start_codon	510705	510707	.	-	0	transcript_id "g212.t1"; gene_id "g212";
 # coding sequence = [atggttccatcaggtgcttctacaggtgagaaagaagcaattgaattacgtgataatgatccaaaaaattattttggta
 # aaggcgttaacgaagccgttgataacgttaataaagttattgcccctaagcttattggcttaaatgcatttgatcaattaacagtggatcaagcaatg
 # attaaactagacaatactcccaacaaagcaaaattaggagcaaatgctatattatctgtttcacttgcagtatcaaaagcagcagcaaaagcacaaaa
@@ -4166,15 +4207,15 @@ Chromosome	AUGUSTUS	start_codon	510705	510707	.	-	0	transcript_id "g211.t1"; gen
 # protein sequence = [MVPSGASTGEKEAIELRDNDPKNYFGKGVNEAVDNVNKVIAPKLIGLNAFDQLTVDQAMIKLDNTPNKAKLGANAILS
 # VSLAVSKAAAKAQNSSLFQYISNKLIGLNTTNFVLPVPMLNVINGGAHADNYIDFQEFMIMPLGAKKMHEALKMASETFHALQNLLKKRGLNTNKGDE
 # GGFAPNLKLAEDALDIMVEAIKLAGYKP]
-# end gene g211
+# end gene g212
 ###
-# start gene g212
-Chromosome	AUGUSTUS	gene	521470	521868	1	-	.	g212
-Chromosome	AUGUSTUS	transcript	521470	521868	1	-	.	g212.t1
-Chromosome	AUGUSTUS	stop_codon	521470	521472	.	-	0	transcript_id "g212.t1"; gene_id "g212";
-Chromosome	AUGUSTUS	single	521470	521868	1	-	0	transcript_id "g212.t1"; gene_id "g212";
-Chromosome	AUGUSTUS	CDS	521470	521868	1	-	0	transcript_id "g212.t1"; gene_id "g212";
-Chromosome	AUGUSTUS	start_codon	521866	521868	.	-	0	transcript_id "g212.t1"; gene_id "g212";
+# start gene g213
+Chromosome	AUGUSTUS	gene	521470	521868	1	-	.	g213
+Chromosome	AUGUSTUS	transcript	521470	521868	1	-	.	g213.t1
+Chromosome	AUGUSTUS	stop_codon	521470	521472	.	-	0	transcript_id "g213.t1"; gene_id "g213";
+Chromosome	AUGUSTUS	single	521470	521868	1	-	0	transcript_id "g213.t1"; gene_id "g213";
+Chromosome	AUGUSTUS	CDS	521470	521868	1	-	0	transcript_id "g213.t1"; gene_id "g213";
+Chromosome	AUGUSTUS	start_codon	521866	521868	.	-	0	transcript_id "g213.t1"; gene_id "g213";
 # coding sequence = [atggataaaaaatctttttatggacttggtcgtcgtaaatcttctactgctaaagtttatttatatcaaagcaaagata
 # agggtaaaataaccattaatcatcgtaatcctagcgattattttccaaataaattggtgattcaagatatggaacaacccttagagttaaccaaactt
 # aaggataactttgatatcaatgttgttgttaaaggtggaggatttactgggcaggcaggagccattagattaggtattgttcgtgctttaataaaatt
@@ -4182,15 +4223,15 @@ Chromosome	AUGUSTUS	start_codon	521866	521868	.	-	0	transcript_id "g212.t1"; gen
 # gtgcaccacaatttactaagcgttag]
 # protein sequence = [MDKKSFYGLGRRKSSTAKVYLYQSKDKGKITINHRNPSDYFPNKLVIQDMEQPLELTKLKDNFDINVVVKGGGFTGQA
 # GAIRLGIVRALIKFNPDLKKLLKTKKLTTRDKRAKERKKFGLYGARRAPQFTKR]
-# end gene g212
+# end gene g213
 ###
-# start gene g213
-Chromosome	AUGUSTUS	gene	524151	525452	0.47	-	.	g213
-Chromosome	AUGUSTUS	transcript	524151	525452	0.47	-	.	g213.t1
-Chromosome	AUGUSTUS	stop_codon	524151	524153	.	-	0	transcript_id "g213.t1"; gene_id "g213";
-Chromosome	AUGUSTUS	single	524151	525452	0.47	-	0	transcript_id "g213.t1"; gene_id "g213";
-Chromosome	AUGUSTUS	CDS	524151	525452	0.47	-	0	transcript_id "g213.t1"; gene_id "g213";
-Chromosome	AUGUSTUS	start_codon	525450	525452	.	-	0	transcript_id "g213.t1"; gene_id "g213";
+# start gene g214
+Chromosome	AUGUSTUS	gene	524151	525452	0.47	-	.	g214
+Chromosome	AUGUSTUS	transcript	524151	525452	0.47	-	.	g214.t1
+Chromosome	AUGUSTUS	stop_codon	524151	524153	.	-	0	transcript_id "g214.t1"; gene_id "g214";
+Chromosome	AUGUSTUS	single	524151	525452	0.47	-	0	transcript_id "g214.t1"; gene_id "g214";
+Chromosome	AUGUSTUS	CDS	524151	525452	0.47	-	0	transcript_id "g214.t1"; gene_id "g214";
+Chromosome	AUGUSTUS	start_codon	525450	525452	.	-	0	transcript_id "g214.t1"; gene_id "g214";
 # coding sequence = [atggatgaaccttctattggattgcatcaaaaagacaatatgcgtttaattaaaacaatgatggtaatgcgtgatttag
 # gtaacaccttattagtagttgagcatgacagtgaaacaatgttagcggcagattatttaattgatattggtcctaaagcaggtaatgaaggtggtgaa
 # ttagttgcttgcggtacacctttacaagtaatggaaaactcaaactcaattactggacaatatcttagtggtaaaaaacaaatctccattccaaaaaa
@@ -4210,15 +4251,15 @@ Chromosome	AUGUSTUS	start_codon	525450	525452	.	-	0	transcript_id "g213.t1"; gen
 # QDPIGRTPRSNPATYISVFDDIRDLFANTKEAKARGYTNSRFSFNVPGGRCDKCFGDGVIRIEMHFLPDVYVKCEVCNGKKYNSQTLEIKYLGKSIFD
 # VLQMSCKEAYEFFKAIPNISRKLRLLCDVGLEYLQLGINVTFLSGGEAQRIKLSKFLQKKSTGKTLFVLDEPSTGLHLEDINKLLTIIQRIIKNGDTV
 # VVIEHNLDIIKVADYIIDLGPEGGDNGGQIVAQGTPEQLINQVNKSYTAQYLSKILKPDSI]
-# end gene g213
+# end gene g214
 ###
-# start gene g214
-Chromosome	AUGUSTUS	gene	529532	530437	0.33	-	.	g214
-Chromosome	AUGUSTUS	transcript	529532	530437	0.33	-	.	g214.t1
-Chromosome	AUGUSTUS	stop_codon	529532	529534	.	-	0	transcript_id "g214.t1"; gene_id "g214";
-Chromosome	AUGUSTUS	single	529532	530437	0.33	-	0	transcript_id "g214.t1"; gene_id "g214";
-Chromosome	AUGUSTUS	CDS	529532	530437	0.33	-	0	transcript_id "g214.t1"; gene_id "g214";
-Chromosome	AUGUSTUS	start_codon	530435	530437	.	-	0	transcript_id "g214.t1"; gene_id "g214";
+# start gene g215
+Chromosome	AUGUSTUS	gene	529532	530437	0.33	-	.	g215
+Chromosome	AUGUSTUS	transcript	529532	530437	0.33	-	.	g215.t1
+Chromosome	AUGUSTUS	stop_codon	529532	529534	.	-	0	transcript_id "g215.t1"; gene_id "g215";
+Chromosome	AUGUSTUS	single	529532	530437	0.33	-	0	transcript_id "g215.t1"; gene_id "g215";
+Chromosome	AUGUSTUS	CDS	529532	530437	0.33	-	0	transcript_id "g215.t1"; gene_id "g215";
+Chromosome	AUGUSTUS	start_codon	530435	530437	.	-	0	transcript_id "g215.t1"; gene_id "g215";
 # coding sequence = [gtgcatctctttaacacaattgtgcgtcaaaaattgtttaataacacgcatttaaataccatttctattgaggagatta
 # acaattcaaccaacagtattgttgttctcacctcaccacctgataagttgtatgctaaattattcaaaattggaatgaacgaagatgaaagaattcgt
 # tatcgtaagagtgatacttttatctttatgactcctaaagttgctggctatgaagagatagaagcacaaatccttgatgatattgcacgtaatgaagt
@@ -4233,42 +4274,42 @@ Chromosome	AUGUSTUS	start_codon	530435	530437	.	-	0	transcript_id "g214.t1"; gen
 # IEAQILDDIARNEVSYYNLGREILSIQASDEDMKFLVSSLKPKYIIPTGGLYRDFINFTMVLKQAGAEQNQILILFNGEVLTIENKKLDSKKNELKLN
 # PKCVDSAGLQEIGASIMFERDQMSESGVVIIIIYFDQKKSEFLNEITYSFLGVSLDVPEKDKLKTKMEELIKKQINDIKDFTTIKKRIGKEISKELKV
 # SIKRAVMNLFTKMTSKAPLILSTIISI]
-# end gene g214
-###
-# start gene g215
-Chromosome	AUGUSTUS	gene	531056	531217	0.95	-	.	g215
-Chromosome	AUGUSTUS	transcript	531056	531217	0.95	-	.	g215.t1
-Chromosome	AUGUSTUS	stop_codon	531056	531058	.	-	0	transcript_id "g215.t1"; gene_id "g215";
-Chromosome	AUGUSTUS	single	531056	531217	0.95	-	0	transcript_id "g215.t1"; gene_id "g215";
-Chromosome	AUGUSTUS	CDS	531056	531217	0.95	-	0	transcript_id "g215.t1"; gene_id "g215";
-Chromosome	AUGUSTUS	start_codon	531215	531217	.	-	0	transcript_id "g215.t1"; gene_id "g215";
-# coding sequence = [atggctaagattaaattctttgcgctcggcggtcaagatgaacgtggtaaaaattgctatgtgcttgaaattgacaatg
-# atgtgtttatctttaatgttggtagcttaacaccaacaacagcagttttaggtgttaaaaaaattattcctgattttagttga]
-# protein sequence = [MAKIKFFALGGQDERGKNCYVLEIDNDVFIFNVGSLTPTTAVLGVKKIIPDFS]
 # end gene g215
 ###
 # start gene g216
-Chromosome	AUGUSTUS	gene	533271	533561	0.53	+	.	g216
-Chromosome	AUGUSTUS	transcript	533271	533561	0.53	+	.	g216.t1
-Chromosome	AUGUSTUS	start_codon	533271	533273	.	+	0	transcript_id "g216.t1"; gene_id "g216";
-Chromosome	AUGUSTUS	single	533271	533561	0.53	+	0	transcript_id "g216.t1"; gene_id "g216";
-Chromosome	AUGUSTUS	CDS	533271	533561	0.53	+	0	transcript_id "g216.t1"; gene_id "g216";
-Chromosome	AUGUSTUS	stop_codon	533559	533561	.	+	0	transcript_id "g216.t1"; gene_id "g216";
+Chromosome	AUGUSTUS	gene	531056	531217	0.95	-	.	g216
+Chromosome	AUGUSTUS	transcript	531056	531217	0.95	-	.	g216.t1
+Chromosome	AUGUSTUS	stop_codon	531056	531058	.	-	0	transcript_id "g216.t1"; gene_id "g216";
+Chromosome	AUGUSTUS	single	531056	531217	0.95	-	0	transcript_id "g216.t1"; gene_id "g216";
+Chromosome	AUGUSTUS	CDS	531056	531217	0.95	-	0	transcript_id "g216.t1"; gene_id "g216";
+Chromosome	AUGUSTUS	start_codon	531215	531217	.	-	0	transcript_id "g216.t1"; gene_id "g216";
+# coding sequence = [atggctaagattaaattctttgcgctcggcggtcaagatgaacgtggtaaaaattgctatgtgcttgaaattgacaatg
+# atgtgtttatctttaatgttggtagcttaacaccaacaacagcagttttaggtgttaaaaaaattattcctgattttagttga]
+# protein sequence = [MAKIKFFALGGQDERGKNCYVLEIDNDVFIFNVGSLTPTTAVLGVKKIIPDFS]
+# end gene g216
+###
+# start gene g217
+Chromosome	AUGUSTUS	gene	533271	533561	0.53	+	.	g217
+Chromosome	AUGUSTUS	transcript	533271	533561	0.53	+	.	g217.t1
+Chromosome	AUGUSTUS	start_codon	533271	533273	.	+	0	transcript_id "g217.t1"; gene_id "g217";
+Chromosome	AUGUSTUS	single	533271	533561	0.53	+	0	transcript_id "g217.t1"; gene_id "g217";
+Chromosome	AUGUSTUS	CDS	533271	533561	0.53	+	0	transcript_id "g217.t1"; gene_id "g217";
+Chromosome	AUGUSTUS	stop_codon	533559	533561	.	+	0	transcript_id "g217.t1"; gene_id "g217";
 # coding sequence = [atggataaaaaatacgatatcacagctgttttgaacgatgatagttctattaatgcagtaagcgataacttccaaataa
 # cactggatgcacgaccaaaagaaaaatctaaaggcattaatcctctgtcagcttttttggctggtttagctgcatgtgaacttgcaactgctaatgcg
 # atggcagctgctaagatgataactttgaacaaggcactgattaacatcaaaggttatcgtttaacaaatcctagtgatggttattttggcctacgtga
 # acttaacattcactga]
 # protein sequence = [MDKKYDITAVLNDDSSINAVSDNFQITLDARPKEKSKGINPLSAFLAGLAACELATANAMAAAKMITLNKALINIKGY
 # RLTNPSDGYFGLRELNIH]
-# end gene g216
+# end gene g217
 ###
-# start gene g217
-Chromosome	AUGUSTUS	gene	539846	540238	0.57	+	.	g217
-Chromosome	AUGUSTUS	transcript	539846	540238	0.57	+	.	g217.t1
-Chromosome	AUGUSTUS	start_codon	539846	539848	.	+	0	transcript_id "g217.t1"; gene_id "g217";
-Chromosome	AUGUSTUS	single	539846	540238	0.57	+	0	transcript_id "g217.t1"; gene_id "g217";
-Chromosome	AUGUSTUS	CDS	539846	540238	0.57	+	0	transcript_id "g217.t1"; gene_id "g217";
-Chromosome	AUGUSTUS	stop_codon	540236	540238	.	+	0	transcript_id "g217.t1"; gene_id "g217";
+# start gene g218
+Chromosome	AUGUSTUS	gene	539846	540238	0.57	+	.	g218
+Chromosome	AUGUSTUS	transcript	539846	540238	0.57	+	.	g218.t1
+Chromosome	AUGUSTUS	start_codon	539846	539848	.	+	0	transcript_id "g218.t1"; gene_id "g218";
+Chromosome	AUGUSTUS	single	539846	540238	0.57	+	0	transcript_id "g218.t1"; gene_id "g218";
+Chromosome	AUGUSTUS	CDS	539846	540238	0.57	+	0	transcript_id "g218.t1"; gene_id "g218";
+Chromosome	AUGUSTUS	stop_codon	540236	540238	.	+	0	transcript_id "g218.t1"; gene_id "g218";
 # coding sequence = [atggttgagataaactcacaaactgattttgtagccaaaaatcaagagttaaaagaattttcagatttaatgcttgaaa
 # aaatatttgaaaaagtaaatccaaaaacagaattagttgaaattgaaaaaattcaaattaataatgatgaaaaagttagtgaaaaactagcattaatt
 # gcttctaaaactgatgagaaaatagtacttagaagagtagttgtatttgaaactaaaactaatcaaattttcacctatttacatgccaataaaagaat
@@ -4276,15 +4317,15 @@ Chromosome	AUGUSTUS	stop_codon	540236	540238	.	+	0	transcript_id "g217.t1"; gene
 # gtgatgttaatcaaacatga]
 # protein sequence = [MVEINSQTDFVAKNQELKEFSDLMLEKIFEKVNPKTELVEIEKIQINNDEKVSEKLALIASKTDEKIVLRRVVVFETK
 # TNQIFTYLHANKRIGVIIEIQGKLNEDDGKHLAMHIAANSPQFIDQSDVNQT]
-# end gene g217
+# end gene g218
 ###
-# start gene g218
-Chromosome	AUGUSTUS	gene	540849	541241	0.96	+	.	g218
-Chromosome	AUGUSTUS	transcript	540849	541241	0.96	+	.	g218.t1
-Chromosome	AUGUSTUS	start_codon	540849	540851	.	+	0	transcript_id "g218.t1"; gene_id "g218";
-Chromosome	AUGUSTUS	single	540849	541241	0.96	+	0	transcript_id "g218.t1"; gene_id "g218";
-Chromosome	AUGUSTUS	CDS	540849	541241	0.96	+	0	transcript_id "g218.t1"; gene_id "g218";
-Chromosome	AUGUSTUS	stop_codon	541239	541241	.	+	0	transcript_id "g218.t1"; gene_id "g218";
+# start gene g219
+Chromosome	AUGUSTUS	gene	540849	541241	0.96	+	.	g219
+Chromosome	AUGUSTUS	transcript	540849	541241	0.96	+	.	g219.t1
+Chromosome	AUGUSTUS	start_codon	540849	540851	.	+	0	transcript_id "g219.t1"; gene_id "g219";
+Chromosome	AUGUSTUS	single	540849	541241	0.96	+	0	transcript_id "g219.t1"; gene_id "g219";
+Chromosome	AUGUSTUS	CDS	540849	541241	0.96	+	0	transcript_id "g219.t1"; gene_id "g219";
+Chromosome	AUGUSTUS	stop_codon	541239	541241	.	+	0	transcript_id "g219.t1"; gene_id "g219";
 # coding sequence = [gtgcaaattctttcacagcaaactattgataaagcttttgaagagaatgactttgtcattttttcaggtggcactggta
 # atccttatttttccactgacactgcattagctttaagagcagtgcaaacaaaagcagttgctattctgattggaaaaaatggtgttgatggtgtttat
 # acagctgatcctaaaaaagataaaaatgcaacctttttaccaacactcaactatgaccatgccattaaaaatgatttgaaaattatggatattactgc
@@ -4292,27 +4333,27 @@ Chromosome	AUGUSTUS	stop_codon	541239	541241	.	+	0	transcript_id "g218.t1"; gene
 # ctataattgaaaataactaa]
 # protein sequence = [MQILSQQTIDKAFEENDFVIFSGGTGNPYFSTDTALALRAVQTKAVAILIGKNGVDGVYTADPKKDKNATFLPTLNYD
 # HAIKNDLKIMDITAFTMCKENNLKIIIFNINAENALLDALNKKGRFTIIENN]
-# end gene g218
-###
-# start gene g219
-Chromosome	AUGUSTUS	gene	549067	549165	0.95	-	.	g219
-Chromosome	AUGUSTUS	transcript	549067	549165	0.95	-	.	g219.t1
-Chromosome	AUGUSTUS	stop_codon	549067	549069	.	-	0	transcript_id "g219.t1"; gene_id "g219";
-Chromosome	AUGUSTUS	single	549067	549165	0.95	-	0	transcript_id "g219.t1"; gene_id "g219";
-Chromosome	AUGUSTUS	CDS	549067	549165	0.95	-	0	transcript_id "g219.t1"; gene_id "g219";
-Chromosome	AUGUSTUS	start_codon	549163	549165	.	-	0	transcript_id "g219.t1"; gene_id "g219";
-# coding sequence = [atgttcctgaatttggagcaggagatgaagttaatgttgctattaagttacgtgaaaaagaaaaagttcgagttcaaaa
-# cttcactggaactgttttaa]
-# protein sequence = [MFLNLEQEMKLMLLLSYVKKKKFEFKTSLELF]
 # end gene g219
 ###
 # start gene g220
-Chromosome	AUGUSTUS	gene	554430	555614	0.99	-	.	g220
-Chromosome	AUGUSTUS	transcript	554430	555614	0.99	-	.	g220.t1
-Chromosome	AUGUSTUS	stop_codon	554430	554432	.	-	0	transcript_id "g220.t1"; gene_id "g220";
-Chromosome	AUGUSTUS	single	554430	555614	0.99	-	0	transcript_id "g220.t1"; gene_id "g220";
-Chromosome	AUGUSTUS	CDS	554430	555614	0.99	-	0	transcript_id "g220.t1"; gene_id "g220";
-Chromosome	AUGUSTUS	start_codon	555612	555614	.	-	0	transcript_id "g220.t1"; gene_id "g220";
+Chromosome	AUGUSTUS	gene	549067	549165	0.95	-	.	g220
+Chromosome	AUGUSTUS	transcript	549067	549165	0.95	-	.	g220.t1
+Chromosome	AUGUSTUS	stop_codon	549067	549069	.	-	0	transcript_id "g220.t1"; gene_id "g220";
+Chromosome	AUGUSTUS	single	549067	549165	0.95	-	0	transcript_id "g220.t1"; gene_id "g220";
+Chromosome	AUGUSTUS	CDS	549067	549165	0.95	-	0	transcript_id "g220.t1"; gene_id "g220";
+Chromosome	AUGUSTUS	start_codon	549163	549165	.	-	0	transcript_id "g220.t1"; gene_id "g220";
+# coding sequence = [atgttcctgaatttggagcaggagatgaagttaatgttgctattaagttacgtgaaaaagaaaaagttcgagttcaaaa
+# cttcactggaactgttttaa]
+# protein sequence = [MFLNLEQEMKLMLLLSYVKKKKFEFKTSLELF]
+# end gene g220
+###
+# start gene g221
+Chromosome	AUGUSTUS	gene	554430	555614	0.99	-	.	g221
+Chromosome	AUGUSTUS	transcript	554430	555614	0.99	-	.	g221.t1
+Chromosome	AUGUSTUS	stop_codon	554430	554432	.	-	0	transcript_id "g221.t1"; gene_id "g221";
+Chromosome	AUGUSTUS	single	554430	555614	0.99	-	0	transcript_id "g221.t1"; gene_id "g221";
+Chromosome	AUGUSTUS	CDS	554430	555614	0.99	-	0	transcript_id "g221.t1"; gene_id "g221";
+Chromosome	AUGUSTUS	start_codon	555612	555614	.	-	0	transcript_id "g221.t1"; gene_id "g221";
 # coding sequence = [atggcaagagagaaatttgaccgttccaaaccacatgtcaatgttggtaccattggtcacattgaccatggtaaaacca
 # ctttaacagctgctatctgtacagttttagcaaaggaaggaaaatcagctgcaacgcgttatgatgaaattgataaagcccctgaagaaaaagcaagg
 # ggaatcacaattaactctgcacacgtagaatattcttctgacaaacgtcactatgcccatgttgactgtcctggacatgctgactacattaaaaatat
@@ -4331,15 +4372,15 @@ Chromosome	AUGUSTUS	start_codon	555612	555614	.	-	0	transcript_id "g220.t1"; gen
 # KALEGDPKWEAKIHDLIKAVDEWIPTPTREVDKPFLLAIEDTMTITGRGTVVTGRVERGELKVGQEVEIVGLKPIRKAVVTGIEMFKKELDSAMAGDN
 # AGVLLRGVERKEVERGQVLAKPGSIKPHKKFKAEIYALKKEEGGRHTGFLNGYRPQFYFRTTDVTGSIALAENTEMVLPGDNASITVELIAPIACEKG
 # SKFSIREGGRTVGAGTVTEVLE]
-# end gene g220
+# end gene g221
 ###
-# start gene g221
-Chromosome	AUGUSTUS	gene	556524	557315	0.5	+	.	g221
-Chromosome	AUGUSTUS	transcript	556524	557315	0.5	+	.	g221.t1
-Chromosome	AUGUSTUS	start_codon	556524	556526	.	+	0	transcript_id "g221.t1"; gene_id "g221";
-Chromosome	AUGUSTUS	single	556524	557315	0.5	+	0	transcript_id "g221.t1"; gene_id "g221";
-Chromosome	AUGUSTUS	CDS	556524	557315	0.5	+	0	transcript_id "g221.t1"; gene_id "g221";
-Chromosome	AUGUSTUS	stop_codon	557313	557315	.	+	0	transcript_id "g221.t1"; gene_id "g221";
+# start gene g222
+Chromosome	AUGUSTUS	gene	556524	557315	0.5	+	.	g222
+Chromosome	AUGUSTUS	transcript	556524	557315	0.5	+	.	g222.t1
+Chromosome	AUGUSTUS	start_codon	556524	556526	.	+	0	transcript_id "g222.t1"; gene_id "g222";
+Chromosome	AUGUSTUS	single	556524	557315	0.5	+	0	transcript_id "g222.t1"; gene_id "g222";
+Chromosome	AUGUSTUS	CDS	556524	557315	0.5	+	0	transcript_id "g222.t1"; gene_id "g222";
+Chromosome	AUGUSTUS	stop_codon	557313	557315	.	+	0	transcript_id "g222.t1"; gene_id "g222";
 # coding sequence = [atgttaccattggtaaataaacctactatccaatacatagtagaggaagcagttaaaagtggcattgaacagattcttg
 # tcattgtttcatccaaaaaaacagctatattagatcattttgattatgatctgatcttagaaaatgccttaattcaaaaaaataaattgcaggagcat
 # aaagagattgaagatattgctaatttagcacatatcttttttgttagacaaaaaaatcaagatggtttgggagatgcaatcttgtttgctgaatcttt
@@ -4352,15 +4393,15 @@ Chromosome	AUGUSTUS	stop_codon	557313	557315	.	+	0	transcript_id "g221.t1"; gene
 # protein sequence = [MLPLVNKPTIQYIVEEAVKSGIEQILVIVSSKKTAILDHFDYDLILENALIQKNKLQEHKEIEDIANLAHIFFVRQKN
 # QDGLGDAILFAESFVGNEDFAVLLGDDVVFSKEPALKQCLEAYYETNCQTIGVQEVDPCHVDKYGIITPEGDYKNKDLIKVLAMTEKPKPKDAKSNLA
 # ILGRYVLKPSIFKALRSVPYGVGGELQLTDGLNFCLKNENFYARKFTGTRFDVGTKSGFIKANLFTALNNKDISKKEVLELLNLVKA]
-# end gene g221
+# end gene g222
 ###
-# start gene g222
-Chromosome	AUGUSTUS	gene	560496	560957	0.38	-	.	g222
-Chromosome	AUGUSTUS	transcript	560496	560957	0.38	-	.	g222.t1
-Chromosome	AUGUSTUS	stop_codon	560496	560498	.	-	0	transcript_id "g222.t1"; gene_id "g222";
-Chromosome	AUGUSTUS	single	560496	560957	0.38	-	0	transcript_id "g222.t1"; gene_id "g222";
-Chromosome	AUGUSTUS	CDS	560496	560957	0.38	-	0	transcript_id "g222.t1"; gene_id "g222";
-Chromosome	AUGUSTUS	start_codon	560955	560957	.	-	0	transcript_id "g222.t1"; gene_id "g222";
+# start gene g223
+Chromosome	AUGUSTUS	gene	560496	560957	0.38	-	.	g223
+Chromosome	AUGUSTUS	transcript	560496	560957	0.38	-	.	g223.t1
+Chromosome	AUGUSTUS	stop_codon	560496	560498	.	-	0	transcript_id "g223.t1"; gene_id "g223";
+Chromosome	AUGUSTUS	single	560496	560957	0.38	-	0	transcript_id "g223.t1"; gene_id "g223";
+Chromosome	AUGUSTUS	CDS	560496	560957	0.38	-	0	transcript_id "g223.t1"; gene_id "g223";
+Chromosome	AUGUSTUS	start_codon	560955	560957	.	-	0	transcript_id "g223.t1"; gene_id "g223";
 # coding sequence = [atgggcggtagagctgctgaagaggaaatctatggtaatttagaaattactactggcgcttctagcgatttttataaag
 # caactaatattgcaagagcaatggtaacccagcttgggatgtctaaattaggtcaagtgcaatatgtaccaagtcaagggacactcccttctaatgta
 # aaactttattcagaacaaactgctaaagatattgacaatgagattaatttcattattgaagaacagtataagaaagcaaaaacaatcattaagagtaa
@@ -4368,15 +4409,15 @@ Chromosome	AUGUSTUS	start_codon	560955	560957	.	-	0	transcript_id "g222.t1"; gen
 # cagaaatcttattgcaaaagcaagaacaacaagcaaagcaaaaactaaataaatctgaagtaaaaccagaaagtgaaacaaacagttag]
 # protein sequence = [MGGRAAEEEIYGNLEITTGASSDFYKATNIARAMVTQLGMSKLGQVQYVPSQGTLPSNVKLYSEQTAKDIDNEINFII
 # EEQYKKAKTIIKSNRKELELLVEALLIAETILKSDIDFIHKNTKLPPEILLQKQEQQAKQKLNKSEVKPESETNS]
-# end gene g222
+# end gene g223
 ###
-# start gene g223
-Chromosome	AUGUSTUS	gene	562782	563309	0.88	-	.	g223
-Chromosome	AUGUSTUS	transcript	562782	563309	0.88	-	.	g223.t1
-Chromosome	AUGUSTUS	stop_codon	562782	562784	.	-	0	transcript_id "g223.t1"; gene_id "g223";
-Chromosome	AUGUSTUS	single	562782	563309	0.88	-	0	transcript_id "g223.t1"; gene_id "g223";
-Chromosome	AUGUSTUS	CDS	562782	563309	0.88	-	0	transcript_id "g223.t1"; gene_id "g223";
-Chromosome	AUGUSTUS	start_codon	563307	563309	.	-	0	transcript_id "g223.t1"; gene_id "g223";
+# start gene g224
+Chromosome	AUGUSTUS	gene	562782	563309	0.88	-	.	g224
+Chromosome	AUGUSTUS	transcript	562782	563309	0.88	-	.	g224.t1
+Chromosome	AUGUSTUS	stop_codon	562782	562784	.	-	0	transcript_id "g224.t1"; gene_id "g224";
+Chromosome	AUGUSTUS	single	562782	563309	0.88	-	0	transcript_id "g224.t1"; gene_id "g224";
+Chromosome	AUGUSTUS	CDS	562782	563309	0.88	-	0	transcript_id "g224.t1"; gene_id "g224";
+Chromosome	AUGUSTUS	start_codon	563307	563309	.	-	0	transcript_id "g224.t1"; gene_id "g224";
 # coding sequence = [atgggtattaaatctattgttattaatgaacaacagatagaagaaggctgtcaaaaagcagttaattggtgcaatgcta
 # aatttaataataaaaaggtaattgttcttggcattctaaaaggttgcatccctttccttggcaaagtgataagtaaatttagttttgacctccaacta
 # gattttatggcagttgcttcttatcatggttcacatgtacaaaaacaaccacctaagattgtgcttgatatgtcccatgaccctaaagataaagacat
@@ -4385,15 +4426,15 @@ Chromosome	AUGUSTUS	start_codon	563307	563309	.	-	0	transcript_id "g223.t1"; gen
 # gatggtttttatcgtaacctaccttatgttggtgtgtttgaaccagacaatccctaa]
 # protein sequence = [MGIKSIVINEQQIEEGCQKAVNWCNAKFNNKKVIVLGILKGCIPFLGKVISKFSFDLQLDFMAVASYHGSHVQKQPPK
 # IVLDMSHDPKDKDILLIEDIVDSGRSIKLVIDLLKTRHAKSITLISLIEKIKPKAFDINIDFSCFKVKDNFLVGFGLDYDGFYRNLPYVGVFEPDNP]
-# end gene g223
+# end gene g224
 ###
-# start gene g224
-Chromosome	AUGUSTUS	gene	563993	564931	0.79	+	.	g224
-Chromosome	AUGUSTUS	transcript	563993	564931	0.79	+	.	g224.t1
-Chromosome	AUGUSTUS	start_codon	563993	563995	.	+	0	transcript_id "g224.t1"; gene_id "g224";
-Chromosome	AUGUSTUS	single	563993	564931	0.79	+	0	transcript_id "g224.t1"; gene_id "g224";
-Chromosome	AUGUSTUS	CDS	563993	564931	0.79	+	0	transcript_id "g224.t1"; gene_id "g224";
-Chromosome	AUGUSTUS	stop_codon	564929	564931	.	+	0	transcript_id "g224.t1"; gene_id "g224";
+# start gene g225
+Chromosome	AUGUSTUS	gene	563993	564931	0.79	+	.	g225
+Chromosome	AUGUSTUS	transcript	563993	564931	0.79	+	.	g225.t1
+Chromosome	AUGUSTUS	start_codon	563993	563995	.	+	0	transcript_id "g225.t1"; gene_id "g225";
+Chromosome	AUGUSTUS	single	563993	564931	0.79	+	0	transcript_id "g225.t1"; gene_id "g225";
+Chromosome	AUGUSTUS	CDS	563993	564931	0.79	+	0	transcript_id "g225.t1"; gene_id "g225";
+Chromosome	AUGUSTUS	stop_codon	564929	564931	.	+	0	transcript_id "g225.t1"; gene_id "g225";
 # coding sequence = [atgaaaggacctaaaattgcaatagtaggatcaggtgctgttggtactagttttctatatgctgcaatgactcgtgcac
 # ttggtagtgaatacatgattatagatatcaatgaaaaagctaaagttggtaatgtatttgatcttcaagatgcttcctcatcatgcccaaattttggc
 # aaagtagttgctggagaatacagtcaattaaaagattatgattttattttcattagtgcaggaagacctcaaaaacaaggtggggaaactaggttgca
@@ -4408,29 +4449,29 @@ Chromosome	AUGUSTUS	stop_codon	564929	564931	.	+	0	transcript_id "g224.t1"; gene
 # AGRPQKQGGETRLQLLEGNVEIMKSIAKEIKKSGFNGVTLIASNPVDIMSYTYLKVTGFEPNKVIGSGTLLDSARLRYAIATKYQMSSKDVQAYVIGE
 # HGDSSVSIISSAKIAGLSLKHFSKASDIEKEFGEIDQFIRRRAYEIIERKGATFYGIGEASADVAEQILKDTKEVRVVAPLLTGQYGAKDMMFGTPCV
 # LSRKGIEKILEIELSNTEKVALENSIKVLKDNIKLAKL]
-# end gene g224
+# end gene g225
 ###
-# start gene g225
-Chromosome	AUGUSTUS	gene	566783	567025	0.86	-	.	g225
-Chromosome	AUGUSTUS	transcript	566783	567025	0.86	-	.	g225.t1
-Chromosome	AUGUSTUS	stop_codon	566783	566785	.	-	0	transcript_id "g225.t1"; gene_id "g225";
-Chromosome	AUGUSTUS	single	566783	567025	0.86	-	0	transcript_id "g225.t1"; gene_id "g225";
-Chromosome	AUGUSTUS	CDS	566783	567025	0.86	-	0	transcript_id "g225.t1"; gene_id "g225";
-Chromosome	AUGUSTUS	start_codon	567023	567025	.	-	0	transcript_id "g225.t1"; gene_id "g225";
+# start gene g226
+Chromosome	AUGUSTUS	gene	566783	567025	0.86	-	.	g226
+Chromosome	AUGUSTUS	transcript	566783	567025	0.86	-	.	g226.t1
+Chromosome	AUGUSTUS	stop_codon	566783	566785	.	-	0	transcript_id "g226.t1"; gene_id "g226";
+Chromosome	AUGUSTUS	single	566783	567025	0.86	-	0	transcript_id "g226.t1"; gene_id "g226";
+Chromosome	AUGUSTUS	CDS	566783	567025	0.86	-	0	transcript_id "g226.t1"; gene_id "g226";
+Chromosome	AUGUSTUS	start_codon	567023	567025	.	-	0	transcript_id "g226.t1"; gene_id "g226";
 # coding sequence = [atggaaattactgatgttttaaggggagctgagcacatctctaacactgcataccaacttgctatatatcaagcattag
 # gttttaaaagaattccccgctttggtcatctttcagttattgttgatgaaagtggcaaaaaactttctaaacgtgatgagaaaactactcagtttatt
 # gagcagtttaaacaacaaggctatctacctgaagcattattaaatttcttagcactcttaggttga]
 # protein sequence = [MEITDVLRGAEHISNTAYQLAIYQALGFKRIPRFGHLSVIVDESGKKLSKRDEKTTQFIEQFKQQGYLPEALLNFLAL
 # LG]
-# end gene g225
+# end gene g226
 ###
-# start gene g226
-Chromosome	AUGUSTUS	gene	571522	572385	0.84	-	.	g226
-Chromosome	AUGUSTUS	transcript	571522	572385	0.84	-	.	g226.t1
-Chromosome	AUGUSTUS	stop_codon	571522	571524	.	-	0	transcript_id "g226.t1"; gene_id "g226";
-Chromosome	AUGUSTUS	single	571522	572385	0.84	-	0	transcript_id "g226.t1"; gene_id "g226";
-Chromosome	AUGUSTUS	CDS	571522	572385	0.84	-	0	transcript_id "g226.t1"; gene_id "g226";
-Chromosome	AUGUSTUS	start_codon	572383	572385	.	-	0	transcript_id "g226.t1"; gene_id "g226";
+# start gene g227
+Chromosome	AUGUSTUS	gene	571522	572385	0.84	-	.	g227
+Chromosome	AUGUSTUS	transcript	571522	572385	0.84	-	.	g227.t1
+Chromosome	AUGUSTUS	stop_codon	571522	571524	.	-	0	transcript_id "g227.t1"; gene_id "g227";
+Chromosome	AUGUSTUS	single	571522	572385	0.84	-	0	transcript_id "g227.t1"; gene_id "g227";
+Chromosome	AUGUSTUS	CDS	571522	572385	0.84	-	0	transcript_id "g227.t1"; gene_id "g227";
+Chromosome	AUGUSTUS	start_codon	572383	572385	.	-	0	transcript_id "g227.t1"; gene_id "g227";
 # coding sequence = [atgttgaaagtttatggggattttgaacttgcaaaacaagattctaagttaaattttgggattgttcctgttgaccctg
 # ccatagaagaaacctacacttatgttgaaggcccatttggttttcaagaagataatcttgatgagaattcaccatacactttaacagggattaaccct
 # gaatcaagttttgttaatctgatagatggtagtggtaactctttaagaaatttaattagttctgatcaggaaatgaatgtaattgttaatgctggttt
@@ -4445,15 +4486,15 @@ Chromosome	AUGUSTUS	start_codon	572383	572385	.	-	0	transcript_id "g226.t1"; gen
 # SSDQEMNVIVNAGFQYANNINIGDYVYIKPKNTATRYSEKFLKAPLNNSTVAFKVVGVSTDAFGQELYINQHIANNLLKLSGNQGRGIIRDVIKKTNG
 # QSQSSDEYEIDYVKPNGYVPFNGVFSKELKPSLLNKALVLNSIIGVWGNFTDFGNNFQNLVRNKLDKVITSILPTDPEIINKLAQEKQIINTTSMNYE
 # SLRKELVNKYKTE]
-# end gene g226
+# end gene g227
 ###
-# start gene g227
-Chromosome	AUGUSTUS	gene	576357	577205	0.67	-	.	g227
-Chromosome	AUGUSTUS	transcript	576357	577205	0.67	-	.	g227.t1
-Chromosome	AUGUSTUS	stop_codon	576357	576359	.	-	0	transcript_id "g227.t1"; gene_id "g227";
-Chromosome	AUGUSTUS	single	576357	577205	0.67	-	0	transcript_id "g227.t1"; gene_id "g227";
-Chromosome	AUGUSTUS	CDS	576357	577205	0.67	-	0	transcript_id "g227.t1"; gene_id "g227";
-Chromosome	AUGUSTUS	start_codon	577203	577205	.	-	0	transcript_id "g227.t1"; gene_id "g227";
+# start gene g228
+Chromosome	AUGUSTUS	gene	576357	577205	0.67	-	.	g228
+Chromosome	AUGUSTUS	transcript	576357	577205	0.67	-	.	g228.t1
+Chromosome	AUGUSTUS	stop_codon	576357	576359	.	-	0	transcript_id "g228.t1"; gene_id "g228";
+Chromosome	AUGUSTUS	single	576357	577205	0.67	-	0	transcript_id "g228.t1"; gene_id "g228";
+Chromosome	AUGUSTUS	CDS	576357	577205	0.67	-	0	transcript_id "g228.t1"; gene_id "g228";
+Chromosome	AUGUSTUS	start_codon	577203	577205	.	-	0	transcript_id "g228.t1"; gene_id "g228";
 # coding sequence = [atggttttaaaaacaaaagagaacaaaaagtttgatatttacttaaaatcatcagattttgctgttagtaaaaaagcat
 # ctaaattaattaaaaagttaaataaaaagcaccccaaaagaaaatcacttaattcatttgaagctaaaaagtatgatatttacttcaaagaagtttgt
 # aaagctgttacaaatggcattaacaaccaacttatttgtaaccacattaatttaaaaattcttccaggagaatttgttgttattcttggtaaatctgg
@@ -4467,7 +4508,7 @@ Chromosome	AUGUSTUS	start_codon	577203	577205	.	-	0	transcript_id "g227.t1"; gen
 # ILPGEFVVILGKSGSGKTSLLSLISALDRPTSGDSFVCGTNTICCSDAKLTALRNKNVGYIFQQYGLLRDLDVDDNIKLALPLKKRFNNNLEELLERL
 # ELKEHRHKKVHKLSGGQQQRVAIARALIKEPKILFGDEPTGAVNIDISKKILQFFVEYNRDKGTTIVIVTHNEKIVELAKRVIKIHDGKIIVDYLNQN
 # PKTIEQIN]
-# end gene g227
+# end gene g228
 ###
 # command line:
-# /data/www/augustus/augustus/bin/augustus --species=E_coli_K12 --strand=both --singlestrand=false --genemodel=partial --codingseq=on --sample=100 --keep_viterbi=true --alternatives-from-sampling=false /data/www/augustus/webservice/data/AUG-1846375229/input.fa --exonnames=on
+# /data/www/augustus/augustus/bin/augustus --species=E_coli_K12 --strand=both --singlestrand=false --genemodel=partial --codingseq=on --sample=100 --keep_viterbi=true --alternatives-from-sampling=true --minexonintronprob=0.2 --minmeanexonintronprob=0.5 --maxtracks=2 /data/www/augustus/webservice/data/AUG-1368590952/input.fa --exonnames=on

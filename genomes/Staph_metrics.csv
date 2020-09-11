@@ -1,29 +1,13 @@
 Genome Metrics:
-"Number of Genes in Staph: 2556
-Number of Protein Coding Genes: 2478
-Percentage of Genome which is Protein Coding: 82.69
-Number of Non-Protein Coding Genes: 78
-Percentage of Non-Protein Coding Genes in Genomes: 1.16
- Percentage of All Genes in Genome: 83.85
-All metrics are for Protein Coding Genes
-Number of Genes on 5-prime-end: 1236
-Percentage of Genes on 5-prime-end: 49.88
-Number of Genes on 3-prime-end: 1242
-Percentage of Genes on the 3-prime-3-end: 50.12
-Number of overlapping Protein Coding Genes: 274
-Average overlap of Protein Coding Genes: 9.22
-Longest Overlap of a Protein Coding Gene: 44","
+"Number of Protein Coding Genes in Staph : 2478, Median Length of PCGs: 794.0, Min Length of PCGs: 113, Max Length of PCGs: 31421, Number of PCGs on Pos Strand: 1236, Number of PCGs on Neg Strand: 1242, Median GC of PCGs: 33.09, Number of Overlapping PCGs: 274, Longest PCG Overlap: 44, Median PCG Overlap: 7.0, Number of PCGs less than 100nt: 0
+Percentage of Genome which is Protein Coding: 82.76, Number of Non-PCGs: 78, Percentage of Genome Non-PCG: 1.17, Percentage of All Genes in Genome: 83.85
 Percentage of Genes starting with ATG: 86.80
 Percentage of Genes starting with GTG: 6.62
 Percentage of Genes starting with TTG: 6.58
 Percentage of Genes starting with ATT: 0.00
 Percentage of Genes starting with CTG: 0.00
-Percentage of Genes starting with Alternative Start Codon: 0.00","
+Percentage of Genes starting with Alternative Start Codon: 0.00
 Percentage of Genes ending with TAG: 15.01
 Percentage of Genes ending with TAA: 74.17
 Percentage of Genes ending with TGA: 10.82
-Percentage of Genes ending with Alternative Stop Codon: 0.00","
-Average Gene Length: 923.56
-Minimum Gene Length: 113
-Maximum Gene Length: 31421
-GC Content: 0.329"
+Percentage of Genes ending with Alternative Stop Codon: 0.00"

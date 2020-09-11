@@ -1,5 +1,7 @@
 import collections
+
 from ..utils import revCompIterative
+
 
 def MetaGeneMark(input_to_analyse,Genome):
     metaGeneMarkORFs = collections.OrderedDict()

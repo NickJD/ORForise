@@ -1,5 +1,7 @@
 import collections
+
 from ..utils import revCompIterative
+
 
 def MetaGeneAnnotator(input_to_analyse,Genome):
     MetaGeneAnnotator_ORFs = collections.OrderedDict()

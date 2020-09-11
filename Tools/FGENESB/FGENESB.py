@@ -1,5 +1,7 @@
 import collections
+
 from ..utils import revCompIterative
+
 
 def FGENESB(input_to_analyse,Genome):
     FGENESB_ORFs = collections.OrderedDict()

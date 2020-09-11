@@ -1,29 +1,13 @@
 Genome Metrics:
-"Number of Genes in Bacillus: 4133
-Number of Protein Coding Genes: 4011
-Percentage of Genome which is Protein Coding: 87.52
-Number of Non-Protein Coding Genes: 122
-Percentage of Non-Protein Coding Genes in Genomes: 1.30
- Percentage of All Genes in Genome: 88.82
-All metrics are for Protein Coding Genes
-Number of Genes on 5-prime-end: 1922
-Percentage of Genes on 5-prime-end: 47.92
-Number of Genes on 3-prime-end: 2089
-Percentage of Genes on the 3-prime-3-end: 52.08
-Number of overlapping Protein Coding Genes: 474
-Average overlap of Protein Coding Genes: 11.05
-Longest Overlap of a Protein Coding Gene: 118","
+"Number of Protein Coding Genes in Bacillus : 4011, Median Length of PCGs: 767.0, Min Length of PCGs: 119, Max Length of PCGs: 15131, Number of PCGs on Pos Strand: 1922, Number of PCGs on Neg Strand: 2089, Median GC of PCGs: 44.15, Number of Overlapping PCGs: 474, Longest PCG Overlap: 118, Median PCG Overlap: 6.0, Number of PCGs less than 100nt: 0
+Percentage of Genome which is Protein Coding: 87.60, Number of Non-PCGs: 122, Percentage of Genome Non-PCG: 1.31, Percentage of All Genes in Genome: 88.82
 Percentage of Genes starting with ATG: 76.81
 Percentage of Genes starting with GTG: 10.10
 Percentage of Genes starting with TTG: 13.09
 Percentage of Genes starting with ATT: 0.00
 Percentage of Genes starting with CTG: 0.00
-Percentage of Genes starting with Alternative Start Codon: 0.00","
+Percentage of Genes starting with Alternative Start Codon: 0.00
 Percentage of Genes ending with TAG: 13.96
 Percentage of Genes ending with TAA: 62.93
 Percentage of Genes ending with TGA: 23.11
-Percentage of Genes ending with Alternative Stop Codon: 0.00","
-Average Gene Length: 883.47
-Minimum Gene Length: 119
-Maximum Gene Length: 15131
-GC Content: 0.439"
+Percentage of Genes ending with Alternative Stop Codon: 0.00"

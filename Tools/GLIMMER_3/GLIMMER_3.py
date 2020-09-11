@@ -1,5 +1,7 @@
 import collections
+
 from ..utils import revCompIterative
+
 
 def GLIMMER_3(input_to_analyse,Genome):
     GLIMMER_ORFs = collections.OrderedDict()

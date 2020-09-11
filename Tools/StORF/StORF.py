@@ -1,5 +1,7 @@
 import collections
+
 import sys
+
 sys.path.append('../')
 from ..utils import revCompIterative
 

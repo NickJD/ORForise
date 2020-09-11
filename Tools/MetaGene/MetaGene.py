@@ -2,6 +2,7 @@ import collections
 
 from ..utils import revCompIterative
 
+
 def MetaGene(input_to_analyse,Genome):
     MetaGene_ORFs = collections.OrderedDict()
     Genome_Size = len(Genome)

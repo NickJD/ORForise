@@ -1,5 +1,7 @@
 import collections
+
 from ..utils import revCompIterative
+
 
 def FragGeneScan(input_to_analyse, Genome):
     FragGeneScan_ORFs = collections.OrderedDict()

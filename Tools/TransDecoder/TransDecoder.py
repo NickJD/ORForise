@@ -1,6 +1,8 @@
 import collections
+
 from ..utils import revCompIterative
 from ..utils import sortORFs
+
 
 def TransDecoder(input_to_analyse,Genome):
     transDecoder_ORFs = collections.OrderedDict()

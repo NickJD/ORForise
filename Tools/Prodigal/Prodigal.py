@@ -1,5 +1,7 @@
 import collections
-from ..utils import  revCompIterative
+
+from ..utils import revCompIterative
+
 
 def Prodigal(input_to_analyse,Genome):
     prodigalORFs = collections.OrderedDict()

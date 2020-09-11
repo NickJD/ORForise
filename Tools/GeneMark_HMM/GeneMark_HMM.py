@@ -1,5 +1,7 @@
 import collections
+
 from ..utils import revCompIterative
+
 
 def GeneMark_HMM(input_to_analyse,Genome):
     GeneMark_HMM_ORFs = collections.OrderedDict()

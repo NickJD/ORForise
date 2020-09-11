@@ -1,5 +1,7 @@
 import collections
+
 from ..utils import revCompIterative
+
 
 def EasyGene(input_to_analyse,Genome):
     EasyGene_ORFs = collections.OrderedDict()

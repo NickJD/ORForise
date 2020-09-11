@@ -1,5 +1,7 @@
 import collections
+
 from ..utils import revCompIterative
+
 
 def Augustus(input_to_analyse,Genome):
     Augustus_ORFs = collections.OrderedDict()
