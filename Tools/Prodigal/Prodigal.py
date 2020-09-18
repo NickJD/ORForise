@@ -1,7 +1,7 @@
 import collections
 
 from ..utils import revCompIterative
-
+from ..utils import sortORFs
 
 def Prodigal(input_to_analyse,Genome):
     prodigalORFs = collections.OrderedDict()
@@ -25,4 +25,6 @@ def Prodigal(input_to_analyse,Genome):
                 po = str(start) + ',' + str(stop)
                 orf = [strand, startCodon, stopCodon]
                 prodigalORFs.update({po:orf})
+
+    prodigalORFs = sortORFs(prodigalORFs)
     return prodigalORFs

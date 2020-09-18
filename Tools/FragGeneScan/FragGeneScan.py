@@ -1,10 +1,10 @@
 import collections
 
 from ..utils import revCompIterative
-
+from ..utils import sortORFs
 
 def FragGeneScan(input_to_analyse, Genome):
-    FragGeneScan_ORFs = collections.OrderedDict()
+    fragGeneScan_ORFs = collections.OrderedDict()
     Genome_Size = len(Genome)
     Genome_rev = revCompIterative(Genome)
     with open('Tools/FragGeneScan/'+input_to_analyse,'r') as fragGeneScan_input:
@@ -24,5 +24,7 @@ def FragGeneScan(input_to_analyse, Genome):
                     stopCodon = Genome[stop - 3:stop]
                 po = str(start) + ',' + str(stop)
                 orf = [strand, startCodon, stopCodon]
-                FragGeneScan_ORFs.update({po: orf})
-    return FragGeneScan_ORFs
+                fragGeneScan_ORFs.update({po: orf})
+
+    fragGeneScan_ORFs = sortORFs(fragGeneScan_ORFs)
+    return fragGeneScan_ORFs

@@ -1,10 +1,10 @@
 import collections
 
 from ..utils import revCompIterative
-
+from ..utils import sortORFs
 
 def GeneMark_S(input_to_analyse,Genome):
-    GeneMark_S_ORFs = collections.OrderedDict()
+    geneMark_S_ORFs = collections.OrderedDict()
     Genome_Size = len(Genome)
     Genome_rev = revCompIterative(Genome)
     with open('Tools/GeneMark_S/'+input_to_analyse,'r') as prodigal_input:
@@ -24,7 +24,9 @@ def GeneMark_S(input_to_analyse,Genome):
                     stopCodon = Genome[stop - 3:stop]
                 po = str(start) + ',' + str(stop)
                 orf = [strand, startCodon, stopCodon]
-                GeneMark_S_ORFs.update({po:orf})
-    return GeneMark_S_ORFs
+                geneMark_S_ORFs.update({po:orf})
+
+    geneMark_S_ORFs = sortORFs(geneMark_S_ORFs)
+    return geneMark_S_ORFs
 
 

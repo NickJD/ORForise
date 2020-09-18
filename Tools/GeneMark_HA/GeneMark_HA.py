@@ -1,10 +1,10 @@
 import collections
 
 from ..utils import revCompIterative
-
+from ..utils import sortORFs
 
 def GeneMark_HA(input_to_analyse,Genome):
-    GeneMark_HA_ORFs = collections.OrderedDict()
+    geneMark_HA_ORFs = collections.OrderedDict()
     Genome_Size = len(Genome)
     Genome_rev = revCompIterative(Genome)
     with open('Tools/GeneMark_HA/'+input_to_analyse,'r') as GeneMark_HA_input:
@@ -24,8 +24,10 @@ def GeneMark_HA(input_to_analyse,Genome):
                     stopCodon = Genome[stop - 3:stop]
                 po = str(start) + ',' + str(stop)
                 orf = [strand, startCodon, stopCodon]
-                GeneMark_HA_ORFs.update({po: orf})
-    return GeneMark_HA_ORFs
+                geneMark_HA_ORFs.update({po: orf})
+
+    geneMark_HA_ORFs = sortORFs(geneMark_HA_ORFs)
+    return geneMark_HA_ORFs
 
 
 

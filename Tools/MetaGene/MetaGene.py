@@ -1,10 +1,10 @@
 import collections
 
 from ..utils import revCompIterative
-
+from ..utils import sortORFs
 
 def MetaGene(input_to_analyse,Genome):
-    MetaGene_ORFs = collections.OrderedDict()
+    metaGene_ORFs = collections.OrderedDict()
     Genome_Size = len(Genome)
     Genome_rev = revCompIterative(Genome)
     with open('Tools/MetaGene/'+input_to_analyse,'r') as MetaGene_input:
@@ -24,6 +24,8 @@ def MetaGene(input_to_analyse,Genome):
                     stopCodon = Genome[stop - 3:stop]
                 po = str(start) + ',' + str(stop)
                 orf = [strand, startCodon, stopCodon]
-                MetaGene_ORFs.update({po:orf})
-    return MetaGene_ORFs
+                metaGene_ORFs.update({po:orf})
+
+    metaGene_ORFs = sortORFs(metaGene_ORFs)
+    return metaGene_ORFs
 

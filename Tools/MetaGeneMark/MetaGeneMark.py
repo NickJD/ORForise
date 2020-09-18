@@ -1,7 +1,7 @@
 import collections
 
 from ..utils import revCompIterative
-
+from ..utils import sortORFs
 
 def MetaGeneMark(input_to_analyse,Genome):
     metaGeneMarkORFs = collections.OrderedDict()
@@ -26,4 +26,6 @@ def MetaGeneMark(input_to_analyse,Genome):
                     po = str(start) + ',' + str(stop)
                     orf = [strand, startCodon, stopCodon]
                     metaGeneMarkORFs.update({po:orf})
+
+    metaGeneMarkORFs = sortORFs(metaGeneMarkORFs)
     return metaGeneMarkORFs

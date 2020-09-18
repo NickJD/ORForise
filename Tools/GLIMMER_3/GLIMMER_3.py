@@ -1,7 +1,7 @@
 import collections
 
 from ..utils import revCompIterative
-
+from ..utils import sortORFs
 
 def GLIMMER_3(input_to_analyse,Genome):
     GLIMMER_ORFs = collections.OrderedDict()
@@ -29,5 +29,7 @@ def GLIMMER_3(input_to_analyse,Genome):
                     po = str(start) + ',' + str(stop)
                     orf = [strand, startCodon, stopCodon]
                     GLIMMER_ORFs.update({po: orf})
+
+    GLIMMER_ORFs = sortORFs(GLIMMER_ORFs)
     return GLIMMER_ORFs
 

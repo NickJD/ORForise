@@ -1,10 +1,10 @@
 import collections
 
 from ..utils import revCompIterative
-
+from ..utils import sortORFs
 
 def MetaGeneAnnotator(input_to_analyse,Genome):
-    MetaGeneAnnotator_ORFs = collections.OrderedDict()
+    metaGeneAnnotator_ORFs = collections.OrderedDict()
     Genome_Size = len(Genome)
     Genome_rev = revCompIterative(Genome)
     with open('Tools/MetaGeneAnnotator/'+input_to_analyse,'r') as MetaGeneAnnotator_input:
@@ -25,6 +25,8 @@ def MetaGeneAnnotator(input_to_analyse,Genome):
                         stopCodon = Genome[stop - 3:stop]
                     po = str(start) + ',' + str(stop)
                     orf = [strand, startCodon, stopCodon]
-                    MetaGeneAnnotator_ORFs.update({po:orf})
-    return MetaGeneAnnotator_ORFs
+                    metaGeneAnnotator_ORFs.update({po:orf})
+
+    metaGeneAnnotator_ORFs = sortORFs(metaGeneAnnotator_ORFs)
+    return metaGeneAnnotator_ORFs
 

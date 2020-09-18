@@ -1,10 +1,10 @@
 import collections
 
 from ..utils import revCompIterative
-
+from ..utils import sortORFs
 
 def GeneMark(input_to_analyse,Genome):
-    GeneMark_ORFs = collections.OrderedDict()
+    geneMark_ORFs = collections.OrderedDict()
     Genome_Size = len(Genome)
     Genome_rev = revCompIterative(Genome)
     prev_Start = 0
@@ -28,7 +28,7 @@ def GeneMark(input_to_analyse,Genome):
                             stopCodon = Genome_rev[r_stop - 2:r_stop + 1]
                             po = str(start) + ',' + str(stop)
                             orf = [strand, startCodon, stopCodon]
-                            GeneMark_ORFs.update({po: orf})
+                            geneMark_ORFs.update({po: orf})
                     elif 'direct' in strand:
                         if stop != prev_Stop:
                             startCodon = Genome[start - 1:start+2]
@@ -36,13 +36,15 @@ def GeneMark(input_to_analyse,Genome):
                             strand = '+'
                             po = str(start) + ',' + str(stop)
                             orf = [strand, startCodon, stopCodon]
-                            GeneMark_ORFs.update({po: orf})
+                            geneMark_ORFs.update({po: orf})
                     prev_Start = start
                     prev_Stop = stop
             elif len(line) == 0 and started == True:
                 prev_Stop = 0
                 prev_Start = 0
-    return GeneMark_ORFs
+
+    geneMark_ORFs = sortORFs(geneMark_ORFs)
+    return geneMark_ORFs
 
 ############# This section can be used to select the ORF with highest probability score.
     # with open('Tools/GeneMark/' + input_to_analyse, 'r') as GeneMark_input:

@@ -1,10 +1,10 @@
 import collections
 
 from ..utils import revCompIterative
-
+from ..utils import sortORFs
 
 def Augustus(input_to_analyse,Genome):
-    Augustus_ORFs = collections.OrderedDict()
+    augustus_ORFs = collections.OrderedDict()
     Genome_Size = len(Genome)
     Genome_rev = revCompIterative(Genome)
     with open('Tools/Augustus/' + input_to_analyse, 'r') as Augustus_input:
@@ -24,8 +24,10 @@ def Augustus(input_to_analyse,Genome):
                     stopCodon = Genome[stop - 3:stop]
                 po = str(start) + ',' + str(stop)
                 orf = [strand, startCodon, stopCodon]
-                Augustus_ORFs.update({po: orf})
-    return Augustus_ORFs
+                augustus_ORFs.update({po: orf})
+
+    augustus_ORFs = sortORFs(augustus_ORFs)
+    return augustus_ORFs
 
 
 

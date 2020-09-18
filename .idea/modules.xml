@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../IR-StORF/.idea/IR-StORF.iml" filepath="$PROJECT_DIR$/../IR-StORF/.idea/IR-StORF.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/PCG_Comparison.iml" filepath="$PROJECT_DIR$/.idea/PCG_Comparison.iml" />
+      <module fileurl="file:///mnt/L_Data/Nextcloud/Nick/PhD/.idea/PhD.iml" filepath="/mnt/L_Data/Nextcloud/Nick/PhD/.idea/PhD.iml" />
+      <module fileurl="file:///mnt/L_Data/Nextcloud/Nick/Pycharm_Nextcloud/.idea/Pycharm_Nextcloud.iml" filepath="/mnt/L_Data/Nextcloud/Nick/Pycharm_Nextcloud/.idea/Pycharm_Nextcloud.iml" />
     </modules>
   </component>
 </project>

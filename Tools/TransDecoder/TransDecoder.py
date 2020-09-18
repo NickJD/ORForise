@@ -28,7 +28,6 @@ def TransDecoder(input_to_analyse,Genome):
                 transDecoder_ORFs.update({po:orf})
 
     transDecoder_ORFs = sortORFs(transDecoder_ORFs)
-
     return transDecoder_ORFs
 
 

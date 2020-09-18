@@ -427,11 +427,11 @@ def tool_comparison(genes,orfs,genome):
         num_Matched_ORF_Short = len(comp.m_ORF_Short)
     elif comp.orf_Short: # If only Short-ORFs
         num_ORF_Short = len(comp.orf_Short)
-        num_Matched_ORF_Short = len(comp.m_ORF_Short)
+        num_Matched_ORF_Short = 'N/A'
         short_ORF_Difference = (num_ORF_Short*100)
         matched_Short_ORF_Difference = 'N/A'
     elif comp.gene_Short: # If only Short-Genes
-        short_ORF_Difference = -100
+        short_ORF_Difference = 'N/A'
         matched_Short_ORF_Difference = 'N/A'
         num_ORF_Short = 0
         num_Matched_ORF_Short = 'N/A'
@@ -545,7 +545,7 @@ def tool_comparison(genes,orfs,genome):
 
     rep_Metrics = collections.OrderedDict({'Percentage of Genes Detected':genes_Detected_Percentage,'Percentage of ORFs that Detected a Gene':matched_ORF_Percentage,'Percent Difference of All ORFs':ORFs_Difference,
                                            'Median Length Difference':median_Length_Difference,'Percentage of Perfect Matches':perfect_Matches_Percentage,'Median Start Difference of Matched ORFs':median_Start_Difference,
-                                           'Median Stop Difference of Matched ORFs':median_Stop_Difference,'Percent Difference of Overlapping ORFs':overlap_Difference,'Number of Short-ORFs':num_ORF_Short,
+                                           'Median Stop Difference of Matched ORFs':median_Stop_Difference,'Percent Difference of Overlapping ORFs':overlap_Difference,
                                            'Precision':precision, 'Recall':recall,'False Discovery Rate':false_Discovery_Rate})
 
     #quick fix  - nan = 0

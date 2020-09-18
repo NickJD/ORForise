@@ -1,10 +1,10 @@
 import collections
 
 from ..utils import revCompIterative
-
+from ..utils import sortORFs
 
 def EasyGene(input_to_analyse,Genome):
-    EasyGene_ORFs = collections.OrderedDict()
+    easyGene_ORFs = collections.OrderedDict()
     Genome_Size = len(Genome)
     Genome_rev = revCompIterative(Genome)
     with open('Tools/EasyGene/' + input_to_analyse, 'r') as EasyGene_input:
@@ -24,6 +24,8 @@ def EasyGene(input_to_analyse,Genome):
                     stopCodon = Genome[stop - 3:stop]
                 po = str(start) + ',' + str(stop)
                 orf = [strand, startCodon, stopCodon]
-                EasyGene_ORFs.update({po: orf})
-    return EasyGene_ORFs
+                easyGene_ORFs.update({po: orf})
+
+    easyGene_ORFs = sortORFs(easyGene_ORFs)
+    return easyGene_ORFs
 
