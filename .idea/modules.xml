@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file:///mnt/Shared_SSD/Ensem_Con-StORF/.idea/Ensem_Con-StORF.iml" filepath="/mnt/Shared_SSD/Ensem_Con-StORF/.idea/Ensem_Con-StORF.iml" />
+      <module fileurl="file:///mnt/L_Data/Ensembl_STORFING/.idea/Ensembl_STORFING.iml" filepath="/mnt/L_Data/Ensembl_STORFING/.idea/Ensembl_STORFING.iml" />
       <module fileurl="file://$PROJECT_DIR$/../IR-StORF/.idea/IR-StORF.iml" filepath="$PROJECT_DIR$/../IR-StORF/.idea/IR-StORF.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/PCG_Comparison.iml" filepath="$PROJECT_DIR$/.idea/PCG_Comparison.iml" />
       <module fileurl="file:///mnt/L_Data/Nextcloud/Nick/PhD/.idea/PhD.iml" filepath="/mnt/L_Data/Nextcloud/Nick/PhD/.idea/PhD.iml" />

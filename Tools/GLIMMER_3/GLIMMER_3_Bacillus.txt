@@ -1,4 +1,4 @@
->Chromosome dna:chromosome chromosome:ASM52304v1:Chromosome:1:4043042:1 REF
+ntral.aber.>Chromosome dna:chromosome chromosome:ASM52304v1:Chromosome:1:4043042:1 REF
 orf00001      326     1750  +2     7.21
 orf00002     1939     3075  +1     7.09
 orf00003     3205     3420  +1    10.04

@@ -1,7 +1,7 @@
 import collections
 
 from ..utils import revCompIterative
-
+from ..utils import sortORFs
 
 def StORF_Undetected(tool,genome):
     storf_orfs = collections.OrderedDict()
@@ -25,6 +25,8 @@ def StORF_Undetected(tool,genome):
                 po = str(start) + ',' + str(stop)
                 orf = [strand, startCodon, stopCodon]
                 storf_orfs.update({po:orf})
+
+    storf_orfs = sortORFs(storf_orfs)
     return storf_orfs
 
 

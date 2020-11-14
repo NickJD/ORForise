@@ -1,0 +1,43 @@
+##gff-version	3
+#	StORF Stop - Stop ORF Predictions
+#	Run Date:2020-10-10
+##Original File: ensembl/Myco/Myco_IR.fasta
+Chromosome	StORF	ORF	84066	84450	.	-	.	ID=Chromosome_IR|83994_88278_0:IR_Positions=72_234_456:Length=384:IR_Frame=4:Start_Stop=TAA:End_Stop=TAA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	84520	85051	.	+	.	ID=Chromosome_IR|83994_88278_1:IR_Positions=526_658_1057:Length=531:IR_Frame=2:Start_Stop=TAA:End_Stop=TGA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	85291	85942	.	+	.	ID=Chromosome_IR|83994_88278_2:IR_Positions=1297_1561_1948:Length=651:IR_Frame=2:Start_Stop=TGA:End_Stop=TGA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	86010	86535	.	+	.	ID=Chromosome_IR|83994_88278_3:IR_Positions=2016_2211_2541:Length=525:IR_Frame=1:Start_Stop=TGA:End_Stop=TGA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	86718	86961	.	-	.	ID=Chromosome_IR|83994_88278_4:IR_Positions=2724_2835_2967:Length=243:IR_Frame=4:Start_Stop=TAA:End_Stop=TAA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	86772	87315	.	+	.	ID=Chromosome_IR|83994_88278_5:IR_Positions=2778_3039_3216_3321:Length=543:IR_Frame=1:Start_Stop=TAA:End_Stop=TGA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	87304	87754	.	+	.	ID=Chromosome_IR|83994_88278_6:IR_Positions=3310_3640_3760:Length=450:IR_Frame=2:Start_Stop=TAA:End_Stop=TGA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	87766	88009	.	+	.	ID=Chromosome_IR|83994_88278_7:IR_Positions=3772_3910_4015:Length=243:IR_Frame=2:Start_Stop=TAA:End_Stop=TGA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	167624	168329	.	+	.	ID=Chromosome_IR|167130_170057_0:IR_Positions=494_671_1100_1199:Length=705:IR_Frame=3:Start_Stop=TGA:End_Stop=TAA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	168357	168912	.	+	.	ID=Chromosome_IR|167130_170057_1:IR_Positions=1227_1497_1677_1782:Length=555:IR_Frame=1:Start_Stop=TAA:End_Stop=TGA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	169290	169815	.	+	.	ID=Chromosome_IR|167130_170057_2:IR_Positions=2160_2415_2685:Length=525:IR_Frame=1:Start_Stop=TGA:End_Stop=TAA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	174973	175360	.	+	.	ID=Chromosome_IR|174743_175855_0:IR_Positions=230_347_617:Length=387:IR_Frame=3:Start_Stop=TAA:End_Stop=TAA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	213536	214568	.	+	.	ID=Chromosome_IR|213499_216066_0:IR_Positions=37_436_643_1069:Length=1032:IR_Frame=2:Start_Stop=TAA:End_Stop=TAA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	213956	214310	.	-	.	ID=Chromosome_IR|213499_216066_1:IR_Positions=457_670_811:Length=354:IR_Frame=5:Start_Stop=TAG:End_Stop=TAA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	214173	214479	.	-	.	ID=Chromosome_IR|213499_216066_2:IR_Positions=674_863_980:Length=306:IR_Frame=6:Start_Stop=TGA:End_Stop=TAG:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	214770	215247	.	+	.	ID=Chromosome_IR|213499_216066_3:IR_Positions=1271_1469_1643_1748:Length=477:IR_Frame=3:Start_Stop=TAA:End_Stop=TGA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	215004	215307	.	-	.	ID=Chromosome_IR|213499_216066_4:IR_Positions=1505_1688_1808:Length=303:IR_Frame=6:Start_Stop=TAA:End_Stop=TGA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	215484	215958	.	-	.	ID=Chromosome_IR|213499_216066_5:IR_Positions=1985_2246_2459:Length=474:IR_Frame=6:Start_Stop=TGA:End_Stop=TGA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	229325	229811	.	+	.	ID=Chromosome_IR|229017_232059_0:IR_Positions=308_422_794:Length=486:IR_Frame=3:Start_Stop=TAA:End_Stop=TGA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	229879	230380	.	+	.	ID=Chromosome_IR|229017_232059_1:IR_Positions=862_1042_1225_1363:Length=501:IR_Frame=2:Start_Stop=TGA:End_Stop=TGA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	230581	231049	.	+	.	ID=Chromosome_IR|229017_232059_2:IR_Positions=1564_1747_1927_2032:Length=468:IR_Frame=2:Start_Stop=TAA:End_Stop=TGA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	230874	231252	.	-	.	ID=Chromosome_IR|229017_232059_3:IR_Positions=1857_2064_2235:Length=378:IR_Frame=4:Start_Stop=TAG:End_Stop=TAG:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	273421	273811	.	-	.	ID=Chromosome_IR|273268_273840_0:IR_Positions=153_378_543:Length=390:IR_Frame=4:Start_Stop=TAA:End_Stop=TAA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	290728	291328	.	+	.	ID=Chromosome_IR|290595_291384_0:IR_Positions=133_256_733:Length=600:IR_Frame=2:Start_Stop=TGA:End_Stop=TAA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	290829	291123	.	-	.	ID=Chromosome_IR|290595_291384_1:IR_Positions=234_369_528:Length=294:IR_Frame=4:Start_Stop=TAA:End_Stop=TAA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	313261	313876	.	+	.	ID=Chromosome_IR|312758_315351_0:IR_Positions=503_680_1010_1118:Length=615:IR_Frame=3:Start_Stop=TGA:End_Stop=TAG:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	314140	314632	.	+	.	ID=Chromosome_IR|312758_315351_1:IR_Positions=1382_1589_1769_1874:Length=492:IR_Frame=3:Start_Stop=TAA:End_Stop=TGA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	349688	350327	.	+	.	ID=Chromosome_IR|349152_354074_0:IR_Positions=536_713_1175:Length=639:IR_Frame=3:Start_Stop=TGA:End_Stop=TAA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	350332	350932	.	-	.	ID=Chromosome_IR|349152_354074_1:IR_Positions=1180_1543_1780:Length=600:IR_Frame=5:Start_Stop=TGA:End_Stop=TGA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	350403	350883	.	+	.	ID=Chromosome_IR|349152_354074_2:IR_Positions=1251_1446_1626_1731:Length=480:IR_Frame=1:Start_Stop=TAA:End_Stop=TGA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	351267	351825	.	+	.	ID=Chromosome_IR|349152_354074_3:IR_Positions=2115_2355_2673:Length=558:IR_Frame=1:Start_Stop=TGA:End_Stop=TAG:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	352016	352274	.	+	.	ID=Chromosome_IR|349152_354074_4:IR_Positions=2864_3020_3122:Length=258:IR_Frame=3:Start_Stop=TAA:End_Stop=TAG:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	352535	353015	.	+	.	ID=Chromosome_IR|349152_354074_5:IR_Positions=3383_3530_3707_3863:Length=480:IR_Frame=3:Start_Stop=TAA:End_Stop=TAA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	416355	416787	.	-	.	ID=Chromosome_IR|416280_417017_0:IR_Positions=75_210_507:Length=432:IR_Frame=4:Start_Stop=TAA:End_Stop=TGA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	428291	428732	.	+	.	ID=Chromosome_IR|428062_430630_0:IR_Positions=229_388_565_670:Length=441:IR_Frame=2:Start_Stop=TAA:End_Stop=TGA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	428732	429659	.	+	.	ID=Chromosome_IR|428062_430630_1:IR_Positions=670_1060_1297_1597:Length=927:IR_Frame=2:Start_Stop=TGA:End_Stop=TAG:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	429884	430553	.	+	.	ID=Chromosome_IR|428062_430630_2:IR_Positions=1822_2107_2296_2491:Length=669:IR_Frame=2:Start_Stop=TGA:End_Stop=TGA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	456296	456752	.	+	.	ID=Chromosome_IR|455897_456805_0:IR_Positions=399_657_855:Length=456:IR_Frame=1:Start_Stop=TAA:End_Stop=TAA:StORF_Type=Con-Stop-ORF
+Chromosome	StORF	ORF	559915	560509	.	-	.	ID=Chromosome_IR|559893_560546_0:IR_Positions=22_256_616:Length=594:IR_Frame=5:Start_Stop=TAA:End_Stop=TAA:StORF_Type=Con-Stop-ORF

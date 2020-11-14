@@ -3,11 +3,11 @@ import collections
 from ..utils import revCompIterative
 from ..utils import sortORFs
 
-def MetaGeneAnnotator(input_to_analyse,Genome):
+def MetaGeneAnnotator(genome_to_compare,parameters,genome):
     metaGeneAnnotator_ORFs = collections.OrderedDict()
-    Genome_Size = len(Genome)
-    Genome_rev = revCompIterative(Genome)
-    with open('Tools/MetaGeneAnnotator/'+input_to_analyse,'r') as MetaGeneAnnotator_input:
+    genome_Size = len(genome)
+    genome_rev = revCompIterative(genome)
+    with open('Tools/MetaGeneAnnotator/MetaGeneAnnotator_'+genome_to_compare+'.txt','r') as MetaGeneAnnotator_input:
         for line in MetaGeneAnnotator_input:
             line = line.split()
             if len(line) == 11:
@@ -16,13 +16,13 @@ def MetaGeneAnnotator(input_to_analyse,Genome):
                     stop = int(line[2])
                     strand = line[3]
                     if '-' in strand:  # Reverse Compliment starts and stops adjusted
-                        r_start = Genome_Size - stop
-                        r_stop = Genome_Size - start
-                        startCodon = Genome_rev[r_start:r_start + 3]
-                        stopCodon = Genome_rev[r_stop - 2:r_stop + 1]
+                        r_start = genome_Size - stop
+                        r_stop = genome_Size - start
+                        startCodon = genome_rev[r_start:r_start + 3]
+                        stopCodon = genome_rev[r_stop - 2:r_stop + 1]
                     elif '+' in strand:
-                        startCodon = Genome[start - 1:start+2]
-                        stopCodon = Genome[stop - 3:stop]
+                        startCodon = genome[start - 1:start+2]
+                        stopCodon = genome[stop - 3:stop]
                     po = str(start) + ',' + str(stop)
                     orf = [strand, startCodon, stopCodon]
                     metaGeneAnnotator_ORFs.update({po:orf})

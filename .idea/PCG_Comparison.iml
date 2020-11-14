@@ -7,6 +7,8 @@
     <orderEntry type="module" module-name="PhD" />
     <orderEntry type="module" module-name="Pycharm_Nextcloud" />
     <orderEntry type="module" module-name="IR-StORF" />
+    <orderEntry type="module" module-name="Ensembl_STORFING" />
+    <orderEntry type="module" module-name="Ensem_Con-StORF" />
   </component>
   <component name="TestRunnerService">
     <option name="PROJECT_TEST_RUNNER" value="pytest" />

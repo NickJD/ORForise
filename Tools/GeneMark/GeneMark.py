@@ -3,14 +3,14 @@ import collections
 from ..utils import revCompIterative
 from ..utils import sortORFs
 
-def GeneMark(input_to_analyse,Genome):
+def GeneMark(genome_to_compare,parameters,genome):
     geneMark_ORFs = collections.OrderedDict()
-    Genome_Size = len(Genome)
-    Genome_rev = revCompIterative(Genome)
+    genome_Size = len(genome)
+    genome_rev = revCompIterative(genome)
     prev_Start = 0
     prev_Stop = 0
     started = False
-    with open('Tools/GeneMark/' + input_to_analyse, 'r') as GeneMark_input:
+    with open('Tools/GeneMark/GeneMark'+genome_to_compare+'_'+parameters+'.txt', 'r') as GeneMark_input:
         for line in GeneMark_input:
             line = line.split()
             if len(line) == 7:
@@ -21,18 +21,18 @@ def GeneMark(input_to_analyse,Genome):
                     strand = line[2]
                     if 'complement' in strand:  # Reverse Compliment starts and stops adjusted
                         if start != prev_Start:
-                            r_start = Genome_Size - stop
-                            r_stop = Genome_Size - start
+                            r_start = genome_Size - stop
+                            r_stop = genome_Size - start
                             strand = '-'
-                            startCodon = Genome_rev[r_start:r_start + 3]
-                            stopCodon = Genome_rev[r_stop - 2:r_stop + 1]
+                            startCodon = genome_rev[r_start:r_start + 3]
+                            stopCodon = genome_rev[r_stop - 2:r_stop + 1]
                             po = str(start) + ',' + str(stop)
                             orf = [strand, startCodon, stopCodon]
                             geneMark_ORFs.update({po: orf})
                     elif 'direct' in strand:
                         if stop != prev_Stop:
-                            startCodon = Genome[start - 1:start+2]
-                            stopCodon = Genome[stop - 3:stop]
+                            startCodon = genome[start - 1:start+2]
+                            stopCodon = genome[stop - 3:stop]
                             strand = '+'
                             po = str(start) + ',' + str(stop)
                             orf = [strand, startCodon, stopCodon]
@@ -65,35 +65,35 @@ def GeneMark(input_to_analyse,Genome):
     #                     if start != prev_Start:
     #                         prob_score = score
     #                         # Switched to match Sense Strand
-    #                         r_start = Genome_Size - stop
-    #                         r_stop = Genome_Size - start
+    #                         r_start = genome_Size - stop
+    #                         r_stop = genome_Size - start
     #                         strand = '-'
-    #                         startCodon = Genome_rev[r_start:r_start + 3]
-    #                         stopCodon = Genome_rev[r_stop - 2:r_stop + 1]
+    #                         startCodon = genome_rev[r_start:r_start + 3]
+    #                         stopCodon = genome_rev[r_stop - 2:r_stop + 1]
     #                         po = str(start) + ',' + str(stop)
     #                         orf = [strand, startCodon, stopCodon]
     #                     elif start == prev_Start and score > prob_score:
     #                         # Switched to match Sense Strand
     #                         prob_score = score
-    #                         r_start = Genome_Size - stop
-    #                         r_stop = Genome_Size - start
+    #                         r_start = genome_Size - stop
+    #                         r_stop = genome_Size - start
     #                         strand = '-'
-    #                         startCodon = Genome_rev[r_start:r_start + 3]
-    #                         stopCodon = Genome_rev[r_stop - 2:r_stop + 1]
+    #                         startCodon = genome_rev[r_start:r_start + 3]
+    #                         stopCodon = genome_rev[r_stop - 2:r_stop + 1]
     #                         po = str(start) + ',' + str(stop)
     #                         orf = [strand, startCodon, stopCodon]
     #                 elif 'direct' in strand:
     #                     if stop != prev_Stop:
     #                         prob_score = score
-    #                         startCodon = Genome[start - 1:start - 1 + 3]
-    #                         stopCodon = Genome[stop - 3:stop - 1 + 1]
+    #                         startCodon = genome[start - 1:start - 1 + 3]
+    #                         stopCodon = genome[stop - 3:stop - 1 + 1]
     #                         strand = '+'
     #                         po = str(start) + ',' + str(stop)
     #                         orf = [strand, startCodon, stopCodon]
     #                     elif stop == prev_Stop and score > prob_score:
     #                         prob_score = score
-    #                         startCodon = Genome[start - 1:start - 1 + 3]
-    #                         stopCodon = Genome[stop - 3:stop - 1 + 1]
+    #                         startCodon = genome[start - 1:start - 1 + 3]
+    #                         stopCodon = genome[stop - 3:stop - 1 + 1]
     #                         strand = '+'
     #                         po = str(start) + ',' + str(stop)
     #                         orf = [strand, startCodon, stopCodon]

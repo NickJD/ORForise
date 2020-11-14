@@ -3,11 +3,11 @@ import collections
 from ..utils import revCompIterative
 from ..utils import sortORFs
 
-def MetaGene(input_to_analyse,Genome):
+def MetaGene(genome_to_compare,parameters,genome):
     metaGene_ORFs = collections.OrderedDict()
-    Genome_Size = len(Genome)
-    Genome_rev = revCompIterative(Genome)
-    with open('Tools/MetaGene/'+input_to_analyse,'r') as MetaGene_input:
+    genome_Size = len(genome)
+    genome_rev = revCompIterative(genome)
+    with open('Tools/MetaGene/MetaGene_'+genome_to_compare+'.txt','r') as MetaGene_input:
         for line in MetaGene_input:
             line = line.split()
             if len(line) >= 6 and ("-" in line or '+' in line):
@@ -15,13 +15,13 @@ def MetaGene(input_to_analyse,Genome):
                 stop = int(line[1])
                 strand = line[2]
                 if '-' in strand:  # Reverse Compliment starts and stops adjusted
-                    r_start = Genome_Size - stop
-                    r_stop = Genome_Size - start
-                    startCodon = Genome_rev[r_start:r_start + 3]
-                    stopCodon = Genome_rev[r_stop - 2:r_stop + 1]
+                    r_start = genome_Size - stop
+                    r_stop = genome_Size - start
+                    startCodon = genome_rev[r_start:r_start + 3]
+                    stopCodon = genome_rev[r_stop - 2:r_stop + 1]
                 elif '+' in strand:
-                    startCodon = Genome[start - 1:start+2]
-                    stopCodon = Genome[stop - 3:stop]
+                    startCodon = genome[start - 1:start+2]
+                    stopCodon = genome[stop - 3:stop]
                 po = str(start) + ',' + str(stop)
                 orf = [strand, startCodon, stopCodon]
                 metaGene_ORFs.update({po:orf})

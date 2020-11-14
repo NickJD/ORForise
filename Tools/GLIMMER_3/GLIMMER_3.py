@@ -3,11 +3,11 @@ import collections
 from ..utils import revCompIterative
 from ..utils import sortORFs
 
-def GLIMMER_3(input_to_analyse,Genome):
+def GLIMMER_3(genome_to_compare,parameters,genome):
     GLIMMER_ORFs = collections.OrderedDict()
-    Genome_Size = len(Genome)
-    Genome_rev = revCompIterative(Genome)
-    with open('Tools/GLIMMER_3/' + input_to_analyse, 'r') as glimmer_input: #GLIMMER_3 reverses the start and stop positions for ORFS on the negative strand
+    genome_Size = len(genome)
+    genome_rev = revCompIterative(genome)
+    with open('Tools/GLIMMER_3/GLIMMER_3_'+genome_to_compare+'.txt', 'r') as glimmer_input: #GLIMMER_3 reverses the start and stop positions for ORFS on the negative strand
         for line in glimmer_input:
             if '>' not in line: # This will not work with multiple contigs
                 line = line.split()
@@ -16,16 +16,16 @@ def GLIMMER_3(input_to_analyse,Genome):
                         start = int(line[2])
                         stop = int(line[1])
                         strand = '-'
-                        r_start = Genome_Size - stop
-                        r_stop = Genome_Size - start
-                        startCodon = Genome_rev[r_start:r_start + 3]
-                        stopCodon = Genome_rev[r_stop - 2:r_stop + 1]
+                        r_start = genome_Size - stop
+                        r_stop = genome_Size - start
+                        startCodon = genome_rev[r_start:r_start + 3]
+                        stopCodon = genome_rev[r_stop - 2:r_stop + 1]
                     elif '+' in line[3]:
                         start = int(line[1])
                         stop = int(line[2])
                         strand = '+'
-                        startCodon = Genome[start - 1:start+3]
-                        stopCodon = Genome[stop - 3:stop]
+                        startCodon = genome[start - 1:start+3]
+                        stopCodon = genome[stop - 3:stop]
                     po = str(start) + ',' + str(stop)
                     orf = [strand, startCodon, stopCodon]
                     GLIMMER_ORFs.update({po: orf})

@@ -1,33 +1,42 @@
 import collections
 
-import sys
-
-sys.path.append('../')
 from ..utils import revCompIterative
+from ..utils import sortORFs
 
-def StORF(input_to_analyse,genome):
+def StORF(tool,genome):
     storf_orfs = collections.OrderedDict()
-    genome_size = len(genome)
-    genome_rev = revCompIterative(genome)
-    with open('Tools/StORF/'+input_to_analyse,'r') as storf_input:
+    genome_Size = len(genome)
+    genome_Rev = revCompIterative(genome)
+    with open('Tools/StORF/'+tool,'r') as storf_input:
         for line in storf_input:
-            if "#" not in line:
-                line = line.split()
+            line = line.split()
+            if "StORF" in line[1] and "ORF" in line[2]:
                 start = int(line[3])
                 stop = int(line[4])
                 strand = line[6]
-                if '-' in strand:
-                    r_start = genome_size - stop
-                    r_stop = genome_size - start
-                    startcodon = genome_rev[r_start:r_start + 3]
-                    stopcodon = genome_rev[r_stop - 2:r_stop + 1]
+                if '-' in strand:  # Reverse Compliment starts and stops adjusted
+                    r_start = genome_Size - stop
+                    r_stop = genome_Size - start
+                    startCodon = genome_Rev[r_start:r_start + 3]
+                    stopCodon = genome_Rev[r_stop - 2:r_stop + 1]
                 elif '+' in strand:
-                    startcodon = genome[start - 1:start -1 + 3]
-                    stopcodon = genome[stop - 3:stop -1 + 1]
+                    startCodon = genome[start - 1:start -1 + 3]
+                    stopCodon = genome[stop - 3:stop -1 + 1]
                 po = str(start) + ',' + str(stop)
-                orf = [strand, startcodon, stopcodon]
+                orf = [strand, startCodon, stopCodon]
                 storf_orfs.update({po:orf})
+
+    storf_orfs = sortORFs(storf_orfs)
     return storf_orfs
+
+
+
+
+
+
+
+
+
 
 
 
