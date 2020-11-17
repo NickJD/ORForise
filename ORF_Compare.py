@@ -93,7 +93,7 @@ def comparator(tool,parameters,genome_to_compare):
         except IndexError:
             pass
 
-        tool_out.writerow(['\n#####\nPartial_Gene_Hits'])
+        tool_out.writerow(['\n#####\nPartial_Gene_Hits:'])
         for key, seqs in partial_Hits.items():
             key = key.split(';')
             gene_Seq = seqs[0]
