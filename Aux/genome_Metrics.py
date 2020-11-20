@@ -40,7 +40,7 @@ def revCompIterative(watson):
 
 def genome_Metrics(genome_to_compare):
     genome = ""
-    with open('../genomes/' + genome_to_compare + '.fa', 'r') as genome_file:
+    with open('../Genomes/' + genome_to_compare + '.fa', 'r') as genome_file:
         for line in genome_file:
             line = line.replace("\n", "")
             if ">" not in line:
@@ -60,7 +60,7 @@ def genome_Metrics(genome_to_compare):
     strands = collections.defaultdict(int)
     short_PCGs = []
     pcg_GC = []
-    with open('../genomes/' + genome_to_compare + '.gff', 'r') as genome_gff:
+    with open('../Genomes/' + genome_to_compare + '.gff', 'r') as genome_gff:
         for line in genome_gff:
             line = line.split('\t')
             try:
@@ -195,7 +195,7 @@ def genome_Metrics(genome_to_compare):
             '\nPercentage of Genes ending with TGA: ' + format(TGA_Percentage, '.2f') +
             '\nPercentage of Genes ending with Alternative Stop Codon: ' + format(other_Stop_Percentage, '.2f'))
 
-    with open('../genomes/' + genome_to_compare + '_metrics.csv', 'w') as out_file:
+    with open('../Genomes/' + genome_to_compare + '_metrics.csv', 'w') as out_file:
         out = csv.writer(out_file, delimiter=',')
         out.writerow(['Genome Metrics:'])
         out.writerow([output])

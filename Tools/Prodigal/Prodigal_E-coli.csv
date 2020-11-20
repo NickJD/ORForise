@@ -17,7 +17,7 @@ Alternative_Stops_Predicted:
 Undetected_Gene_Metrics:
 ATG_Start ,GTG_Start ,TTG_Start ,ATT_Start ,CTG_Start ,Alternative_Start_Codon ,TGA_Stop ,TAA_Stop ,TAG_Stop ,Alternative_Stop_Codon ,Median_Length ,ORFs_on_Positive_Strand ,ORFs_on_Negative_Strand
 86.08,10.13,3.80,0.00,0.00,0.00,34.18,56.96,7.59,1.27,128.00,39,40
-Undetected  Genes:
+Undetected_Genes:
 >E-coli_190_255_+ 
 ATGAAACGCATTAGCACCACCATTACCACCACCATCACCATTACCACAGGTAACGGTGCGGGCTGA
 >E-coli_21181_21399_+ 

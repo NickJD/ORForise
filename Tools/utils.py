@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-
-
 import collections
 
 # Constants
@@ -18,7 +16,7 @@ def revCompIterative(watson): #Gets Reverse Complement
         try:
             crick += complements[nt]
         except KeyError:
-            crick += nt # Do not modify error
+            crick += nt # Do not modify non-standard DNA
     return crick
 
 def sortORFs(tool_ORFs): # Can only sort by given start position - Not perfect

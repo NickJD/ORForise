@@ -14,7 +14,7 @@ args = parser.parse_args()
 
 def comparator(tools,parameters,genome_to_compare):
     genome_Seq = ""
-    with open('genomes/'+genome_to_compare+'.fa', 'r') as genome:
+    with open('Genomes/'+genome_to_compare+'.fa', 'r') as genome:
         for line in genome:
             line = line.replace("\n","")
             if not line.startswith('>'):
@@ -22,7 +22,7 @@ def comparator(tools,parameters,genome_to_compare):
     ##############################################
     genes = collections.OrderedDict() # Order is important
     count = 0
-    with open('genomes/'+genome_to_compare+'.gff','r') as genome_gff:
+    with open('Genomes/'+genome_to_compare+'.gff','r') as genome_gff:
         for line in genome_gff:
             line = line.split('\t')
             try:
@@ -76,7 +76,7 @@ def comparator(tools,parameters,genome_to_compare):
         tool_out.writerow(['Undetected_Gene_Metrics:'])
         tool_out.writerow(['ATG_Start,GTG_Start,TTG_Start,ATT_Start,CTG_Start,Alternative_Start_Codon,TGA_Stop,TAA_Stop,TAG_Stop,Alternative_Stop_Codon,Median_Length,ORFs_on_Positive_Strand,ORFs_on_Negative_Strand'])
         tool_out.writerow(undetected_gene_metrics)
-        tool_out.writerow(['Undetected Genes:'])
+        tool_out.writerow(['Undetected_Genes:'])
         for key,value in missed_genes.items():
             key = key.split(',')
             id = ('>' + genome_to_compare + '_' + key[0] + '_' + key[1] + '_' + key[2])

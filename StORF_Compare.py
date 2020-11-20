@@ -13,7 +13,7 @@ args = parser.parse_args()
 
 def comparator(tool,input_to_analyse,storfs_to_find_missing,genome_to_compare):
     genome_Seq = ""
-    with open('genomes/'+genome_to_compare+'.fa', 'r') as genome:
+    with open('Genomes/'+genome_to_compare+'.fa', 'r') as genome:
         for line in genome:
             line = line.replace("\n","")
             if ">" not in line:

@@ -1,5 +1,5 @@
 import argparse
-import constants
+from Tools.utils import *
 import collections
 import numpy as np
 
@@ -114,7 +114,7 @@ def missed_gene_read(results,missed_genes):
 # def read_original_annotation(gff):
 #     genes = collections.OrderedDict()  # Order is important
 #     count = 0
-#     with open('../genomes/' + gff + '.gff', 'r') as genome_gff:  # Should work for GFF3
+#     with open('../Genomes/' + gff + '.gff', 'r') as genome_gff:  # Should work for GFF3
 #         for line in genome_gff:
 #             line = line.split('\t')
 #             try:
@@ -146,7 +146,7 @@ def detail_transfer(genes,missed_genes):
 
 def result_compare(results,annotation):
     genome = ""
-    with open('../genomes/' + annotation + '.fa', 'r') as genome_file:
+    with open('../Genomes/' + annotation + '.fa', 'r') as genome_file:
         for line in genome_file:
             line = line.replace("\n", "")
             if ">" not in line:
@@ -154,20 +154,19 @@ def result_compare(results,annotation):
 
     missed_genes = collections.OrderedDict()
     missed_genes = missed_gene_read(results,missed_genes)
-#    genes = read_original_annotation(gff)
+    list_MG = list(missed_genes.keys())
     #Analysis
 
     genome_Rev = revCompIterative(genome)
     genome_Size = len(genome)
     genes = collections.OrderedDict()
-    lengths_PCG = []
-    gene_Overlaps = []
     count = 0
     prev_Stop = 0
-    strands = collections.defaultdict(int)
-    short_PCGs = []
-    pcg_GC = []
-    with open('../genomes/' + annotation + '.gff', 'r') as genome_gff:
+    ### Record Missed and Detected Gene metrics
+    genes_strand = collections.defaultdict(int)
+    genes_Missed_strand = collections.defaultdict(int)
+    short_PCGs,short_Missed_PCGs,pcg_GC,pcg_Missed_GC,lengths_PCG,lengths_Missed_PCG,genes_Overlap,genes_Missed_Overlap = [],[],[],[],[],[],[],[]
+    with open('../Genomes/' + annotation + '.gff', 'r') as genome_gff:
         for line in genome_gff:
             line = line.split('\t')
             try:
@@ -175,7 +174,7 @@ def result_compare(results,annotation):
                     start = int(line[3])
                     stop = int(line[4])
                     strand = line[6]
-                    strands[strand] += 1
+
                     gene = str(start) + ',' + str(stop) + ',' + strand
                     if strand == '-':
                         r_Start = genome_Size - stop
@@ -186,41 +185,60 @@ def result_compare(results,annotation):
                     startCodon = seq[0:3]
                     stopCodon = seq[-3:]
                     length = stop - start
-                    if length < constants.SHORT_ORF_LENGTH:
-                        short_PCGs.append(gene)
-                        #print(line)
                     n_per, gc = gc_count(seq)
-                    pcg_GC.append(float(gc))
-                    lengths_PCG.append(length)
-                    if prev_Stop > start:
-                        overlap = prev_Stop - start
-                        gene_Overlaps.append(overlap)
-                    else:
-                        overlap = 0
+
+                    if pos in list_MG:
+                        genes_Missed_strand[strand] += 1
+                        pcg_Missed_GC.append(float(gc))
+                        lengths_Missed_PCG.append(length)
+                        if length < SHORT_ORF_LENGTH:
+                            short_Missed_PCGs.append(gene)
+                        if prev_Stop > start:
+                            overlap = prev_Stop - start
+                            genes_Missed_Overlap.append(overlap)
+                        else:
+                            overlap = 0
+                    elif pos not in list_MG:
+                        genes_strand[strand] += 1
+                        pcg_GC.append(float(gc))
+                        lengths_PCG.append(length)
+                        if length < SHORT_ORF_LENGTH:
+                            short_PCGs.append(gene)
+                        if prev_Stop > start:
+                            overlap = prev_Stop - start
+                            genes_Overlap.append(overlap)
+                        else:
+                            overlap = 0
+
                     count += 1
                     prev_Stop = stop
                     pos = str(start)+'_'+str(stop)
-
                     if genes:
                         prev_details = genes[prev_pos]
                         prev_details.insert(4,overlap)
                         genes.update({prev_pos:prev_details})
+
                     genes.update({pos:[strand,length,gc,overlap,seq,startCodon,stopCodon]})
                     prev_pos = pos
-
-
 
             except IndexError:
                 continue
 
+    missed_genes = detail_transfer(genes, missed_genes)
+
+
+    for key in list_MG:
+        if key in genes:
+            del genes[key]
+
     median_PCG = np.median(lengths_PCG)
-    median_PCG_Olap = np.median(gene_Overlaps)
-    longest_Olap = max(gene_Overlaps)
-    num_overlaps = len(gene_Overlaps)
+    median_PCG_Olap = np.median(genes_Overlap)
+    longest_Olap = max(genes_Overlap)
+    num_overlaps = len(genes_Overlap)
     gc_median = format(np.median(pcg_GC),'.2f')
     num_Short_PCGs = len(short_PCGs)
 
-    missed_genes = detail_transfer(genes,missed_genes)
+
 
     atg_P, gtg_P, ttg_P, att_P, ctg_P, other_Starts_P,other_Starts = start_Codon_Count(genes)
     tag_P, taa_P, tga_P, other_Stops_P,other_Stops = stop_Codon_Count(genes)
@@ -229,7 +247,7 @@ def result_compare(results,annotation):
 
     output = ("Number of Protein Coding Genes in " + str(annotation) + " : " + str(len(lengths_PCG)) + ", Median Length of PCGs: " +
               str(median_PCG) + ", Min Length of PCGs: " + str(min(lengths_PCG)) + ", Max Length of PCGs: " + str(max(lengths_PCG)) +
-              ", Number of PCGs on Pos Strand: " + str(strands['+']) + ", Number of PCGs on Neg Strand: " + str(strands['-']) +
+              ", Number of PCGs on Pos Strand: " + str(gend['+']) + ", Number of PCGs on Neg Strand: " + str(strands['-']) +
               ", Median GC of PCGs: " + str(gc_median) + ", Number of Overlapping PCGs: " + str(num_overlaps) +
               ", Longest PCG Overlap: " + str(longest_Olap) + ", Median PCG Overlap: " + str(median_PCG_Olap) +
               ", Number of PCGs less than 100nt: " + str(num_Short_PCGs) +

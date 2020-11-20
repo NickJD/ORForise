@@ -29,8 +29,8 @@ def gc_count(dna):
         elif "N" in i:
             n+=1
     gc_content = format((g + c) * 100 / (a + t + g + c + n),'.2f')
-    n_per = n * 100 / (a + t + g + c + n)
-    return n_per,gc_content
+    #n_per = n * 100 / (a + t + g + c + n)
+    return gc_content
 
 def revCompIterative(watson):
     complements = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C', 'N': 'N'}
@@ -91,7 +91,9 @@ def partial_gene_read(results,partial_genes):
                     o_Seq = line.strip()
                     orf_Lengths.append(len(o_Seq))
             elif not line:
-                partial_genes.update({g_Pos:[strand,g_Seq,o_Pos,o_Seq]})
+                g_GC = gc_count(g_Seq)
+                o_GC = gc_count(o_Seq)
+                partial_genes.update({g_Pos:[strand,g_Seq,g_GC,o_Pos,o_Seq,o_GC]})
         if line.startswith('Partial_Gene_Hits:'):
             read = True
 
@@ -115,7 +117,7 @@ def detail_transfer(genes,partial_genes):
 
 def result_compare(results,annotation):
     genome = ""
-    with open('../genomes/' + annotation + '.fa', 'r') as genome_file:
+    with open('../Genomes/' + annotation + '.fa', 'r') as genome_file:
         for line in genome_file:
             line = line.replace("\n", "")
             if ">" not in line:
@@ -136,7 +138,7 @@ def result_compare(results,annotation):
     # strands = collections.defaultdict(int)
     # short_PCGs = []
     # pcg_GC = []
-    # with open('../genomes/' + annotation + '.gff', 'r') as genome_gff:
+    # with open('../Genomes/' + annotation + '.gff', 'r') as genome_gff:
     #     for line in genome_gff:
     #         line = line.split('\t')
     #         try:
@@ -185,20 +187,26 @@ def result_compare(results,annotation):
     orf_Median = np.median(orf_Lengths)
     gene_Median = np.median(gene_Lengths)
     strands = collections.defaultdict(int, {'-': 0, '+': 0})
-    gene_Starts = collections.defaultdict(int)
-    gene_Stops = collections.defaultdict(int)
-    orf_Starts = collections.defaultdict(int)
-    orf_Stops = collections.defaultdict(int)
-
+    # Hard coded codons - Not ideal
+    gene_Starts = collections.OrderedDict({'ATG':0,'ATT':0,'CTG':0,'GAC':0,'GTG':0,'TTG':0})
+    gene_Stops = collections.OrderedDict({'TAA':0,'TAG':0,'TGA':0})
+    gene_GC = []
+    orf_Starts = collections.OrderedDict({'ATG':0,'ATT':0,'CTG':0,'GAC':0,'GTG':0,'TTG':0})
+    orf_Stops = collections.OrderedDict({'TAA':0,'TAG':0,'TGA':0})
+    orf_GC = []
 
     for gene, data in partial_genes.items():
         print(data)
         strands[data[0]] +=1
         gene_Starts[data[1][0:3]] +=1
         gene_Stops[data[1][-3:]] +=1
-        orf_Starts[data[3][0:3]] +=1
-        orf_Stops[data[3][-3:]] +=1
+        gene_GC.append(float(data[2]))
+        orf_Starts[data[4][0:3]] +=1
+        orf_Stops[data[4][-3:]] +=1
+        orf_GC.append(float(data[5]))
 
+    gene_Median_GC = np.median(gene_GC)
+    orf_Median_GC = np.median(orf_GC)
     # atg_P = format(100* gene_Starts['ATG'] / len(gene_Lengths),'.2f')
     # gtg_P = format(100 * gene_Starts['GTG'] / len(gene_Lengths),'.2f')
     # ttg_P = format(100 * gene_Starts['TTG'] / len(gene_Lengths),'.2f')
@@ -221,7 +229,9 @@ def result_compare(results,annotation):
     #           ", Number of PCGs on Pos Strand: " + str(strands['+']) + ", Number of PCGs on Neg Strand: " + str(strands['-']) +
     #           ", Median GC of PCGs: " + str('NA') +
     #           ", Number of PCGs less than 100nt: " + str('NA') +
-    output = ("Number of Partial Hits:" + str(len(gene_Lengths)) + "\nMedian Length of Partial Hit Genes:" + str(gene_Median) + 
+    output = ("Number of Partial Hits:" + str(len(gene_Lengths)) + "\nMedian Length of Partial Hit Genes:" + str(gene_Median) +
+              '\nMedian Length of Partial Hit ORFs:' +  str(orf_Median) + '\nMedian GC Partial Hit Genes:' + str(gene_Median_GC) +
+              '\nMedian GC Partial Hit ORFs:' + str(orf_Median_GC) +
               '\nPercentage of Genes starting with ATG - Annotation/partial: ' + g_atg_P + ' ' + o_atg_P +
               '\nPercentage of Genes starting with GTG - Annotation/partial: ' + g_gtg_P + ' ' + o_gtg_P +
               '\nPercentage of Genes starting with TTG - Annotation/partial: ' + g_ttg_P + ' ' + o_ttg_P +
@@ -238,8 +248,25 @@ def result_compare(results,annotation):
 
     print(output)
 
+    import matplotlib.pylab as plt
 
+    list_ORF_Starts = list(orf_Starts.items())  # sorted by key, return a list of tuples
+    list_Gene_Starts = list(gene_Starts.items())
+    o_x, o_y = zip(*list_ORF_Starts)  # unpack a list of pairs into two tuples
+    g_x, g_y = zip(*list_Gene_Starts)
 
+    plt.plot(o_x, o_y)
+    plt.plot(g_x, g_y)
+    plt.show()
+
+    list_ORF_Stops = list(orf_Stops.items())  # sorted by key, return a list of tuples
+    list_Gene_Stops = list(gene_Stops.items())
+    o_x, o_y = zip(*list_ORF_Stops)  # unpack a list of pairs into two tuples
+    g_x, g_y = zip(*list_Gene_Stops)
+
+    plt.plot(o_x, o_y)
+    plt.plot(g_x, g_y)
+    plt.show()
 
 
 if __name__ == "__main__":
