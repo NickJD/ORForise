@@ -1,4 +1,4 @@
-# Pro_Gene - Prokaryote Genome Anotation Comparison
+# Pro_Gene - Prokaryote Genome Anotation Comparison 
 Comparison pipeline for Prokaryote Protein Coding Gene Predictors
 
 To run, you need:   
@@ -7,20 +7,22 @@ To run, you need:
 * Python 3 and the numpy library.
 
 For Help: python3 ORF_Compare.py -h   
-Example: python3 ORF_Compare.py -t Prodigal -i Prodigal_E-coli.gff -g E-coli  
-This will compare the output of Prodigal E.coli ORF predictions against the Ensembl E.coli annotation.
+Example: python3 ORF_Compare.py -t Prodigal -g E-coli \
+Example with Model Parameter: python3 ORF_Compare.py -t GeneMark -p Staph -g Staph  
+
 
 ```python
-usage: ORF_Compare.py [-h] -t TOOL -i INPUT_TO_ANALYSE -g GENOME_TO_COMPARE
+usage: ORF_Compare.py [-h] -t TOOL [-p PARAMETERS] -g GENOME_TO_COMPARE
 
 optional arguments:
   -h, --help            show this help message and exit
   -t TOOL, --tool TOOL  Which tool to compare?
-  -i INPUT_TO_ANALYSE, --input_to_analyse INPUT_TO_ANALYSE
-                        File name of tool output to compare.
+  -p PARAMETERS, --parameters PARAMETERS
+                        Optional parameters for prediction tool.
   -g GENOME_TO_COMPARE, --genome_to_compare GENOME_TO_COMPARE
                         Which genome to analyse? Genome files have same prefix
                         - .fa and .gff appended
+
 
 ```
 

@@ -1,5 +1,5 @@
 Genome Metrics:
-"Number of Protein Coding Genes in Caul : 3737, Median Length of PCGs: 827.0, Min Length of PCGs: 92, Max Length of PCGs: 7439, Number of PCGs on Pos Strand: 1828, Number of PCGs on Neg Strand: 1909, Median GC of PCGs: 67.38, Number of Overlapping PCGs: 702, Longest PCG Overlap: 2246, Median PCG Overlap: 3.0, Number of PCGs less than 100nt: 7
+"Number of Protein Coding Genes in Caul : 3737, Median Length of PCGs: 827.0, Min Length of PCGs: 92, Max Length of PCGs: 7439, Number of PCGs on Pos Strand: 1828, Number of PCGs on Neg Strand: 1909, Median GC of PCGs: 67.38, Number of Overlapping PCGs: 702, Longest PCG Overlap: 2246, Median PCG Overlap: 3.0, Number of PCGs less than 100nt: 54
 Percentage of Genome which is Protein Coding: 90.23, Number of Non-PCGs: 138, Percentage of Genome Non-PCG: 0.38, Percentage of All Genes in Genome: 90.53
 Percentage of Genes starting with ATG: 68.58
 Percentage of Genes starting with GTG: 17.69

@@ -7,7 +7,7 @@ def FragGeneScan(genome_to_compare,parameters,genome):
     fragGeneScan_ORFs = collections.OrderedDict()
     genome_Size = len(genome)
     genome_rev = revCompIterative(genome)
-    with open('Tools/FragGeneScan/'+genome_to_compare+'.gff','r') as fragGeneScan_input:
+    with open('Tools/FragGeneScan/FragGeneScan_'+genome_to_compare+'.gff','r') as fragGeneScan_input:
         for line in fragGeneScan_input:
             line = line.split()
             if len(line) == 10 and "FGS" in line[1] and "CDS" in line [2]:

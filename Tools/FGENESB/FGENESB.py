@@ -7,7 +7,7 @@ def FGENESB(genome_to_compare,parameters,genome):
     FGENESB_ORFs = collections.OrderedDict()
     genome_Size = len(genome)
     genome_rev = revCompIterative(genome)
-    with open('Tools/FGENESB/'+genome_to_compare+'_'+parameters+'.txt','r') as FGENESB_input:
+    with open('Tools/FGENESB/FGENESB_'+genome_to_compare+'_'+parameters+'.txt','r') as FGENESB_input:
         for line in FGENESB_input:
             if '>GENE' in line:
                 line = line.split()

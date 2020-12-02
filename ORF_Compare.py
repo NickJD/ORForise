@@ -86,14 +86,14 @@ def comparator(tool,parameters,genome_to_compare):
 
         try:
             for key, value in multi_Matched_ORFs.items():
-                key = key.split(',') # Temp fix
+                key = key.split(',')
                 value = value[1].split(',')
                 multi = ('ORF:'+key[0]+'-'+key[1]+'_Gene:'+value[0]+'-'+value[1])
                 tool_out.writerow([multi])
         except IndexError:
             pass
 
-        tool_out.writerow(['\n#####\nPartial_Gene_Hits:'])
+        tool_out.writerow(['\n\nPartial_Gene_Hits:'])
         for key, seqs in partial_Hits.items():
             key = key.split(';')
             gene_Seq = seqs[0]

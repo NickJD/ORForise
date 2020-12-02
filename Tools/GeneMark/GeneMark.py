@@ -10,7 +10,7 @@ def GeneMark(genome_to_compare,parameters,genome):
     prev_Start = 0
     prev_Stop = 0
     started = False
-    with open('Tools/GeneMark/GeneMark'+genome_to_compare+'_'+parameters+'.txt', 'r') as GeneMark_input:
+    with open('Tools/GeneMark/GeneMark_'+genome_to_compare+'_'+parameters+'.txt', 'r') as GeneMark_input:
         for line in GeneMark_input:
             line = line.split()
             if len(line) == 7:

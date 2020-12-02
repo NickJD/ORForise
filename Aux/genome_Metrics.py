@@ -76,7 +76,7 @@ def genome_Metrics(genome_to_compare):
                     elif '-' in strand:
                         seq = genome_Rev[start:stop]
                     length = stop-start
-                    if length < 100:
+                    if length < 300:
                         short_PCGs.append(gene)
                         print(line)
                     n_per, gc = gc_count(seq)
@@ -95,6 +95,9 @@ def genome_Metrics(genome_to_compare):
                     if "biotype=protein_coding" not in gene_Info:
                         start = int(line[3])
                         stop = int(line[4])
+                        strand = line[6]
+
+                        gene = str(start) + ',' + str(stop) + ',' + strand
                         all_gene_Regions[start:stop] = [1]
                         non_Coding_Regions[start - 1:stop] = [1]
                         non_protein_coding_genes.append(gene)
@@ -199,6 +202,8 @@ def genome_Metrics(genome_to_compare):
         out = csv.writer(out_file, delimiter=',')
         out.writerow(['Genome Metrics:'])
         out.writerow([output])
+
+    print(output)
 
 
 if __name__ == "__main__":

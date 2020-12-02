@@ -7,7 +7,7 @@ def Augustus(genome_to_compare,parameters,genome):
     augustus_ORFs = collections.OrderedDict()
     genome_Size = len(genome)
     genome_rev = revCompIterative(genome)
-    with open('Tools/Augustus/'+genome_to_compare+'_'+parameters+'.csv','r') as Augustus_input:
+    with open('Tools/Augustus/Augustus_'+genome_to_compare+'_'+parameters+'.gff','r') as Augustus_input:
         for line in Augustus_input:
             line = line.split()
             if len(line) == 12 and "CDS" in line[2]:

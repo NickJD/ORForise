@@ -7,7 +7,7 @@ def EasyGene(genome_to_compare,parameters,genome):
     easyGene_ORFs = collections.OrderedDict()
     genome_Size = len(genome)
     genome_rev = revCompIterative(genome)
-    with open('Tools/EasyGene/'+genome_to_compare+'_'+parameters+'.gff','r') as EasyGene_input:
+    with open('Tools/EasyGene/EasyGene_'+genome_to_compare+'_'+parameters+'.gff','r') as EasyGene_input:
         for line in EasyGene_input:
             line = line.split()
             if len(line) == 10  and "CDS" in line[2]:

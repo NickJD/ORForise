@@ -3,6 +3,7 @@ import collections
 
 # Constants
 SHORT_ORF_LENGTH = 300
+MIN_COVERAGE = 75
 
 
 def revCompIterative(watson): #Gets Reverse Complement
@@ -19,7 +20,7 @@ def revCompIterative(watson): #Gets Reverse Complement
             crick += nt # Do not modify non-standard DNA
     return crick
 
-def sortORFs(tool_ORFs): # Can only sort by given start position - Not perfect
+def sortORFs(tool_ORFs): # Can only sort by given start position
     tool_ORFs_Sorted = sorted(tool_ORFs.items(), key=lambda v: int(v[0].split(",")[0]))
     tool_ORFs_Sorted = collections.OrderedDict(tool_ORFs_Sorted)
     return tool_ORFs_Sorted
