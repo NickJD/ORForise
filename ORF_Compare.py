@@ -103,5 +103,8 @@ def comparator(tool,parameters,genome_to_compare):
 
 
 
+
 if __name__ == "__main__":
     comparator(**vars(args))
+
+    print("Complete")

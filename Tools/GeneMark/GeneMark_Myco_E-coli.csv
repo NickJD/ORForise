@@ -1,9 +1,9 @@
 Representative_Metrics:
 Percentage_of_Genes_Detected,Percentage_of_ORFs_that_Detected_a_Gene,Percent_Difference_of_All_ORFs,Median_Length_Difference,Percentage_of_Perfect_Matches,Median_Start_Difference_of_Matched_ORFs,Median_Stop_Difference_of_Matched_ORFs,Percent_Difference_of_Matched_ORFs_Overlapping_Another_ORF,Percent_Difference_of_Short-Matched-ORFs,Precision,Recall,False_Discovery_Rate
-0.00,0.00,-99.37,-87.58,0,0,0,N/A,-100.00,0.00,0.00,1.00
+0.00,0.00,-99.37,-87.58,0.00,N/A,N/A,N/A,N/A,0.00,0.00,1.00
 All_Metrics:
 Number_of_ORFs,Percent_Difference_of_All_ORFs,Number_of_ORFs_that_Detected_a_Gene,Percentage_of_ORFs_that_Detected_a_Gene,Number_of_Genes_Detected,Percentage_of_Genes_Detected,Median_Length_of_All_ORFs,Median_Length_Difference,Minimum_Length_of_All_ORFs,Minimum_Length_Difference,Maximum_Length_of_All_ORFs,Maximum_Length_Difference,Median_GC_content_of_All_ORFs,Percent_Difference_of_All_ORFs_Median_GC,Median_GC_content_of_Matched_ORFs,Percent_Difference_of_Matched_ORF_GC,Number_of_ORFs_which_Overlap_Another_ORF,Percent_Difference_of_Overlapping_ORFs,Maximum_ORF_Overlap,Median_ORF_Overlap,Number_of_Matched_ORFs_Overlapping_Another_ORF,Percent_Difference_of_Matched_ORFs_Overlapping_Another_ORF,Maximum_Matched_ORF_Overlap,Median_Matched_ORF_Overlap,Number_of_Short-ORFs,Percent_Difference_of_Short-ORFs,Number_of_Short-Matched-ORFs,Percent_Difference_of_Short-Matched-ORFs,Number_of_Perfect_Matches,Percentage_of_Perfect_Matches,Number_of_Perfect_Starts,Percentage_of_Perfect_Starts,Number_of_Perfect_Stops,Percentage_of_Perfect_Stops,Number_of_Out_of_Frame_ORFs,Number_of_Matched_ORFs_Extending_a_Coding_Region,Percentage_of_Matched_ORFs_Extending_a_Coding_Region,Number_of_Matched_ORFs_Extending_Start_Region,Percentage_of_Matched_ORFs_Extending_Start_Region,Number_of_Matched_ORFs_Extending_Stop_Region,Percentage_of_Matched_ORFs_Extending_Stop_Region,Number_of_All_ORFs_on_Positive_Strand,Percentage_of_All_ORFs_on_Positive_Strand,Number_of_All_ORFs_on_Negative_Strand,Percentage_of_All_ORFs_on_Negative_Strand,Median_Start_Difference_of_Matched_ORFs,Median_Stop_Difference_of_Matched_ORFs,ATG_Start_Percentage,GTG_Start_Percentage,TTG_Start_Percentage,ATT_Start_Percentage,CTG_Start_Percentage,Other_Start_Codon_Percentage,TAG_Stop_Percentage,TAA_Stop_Percentage,TGA_Stop_Percentage,Other_Stop_Codon_Percentage,True_Positive,False_Positive,False_Negative,Precision,Recall,False_Discovery_Rate,Nucleotide_True_Positive,Nucleotide_False_Positive,Nucleotide_True_Negative,Nucleotide_False_Negative,Nucleotide_Precision,Nucleotide_Recall,Nucleotide_False_Discovery_Rate,ORF_Nucleotide_Coverage_of_Genome,Matched_ORF_Nucleotide_Coverage_of_Genome
-3,-99.37,0,0.00,0,0.00,110.0,-87.58,110,-2.65,242,-95.53,47.75,51.88,N/A,N/A,0,-100,N/A,N/A,0,N/A,N/A,N/A,3,-86.96,0,-100.00,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0.67,1,0.33,0,0,33.33,66.67,0.00,0.00,0.00,0.00,0.00,0.00,100.00,0.00,0.00,0.01,1.00,0.00,0.00,1.00,0.00,0.00,1.00,1.00,0.76,0.00,0.24,0.08,0.00
+3,-99.37,0,0.00,0,0.00,110.0,-87.58,110,-2.65,242,-95.53,47.75,51.88,N/A,N/A,0,N/A,N/A,N/A,0,N/A,N/A,N/A,3,-86.96,0,N/A,0,0.00,0,0.00,0,0.00,0,0,0.00,0,0.00,0,0.00,0,0.00,0,0.00,N/A,N/A,33.33,66.67,0.00,0.00,0.00,0.00,0.00,0.00,100.00,0.00,0.00,0.01,1.00,0.00,0.00,1.00,0.00,0.00,1.00,1.00,0.76,0.00,0.24,0.08,0.00
 CDS_Gene_Coverage_of_Genome:
 90.62
 Start_Position_Difference:
@@ -973,14 +973,14 @@ ATGATCATTTCTTTTGTAAATAATAAAGGCGGCGTATTAAAAACTACAATGGCAACTAATGTTGCAGGATCATTGGTTAA
  
 ORFs_Without_Corresponding_Gene_In_Ensembl_Metrics:
 ATG_Start ,GTG_Start ,TTG_Start ,ATT_Start ,CTG_Start ,Alternative_Start_Codon ,TGA_Stop ,TAA_Stop ,TAG_Stop ,Alternative_Stop_Codon ,Median_Length ,ORFs_on_Positive_Strand ,ORFs_on_Negative_Strand
-33.33,66.67,0.00,0.00,0.00,0.00,100.00,0.00,0.00,-3233.33,110.00,2,1
+33.33,66.67,0.00,0.00,0.00,0.00,100.00,0.00,0.00,0.00,110.00,2,1
 ORF_Without_Corresponding_Gene_in_Ensembl:
+>GeneMark_374979_375221_- 
+ATGATCCGTGATGCTGAAGCTAACAAGGAACGGGATAACATCATCCGTGAACGTATTGAATTACGTAATGAAGGGGAAGGTATTGTTAATACCATCAAAGAGATATTAGCAAGTCCTGATGCTAAGAATTTCCCTAAAGAAGAAAAAGAGAAGTTAGAAAAGCTAACAGGTAACATTGATGCTGCTATTAAAGCTAATGACTATGCCAAACTCAAAGTGGAAATTGAAAACTTTAAGAAGTGA
 >GeneMark_169183_169293_+ 
 GTGATGGGTAACAGCTTTCTACCCAGCTTGTGGTACTGGGTGGTGGAGCGGAGTGCACAGGAAAATGCAAGTAACAAACCCACCTGGTTTGCTAATACCAATTTAGACTGA
 >GeneMark_226836_226946_+ 
 GTGATGGGTAACAGCTTTCTACCCAGCATGTGGTACTGGGTGGTGGAGCGGAGTGCACAGGAAAATGCAAGTAACAAACCCACCTGGTTTGCTAATACCAATTTAGACTGA
->GeneMark_374979_375221_- 
-ATGATCCGTGATGCTGAAGCTAACAAGGAACGGGATAACATCATCCGTGAACGTATTGAATTACGTAATGAAGGGGAAGGTATTGTTAATACCATCAAAGAGATATTAGCAAGTCCTGATGCTAAGAATTTCCCTAAAGAAGAAAAAGAGAAGTTAGAAAAGCTAACAGGTAACATTGATGCTGCTATTAAAGCTAATGACTATGCCAAACTCAAAGTGGAAATTGAAAACTTTAAGAAGTGA
  
 ORFs_Which_Detected_more_than_one_Gene:
  

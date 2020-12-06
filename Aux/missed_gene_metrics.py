@@ -187,6 +187,8 @@ def result_compare(results,annotation):
                     length = stop - start
                     n_per, gc = gc_count(seq)
 
+                    pos = str(start) + '_' + str(stop)
+
                     if pos in list_MG:
                         genes_Missed_strand[strand] += 1
                         pcg_Missed_GC.append(float(gc))
@@ -226,10 +228,30 @@ def result_compare(results,annotation):
 
     missed_genes = detail_transfer(genes, missed_genes)
 
-
+    missed_lengths = []
+    gene_lengths = []
     for key in list_MG:
+        ### printed out to confirm figure lengths
+        start = key.split('_')[0]
+        stop = key.split('_')[1]
+        m_length = int(stop) - int(start)
+        missed_lengths.append(m_length)
         if key in genes:
             del genes[key]
+
+
+    ## Printed out for Figure of gene lengths
+    for key in genes.keys():
+        start = key.split('_')[0]
+        stop = key.split('_')[1]
+        g_length = int(stop) - int(start)
+        gene_lengths.append(g_length)
+
+
+    print(len(gene_lengths))
+    print(gene_lengths)
+    print(len(missed_lengths))
+    print(missed_lengths)
 
     median_PCG = np.median(lengths_PCG)
     median_PCG_Olap = np.median(genes_Overlap)
@@ -240,33 +262,36 @@ def result_compare(results,annotation):
 
 
 
+
+
+
     atg_P, gtg_P, ttg_P, att_P, ctg_P, other_Starts_P,other_Starts = start_Codon_Count(genes)
     tag_P, taa_P, tga_P, other_Stops_P,other_Stops = stop_Codon_Count(genes)
     m_atg_P, m_gtg_P, m_ttg_P, m_att_P, m_ctg_P, m_other_Starts_P,m_other_Starts = start_Codon_Count(missed_genes)
     m_tag_P, m_taa_P, m_tga_P, m_other_Stops_P,m_other_Stops = stop_Codon_Count(missed_genes)
 
-    output = ("Number of Protein Coding Genes in " + str(annotation) + " : " + str(len(lengths_PCG)) + ", Median Length of PCGs: " +
-              str(median_PCG) + ", Min Length of PCGs: " + str(min(lengths_PCG)) + ", Max Length of PCGs: " + str(max(lengths_PCG)) +
-              ", Number of PCGs on Pos Strand: " + str(gend['+']) + ", Number of PCGs on Neg Strand: " + str(strands['-']) +
-              ", Median GC of PCGs: " + str(gc_median) + ", Number of Overlapping PCGs: " + str(num_overlaps) +
-              ", Longest PCG Overlap: " + str(longest_Olap) + ", Median PCG Overlap: " + str(median_PCG_Olap) +
-              ", Number of PCGs less than 100nt: " + str(num_Short_PCGs) +
-
-              '\nPercentage of Genes starting with ATG - Annotation/Missed: ' + atg_P + ' ' + m_atg_P +
-              '\nPercentage of Genes starting with GTG - Annotation/Missed: ' + gtg_P + ' ' + m_gtg_P +
-              '\nPercentage of Genes starting with TTG - Annotation/Missed: ' + ttg_P + ' ' + m_ttg_P +
-              '\nPercentage of Genes starting with ATT - Annotation/Missed: ' + att_P + ' ' + m_att_P +
-              '\nPercentage of Genes starting with CTG - Annotation/Missed: ' + ctg_P + ' ' + m_ctg_P +
-              '\nPercentage of Genes starting with Alternative Start Codon - Annotation/Missed: ' + other_Starts_P + ' ' + m_other_Stops_P +
-              '\nPercentage of Genes ending with TAG - Annotation/Missed: ' + tag_P + ' ' + m_tag_P +
-              '\nPercentage of Genes ending with TAA - Annotation/Missed: ' + taa_P + ' ' + m_taa_P +
-              '\nPercentage of Genes ending with TGA - Annotation/Missed: ' + tga_P + ' ' + m_tga_P +
-              '\nPercentage of Genes ending with Alternative Stop Codon - Annotation/Missed: ' + other_Stops_P + ' ' + m_other_Stops_P)
-
-
-
-
-    print(output)
+    # output = ("Number of Protein Coding Genes in " + str(annotation) + " : " + str(len(lengths_PCG)) + ", Median Length of PCGs: " +
+    #           str(median_PCG) + ", Min Length of PCGs: " + str(min(lengths_PCG)) + ", Max Length of PCGs: " + str(max(lengths_PCG)) +
+    #           ", Number of PCGs on Pos Strand: " + str(gend['+']) + ", Number of PCGs on Neg Strand: " + str(strands['-']) +
+    #           ", Median GC of PCGs: " + str(gc_median) + ", Number of Overlapping PCGs: " + str(num_overlaps) +
+    #           ", Longest PCG Overlap: " + str(longest_Olap) + ", Median PCG Overlap: " + str(median_PCG_Olap) +
+    #           ", Number of PCGs less than 100nt: " + str(num_Short_PCGs) +
+    #
+    #           '\nPercentage of Genes starting with ATG - Annotation/Missed: ' + atg_P + ' ' + m_atg_P +
+    #           '\nPercentage of Genes starting with GTG - Annotation/Missed: ' + gtg_P + ' ' + m_gtg_P +
+    #           '\nPercentage of Genes starting with TTG - Annotation/Missed: ' + ttg_P + ' ' + m_ttg_P +
+    #           '\nPercentage of Genes starting with ATT - Annotation/Missed: ' + att_P + ' ' + m_att_P +
+    #           '\nPercentage of Genes starting with CTG - Annotation/Missed: ' + ctg_P + ' ' + m_ctg_P +
+    #           '\nPercentage of Genes starting with Alternative Start Codon - Annotation/Missed: ' + other_Starts_P + ' ' + m_other_Stops_P +
+    #           '\nPercentage of Genes ending with TAG - Annotation/Missed: ' + tag_P + ' ' + m_tag_P +
+    #           '\nPercentage of Genes ending with TAA - Annotation/Missed: ' + taa_P + ' ' + m_taa_P +
+    #           '\nPercentage of Genes ending with TGA - Annotation/Missed: ' + tga_P + ' ' + m_tga_P +
+    #           '\nPercentage of Genes ending with Alternative Stop Codon - Annotation/Missed: ' + other_Stops_P + ' ' + m_other_Stops_P)
+    #
+    #
+    #
+    #
+    # print(output)
 
 
 

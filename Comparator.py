@@ -184,7 +184,7 @@ def partial_Hit_Calc(g_Start,g_Stop,g_Strand,o_Start,o_Stop):
         r_G_Stop = comp.genome_Size - g_Start
         r_O_Start = comp.genome_Size - o_Stop
         r_O_Stop = comp.genome_Size - o_Start
-        partial = "Gene:" + str(r_G_Start) + '_' + str(r_G_Stop) + '_' + g_Strand + '_' + comp.genome_Seq_Rev[r_G_Start:r_G_Start+3] + '_' + comp.genome_Seq_Rev[r_G_Stop - 2:r_G_Stop + 1] + ';ORF:' + str(r_O_Start) + '_' + str(r_O_Stop) + '_' + g_Strand + '_' + comp.genome_Seq_Rev[r_O_Start:r_O_Start+3] + '_' + comp.genome_Seq_Rev[r_O_Stop - 2:r_O_Stop + 1]
+        partial = "Gene:" + str(g_Start) + '_' + str(g_Stop) + '_' + g_Strand + '_' + comp.genome_Seq_Rev[r_G_Start:r_G_Start+3] + '_' + comp.genome_Seq_Rev[r_G_Stop - 2:r_G_Stop + 1] + ';ORF:' + str(r_O_Start) + '_' + str(r_O_Stop) + '_' + g_Strand + '_' + comp.genome_Seq_Rev[r_O_Start:r_O_Start+3] + '_' + comp.genome_Seq_Rev[r_O_Stop - 2:r_O_Stop + 1]
         genSeq = (comp.genome_Seq_Rev[r_G_Start:r_G_Stop + 1])
         orfSeq = (comp.genome_Seq_Rev[r_O_Start:r_O_Stop + 1])
         comp.partial_Hits.update({partial:[genSeq,orfSeq]})
@@ -288,18 +288,17 @@ def tool_comparison(genes,orfs,genome):
     for key in comp.matched_ORFs: # Remove ORFs from out of frame if ORF was correctly matched to another Gene
         if key in comp.out_Of_Frame_ORFs:
             del comp.out_Of_Frame_ORFs[key]
-
     ######################################## ORF Lengths and Precision
     start_Difference = [x for x in comp.start_Difference if x != 0] # Remove 0s (Perfect hits)
     stop_Difference = [x for x in comp.stop_Difference if x != 0]
     if len(start_Difference) >= 1:
         median_Start_Difference = np.median(start_Difference)
     else:
-        median_Start_Difference = 0
+        median_Start_Difference = 'N/A'
     if len(stop_Difference) >= 1:
         median_Stop_Difference = np.median(stop_Difference)
     else:
-        median_Stop_Difference = 0
+        median_Stop_Difference = 'N/A'
 
     # Get Start and Stop Codon Usage
     atg_P, gtg_P, ttg_P, att_P, ctg_P, other_Start_P,other_Starts = start_Codon_Count(orfs)
@@ -319,6 +318,9 @@ def tool_comparison(genes,orfs,genome):
         gene_Length = (g_Stop - g_Start)
         comp.gene_Lengths.append(gene_Length)
         gene_Nuc_Array[g_Start-1:g_Stop] = [1] # Changing all between the two positions to 1's
+        comp.gene_GC.append(nuc_Count(g_Start, g_Stop, g_Strand))
+        if gene_Length <= SHORT_ORF_LENGTH: # .utils
+            comp.gene_Short.append(gene_Length)
         ### Calculate overlapping Genes -
         if prev_Gene_Stop > g_Start:
             if '+' in g_Strand:
@@ -329,19 +331,16 @@ def tool_comparison(genes,orfs,genome):
         elif prev_Gene_Stop < g_Start:
             if prev_Gene_Overlapped == True:
                 if '+' in g_Strand:
-                    comp.gene_Pos_Olap.append(prev_Gene_Stop - g_Start)
+                    comp.gene_Pos_Olap.append(0)
                 elif '-' in g_Strand:
-                    comp.gene_Neg_Olap.append(prev_Gene_Stop - g_Start)
+                    comp.gene_Neg_Olap.append(0)
             prev_Gene_Overlapped = False
         prev_Gene_Stop = g_Stop
-        if gene_Length <= SHORT_ORF_LENGTH: # .utils
-            comp.gene_Short.append(gene_Length)
-        comp.gene_GC.append(nuc_Count(g_Start, g_Stop, g_Strand))
     if prev_Gene_Overlapped == True: # If last has a prev overlap, count it
         if '+' in g_Strand:
-            comp.gene_Pos_Olap.append(prev_Gene_Stop - g_Start)
+            comp.gene_Pos_Olap.append(0)
         elif '-' in g_Strand:
-            comp.gene_Neg_Olap.append(prev_Gene_Stop - g_Start)
+            comp.gene_Neg_Olap.append(0)
     ####
     min_Gene_Length = min(comp.gene_Lengths)
     max_Gene_Length = max(comp.gene_Lengths)
@@ -350,12 +349,18 @@ def tool_comparison(genes,orfs,genome):
     prev_ORF_Stop = 0
     prev_ORF_Overlapped = False
     for o_Positions,orf_Details in orfs.items():
+        # Stats just for Unmatched ORFs
+        if o_Positions not in list(comp.matched_ORFs.keys()):
+            orf_Unmatched(o_Start, o_Stop, o_Strand)
         o_Start = int(o_Positions.split(',')[0])
         o_Stop = int(o_Positions.split(',')[1])
         o_Strand = orf_Details[0]
         orf_Length = (o_Stop - o_Start)
         comp.orf_Lengths.append(orf_Length)
         orf_Nuc_Array[o_Start-1:o_Stop] = [1] # Changing all between the two positions to 1's
+        comp.orf_GC.append(nuc_Count(o_Start, o_Stop, o_Strand))
+        if orf_Length <= SHORT_ORF_LENGTH:  # .utils
+            comp.orf_Short.append(orf_Length)
         ### Calculate overlapping ORFs -
         if prev_ORF_Stop > o_Start:
             if '+' in o_Strand:
@@ -366,27 +371,21 @@ def tool_comparison(genes,orfs,genome):
         elif prev_ORF_Stop < o_Start:
             if prev_ORF_Overlapped == True:
                 if '+' in o_Strand:
-                    comp.orf_Pos_Olap.append(prev_ORF_Stop - o_Start)
+                    comp.orf_Pos_Olap.append(0)
                 elif '-' in o_Strand:
-                    comp.orf_Neg_Olap.append(prev_ORF_Stop - o_Start)
+                    comp.orf_Neg_Olap.append(0)
             prev_ORF_Overlapped = False
         prev_ORF_Stop = o_Stop
-        if orf_Length <= SHORT_ORF_LENGTH:  # .utils
-            comp.orf_Short.append(orf_Length)
-        comp.orf_GC.append(nuc_Count(o_Start, o_Stop, o_Strand))
     if prev_ORF_Overlapped == True:  # If last has a prev overlap, count it
         if '+' in o_Strand:
-            comp.orf_Pos_Olap.append(prev_ORF_Stop - o_Start)
+            comp.orf_Pos_Olap.append(0)
         elif '-' in o_Strand:
-            comp.orf_Neg_Olap.append(prev_ORF_Stop - o_Start)
+            comp.orf_Neg_Olap.append(0)
         # Get ORF Strand metrics:
         if o_Strand == "+":  # Get number of Positive and Negative strand ORFs
             comp.pos_Strand += 1
         elif o_Strand == "-":
             comp.neg_Strand += 1
-        # Stats just for Unmatched ORFs
-        if o_Positions not in list(comp.matched_ORFs.keys()):
-            orf_Unmatched(o_Start, o_Stop, o_Strand)
     # Nucleotide Coverage calculated from ORFs matching a gene only
     matched_Prev_ORF_Stop = 0
     matched_Prev_ORF_Overlapped = False
@@ -396,6 +395,9 @@ def tool_comparison(genes,orfs,genome):
         mo_Strand = m_ORF_Details[0]
         mo_Length = (mo_Stop - mo_Start)
         matched_ORF_Nuc_Array[mo_Start-1 :mo_Stop] = [1] # Changing all between the two positions to 1's
+        comp.m_ORF_GC.append(nuc_Count(mo_Start, mo_Stop, mo_Strand))
+        if mo_Length <= SHORT_ORF_LENGTH:  # .utils
+            comp.m_ORF_Short.append(mo_Length)
         ### Calculate overlapping Matched ORFs -
         if matched_Prev_ORF_Stop > mo_Start:
             if '+' in mo_Strand:
@@ -406,26 +408,21 @@ def tool_comparison(genes,orfs,genome):
         elif matched_Prev_ORF_Stop < mo_Start:
             if matched_Prev_ORF_Overlapped == True:
                 if '+' in mo_Strand:
-                    comp.m_ORF_Pos_Olap.append(matched_Prev_ORF_Stop - mo_Start)
+                    comp.m_ORF_Pos_Olap.append(0)
                 elif '-' in mo_Strand:
-                    comp.orf_Neg_Olap.append(matched_Prev_ORF_Stop - mo_Start)
+                    comp.orf_Neg_Olap.append(0)
             matched_Prev_ORF_Overlapped = False
         matched_Prev_ORF_Stop = mo_Stop
-        if mo_Length <= SHORT_ORF_LENGTH:  # .utils
-            comp.m_ORF_Short.append(mo_Length)
-        comp.m_ORF_GC.append(nuc_Count(mo_Start, mo_Stop, mo_Strand))
     if matched_Prev_ORF_Overlapped == True:  # If last has a prev overlap, count it
         if '+' in mo_Strand:
-            comp.m_ORF_Pos_Olap.append(matched_Prev_ORF_Stop - mo_Start)
+            comp.m_ORF_Pos_Olap.append(0)
         elif '-' in mo_Strand:
-            comp.m_ORF_Neg_Olap.append(matched_Prev_ORF_Stop - mo_Start)
-
+            comp.m_ORF_Neg_Olap.append(0)
+    ####
     gene_Coverage_Genome = format(100 * np.count_nonzero(gene_Nuc_Array) / comp.genome_Size,'.2f')
     orf_Coverage_Genome = format(100 * np.count_nonzero(orf_Nuc_Array) / comp.genome_Size,'.2f')
     matched_ORF_Coverage_Genome = format(100 * np.count_nonzero(matched_ORF_Nuc_Array) / comp.genome_Size,'.2f')
     # gene and orf nucleotide Intersection
-    gene_count = np.count_nonzero(gene_Nuc_Array)
-    orf_count = np.count_nonzero(orf_Nuc_Array)
     gene_ORF_Nuc_Intersection = np.count_nonzero(gene_Nuc_Array & orf_Nuc_Array)
     #not gene but orf nucleotides
     not_Gene_Nuc_Array = np.logical_not(gene_Nuc_Array) + [0 for i in range(len(gene_Nuc_Array))] #End part to keep array as 1,0 not T,F
@@ -447,9 +444,19 @@ def tool_comparison(genes,orfs,genome):
     TP = format(len(comp.genes_Detected)  / len(genes),'.2f')
     FP = format(len(comp.unmatched_ORFs) / len(genes),'.2f')
     FN = format(len(comp.genes_Undetected)  / len(genes),'.2f')
-    precision = format(float(TP)/(float(TP)+float(FP)),'.2f')
-    recall = format(float(TP)/(float(TP)+float(FN)),'.2f')
-    false_Discovery_Rate = format(float(FP)/(float(FP)+float(TP)),'.2f')
+    #################################################### Need a better way to handle 'no hits/ORFs'
+    try:
+        precision = format(float(TP)/(float(TP)+float(FP)),'.2f')
+    except ZeroDivisionError:
+        precision = format(0.00,'.2f')
+    try:
+        recall = format(float(TP)/(float(TP)+float(FN)),'.2f')
+    except ZeroDivisionError:
+        recall = format(0.00,'.2f')
+    try:
+        false_Discovery_Rate = format(float(FP)/(float(FP)+float(TP)),'.2f')
+    except ZeroDivisionError:
+        false_Discovery_Rate = 'N/A'
     min_ORF_Length = min(comp.orf_Lengths)
     max_ORF_Length = max(comp.orf_Lengths)
     median_ORF_Length = np.median(comp.orf_Lengths)
@@ -477,16 +484,18 @@ def tool_comparison(genes,orfs,genome):
             matched_Median_ORF_Overlap = 'N/A'
         max_All_ORF_Olap = max(all_ORF_Olap)
         median_ORF_Overlap = format(np.median(all_ORF_Olap), '.2f')
-
     else:
-        overlap_Difference = -100
+        overlap_Difference = 'N/A'
         matched_Overlap_Difference = 'N/A'
         num_All_ORF_Olap = 0
         max_Matched_ORF_Olap = 'N/A'
         max_All_ORF_Olap = 'N/A'
         median_ORF_Overlap = 'N/A'
         matched_Median_ORF_Overlap = 'N/A'
+    if len(matched_ORF_Olap) == 0: # -100.00 is not informative
+        matched_Overlap_Difference = 'N/A'
 
+#Need to NA everything
 
     if comp.orf_Short and comp.gene_Short: # IF Short-ORFs/Genes
         short_ORF_Difference = format(100 * (len(comp.orf_Short) - len(comp.gene_Short))/ len(comp.gene_Short),'.2f')
@@ -504,6 +513,8 @@ def tool_comparison(genes,orfs,genome):
         matched_Short_ORF_Difference = 'N/A'
         num_ORF_Short = 0
         num_Matched_ORF_Short = 'N/A'
+    if num_Matched_ORF_Short == 0: # -100.00 is not informative
+        matched_Short_ORF_Difference = 'N/A'
 
     median_Length_Difference = format(100 * (median_ORF_Length - median_Gene_Length) / median_Gene_Length,'.2f')
     min_Length_Difference = format(100 * (min_ORF_Length - min_Gene_Length) / min_Gene_Length,'.2f')
@@ -525,12 +536,12 @@ def tool_comparison(genes,orfs,genome):
         perfect_Stops_Percentage = format(100 * comp.perfect_Stops / len(comp.matched_ORFs),'.2f')
     else:
         #correct_Frame_Percentage = 0
-        extended_CDS_Percentage = 0
-        extended_Start_Percentage = 0
-        extended_Stop_Percentage = 0
-        perfect_Matches_Percentage = 0
-        perfect_Starts_Percentage = 0
-        perfect_Stops_Percentage = 0
+        extended_CDS_Percentage = format(0.00,'.2f')
+        extended_Start_Percentage = format(0.00,'.2f')
+        extended_Stop_Percentage = format(0.00,'.2f')
+        perfect_Matches_Percentage = format(0.00,'.2f')
+        perfect_Starts_Percentage = format(0.00,'.2f')
+        perfect_Stops_Percentage = format(0.00,'.2f')
     ################### Missed Genes  Metrics:
     if comp.genes_Undetected:
         mg_Starts = []
@@ -581,8 +592,8 @@ def tool_comparison(genes,orfs,genome):
         uo_TGA = 100 * uo_Stops.count('TGA') / len(comp.unmatched_ORFs)
         uo_TAA = 100 * uo_Stops.count('TAA') / len(comp.unmatched_ORFs)
         uo_TAG = 100 * uo_Stops.count('TAG') / len(comp.unmatched_ORFs)
-        uo_O_Stop = len(uo_Stops) -(uo_TGA+uo_TAA+uo_TAG)
-        uo_O_Stop = 100 * uo_O_Stop  / len(comp.unmatched_ORFs)
+        uo_O_Stop = 100 - (uo_TGA+uo_TAA+uo_TAG)
+        #uo_O_Stop = 100 * uo_O_Stop  / len(comp.unmatched_ORFs) ########WHY?
         median_uo_Len = np.median(uo_Lengths)
         uo_Pos = uo_Strands.count('+')
         uo_Neg = uo_Strands.count('-')
@@ -655,10 +666,10 @@ def tool_comparison(genes,orfs,genome):
          'Recall':recall,
          'False_Discovery_Rate': false_Discovery_Rate})
 
-    #quick fix  - nan = 0
 
-    for key,value in all_Metrics.items():
-        if 'nan' == value:
-            all_Metrics[key] = 'N/A'
+    # To account for unbalanced data
+    for m_key,m_value in all_Metrics.items():
+        if 'nan' == m_value:
+            all_Metrics[m_key] = 'N/A'
 
     return all_Metrics, rep_Metrics, start_Difference, stop_Difference, other_Starts, other_Stops, comp.genes_Undetected, comp.unmatched_ORFs, undetected_Gene_Metrics, unmatched_ORF_Metrics,gene_Coverage_Genome, comp.multi_Matched_ORFs, comp.partial_Hits
