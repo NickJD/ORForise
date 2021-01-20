@@ -1,9 +1,8 @@
 import argparse
-import Tools.utils as utils
+from PCG_Comparison.Tools.utils import  *
 import collections
-import numpy as np
 import sys
-from Tools.utils import * # local file
+
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-p', '--tool', required=True, help='Which tool to plot?')
@@ -25,6 +24,16 @@ def detail_transfer(genes,missed_genes):
     return missed_genes
 
 
+def get_genome(genome):
+    genome_Seq = ""
+    with open('../Genomes/'+genome+'.fa', 'r') as genome:
+        for line in genome:
+            line = line.replace("\n","")
+            if not line.startswith('>'):
+                genome_Seq += str(line)
+    return genome_Seq
+
+
 def missed_gene_read(tool,missed_genes,genome):
     #Missed Genes Read-In
     results_in = open('../Tools/'+tool+'/'+tool+'_'+genome+'.csv')
@@ -40,8 +49,11 @@ def missed_gene_read(tool,missed_genes,genome):
                 stopCodon = line[-3:]
                 length = len(line)
                 missed_genes.update({entry:[line,length,startCodon,stopCodon]})
+
         if line.startswith('Undetected_Genes:'):
             read = True
+        if read == True and not line:
+            break
 
     return missed_genes
 
@@ -52,9 +64,9 @@ def result_compare(tool,genome):
     missed_genes = missed_gene_read(tool,missed_genes,genome)
     list_MG = list(missed_genes.keys())
     #Analysis
-
-    genome_Rev = revCompIterative(genome)
-    genome_Size = len(genome)
+    genome_Seq = get_genome(genome)
+    genome_Rev = revCompIterative(genome_Seq)
+    genome_Size = len(genome_Seq)
     genes = collections.OrderedDict()
     count = 0
     prev_Stop = 0
@@ -68,6 +80,7 @@ def result_compare(tool,genome):
             try:
                 if "CDS" in line[2] and len(line) == 9:
                     start = int(line[3])
+
                     stop = int(line[4])
                     strand = line[6]
 
@@ -77,12 +90,10 @@ def result_compare(tool,genome):
                         r_Stop = genome_Size - start
                         seq = (genome_Rev[r_Start:r_Stop + 1])
                     elif strand == '+':
-                        seq = (genome[start - 1:stop])
+                        seq = (genome_Seq[start - 1:stop])
                     startCodon = seq[0:3]
                     stopCodon = seq[-3:]
                     length = stop - start
-
-
                     pos = str(start) + '_' + str(stop)
 
                     if pos in list_MG:
@@ -110,10 +121,10 @@ def result_compare(tool,genome):
                     count += 1
                     prev_Stop = stop
                     pos = str(start)+'_'+str(stop)
-                    if genes:
-                        prev_details = genes[prev_pos]
-                        prev_details.insert(4,overlap)
-                        genes.update({prev_pos:prev_details})
+                    # if genes:
+                    #     prev_details = genes[prev_pos]
+                    #     prev_details.insert(4,overlap)
+                    #     genes.update({prev_pos:prev_details})
 
                     genes.update({pos:[strand,length,overlap,seq,startCodon,stopCodon]})
                     prev_pos = pos
@@ -282,12 +293,34 @@ if __name__ == "__main__":
     missed_Lengths = []
     partial_Lengths = []
 
+
+
+
     for pos in genes.keys():
         gene_Lengths.append(int(pos.split('_')[1]) - int(pos.split('_')[0]))
     for pos in partial_matches.keys():
         partial_Lengths.append(int(pos.split('_')[1]) - int(pos.split('_')[0]))
     for pos in missed_genes.keys():
         missed_Lengths.append(int(pos.split('_')[1]) - int(pos.split('_')[0]))
+
+    gene_set = set(genes.keys())
+    partial_set = set(partial_matches.keys())
+    missed_set = set(missed_genes.keys())
+
+    intersection = set.intersection(gene_set,partial_set,missed_set)
+    if intersection:
+        sys.exit('Intersection Error:')
+
+    gene_Starts = collections.defaultdict(int)
+
+    for gene, data in genes.items():
+
+        gene_start = data[4]
+        gene_stop = data[5]
+        gene_Starts[gene_start] +=1
+
+    for start, number in gene_Starts.items():
+        print(start+':'+str(number))
 
     print(len(gene_Lengths))
     print(gene_Lengths)
