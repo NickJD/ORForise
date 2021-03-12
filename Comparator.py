@@ -485,8 +485,12 @@ def tool_comparison(genes,orfs,genome):
 
 
     if all_ORF_Olap: # If no overlapping ORFs
-        overlap_Difference = format(100 * (len(all_ORF_Olap) - len(all_Gene_Olap)) / len(all_Gene_Olap),'.2f')
-        matched_Overlap_Difference = format(100 * (len(matched_ORF_Olap) - len(all_Gene_Olap)) / len(all_Gene_Olap),'.2f')
+        try:
+            overlap_Difference = format(100 * (len(all_ORF_Olap) - len(all_Gene_Olap)) / len(all_Gene_Olap),'.2f')
+            matched_Overlap_Difference = format(100 * (len(matched_ORF_Olap) - len(all_Gene_Olap)) / len(all_Gene_Olap),'.2f')
+        except ZeroDivisionError:
+            overlap_Difference = 'N/A'
+            matched_Overlap_Difference = 'N/A'
         num_All_ORF_Olap = len(all_ORF_Olap)
         if matched_ORF_Olap:
             max_Matched_ORF_Olap = max(matched_ORF_Olap)
