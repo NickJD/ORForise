@@ -1,4 +1,4 @@
-# Pro_Gene - Prokaryote Genome Anotation Comparison 
+# ORForise - Prokaryote Genome Anotation Comparison 
 Comparison pipeline for Prokaryote Protein Coding Gene Predictors
 
 To run, you need:   
