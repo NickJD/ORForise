@@ -1,7 +1,7 @@
 import argparse
 import collections
 import csv
-from PCG_Comparison.Tools.utils import * # local file
+from ProGene.Tools.utils import * # local file
 import numpy as np
 
 parser = argparse.ArgumentParser()
@@ -91,6 +91,8 @@ def genome_Metrics(genome_to_compare):
             line = line.replace("\n","")
             if not line.startswith('>'):
                 genome_Seq += str(line)
+
+    genome_N_Per,genome_GC = gc_count(genome_Seq)
 
     genome_Rev = revCompIterative(genome_Seq)
     genome_Size = len(genome_Seq)
@@ -199,7 +201,7 @@ def genome_Metrics(genome_to_compare):
 
 
     output = ("Number of Protein Coding Genes in " + genome_to_compare + " : " + str(len(lengths_PCG)) + ", Median Length of PCGs: " + str(median_PCG) + ", Min Length of PCGs: " + str(min(lengths_PCG)) + ", Max Length of PCGs: " + str(max(lengths_PCG)) +
-              ", Number of PCGs on Pos Strand: " + str(strands['+']) + ", Number of PCGs on Neg Strand: " + str(strands['-']) + ", Median GC of PCGs: " + format(np.median(pcg_GC), '.2f') + ", Number of Overlapping PCGs: " + str(len(gene_Overlaps)) +
+              ", Number of PCGs on Pos Strand: " + str(strands['+']) + ", Number of PCGs on Neg Strand: " + str(strands['-']) + ", Genome-Wide GC Content: " + format(np.median(genome_GC), '.2f') + "Median GC of PCGs: " + format(np.median(pcg_GC), '.2f') + ", Number of Overlapping PCGs: " + str(len(gene_Overlaps)) +
                ", Longest PCG Overlap: " + str(longest_Olap) + ", Median PCG Overlap: " + str(median_PCG_Olap)  + ", Number of PCGs less than 100 amino acids: " + str(len(short_PCGs)) +
 
             '\nPercentage of Genome which is Protein Coding: ' + format(coding_Percentage, '.2f') +', Number of Non-PCGs: ' + str(len(non_protein_coding_genes)) + ', Percentage of Genome Non-PCG: ' +format(non_coding_Percentage, '.2f') +

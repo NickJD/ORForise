@@ -1,5 +1,5 @@
 Genome Metrics:
-"Number of Protein Coding Genes in Bacillus : 4011, Median Length of PCGs: 767.0, Min Length of PCGs: 119, Max Length of PCGs: 15131, Number of PCGs on Pos Strand: 1922, Number of PCGs on Neg Strand: 2089, Median GC of PCGs: 44.19, Number of Overlapping PCGs: 857, Longest PCG Overlap: 118, Median PCG Overlap: 3.0, Number of PCGs less than 100nt: 548
+"Number of Protein Coding Genes in Bacillus : 4011, Median Length of PCGs: 767.0, Min Length of PCGs: 119, Max Length of PCGs: 15131, Number of PCGs on Pos Strand: 1922, Number of PCGs on Neg Strand: 2089, Genome-Wide GC Content: 43.89Median GC of PCGs: 44.19, Number of Overlapping PCGs: 857, Longest PCG Overlap: 118, Median PCG Overlap: 3.0, Number of PCGs less than 100 amino acids: 548
 Percentage of Genome which is Protein Coding: 87.60, Number of Non-PCGs: 122, Percentage of Genome Non-PCG: 1.31, Percentage of All Genes in Genome: 88.91
 Percentage of Genes starting with ATG: 76.81
 Percentage of Genes starting with GTG: 10.10

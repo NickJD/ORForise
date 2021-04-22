@@ -1,5 +1,5 @@
 import argparse
-import PCG_Comparison.Tools.utils as utils
+import ProGene.Tools.utils as utils
 import collections
 import numpy as np
 import sys
@@ -11,7 +11,7 @@ parser.add_argument('-a', '--annotation', required=True, help='Genome Annotation
 args = parser.parse_args()
 
 
-def gc_count(dna):t
+def gc_count(dna):
     c = 0
     a = 0
     g = 0
