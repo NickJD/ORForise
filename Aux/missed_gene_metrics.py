@@ -1,15 +1,15 @@
 import argparse
-from PCG_Comparison.Tools.utils import *
+from ProGene.Tools.utils import *
 import collections
 import numpy as np
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-r', '--results', required=True, help='Which output to look at?')
-parser.add_argument('-a', '--annotation', required=True, help='Genome Annotation File')
+parser.add_argument('-t', '--tool', required=True, help='Which tool to compare?')
+parser.add_argument('-p', '--parameters', required=False, help='Optional parameters for prediction tool.')
+parser.add_argument('-g', '--genome', required=True, help='Which genome to analyse?')
 
 args = parser.parse_args()
-
 
 def gc_count(dna):
     c = 0
@@ -87,14 +87,11 @@ def stop_Codon_Count(orfs):
     other_Stop_P = format(100 * other / len(orfs),'.2f')
     return tag_p,taa_p,tga_p,other_Stop_P,other_Stops
 
-def missed_gene_read(results,missed_genes):
+def missed_gene_read(results_file,missed_genes):
     #Missed Genes Read-In
-    results_in = open('../Tools/'+results)
     read = False
-    for line in results_in:
-        if '4557410' in line:
-            print("S")
-        elif line.startswith('ORFs_Without_Corresponding_Gene_In_Ensembl_Metrics:'):
+    for line in results_file:
+        if line.startswith('ORFs_Without_Corresponding_Gene_In_Ensembl_Metrics:'):
             break
         line = line.strip()
         if read == True:
@@ -111,24 +108,6 @@ def missed_gene_read(results,missed_genes):
 
     return missed_genes
 
-# def read_original_annotation(gff):
-#     genes = collections.OrderedDict()  # Order is important
-#     count = 0
-#     with open('../Genomes/' + gff + '.gff', 'r') as genome_gff:  # Should work for GFF
-#         for line in genome_gff:
-#             line = line.split('\t')
-#             try:
-#                 if "CDS" in line[2] and len(line) == 9:
-#                     start = int(line[3])
-#                     stop = int(line[4])
-#                     strand = line[6]
-#                     gene = str(start) + ',' + str(stop) + ',' + strand
-#                     genes.update({count: gene})
-#                     count += 1
-#             except IndexError:
-#                 continue
-#     return genes
-
 def detail_transfer(genes,missed_genes):
     for missed,m_details in missed_genes.items():
         try:
@@ -143,22 +122,20 @@ def detail_transfer(genes,missed_genes):
             pass
     return missed_genes
 
-
-def result_compare(results,annotation):
-    genome = ""
-    with open('../Genomes/' + annotation + '.fa', 'r') as genome_file:
+def result_compare(genome,results_file):
+    genome_Seq = ""
+    with open('../Genomes/' + genome + '.fa', 'r') as genome_file:
         for line in genome_file:
             line = line.replace("\n", "")
             if ">" not in line:
-                genome += str(line)
+                genome_Seq += str(line)
 
     missed_genes = collections.OrderedDict()
-    missed_genes = missed_gene_read(results,missed_genes)
+    missed_genes = missed_gene_read(results_file,missed_genes)
     list_MG = list(missed_genes.keys())
     #Analysis
-
-    genome_Rev = revCompIterative(genome)
-    genome_Size = len(genome)
+    genome_Rev = revCompIterative(genome_Seq)
+    genome_Size = len(genome_Seq)
     genes = collections.OrderedDict()
     count = 0
     prev_Stop = 0
@@ -166,7 +143,7 @@ def result_compare(results,annotation):
     genes_strand = collections.defaultdict(int)
     genes_Missed_strand = collections.defaultdict(int)
     short_PCGs,short_Missed_PCGs,pcg_GC,pcg_Missed_GC,lengths_PCG,lengths_Missed_PCG,genes_Overlap,genes_Missed_Overlap = [],[],[],[],[],[],[],[]
-    with open('../Genomes/' + annotation + '.gff', 'r') as genome_gff:
+    with open('../Genomes/' + genome + '.gff', 'r') as genome_gff:
         for line in genome_gff:
             line = line.split('\t')
             try:
@@ -174,21 +151,18 @@ def result_compare(results,annotation):
                     start = int(line[3])
                     stop = int(line[4])
                     strand = line[6]
-
                     gene = str(start) + ',' + str(stop) + ',' + strand
                     if strand == '-':
                         r_Start = genome_Size - stop
                         r_Stop = genome_Size - start
                         seq = (genome_Rev[r_Start:r_Stop + 1])
                     elif strand == '+':
-                        seq = (genome[start - 1:stop])
+                        seq = (genome_Seq[start - 1:stop])
                     startCodon = seq[0:3]
                     stopCodon = seq[-3:]
                     length = stop - start
                     n_per, gc = gc_count(seq)
-
                     pos = str(start) + '_' + str(stop)
-
                     if pos in list_MG:
                         genes_Missed_strand[strand] += 1
                         pcg_Missed_GC.append(float(gc))
@@ -239,7 +213,6 @@ def result_compare(results,annotation):
         if key in genes:
             del genes[key]
 
-
     ## Printed out for Figure of gene lengths
     for key in genes.keys():
         start = key.split('_')[0]
@@ -248,10 +221,7 @@ def result_compare(results,annotation):
         gene_lengths.append(g_length)
 
 
-    print(len(gene_lengths))
-    print(gene_lengths)
-    print(len(missed_lengths))
-    print(missed_lengths)
+    print("Number of Genes Missed:" + str(len(missed_lengths)) + '\nLengths of Genes Missed:\n' + str(missed_lengths))
 
     median_PCG = np.median(lengths_PCG)
     median_PCG_Olap = np.median(genes_Overlap)
@@ -260,17 +230,12 @@ def result_compare(results,annotation):
     gc_median = format(np.median(pcg_GC),'.2f')
     num_Short_PCGs = len(short_PCGs)
 
-
-
-
-
-
     atg_P, gtg_P, ttg_P, att_P, ctg_P, other_Starts_P,other_Starts = start_Codon_Count(genes)
     tag_P, taa_P, tga_P, other_Stops_P,other_Stops = stop_Codon_Count(genes)
     m_atg_P, m_gtg_P, m_ttg_P, m_att_P, m_ctg_P, m_other_Starts_P,m_other_Starts = start_Codon_Count(missed_genes)
     m_tag_P, m_taa_P, m_tga_P, m_other_Stops_P,m_other_Stops = stop_Codon_Count(missed_genes)
 
-    output = ("Number of Missed Protein Coding Genes in " + str(annotation) + " : " + str(len(lengths_PCG)) + ", Median Length of PCGs: " +
+    output = ("Number of Missed Protein Coding Genes in " + str(genome) + " : " + str(len(lengths_PCG)) + ", Median Length of PCGs: " +
               str(median_PCG) + ", Min Length of PCGs: " + str(min(lengths_PCG)) + ", Max Length of PCGs: " + str(max(lengths_PCG)) +
               ", Number of PCGs on Pos Strand: " + str(genes_Missed_strand['+']) + ", Number of PCGs on Neg Strand: " + str(genes_Missed_strand['-']) +
               ", Median GC of PCGs: " + str(gc_median) + ", Number of Overlapping PCGs: " + str(num_overlaps) +
@@ -298,10 +263,15 @@ def result_compare(results,annotation):
 
 
 if __name__ == "__main__":
-    result_compare(**vars(args))
-
-
-
+    options = parser.parse_args()
+    parameters = options.parameters
+    tool = options.tool
+    genome = options.genome
+    if parameters:
+        results_file = open('../Tools/' + tool + '/' + tool + '_' + genome +'_'+parameters+ '.csv')
+    else:
+        results_file = open('../Tools/'+tool+'/'+tool+'_'+genome+'.csv')
+    result_compare(genome,results_file)
 
 
 

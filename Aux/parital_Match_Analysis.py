@@ -5,8 +5,9 @@ import numpy as np
 import sys
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-r', '--results', required=True, help='Which output to look at?')
-parser.add_argument('-a', '--annotation', required=True, help='Genome Annotation File')
+parser.add_argument('-t', '--tool', required=True, help='Which tool to compare?')
+parser.add_argument('-p', '--parameters', required=False, help='Optional parameters for prediction tool.')
+parser.add_argument('-g', '--genome', required=True, help='Which genome to analyse?')
 
 args = parser.parse_args()
 
@@ -62,14 +63,14 @@ def stop_Codon_Count(stops,lengths):
         tag_P,taa_P,tga_P = 0,0,0
     return tag_P,taa_P,tga_P#,other_Stop_P,other_Stops
 
-def partial_gene_read(results,partial_genes):
+def partial_gene_read(results_file,partial_genes):
     #partial Genes Read-In
     orf_Lengths = []
     gene_Lengths = []
-    results_in = open('../Tools/'+results)
+
     read = False
     prev = ''
-    for line in results_in:
+    for line in results_file:
         line = line.strip()
         if read == True:
             if line.startswith('Gene:'):
@@ -115,88 +116,29 @@ def detail_transfer(genes,partial_genes):
     return partial_genes
 
 
-def result_compare(results,annotation):
-    genome = ""
-    with open('../Genomes/' + annotation + '.fa', 'r') as genome_file:
+def result_compare(genome,results_file):
+    genome_Seq = ""
+    with open('../Genomes/' + genome + '.fa', 'r') as genome_file:
         for line in genome_file:
             line = line.replace("\n", "")
             if ">" not in line:
-                genome += str(line)
+                genome_Seq += str(line)
 
     partial_genes = collections.OrderedDict()
-    partial_genes,orf_Lengths,gene_Lengths = partial_gene_read(results,partial_genes)
-#    genes = read_original_annotation(gff)
-    #Analysis
-
-    # genome_Rev = revCompIterative(genome)
-    # genome_Size = len(genome)
-    # genes = collections.OrderedDict()
-    # lengths_PCG = []
-    # gene_Overlaps = []
-    # count = 0
-    # prev_Stop = 0
-    # strands = collections.defaultdict(int)
-    # short_PCGs = []
-    # pcg_GC = []
-    # with open('../Genomes/' + annotation + '.gff', 'r') as genome_gff:
-    #     for line in genome_gff:
-    #         line = line.split('\t')
-    #         try:
-    #             if "CDS" in line[2] and len(line) == 9:
-    #                 start = int(line[3])
-    #                 stop = int(line[4])
-    #                 strand = line[6]
-    #                 strands[strand] += 1
-    #                 gene = str(start) + ',' + str(stop) + ',' + strand
-    #                 if strand == '-':
-    #                     r_Start = genome_Size - stop
-    #                     r_Stop = genome_Size - start
-    #                     seq = (genome_Rev[r_Start:r_Stop + 1])
-    #                 elif strand == '+':
-    #                     seq = (genome[start - 1:stop])
-    #                 startCodon = seq[0:3]
-    #                 stopCodon = seq[-3:]
-    #                 length = stop - start
-    #                 if length < utils.SHORT_ORF_LENGTH:
-    #                     short_PCGs.append(gene)
-    #                     #print(line)
-    #                 n_per, gc = gc_count(seq)
-    #                 pcg_GC.append(float(gc))
-    #                 lengths_PCG.append(length)
-    #                 if prev_Stop > start:
-    #                     overlap = prev_Stop - start
-    #                     gene_Overlaps.append(overlap)
-    #                 else:
-    #                     overlap = 0
-    #                 count += 1
-    #                 prev_Stop = stop
-    #                 pos = str(start)+'_'+str(stop)
-    #
-    #                 if genes:
-    #                     prev_details = genes[prev_pos]
-    #                     prev_details.insert(4,overlap)
-    #                     genes.update({prev_pos:prev_details})
-    #                 genes.update({pos:[strand,length,gc,overlap,seq,startCodon,stopCodon]})
-    #                 prev_pos = pos
-    #
-    #
-    #
-    #         except IndexError:
-    #             continue
-
+    partial_genes,orf_Lengths,gene_Lengths = partial_gene_read(results_file,partial_genes)
     orf_Median = np.median(orf_Lengths)
     gene_Median = np.median(gene_Lengths)
     strands = collections.defaultdict(int, {'-': 0, '+': 0})
-    # Hard coded codons - Not ideal
-    gene_Starts = collections.OrderedDict({'ATG':0,'ATT':0,'CTG':0,'GAC':0,'GTG':0,'TTG':0})
+    # Hard coded codons - Not ideal - default dicts?
+    gene_Starts = collections.OrderedDict({'ATG':0,'ATT':0,'CTG':0,'GAC':0,'GTG':0,'TTG':0,'ATC':0,'ATA':0})
     gene_Stops = collections.OrderedDict({'TAA':0,'TAG':0,'TGA':0})
     gene_GC = []
-    orf_Starts = collections.OrderedDict({'ATG':0,'ATT':0,'CTG':0,'GAC':0,'GTG':0,'TTG':0})
+    orf_Starts = collections.OrderedDict({'ATG':0,'ATT':0,'CTG':0,'GAC':0,'GTG':0,'TTG':0,'ATC':0,'ATA':0})
     orf_Stops = collections.OrderedDict({'TAA':0,'TAG':0,'TGA':0})
     orf_GC = []
 
     for gene, data in partial_genes.items():
-        print(data)
+        print("\nPartial Matched Gene:\t" + gene + "\t" + data[1] + "\nPartial Matched ORF:\t" + data[3] + "\t" + data[4])
         strands[data[0]] +=1
         try:
             gene_Starts[data[1][0:3]] +=1
@@ -206,7 +148,7 @@ def result_compare(results,annotation):
             orf_Stops[data[4][-3:]] +=1
             orf_GC.append(float(data[5]))
         except KeyError:
-            sys.exit(data)
+            sys.exit("Key Error: " + str(data))
 
     gene_Median_GC = np.median(gene_GC)
     orf_Median_GC = np.median(orf_GC)
@@ -273,7 +215,15 @@ def result_compare(results,annotation):
 
 
 if __name__ == "__main__":
-    result_compare(**vars(args))
+    options = parser.parse_args()
+    parameters = options.parameters
+    tool = options.tool
+    genome = options.genome
+    if parameters:
+        results_file = open('../Tools/' + tool + '/' + tool + '_' + genome +'_'+parameters+ '.csv')
+    else:
+        results_file = open('../Tools/'+tool+'/'+tool+'_'+genome+'.csv')
+    result_compare(genome,results_file)
 
 
 
