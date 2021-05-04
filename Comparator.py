@@ -434,8 +434,10 @@ def tool_comparison(genes,orfs,genome):
     ####
     gene_Coverage_Genome = format(100 * np.count_nonzero(gene_Nuc_Array) / comp.genome_Size,'.2f')
     orf_Coverage_Genome = format(100 * np.count_nonzero(orf_Nuc_Array) / comp.genome_Size,'.2f')
-    matched_ORF_Nuc_AND_Gene = np.logical_and(matched_ORF_Nuc_Array,gene_Nuc_Array) + [0 for i in range(len(gene_Nuc_Array))] # This gets the nts which are in both matched ORFs and detected genes
-    matched_ORF_Coverage_Genome = format(100 * np.count_nonzero(matched_ORF_Nuc_AND_Gene) / comp.genome_Size,'.2f')
+    matched_ORF_Coverage_Genome = format(100 * np.count_nonzero(matched_ORF_Nuc_Array) / comp.genome_Size,'.2f')  # This gets the nts which are in matched ORFs - Check below
+    #matched_ORF_Nuc_AND_Gene = np.logical_and(matched_ORF_Nuc_Array,gene_Nuc_Array) + [0 for i in range(len(gene_Nuc_Array))] # This gets the nts which are in both matched ORFs and detected genes
+    #matched_ORF_Coverage_Genome = format(100 * np.count_nonzero(matched_ORF_Nuc_AND_Gene) / comp.genome_Size,'.2f')
+
     # gene and orf nucleotide Intersection
     gene_ORF_Nuc_Intersection = np.count_nonzero(gene_Nuc_Array & orf_Nuc_Array)
     #not gene but orf nucleotides

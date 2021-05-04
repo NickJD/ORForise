@@ -270,12 +270,18 @@ if __name__ == "__main__":
         unmatched_Lengths.append(int(pos.split('_')[1]) - int(pos.split('_')[0]))
 
 
+    import numpy as np
 
     print(len(gene_Lengths))
     print(gene_Lengths)
+    print(np.mean(gene_Lengths))
     print(len(partial_Lengths))
     print(partial_Lengths)
     print(len(missed_Lengths))
     print(missed_Lengths)
+    print(len(unmatched_Lengths))
+    print(unmatched_Lengths)
+    print(np.mean(unmatched_Lengths))
+
 
 
