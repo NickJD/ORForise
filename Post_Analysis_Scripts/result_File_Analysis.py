@@ -1,7 +1,7 @@
 import argparse
 import copy
 
-from ProGene.Tools.utils import  *
+from ORForise.Tools.utils import  *
 import collections
 import sys
 

@@ -1,7 +1,6 @@
 import argparse
-import collections
 import csv
-from ProGene.Tools.utils import * # local file
+from ORForise.Tools.utils import * # local file
 import numpy as np
 
 parser = argparse.ArgumentParser()

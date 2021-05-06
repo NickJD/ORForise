@@ -8,7 +8,7 @@ from Comparator import tool_comparison
 ### Currently only supports using the same model for all tools
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-t', '--tools', required=True, help='Which tools to compare? "Prodigal,EasyGene"')
+parser.add_argument('-t', '--tools', required=True, help='Which tools to analyse? "Prodigal,MetaGene"')
 parser.add_argument('-p', '--parameters', required=False, help='Optional parameters for prediction tool.')
 parser.add_argument('-g', '--genome_to_compare', required=True, help='Which genome to analyse? Genome files have same prefix'
                                                                      ' - .fa and .gff appended')

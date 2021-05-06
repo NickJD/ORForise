@@ -6,7 +6,7 @@ from importlib import import_module
 from Comparator import tool_comparison
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-t', '--tool', required=True, help='Which tool to compare?')
+parser.add_argument('-t', '--tool', required=True, help='Which tool to analyse?')
 parser.add_argument('-p', '--parameters', required=False, help='Optional parameters for prediction tool.')
 parser.add_argument('-g', '--genome_to_compare', required=True, help='Which genome to analyse? Genome files have same prefix'
                                                                      ' - .fa and .gff appended')
@@ -87,8 +87,7 @@ def comparator(tool,parameters,genome_to_compare):
         try:
             for key, value in multi_Matched_ORFs.items():
                 key = key.split(',')
-                value = value[1].split(',')
-                multi = ('ORF:'+key[0]+'-'+key[1]+'_Gene:'+value[0]+'-'+value[1])
+                multi = ('ORF:'+key[0]+'-'+key[1]+'_Genes:'+'|'.join(value))
                 tool_out.writerow([multi])
         except IndexError:
             pass

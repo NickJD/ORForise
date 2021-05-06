@@ -1,3 +1,4 @@
+import collections
 from collections import OrderedDict
 from Tools.utils import *
 import numpy as np
@@ -8,7 +9,7 @@ class comparator:  # Class to hold global-type variables
     def __init__(self, perfect_Starts=0, perfect_Stops=0, perfect_Matches=0, genome_Seq='',
                  genome_Seq_Rev='',
                  genome_Size=0, correct_Frame_Number=0, extended_Start=0,
-                 extended_Stop=0, extended_CDS=0, matched_ORFs=collections.OrderedDict(),multi_Matched_ORFs=collections.OrderedDict(),
+                 extended_Stop=0, extended_CDS=0, matched_ORFs=collections.OrderedDict(),multi_Matched_ORFs=collections.defaultdict(list),
                  unmatched_ORFs=collections.OrderedDict(), genes_Detected=collections.OrderedDict(),
                  genes_Undetected=collections.OrderedDict(),
                  out_Of_Frame_ORFs=collections.OrderedDict(), start_Difference=[], stop_Difference=[],
@@ -259,7 +260,8 @@ def tool_comparison(genes,orfs,genome):
             m_ORF_Details = orf_Details[:]
             m_ORF_Details.append(g_pos)
             if g_pos in comp.matched_ORFs.keys():
-                comp.multi_Matched_ORFs.update(({g_pos:m_ORF_Details}))
+                previously_Covered_Gene = comp.matched_ORFs[g_pos][-1]
+                comp.multi_Matched_ORFs[g_pos] += [g_pos.replace(',','-'), previously_Covered_Gene.replace(',','-')] #ORF is same as gene so can use g_pos
             comp.matched_ORFs.update({g_pos:m_ORF_Details})
             comp.genes_Detected.update({str(gene_Details):g_pos})
             match_Statistics(o_Start, o_Stop, g_Start, g_Stop,g_Strand)
@@ -273,7 +275,8 @@ def tool_comparison(genes,orfs,genome):
             m_ORF_Details = orf_Details[:]
             m_ORF_Details.append(g_pos)
             if orf_Pos in comp.matched_ORFs.keys():
-                comp.multi_Matched_ORFs.update(({g_pos:m_ORF_Details}))
+                previously_Covered_Gene = comp.matched_ORFs[g_pos][-1]
+                comp.multi_Matched_ORFs[orf_Pos] += [g_pos.replace(',','-'), previously_Covered_Gene.replace(',','-')]#ORF collects multiple gene pos'
             comp.matched_ORFs.update({orf_Pos:m_ORF_Details})
             comp.genes_Detected.update({str(gene_Details):orf_Pos})
             match_Statistics(o_Start,o_Stop,g_Start,g_Stop,g_Strand)
@@ -286,7 +289,8 @@ def tool_comparison(genes,orfs,genome):
             m_ORF_Details = orf_Details[:]
             m_ORF_Details.append(g_pos)
             if orf_Pos in comp.matched_ORFs.keys():
-                comp.multi_Matched_ORFs.update(({g_pos:m_ORF_Details}))
+                previously_Covered_Gene = comp.matched_ORFs[g_pos][-1]
+                comp.multi_Matched_ORFs[orf_Pos] += [g_pos.replace(',','-'), previously_Covered_Gene.replace(',','-')] #ORF collects multiple gene pos'
             comp.matched_ORFs.update({orf_Pos:m_ORF_Details})
             comp.genes_Detected.update({str(gene_Details):orf_Pos})
             match_Statistics(o_Start,o_Stop,g_Start,g_Stop,g_Strand)

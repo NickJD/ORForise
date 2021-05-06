@@ -1,5 +1,5 @@
 import argparse
-from ProGene.Tools.utils import *
+from ORForise.Tools.utils import *
 import collections
 import numpy as np
 
