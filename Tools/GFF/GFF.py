@@ -1,7 +1,7 @@
 import collections
 
-from ..utils import revCompIterative
-from ..utils import sortORFs
+from ORForise.utils import revCompIterative
+from ORForise.utils import sortORFs
 import sys
 def GFF(genome_to_compare,parameters,genome):
     GFF_ORFs = collections.OrderedDict()

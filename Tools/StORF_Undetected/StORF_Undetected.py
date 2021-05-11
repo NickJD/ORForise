@@ -1,7 +1,7 @@
 import collections
 
-from ..utils import revCompIterative
-from ..utils import sortORFs
+from ORForise.utils import revCompIterative
+from ORForise.utils import sortORFs
 
 def StORF_Undetected(tool,genome):
     storf_orfs = collections.OrderedDict()

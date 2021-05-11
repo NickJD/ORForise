@@ -1,9 +1,8 @@
 import argparse
 import copy
 
-from ORForise.Tools.utils import  *
+from ORForise.utils import  *
 import collections
-import sys
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-t', '--tool', required=True, help='Which tool to compare?')

@@ -1,7 +1,7 @@
 import collections
 
-from ..utils import revCompIterative
-from ..utils import sortORFs
+from ORForise.utils import revCompIterative
+from ORForise.utils import sortORFs
 
 def GeneMark_S_2(genome_to_compare,parameters,genome):
     geneMark_S_2_ORFs = collections.OrderedDict()

@@ -1,7 +1,7 @@
 import collections
 
-from ..utils import revCompIterative
-from ..utils import sortORFs
+from utils import revCompIterative
+from utils import sortORFs
 
 def Prodigal(genome_to_compare,parameters,genome):
     prodigalORFs = collections.OrderedDict()

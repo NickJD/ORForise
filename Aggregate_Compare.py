@@ -2,7 +2,7 @@ import argparse
 import collections
 import csv
 from importlib import import_module
-from Tools.utils import sortORFs
+from ORForise.utils import sortORFs
 from Comparator import tool_comparison
 
 ### Currently only supports using the same model for all tools

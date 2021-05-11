@@ -2,7 +2,6 @@ import argparse
 import collections
 import csv
 from importlib import import_module
-
 from Comparator import tool_comparison
 
 parser = argparse.ArgumentParser()

@@ -1,6 +1,6 @@
 import argparse
 import csv
-from ORForise.Tools.utils import * # local file
+from ORForise.utils import * # local file
 import numpy as np
 
 parser = argparse.ArgumentParser()

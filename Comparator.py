@@ -1,6 +1,4 @@
-import collections
-from collections import OrderedDict
-from Tools.utils import *
+from utils import *
 import numpy as np
 
 
@@ -229,7 +227,7 @@ def tool_comparison(genes,orfs,genome):
             o_Stop = int(pos.split(',')[1])
             o_Strand = orf_Details[0]
             orf_Set = set(range(o_Start, o_Stop + 1))
-            if o_Stop <= g_Start or o_Start >= g_Stop: #Not caught up yet or ORFs may not be ordered - Slow but needed for unordered ORF Predictions
+            if o_Stop <= g_Start or o_Start >= g_Stop: #Not caught up yet
                 continue
             elif o_Start == g_Start and o_Stop == g_Stop: #If perfect match, break and skip the rest of the ORFs
                 perfect_Match = True

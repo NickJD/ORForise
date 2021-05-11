@@ -1,5 +1,5 @@
 import argparse
-from ORForise.Tools.utils import *
+from ORForise.utils import *
 import collections
 import numpy as np
 
