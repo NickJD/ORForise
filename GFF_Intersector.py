@@ -1,37 +1,37 @@
 import argparse
 import collections
 from importlib import import_module
-import numpy as np
+from datetime import date
 
-import sys
-sys.path.append('/home/nick/Git/')
-sys.path.append('.')
-import os
-os.chdir('..')
-
-from ORForise.utils import sortORFs
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-g', '--genome', required=True, help='Which genome to use as Gold Standard?')
-parser.add_argument('-t', '--tool', required=True, help='While tool to add to Gold Standard Annotation?')
-parser.add_argument('-p', '--parameters', required=False, help='Optional parameters for prediction tool.')
-parser.add_argument('-cov', '--coverage', required=False, action='store', dest='coverage', default='100', type=int,
-                        help='ORF coverage of Gene in % ')
-parser.add_argument('-o', '--out_file', required=True, help='output filename')
+parser.add_argument('-g', action='store', dest='genome', required=True,
+                    help='Which genome to use as Gold Standard?')
+parser.add_argument('-t', action='store', dest='tool', required=True,
+                    help='While tool to add to Gold Standard Annotation?')
+parser.add_argument('-p', action='store', dest='parameters', required=False,
+                    help='Optional parameters for prediction tool.')
+parser.add_argument('-cov', '--coverage', action='store', dest='coverage', default=100, type=int,
+                    help='ORF coverage of Gene in % - Default of 100 means exact match')
+parser.add_argument('-o', action='store', dest='output_file',  required=True,
+                    help='output filename')
 args = parser.parse_args()
 
 
-def gff_writer(genome,tool,outfile,new_ORFs):
+def gff_writer(genome,tool,outfile,genes_To_Keep,genome_gff):
     write_out = open(outfile, 'w')
-    for pos in new_ORFs:
+    write_out.write("##gff-version\t3\n#\tGFF Intersector\n#\tRun Date:" + str(date.today()) + '\n')
+    write_out.write("##Original File: " + genome_gff.name + "\n##Additional Tool: "+ tool + '\n')
+    for pos, data in genes_To_Keep.items():
         pos_ = pos.split(',')
         start = pos_[0]
         stop = pos_[-1]
+        strand = data[0]
         type = 'original'
-        entry = (genome + '\t' + type+ '\tORF\t' + start + '\t' + stop + '\t.\t' + '\n')
+        entry = (genome + '\t' + type + '\tORF\t' + start + '\t' + stop + '\t.\t' + strand + '\t.\tID=Original_Annotation;Coverage=' + str(data[1]) + '\n')
         write_out.write(entry)
 
-def comparator(genome,tool,parameters,coverage,out_file): # Only works for single contig genome
+def comparator(genome,tool,parameters,coverage,output_file): # Only works for single contig genome
     genome_Seq = ""
     with open('Genomes/'+genome+'.fa', 'r') as genome_fasta:
         for line in genome_fasta:
@@ -39,7 +39,6 @@ def comparator(genome,tool,parameters,coverage,out_file): # Only works for singl
             if not line.startswith('>'):
                 genome_Seq += str(line)
     genome_Size = len(genome_Seq)
-    gene_Nuc_Array = np.zeros((genome_Size), dtype=np.int)
     ###########################################
     gold_standard = collections.OrderedDict() # Order is important
     with open('Genomes/'+genome+'.gff','r') as genome_gff:
@@ -50,7 +49,6 @@ def comparator(genome,tool,parameters,coverage,out_file): # Only works for singl
                     start = int(line[3])
                     stop = int(line[4])
                     strand = line[6]
-                    gene_Nuc_Array[start - 1:stop] = [1]  # Changing all between the two positions to 1's
                     pos = str(start) + ',' + str(stop)
                     gold_standard.update({pos:strand})
             except IndexError:
@@ -59,20 +57,21 @@ def comparator(genome,tool,parameters,coverage,out_file): # Only works for singl
     tool_predictions = import_module('Tools.'+tool+'.'+tool)
     tool_predictions = getattr(tool_predictions,tool)
     orfs = tool_predictions(genome,parameters,genome_Seq)
-    genes_To_Keep = []
+    genes_To_Keep = collections.OrderedDict()
 
 
     if coverage == 100:
-        for orf in orfs.keys():
+        for orf, data in orfs.items():
             o_Start = int(orf.split(',')[0])
             o_Stop = int(orf.split(',')[1])
+            o_Strand = data[0]
             try:
                 if gold_standard[str(o_Start)+','+str(o_Stop)]:
-                    genes_To_Keep.append(str(o_Start)+','+str(o_Stop)) #  o_ and g_ would be the same here
+                    genes_To_Keep.update({str(o_Start)+','+str(o_Stop):[o_Strand,coverage]}) #  o_ and g_ would be the same here
             except KeyError:
                 continue
     else:
-        for orf, data in orfs.items():
+        for orf, data in orfs.items(): # Currently allows ORF to be bigger than Gene
             o_Start = int(orf.split(',')[0])
             o_Stop = int(orf.split(',')[1])
             o_Strand = data[0]
@@ -85,11 +84,11 @@ def comparator(genome,tool,parameters,coverage,out_file): # Only works for singl
                 overlap = len(orf_Set.intersection(gene_Set))
                 cov = 100 * float(overlap) / float(len(gene_Set))
                 if abs(o_Stop - g_Stop) % 3 == 0 and o_Strand == g_Strand and cov >= coverage:
-                    genes_To_Keep.append(str(g_Start) + ',' + str(g_Stop))
+                    genes_To_Keep.update({str(g_Start) + ',' + str(g_Stop):[g_Strand,int(cov)]})
                 if g_Start > o_Stop:
                     break
     #########################################################
-    gff_writer(genome,tool,out_file,genes_To_Keep)
+    gff_writer(genome,tool,output_file,genes_To_Keep,genome_gff)
 
 if __name__ == "__main__":
     comparator(**vars(args))

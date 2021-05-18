@@ -29,9 +29,9 @@ If the new tool reports its predictions in GFF you can put the new tools output 
 
 
 # Use-cases:
-For Help: python3 ORF_Compare.py -h   
+For Help: python3 ORForise.py -h   
 ```python
-usage: ORF_Compare.py [-h] -t TOOL [-p PARAMETERS] -g GENOME_TO_COMPARE
+usage: ORForise.py [-h] -t TOOL [-p PARAMETERS] -g GENOME_TO_COMPARE
 
 arguments:
   -h, --help            show this help message and exit
@@ -45,12 +45,12 @@ Output = "'tool'_'genome_to_compare'.csv"
 
 ## Compare a novel genome annotation to an Ensembl Gold Standard: 
 Genome annotation is a difficult process, 'even for Prokaryotes'. ORForise allows the direct and systematic analysis of a novel ORF prediction from a wide selection of tools to a Gold Standard Genome Annotation, such as those provided by Ensembl Bacteria.
-### Example: python3 ORF_Compare.py -t Prodigal -g E-coli 
-### Example with Model Parameter: python3 ORF_Compare.py -t GeneMark -p Staph -g Staph  
+### Example: python3 ORForise.py -t Prodigal -g E-coli 
+### Example with Model Parameter: python3 ORForise.py -t GeneMark -p Staph -g Staph  
 
 ## Compare different novel annotations with eachother on a single Genome:
 If a Gold Standard Genome Annotation is not available or a direct comparison between two or more tools is wanted, ORForise can be used as the example below.
-### Example: python3 ORF_Compare.py -t Prodigal -g E-coli_FragGeneScan
+### Example: python3 ORForise.py -t Prodigal -g E-coli_FragGeneScan
 This will compare the novel Prodigal predictions against the predictions made by FragGeneScan (Note: For this example, the ~Genomes directory has both E-coli_FragGeneScan.fa and ~.gff files to allow the comparison)
 
 

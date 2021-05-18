@@ -3,43 +3,42 @@ import collections
 from importlib import import_module
 import numpy as np
 from datetime import date
-
-import sys
-sys.path.append('/home/nick/Git/')
-sys.path.append('.')
-import os
-os.chdir('..')
-
-from ORForise.utils import sortORFs
+from utils import sortORFs
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-g', '--genome', required=True, help='Which genome to use as Gold Standard?')
-parser.add_argument('-t', '--tool', required=True, help='While tool to add to Gold Standard Annotation?')
-parser.add_argument('-p', '--parameters', required=False, help='Optional parameters for prediction tool.')
-parser.add_argument('-olap', '--overlap', required=False, action='store', dest='overlap', default='50', type=int,
-                        help='overlap')
-parser.add_argument('-o', '--out_file', required=True, help='output filename')
+parser.add_argument('-g', action='store', dest='genome', required=True,
+                    help='Which genome to use as Gold Standard?')
+parser.add_argument('-t', action='store', dest='tool', required=True,
+                    help='While tool to add to Gold Standard Annotation?')
+parser.add_argument('-p', action='store', dest='parameters', required=False,
+                    help='Optional parameters for prediction tool.')
+parser.add_argument('-olap', action='store', dest='overlap', default=50, type=int,
+                    help='maximum overlap between Gene and ORF')
+parser.add_argument('-o', action='store', dest='output_file',  required=True,
+                    help='output filename')
 args = parser.parse_args()
 
 
-def gff_writer(genome,tool,outfile,new_ORFs):
-    write_out = open(outfile, 'w')
-    write_out.write("##gff-version\t3\n#\tGFF Aggregator\n#\tRun Date:" + str(date.today()) + '\n')
-    write_out.write("##Original File: " + genome + "\n##Additional File: "+ tool + '\n')
+def gff_writer(genome,tool,output_file,new_ORFs,genome_gff):
+    write_out = open(output_file, 'w')
+    write_out.write("##gff-version\t3\n#\tGFF Adder\n#\tRun Date:" + str(date.today()) + '\n')
+    write_out.write("##Original File: " + genome_gff.name + "\n##Additional Tool: "+ tool + '\n')
     for pos, data in new_ORFs.items():
         pos_ = pos.split(',')
         start = pos_[0]
         stop = pos_[-1]
-        if len(data) == 3:
+        strand = data[0]
+        if len(data) == 3: # Addition Tool ORFs have start and stop codons
             type = tool
+            entry = (genome + '\t' + type + '\tORF\t' + start + '\t' + stop + '\t.\t' + strand + '\t.\tID=Predicted_Additional_ORF' + '\n')
         else:
             type = 'original'
-        entry = (genome + '\t' + type+ '\tORF\t' + start + '\t' + stop + '\t.\t.\t.\t' + '\n')
+            entry = (genome + '\t' + type + '\tORF\t' + start + '\t' + stop + '\t.\t' + strand + '\t.\tID=Original_Annotation' + '\n')
         write_out.write(entry)
 
-def comparator(genome,tool,parameters,overlap,out_file): # Only works for single contig genome
+def gff_adder(genome,tool,parameters,overlap,output_file): # Only works for single contig genome
     genome_Seq = ""
-    with open('/home/nick/Git/ORForise/Genomes/'+genome+'.fa', 'r') as genome_fasta:
+    with open('Genomes/'+genome+'.fa', 'r') as genome_fasta:
         for line in genome_fasta:
             line = line.replace("\n","")
             if not line.startswith('>'):
@@ -48,7 +47,7 @@ def comparator(genome,tool,parameters,overlap,out_file): # Only works for single
     gene_Nuc_Array = np.zeros((genome_Size), dtype=np.int)
     ###########################################
     gold_standard = collections.OrderedDict() # Order is important
-    with open('/home/nick/Git/ORForise/Genomes/'+genome+'.gff','r') as genome_gff:
+    with open('Genomes/'+genome+'.gff','r') as genome_gff:
         for line in genome_gff:
             line = line.split('\t')
             try:
@@ -62,7 +61,7 @@ def comparator(genome,tool,parameters,overlap,out_file): # Only works for single
             except IndexError:
                 pass
 
-    tool_predictions = import_module('Tools.'+tool+'.'+tool)#, package='ORForise.Tools')
+    tool_predictions = import_module('Tools.'+tool+'.'+tool)
     tool_predictions = getattr(tool_predictions,tool)
     orfs = tool_predictions(genome,parameters,genome_Seq)
     orfs_To_Remove = []
@@ -76,7 +75,7 @@ def comparator(genome,tool,parameters,overlap,out_file): # Only works for single
             g_Stop = int(gene.split(',')[1])
             gene_Set = set(range(int(g_Start), int(g_Stop) + 1))
             cov = len(orf_Set.intersection(gene_Set))
-            if cov >= 50:
+            if cov >= overlap:
                 orfs_To_Remove.append(str(o_Start)+','+str(o_Stop))
             if g_Start > o_Stop:
                 break
@@ -86,9 +85,9 @@ def comparator(genome,tool,parameters,overlap,out_file): # Only works for single
     #########################################################
     new_ORFs = {**gold_standard, **orfs}
     new_ORFs = sortORFs(new_ORFs)
-    gff_writer(genome,tool,out_file,new_ORFs)
+    gff_writer(genome,tool,output_file,new_ORFs,genome_gff,)
 
 if __name__ == "__main__":
-    comparator(**vars(args))
+    gff_adder(**vars(args))
 
     print("Complete")
