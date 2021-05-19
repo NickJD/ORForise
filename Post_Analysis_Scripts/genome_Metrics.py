@@ -199,8 +199,8 @@ def genome_Metrics(genome_to_compare):
 
 
 
-    output = ("Number of Protein Coding Genes in " + genome_to_compare + " : " + str(len(lengths_PCG)) + ", Median Length of PCGs: " + str(median_PCG) + ", Min Length of PCGs: " + str(min(lengths_PCG)) + ", Max Length of PCGs: " + str(max(lengths_PCG)) +
-              ", Number of PCGs on Pos Strand: " + str(strands['+']) + ", Number of PCGs on Neg Strand: " + str(strands['-']) + ", Genome-Wide GC Content: " + format(np.median(genome_GC), '.2f') + "Median GC of PCGs: " + format(np.median(pcg_GC), '.2f') + ", Number of Overlapping PCGs: " + str(len(gene_Overlaps)) +
+    output = ("Number of Protein Coding Genes in " + genome_to_compare + " : " + str(len(lengths_PCG)) + " ,Median Length of PCGs: " + str(median_PCG) + ", Min Length of PCGs: " + str(min(lengths_PCG)) + ", Max Length of PCGs: " + str(max(lengths_PCG)) +
+              ", Number of PCGs on Pos Strand: " + str(strands['+']) + ", Number of PCGs on Neg Strand: " + str(strands['-']) + "\nGenome-Wide GC Content: " + format(np.median(genome_GC), '.2f') + "Median GC of PCGs: " + format(np.median(pcg_GC), '.2f') + ", Number of Overlapping PCGs: " + str(len(gene_Overlaps)) +
                ", Longest PCG Overlap: " + str(longest_Olap) + ", Median PCG Overlap: " + str(median_PCG_Olap)  + ", Number of PCGs less than 100 amino acids: " + str(len(short_PCGs)) +
 
             '\nPercentage of Genome which is Protein Coding: ' + format(coding_Percentage, '.2f') +', Number of Non-PCGs: ' + str(len(non_protein_coding_genes)) + ', Percentage of Genome Non-PCG: ' +format(non_coding_Percentage, '.2f') +

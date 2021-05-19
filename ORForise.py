@@ -38,7 +38,7 @@ def comparator(tool,parameters,genome_to_compare):
     tool_predictions = import_module('Tools.'+tool+'.'+tool)
     tool_predictions = getattr(tool_predictions,tool)
     orfs = tool_predictions(genome_to_compare,parameters,genome_Seq)
-    all_Metrics, all_rep_Metrics, start_precision, stop_precision,other_starts, other_stops, missed_genes, unmatched_orfs, undetected_gene_metrics, unmatched_orf_metrics, gene_coverage_genome, multi_Matched_ORFs, partial_Hits = tool_comparison(genes,orfs,genome_Seq)
+    all_Metrics, all_rep_Metrics, start_precision, stop_precision,other_starts, other_stops, perfect_Matches, missed_genes, unmatched_orfs, undetected_gene_metrics, unmatched_orf_metrics, gene_coverage_genome, multi_Matched_ORFs, partial_Hits = tool_comparison(genes,orfs,genome_Seq)
     if parameters:
         outname = tool+'_'+genome_to_compare+'_'+parameters
     else:
@@ -68,11 +68,18 @@ def comparator(tool,parameters,genome_to_compare):
         tool_out.writerow(['Undetected_Gene_Metrics:'])
         tool_out.writerow(['ATG_Start,GTG_Start,TTG_Start,ATT_Start,CTG_Start,Alternative_Start_Codon,TGA_Stop,TAA_Stop,TAG_Stop,Alternative_Stop_Codon,Median_Length,ORFs_on_Positive_Strand,ORFs_on_Negative_Strand'])
         tool_out.writerow(undetected_gene_metrics)
-        tool_out.writerow(['Undetected_Genes:'])
+        ####
+        tool_out.writerow(['Perfect_Match_Genes:'])
+        for key,value in perfect_Matches.items():
+            key = key.split(',')
+            id = ('>' + genome_to_compare + '_' + key[0] + '_' + key[1] + '_' + key[2])
+            tool_out.writerow([id + '\n' + value + '\n'])
+        ####
+        tool_out.writerow(['\nUndetected_Genes:'])
         for key,value in missed_genes.items():
             key = key.split(',')
             id = ('>' + genome_to_compare + '_' + key[0] + '_' + key[1] + '_' + key[2])
-            tool_out.writerow([id + '\n' + value])
+            tool_out.writerow([id + '\n' + value + '\n'])
         tool_out.writerow(['\nORFs_Without_Corresponding_Gene_In_Ensembl_Metrics:'])
         tool_out.writerow(['ATG_Start,GTG_Start,TTG_Start,ATT_Start,CTG_Start,Alternative_Start_Codon,TGA_Stop,TAA_Stop,TAG_Stop,Alternative_Stop_Codon,Median_Length,ORFs_on_Positive_Strand,ORFs_on_Negative_Strand'])
         tool_out.writerow(unmatched_orf_metrics)

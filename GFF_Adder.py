@@ -12,7 +12,7 @@ parser.add_argument('-t', action='store', dest='tool', required=True,
                     help='While tool to add to Gold Standard Annotation?')
 parser.add_argument('-p', action='store', dest='parameters', required=False,
                     help='Optional parameters for prediction tool.')
-parser.add_argument('-olap', action='store', dest='overlap', default=50, type=int,
+parser.add_argument('-olap', action='store', dest='overlap', default=50, type=int, required=False,
                     help='maximum overlap between Gene and ORF')
 parser.add_argument('-o', action='store', dest='output_file',  required=True,
                     help='output filename')

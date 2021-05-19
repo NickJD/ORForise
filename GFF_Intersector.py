@@ -11,8 +11,8 @@ parser.add_argument('-t', action='store', dest='tool', required=True,
                     help='While tool to add to Gold Standard Annotation?')
 parser.add_argument('-p', action='store', dest='parameters', required=False,
                     help='Optional parameters for prediction tool.')
-parser.add_argument('-cov', '--coverage', action='store', dest='coverage', default=100, type=int,
-                    help='ORF coverage of Gene in % - Default of 100 means exact match')
+parser.add_argument('-cov', action='store', dest='coverage', default=100, type=int, required=False,
+                    help='ORF coverage of Gene in percentage - Default of 100 means exact match')
 parser.add_argument('-o', action='store', dest='output_file',  required=True,
                     help='output filename')
 args = parser.parse_args()

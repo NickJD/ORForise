@@ -29,7 +29,6 @@ def gc_count(dna):
         elif "N" in i:
             n+=1
     gc_content = format((g + c) * 100 / (a + t + g + c + n),'.2f')
-    #n_per = n * 100 / (a + t + g + c + n)
     return gc_content
 
 def revCompIterative(watson):
@@ -192,25 +191,25 @@ def result_compare(genome,results_file):
 
     print(output)
 
-    import matplotlib.pylab as plt
-
-    list_ORF_Starts = list(orf_Starts.items())  # sorted by key, return a list of tuples
-    list_Gene_Starts = list(gene_Starts.items())
-    o_x, o_y = zip(*list_ORF_Starts)  # unpack a list of pairs into two tuples
-    g_x, g_y = zip(*list_Gene_Starts)
-
-    plt.plot(o_x, o_y)
-    plt.plot(g_x, g_y)
-    plt.show()
-
-    list_ORF_Stops = list(orf_Stops.items())  # sorted by key, return a list of tuples
-    list_Gene_Stops = list(gene_Stops.items())
-    o_x, o_y = zip(*list_ORF_Stops)  # unpack a list of pairs into two tuples
-    g_x, g_y = zip(*list_Gene_Stops)
-
-    plt.plot(o_x, o_y)
-    plt.plot(g_x, g_y)
-    plt.show()
+    # import matplotlib.pylab as plt
+    #
+    # list_ORF_Starts = list(orf_Starts.items())  # sorted by key, return a list of tuples
+    # list_Gene_Starts = list(gene_Starts.items())
+    # o_x, o_y = zip(*list_ORF_Starts)  # unpack a list of pairs into two tuples
+    # g_x, g_y = zip(*list_Gene_Starts)
+    #
+    # plt.plot(o_x, o_y)
+    # plt.plot(g_x, g_y)
+    # plt.show()
+    #
+    # list_ORF_Stops = list(orf_Stops.items())  # sorted by key, return a list of tuples
+    # list_Gene_Stops = list(gene_Stops.items())
+    # o_x, o_y = zip(*list_ORF_Stops)  # unpack a list of pairs into two tuples
+    # g_x, g_y = zip(*list_Gene_Stops)
+    #
+    # plt.plot(o_x, o_y)
+    # plt.plot(g_x, g_y)
+    # plt.show()
 
 
 if __name__ == "__main__":
