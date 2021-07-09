@@ -1,3 +1,20 @@
+Metadata-Version: 2.1
+Name: ORForise
+Version: 0.0.4
+Summary: A small example package - ORForise
+Home-page: https://github.com/pypa/sampleproject
+Author: NickJD
+Author-email: nicholas@dimonaco.co.uk
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/pypa/sampleproject/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
 # ORForise - Prokaryote Genome Annotation Comparison and Analysis Platform 
 Platform for analysing Prokaryote Protein Coding Gene Predictors.
 Novel genome annotations can be compared to Gold Standard annotations from Ensembl (or any given GFF annotation) and predictions from other tools.
@@ -6,13 +23,13 @@ Novel genome annotations can be compared to Gold Standard annotations from Ensem
 The ORForise platform is written in Python3 and only requires the Numpy library which is standard in most base installations of Python3. 
 
 ### Platform Preparation
-First step is to clone the repository `git clone https://github.com/NickJD/ORForise'
+First step is to clone the Repository `git clone https://github.com/NickJD/ORForise'
 
 To run, you need:   
 * Input Genome FASTA and corresponding GFF file with the annotated genes for the genome you want to compare to.  
 * A prediction output from one of the compatible tools for the same genome (New tools can be added).   
 
-Each tool requires its own directory and prediction output must be named as follows '~toolName/toolName_Species.*'
+Each tool requires it's own directory and prediction output must be named as follows '~toolName/toolName_Species.*'
 
 ### How to add your own Genome:
 Each prediction tool has a directory and data handling script which converts the different tool output into a dictionary that
@@ -47,7 +64,7 @@ by Ensembl Bacteria.
 #### Example: python3 ORForise.py -t Prodigal -g E-coli 
 #### Example with Model Parameter: python3 ORForise.py -t GeneMark -p Staph -g Staph  
 
-### Compare different novel annotations with each other on a single Genome:
+### Compare different novel annotations with eachother on a single Genome:
 If a Gold Standard Genome Annotation is not available or a direct comparison between two or more tools is wanted, ORForise can be used as the example below.
 #### Example: python3 ORForise.py -t Prodigal -g E-coli_FragGeneScan
 This will compare the novel Prodigal predictions against the predictions made by FragGeneScan (Note: For this example, the ~Genomes directory has both E-coli_FragGeneScan.fa and ~.gff files to allow the comparison)
@@ -163,3 +180,5 @@ GFF was chosen as output type.
 
 **TransDecoder - Version 5.5.0** - https://github.com/TransDecoder/TransDecoder/wiki  
 Defaults options were used.
+
+
