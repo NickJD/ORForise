@@ -1,7 +1,9 @@
+from importlib import import_module
+
+import argparse
 import collections
 import csv
-import argparse
-from importlib import import_module
+
 from Comparator import tool_comparison
 
 parser = argparse.ArgumentParser()
@@ -11,17 +13,18 @@ parser.add_argument('-stf', '--storfs_to_find_missing', default='', help='STORFs
 parser.add_argument('-g', '--genome_to_compare', default='', help='Which genome to analyse?')
 args = parser.parse_args()
 
-def comparator(tool,input_to_analyse,storfs_to_find_missing,genome_to_compare):
+
+def comparator(tool, input_to_analyse, storfs_to_find_missing, genome_to_compare):
     genome_Seq = ""
-    with open('Genomes/'+genome_to_compare+'.fa', 'r') as genome:
+    with open('Genomes/' + genome_to_compare + '.fa', 'r') as genome:
         for line in genome:
-            line = line.replace("\n","")
+            line = line.replace("\n", "")
             if ">" not in line:
                 genome_Seq += str(line)
     ##############################################
     genes = collections.OrderedDict()
     count = 0
-    with open('Tools/StORF_Undetected/'+input_to_analyse,'r') as genome_gff: # Get list of missed genes
+    with open('Tools/StORF_Undetected/' + input_to_analyse, 'r') as genome_gff:  # Get list of missed genes
         for line in genome_gff:
             if ">" in line:
                 line = line.strip()
@@ -30,12 +33,13 @@ def comparator(tool,input_to_analyse,storfs_to_find_missing,genome_to_compare):
                 Strand = line.split('_')[3]
                 Gene = str(Start) + ',' + str(Stop) + ',' + Strand
                 genes.update({count: Gene})
-                count +=1
-##################################
-    tool_predictions = import_module('Tools.'+tool+'.'+tool)
-    tool_predictions = getattr(tool_predictions,tool)
-    orfs = tool_predictions(storfs_to_find_missing,genome_Seq)
-    all_Metrics, all_rep_Metrics, start_precision, stop_precision,other_starts, other_stops, missed_genes, unmatched_orfs, undetected_gene_metrics, unmatched_orf_metrics, gene_coverage_genome, multi_Matched_ORFs, partial_Hits = tool_comparison(genes,orfs,genome_Seq)
+                count += 1
+    ##################################
+    tool_predictions = import_module('Tools.' + tool + '.' + tool)
+    tool_predictions = getattr(tool_predictions, tool)
+    orfs = tool_predictions(storfs_to_find_missing, genome_Seq)
+    all_Metrics, all_rep_Metrics, start_precision, stop_precision, other_starts, other_stops, missed_genes, unmatched_orfs, undetected_gene_metrics, unmatched_orf_metrics, gene_coverage_genome, multi_Matched_ORFs, partial_Hits = tool_comparison(
+        genes, orfs, genome_Seq)
     outname = tool + '_' + genome_to_compare
     metric_description = list(all_Metrics.keys())
     metrics = list(all_Metrics.values())
@@ -61,7 +65,8 @@ def comparator(tool,input_to_analyse,storfs_to_find_missing,genome_to_compare):
         tool_out.writerow(['Alternative_Stops_Predicted:'])
         tool_out.writerow(other_stops)
         tool_out.writerow(['Undetected_Gene_Metrics:'])
-        tool_out.writerow(['ATG_Start,GTG_Start,TTG_Start,ATT_Start,CTG_Start,Alternative_Start_Codon,TGA_Stop,TAA_Stop,TAG_Stop,Alternative_Stop_Codon,Median_Length,ORFs_on_Positive_Strand,ORFs_on_Negative_Strand'])
+        tool_out.writerow([
+                              'ATG_Start,GTG_Start,TTG_Start,ATT_Start,CTG_Start,Alternative_Start_Codon,TGA_Stop,TAA_Stop,TAG_Stop,Alternative_Stop_Codon,Median_Length,ORFs_on_Positive_Strand,ORFs_on_Negative_Strand'])
         tool_out.writerow(undetected_gene_metrics)
         tool_out.writerow(['Undetected_Genes:'])
         for key, value in missed_genes.items():
@@ -70,7 +75,7 @@ def comparator(tool,input_to_analyse,storfs_to_find_missing,genome_to_compare):
             tool_out.writerow([id + '\n' + value])
         tool_out.writerow(['\nORFs_Without_Corresponding_Gene_In_Ensembl_Metrics:'])
         tool_out.writerow([
-                              'ATG_Start,GTG_Start,TTG_Start,ATT_Start,CTG_Start,Alternative_Start_Codon,TGA_Stop,TAA_Stop,TAG_Stop,Alternative_Stop_Codon,Median_Length,ORFs_on_Positive_Strand,ORFs_on_Negative_Strand'])
+            'ATG_Start,GTG_Start,TTG_Start,ATT_Start,CTG_Start,Alternative_Start_Codon,TGA_Stop,TAA_Stop,TAG_Stop,Alternative_Stop_Codon,Median_Length,ORFs_on_Positive_Strand,ORFs_on_Negative_Strand'])
         tool_out.writerow(unmatched_orf_metrics)
         tool_out.writerow(['ORF_Without_Corresponding_Gene_in_Ensembl:'])
         for key, value in unmatched_orfs.items():
