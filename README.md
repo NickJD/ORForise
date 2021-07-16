@@ -37,18 +37,25 @@ to extracting the ORF predictions.
 
 ### Use-cases:
 
-For Help: python3 ORForise.py -h
+For Help: python3 Annotation_Compare.py -h
 
 ```python
-usage: ORForise.py [-h] -t TOOL [-p PARAMETERS] -g GENOME_TO_COMPARE
+usage: Annotation_Compare.py [-h] -t TOOL -tp TOOL_PREDICTION -dna GENOME_DNA [-rt REFERENCE_TOOL] -anno ANNOTATION -o OUTNAME
 
-arguments:
+optional arguments:
   -h, --help            show this help message and exit
-  -t TOOL, --tool TOOL  Which tool to analyse?
-  -p PARAMETERS, --parameters PARAMETERS
-                        Optional parameters for prediction tool.
-  -g GENOME_TO_COMPARE, --genome_to_compare GENOME_TO_COMPARE
-                        Which genome to analyse? Genome files have same prefix - .fa and .gff appended
+  -t TOOL, --tool TOOL  Which tool to analyse? (Prodigal)
+  -tp TOOL_PREDICTION, --tool_prediction TOOL_PREDICTION
+                        Tool genome prediction file (.gff) - Different Tool Parameters are compared individually via separate files
+  -dna GENOME_DNA, --genome_DNA GENOME_DNA
+                        Genome DNA file (.fa) which both annotations are based on
+  -rt REFERENCE_TOOL, --reference_tool REFERENCE_TOOL
+                        What type of Annotation to compare to? -- Leave blank for Ensembl reference- Provide tool name to compare output from two tools (GeneMarkS)
+  -anno ANNOTATION, --annotation ANNOTATION
+                        Provide file for reference annotations to compare to (.gff for Ensembl) -- For non-Ensembl reference, provide output from tool used as reference
+  -o OUTNAME, --outname OUTNAME
+                        Define full output filename (format is CSV)
+
 ```
 
 Output = "'tool'_'genome_to_compare'.csv"
@@ -84,17 +91,24 @@ by more than 50 nt.
 For Help: python3 GFF_Adder.py -h
 
 ```python
-
-usage: GFF_Adder.py [-h] -g GENOME -t TOOL [-p PARAMETERS] [-olap OVERLAP] -o OUTPUT_FILE
+usage: GFF_Adder.py [-h] -dna GENOME_DNA [-rt REFERENCE_TOOL] -ref REFERENCE_ANNOTATION -at ADDITIONAL_TOOL -add ADDITIONAL_ANNOTATION [-olap OVERLAP] -o OUTPUT_FILE
 
 optional arguments:
-  -h, --help      show this help message and exit
-  -g GENOME       Which genome to use as Gold Standard?
-  -t TOOL         While tool to add to Gold Standard Annotation?
-  -p PARAMETERS   Optional parameters for prediction tool.
-  -olap OVERLAP   maximum overlap between Gene and ORF
-  -o OUTPUT_FILE  output filename
-
+  -h, --help            show this help message and exit
+  -dna GENOME_DNA, --genome_DNA GENOME_DNA
+                        Genome DNA file (.fa) which both annotations are based on
+  -rt REFERENCE_TOOL, --reference_tool REFERENCE_TOOL
+                        Which tool format to use as reference? - Default: Standard Ensembl GFF format, can be Prodigal or any of the other tools available
+  -ref REFERENCE_ANNOTATION, --reference_annotation REFERENCE_ANNOTATION
+                        Which reference annotation file to use as reference?
+  -at ADDITIONAL_TOOL, --additional_tool ADDITIONAL_TOOL
+                        Which tool format to use as additional?
+  -add ADDITIONAL_ANNOTATION, --additional_annotation ADDITIONAL_ANNOTATION
+                        Which annotation file to add to reference annotation?
+  -olap OVERLAP, --overlap OVERLAP
+                        Maximum overlap between Gene and ORF - Default: 50 nt
+  -o OUTPUT_FILE, --output_file OUTPUT_FILE
+                        Output filename
 ```
 
 ### GFF_Intersector:
@@ -108,15 +122,24 @@ GFF_Intersector also provides an option to allow the retention of genes that hav
 For Help: python3 GFF_Intersector.py -h
 
 ```python
-usage: GFF_Intersector.py [-h] -g GENOME -t TOOL [-p PARAMETERS] [-cov COVERAGE] -o OUTPUT_FILE
+usage: GFF_Intersector.py [-h] -dna GENOME_DNA [-rt REFERENCE_TOOL] -ref REFERENCE_ANNOTATION -at ADDITIONAL_TOOL -add ADDITIONAL_ANNOTATION [-cov COVERAGE] -o OUTPUT_FILE
 
 optional arguments:
-  -h, --help      show this help message and exit
-  -g GENOME       Which genome to use as Gold Standard?
-  -t TOOL         While tool to add to Gold Standard Annotation?
-  -p PARAMETERS   Optional parameters for prediction tool.
-  -cov COVERAGE   ORF coverage of Gene in percentage - Default of 100 means exact match
-  -o OUTPUT_FILE  output filename
+  -h, --help            show this help message and exit
+  -dna GENOME_DNA, --genome_DNA GENOME_DNA
+                        Genome DNA file (.fa) which both annotations are based on
+  -rt REFERENCE_TOOL, --reference_tool REFERENCE_TOOL
+                        Which tool format to use as reference? - Default: Standard Ensembl GFF format, can be Prodigal or any of the other tools available
+  -ref REFERENCE_ANNOTATION, --reference_annotation REFERENCE_ANNOTATION
+                        Which reference annotation file to use as reference?
+  -at ADDITIONAL_TOOL, --additional_tool ADDITIONAL_TOOL
+                        Which tool format to use as additional?
+  -add ADDITIONAL_ANNOTATION, --additional_annotation ADDITIONAL_ANNOTATION
+                        Which annotation file to add to reference annotation?
+  -cov COVERAGE, --coverage COVERAGE
+                        ORF coverage of Gene in percentage - Default: 100 == exact match
+  -o OUTPUT_FILE, --output_file OUTPUT_FILE
+                        Output filename
 
 ```
 

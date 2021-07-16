@@ -9,22 +9,22 @@ except ImportError:
     from .Comparator import tool_comparison
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-t', '--tool', required=True, help='Which tool to analyse?')
-parser.add_argument('-tp', '--tool_pred', required=True, help='Tool genome prediction file - Different Tool Parameters'
-                                                              ' are compared induvidually via separate files')
-parser.add_argument('-dna', '--genome_DNA', required=True, help='Genome DNA file (fasta) which both annotations '
+parser.add_argument('-t', '--tool', required=True, help='Which tool to analyse? (Prodigal)')
+parser.add_argument('-tp', '--tool_prediction', required=True, help='Tool genome prediction file (.gff) - Different Tool Parameters'
+                                                              ' are compared individually via separate files')
+parser.add_argument('-dna', '--genome_DNA', required=True, help='Genome DNA file (.fa) which both annotations '
                                                                 'are based on')
-parser.add_argument('-ta', '--tool_reference', required=False,
-                    help='What type of Annotation to compare to? -- Default: Ensembl'
-                         'GFF - Provide tool name to compare output from two tools')
-parser.add_argument('-gff', '--annotation_GFF', required=True, help='GFF file containing annotations'
-                                                                    'to compare to')
+parser.add_argument('-rt', '--reference_tool', required=False,
+                    help='What type of Annotation to compare to? -- Leave blank for Ensembl reference'
+                         '- Provide tool name to compare output from two tools (GeneMarkS)')
+parser.add_argument('-anno', '--annotation', required=True, help='Provide file for reference annotations to compare to (.gff for Ensembl) '
+                                                                 '-- For non-Ensembl reference, provide output from tool used as reference')
 parser.add_argument('-o', '--outname', required=True,
-                    help='Define Output filename (Output is CSV)')
+                    help='Define full output filename (format is CSV)')
 args = parser.parse_args()
 
 
-def comparator(tool, tool_pred, genome_DNA, tool_annotation, annotation_GFF, outname):
+def comparator(tool, tool_prediction, genome_DNA, reference_tool, annotation, outname):
     genome_Seq = ""
     with open(genome_DNA, 'r') as genome:
         for line in genome:
@@ -32,10 +32,10 @@ def comparator(tool, tool_pred, genome_DNA, tool_annotation, annotation_GFF, out
             if not line.startswith('>'):
                 genome_Seq += str(line)
     ##############################################
-    if not tool_annotation:  # IF using Ensembl for comparison
+    if not reference_tool:  # IF using Ensembl for comparison
         ref_genes = collections.OrderedDict()  # Order is important
         count = 0
-        with open(annotation_GFF, 'r') as genome_gff:
+        with open(annotation, 'r') as genome_gff:
             for line in genome_gff:
                 line = line.split('\t')
                 try:
@@ -48,19 +48,19 @@ def comparator(tool, tool_pred, genome_DNA, tool_annotation, annotation_GFF, out
                         count += 1
                 except IndexError:
                     continue
-    else:  # IF using a tool annotation for comparison
+    else:  # IF using a tool as reference
         try:
-            tool_annotations = import_module('Tools.' + tool_annotation + '.' + tool_annotation,
+            reference_tool_ = import_module('Tools.' + reference_tool + '.' + reference_tool,
                                              package='my_current_pkg')
         except ModuleNotFoundError:
             try:
-                tool_annotations = import_module('ORForise.Tools.' + tool_annotation + '.' + tool_annotation,
+                reference_tool_ = import_module('ORForise.Tools.' + reference_tool + '.' + reference_tool,
                                              package='my_current_pkg')
             except ModuleNotFoundError:
                 sys.exit("Tool not available")
-        tool_annotations = getattr(tool_annotations, tool_annotation)
+        reference_tool_ = getattr(reference_tool_, reference_tool)
         ############ Reformatting tool output for ref_genes
-        ref_genes_tmp = tool_annotations(annotation_GFF, genome_Seq)
+        ref_genes_tmp = reference_tool_(annotation, genome_Seq)
         ref_genes = collections.OrderedDict()
         for i, (pos, details) in enumerate(ref_genes_tmp.items()):
             pos = pos.split(',')
@@ -68,21 +68,18 @@ def comparator(tool, tool_pred, genome_DNA, tool_annotation, annotation_GFF, out
     #############################################
     print(tool)
     try:
-        tool_predictions = import_module('Tools.' + tool + '.' + tool, package='my_current_pkg')
+        tool_ = import_module('Tools.' + tool + '.' + tool, package='my_current_pkg')
     except ModuleNotFoundError:
         try:
-            tool_predictions = import_module('ORForise.Tools.' + tool + '.' + tool, package='my_current_pkg')
+            tool_ = import_module('ORForise.Tools.' + tool + '.' + tool, package='my_current_pkg')
         except ModuleNotFoundError:
             sys.exit("Tool not available")
-    tool_predictions = getattr(tool_predictions, tool)
-    orfs = tool_predictions(tool_pred, genome_Seq)
+    tool_ = getattr(tool_, tool)
+    orfs = tool_(tool_prediction, genome_Seq)
     all_Metrics, all_rep_Metrics, start_precision, stop_precision, other_starts, other_stops, perfect_Matches, missed_genes, unmatched_orfs, undetected_gene_metrics, unmatched_orf_metrics, gene_coverage_genome, multi_Matched_ORFs, partial_Hits = tool_comparison(
         ref_genes, orfs, genome_Seq)
     ############################################# To get default output filename from input file details
-    genome_name = annotation_GFF.split('/')[-1].split('.')[0]
-    if not outname:
-        out = tool + '_' + genome_name
-        outname = "Tools/" + tool + '/' + out + '.csv'
+    genome_name = annotation.split('/')[-1].split('.')[0]
     metric_description = list(all_Metrics.keys())
     metrics = list(all_Metrics.values())
     rep_metric_description = list(all_rep_Metrics.keys())

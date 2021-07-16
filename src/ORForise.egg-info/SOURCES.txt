@@ -4,10 +4,10 @@ pyproject.toml
 setup.cfg
 src/Genomes/__init__.py
 src/ORForise/Aggregate_Compare.py
+src/ORForise/Annotation_Compare.py
 src/ORForise/Comparator.py
 src/ORForise/GFF_Adder.py
 src/ORForise/GFF_Intersector.py
-src/ORForise/ORForise.py
 src/ORForise/StORForise.py
 src/ORForise/__init__.py
 src/ORForise/utils.py

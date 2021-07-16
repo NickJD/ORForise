@@ -1,67 +1,107 @@
 from importlib import import_module
-
 import argparse
 import collections
 import csv
+import sys
 
-from Comparator import tool_comparison
-from ORForise.src.ORForise.utils import sortORFs
+try:
+    from Comparator import tool_comparison
+    from utils import sortORFs
+except ImportError:
+    from .Comparator import tool_comparison
+    from ORForise.utils import sortORFs
 
-### Currently only supports using the same model for all tools
+
+
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-t', '--tools', required=True, help='Which tools to analyse? "Prodigal,MetaGene"')
-parser.add_argument('-p', '--parameters', required=False, help='Optional parameters for prediction tool.')
-parser.add_argument('-g', '--genome_to_compare', required=True,
-                    help='Which genome to analyse? Genome files have same prefix'                                                                     ' - .fa and .gff appended')
+parser.add_argument('-t', '--tools', required=True, help='Which tools to analyse? (Prodigal,GeneMarkS)')
+parser.add_argument('-tp', '--tool_predictions', required=True, help='Tool genome prediction file (.gff) - Provide'
+                                                                     'file locations for each tool comma separated')
+parser.add_argument('-dna', '--genome_DNA', required=True, help='Genome DNA file (.fa) which both annotations '
+                                                                'are based on')
+parser.add_argument('-rt', '--reference_tool', required=False,
+                    help='What type of Annotation to compare to? -- Leave blank for Ensembl reference'
+                         '- Provide tool name to compare output from two tools (GeneMarkS)')
+parser.add_argument('-anno', '--annotation', required=True, help='Provide file for reference annotations to compare to (.gff for Ensembl) '
+                                                                 '-- For non-Ensembl reference, provide output from tool used as reference')
+parser.add_argument('-o', '--outname', required=True,
+                    help='Define full output filename (format is CSV)')
 args = parser.parse_args()
 
 
-def comparator(tools, parameters, genome_to_compare):
-    genome_Seq = ""
-    with open('Genomes/' + genome_to_compare + '.fa', 'r') as genome:
+def comparator(tools, tool_predictions, genome_DNA, reference_tool, annotation, outname):
+    genome_seq = ""
+    with open(genome_DNA, 'r') as genome:
         for line in genome:
             line = line.replace("\n", "")
             if not line.startswith('>'):
-                genome_Seq += str(line)
+                genome_seq += str(line)
+            else:
+                genome_ID = line.split()[0].replace('>','')
     ##############################################
-    genes = collections.OrderedDict()  # Order is important
-    count = 0
-    with open('Genomes/' + genome_to_compare + '.gff', 'r') as genome_gff:
-        for line in genome_gff:
-            line = line.split('\t')
+    if not reference_tool:  # IF using Ensembl for comparison
+        ref_genes = collections.OrderedDict()  # Order is important
+        count = 0
+        with open(annotation, 'r') as genome_gff:
+            for line in genome_gff:
+                line = line.split('\t')
+                try:
+                    if "CDS" in line[2] and len(line) == 9:
+                        start = int(line[3])
+                        stop = int(line[4])
+                        strand = line[6]
+                        gene_details = [start, stop, strand]
+                        ref_genes.update({count: gene_details})
+                        count += 1
+                except IndexError:
+                    continue
+    else:  # IF using a tool as reference
+        try:
+            reference_tool_ = import_module('Tools.' + reference_tool + '.' + reference_tool,
+                                            package='my_current_pkg')
+        except ModuleNotFoundError:
             try:
-                if "CDS" in line[2] and len(line) == 9:
-                    start = int(line[3])
-                    stop = int(line[4])
-                    strand = line[6]
-                    gene = str(start) + ',' + str(stop) + ',' + strand
-                    genes.update({count: gene})
-                    count += 1
-            except IndexError:
-                continue
+                reference_tool_ = import_module('ORForise.Tools.' + reference_tool + '.' + reference_tool,
+                                                package='my_current_pkg')
+            except ModuleNotFoundError:
+                sys.exit("Tool not available")
+        reference_tool_ = getattr(reference_tool_, reference_tool)
+        ############ Reformatting tool output for ref_genes
+        ref_genes_tmp = reference_tool_(annotation, genome_seq)
+        ref_genes = collections.OrderedDict()
+        for i, (pos, details) in enumerate(ref_genes_tmp.items()):
+            pos = pos.split(',')
+            ref_genes.update({i: [pos[0], pos[1], details[0]]})
     #############################################
     # Currently only one model type can be used. (--parameters)
     aggregate_Predictions = collections.OrderedDict()
     aggregate_Tools = tools.split(',')
-    for tool in aggregate_Tools:
-        tool_predictions = import_module('Tools.' + tool + '.' + tool)
-        tool_predictions = getattr(tool_predictions, tool)
-        orfs = tool_predictions(genome_to_compare, parameters, genome_Seq)
+    for i, (tool) in enumerate(aggregate_Tools):
+        tool_prediction = tool_predictions.split(',')[i]
+        print(tool)
+        try:
+            tool_ = import_module('Tools.' + tool + '.' + tool, package='my_current_pkg')
+        except ModuleNotFoundError:
+            try:
+                tool_ = import_module('ORForise.Tools.' + tool + '.' + tool, package='my_current_pkg')
+            except ModuleNotFoundError:
+                sys.exit("Tool not available")
+        tool_ = getattr(tool_, tool)
+        orfs = tool_(tool_prediction, genome_seq)
         aggregate_Predictions.update(orfs)
+
+
     aggregate_Predictions = sortORFs(aggregate_Predictions)
 
-    all_Metrics, all_rep_Metrics, start_precision, stop_precision, other_starts, other_stops, missed_genes, unmatched_orfs, undetected_gene_metrics, unmatched_orf_metrics, gene_coverage_genome, multi_Matched_ORFs, partial_Hits = tool_comparison(
-        genes, aggregate_Predictions, genome_Seq)
-    if parameters:
-        outname = genome_to_compare.split('.')[0] + '_' + parameters
-    else:
-        outname = genome_to_compare.split('.')[0]
+    all_Metrics, all_rep_Metrics, start_precision, stop_precision, other_starts, other_stops, perfect_Matches, missed_genes, unmatched_orfs, undetected_gene_metrics, unmatched_orf_metrics, gene_coverage_genome, multi_Matched_ORFs, partial_Hits = tool_comparison(
+        ref_genes, aggregate_Predictions, genome_seq)
+
     metric_description = list(all_Metrics.keys())
     metrics = list(all_Metrics.values())
     rep_metric_description = list(all_rep_Metrics.keys())
     rep_metrics = list(all_rep_Metrics.values())
-    with open('Tools/Aggregated/' + '_'.join(aggregate_Tools) + '_' + outname + '.csv', 'w', newline='\n',
+    with open(outname, 'w', newline='\n',
               encoding='utf-8') as out_file:  # Clear write out of report
         tool_out = csv.writer(out_file, quoting=csv.QUOTE_NONE, escapechar=" ")
         tool_out.writerow(['Representative_Metrics:'])
@@ -87,7 +127,7 @@ def comparator(tools, parameters, genome_to_compare):
         tool_out.writerow(['Undetected_Genes:'])
         for key, value in missed_genes.items():
             key = key.split(',')
-            id = ('>' + genome_to_compare + '_' + key[0] + '_' + key[1] + '_' + key[2])
+            id = ('>' + genome_ID + '_' + key[0] + '_' + key[1] + '_' + key[2])
             tool_out.writerow([id + '\n' + value])
         tool_out.writerow(['\nORFs_Without_Corresponding_Gene_In_Ensembl_Metrics:'])
         tool_out.writerow([
