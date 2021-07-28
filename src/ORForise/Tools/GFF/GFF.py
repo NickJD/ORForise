@@ -12,8 +12,8 @@ def GFF(tool_pred, genome):
     GFF_ORFs = collections.OrderedDict()
     genome_size = len(genome)
     genome_rev = revCompIterative(genome)
-    with open(tool_pred, 'r') as prodigal_input:
-        for line in prodigal_input:
+    with open(tool_pred, 'r') as gff_input:
+        for line in gff_input:
             if '#' not in line:
                 line = line.split('\t')
                 if "CDS" in line[2] and len(line) == 9:

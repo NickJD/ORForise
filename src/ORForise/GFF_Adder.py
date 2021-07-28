@@ -22,6 +22,8 @@ parser.add_argument('-at', '--additional_tool', required=True,
                     help='Which tool format to use as additional?')
 parser.add_argument('-add', '--additional_annotation', required=True,
                     help='Which annotation file to add to reference annotation?')
+parser.add_argument('-gi', '--gene_ident',  default='CDS', required=False,
+                    help='Identifier used for extraction of "genic" regions "CDS,rRNA,tRNA": Default for is "CDS"')
 parser.add_argument('-olap', '--overlap', default=50, type=int, required=False,
                     help='Maximum overlap between Gene and ORF - Default: 50 nt')
 parser.add_argument('-o', '--output_file', required=True,
@@ -51,7 +53,7 @@ def gff_writer(genome_ID, genome_DNA, reference_annotation, reference_tool, ref_
         write_out.write(entry)
 
 
-def gff_adder(genome_DNA, reference_tool, reference_annotation, additional_tool, additional_annotation, overlap, output_file):  # Only works for single contig genome
+def gff_adder(genome_DNA, reference_tool, reference_annotation, additional_tool, additional_annotation, gene_ident, overlap, output_file):  # Only works for single contig genome
     genome_seq = ""
     with open(genome_DNA, 'r') as genome_fasta:
         for line in genome_fasta:
@@ -68,13 +70,23 @@ def gff_adder(genome_DNA, reference_tool, reference_annotation, additional_tool,
             for line in genome_gff:
                 line = line.split('\t')
                 try:
-                    if "CDS" in line[2] and len(line) == 9:
-                        start = int(line[3])
-                        stop = int(line[4])
-                        strand = line[6]
-                        pos = str(start)+','+str(stop)
-                        ref_genes.update({pos:[strand,'ref']})
-                        count += 1
+                    if 'CDS' in gene_ident and len(gene_ident) == 1:
+                        if "CDS" in line[2] and len(line) == 9:
+                            start = int(line[3])
+                            stop = int(line[4])
+                            strand = line[6]
+                            pos = str(start)+','+str(stop)
+                            ref_genes.update({pos:[strand,'ref','CDS']})
+                            count += 1
+                    else:
+                        gene_types = gene_ident.split(',')
+                        if any(gene_type in line[2] for gene_type in gene_types):  # line[2] for normalrun
+                            start = int(line[3])
+                            stop = int(line[4])
+                            strand = line[6]
+                            pos = str(start) + ',' + str(stop)
+                            ref_genes.update({pos: [strand, 'ref',line[2]]}) #Report what type of gene/rRNA etc we have here
+                            count += 1
                 except IndexError:
                     continue
     else:  # IF using a tool as reference

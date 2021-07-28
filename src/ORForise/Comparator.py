@@ -260,7 +260,7 @@ def partial_Hit_Calc(g_Start, g_Stop, g_Strand, o_Start, o_Stop):
         comp.partial_Hits.update({partial: [genSeq, orfSeq]})
 
 
-def tool_comparison(ref_genes, orfs, genome):
+def tool_comparison(ref_genes, orfs, genome, verbose):
     comp.genome_Seq = genome
     comp.genome_Seq_Rev = revCompIterative(genome)
     comp.genome_Size = len(genome)
@@ -303,7 +303,8 @@ def tool_comparison(ref_genes, orfs, genome):
                     comp.out_Of_Frame_ORFs.update({pos: orf_Details})
                     out_Frame = True
             else:
-                print("Unexpected Error Finding ORFs")  # Should not happen
+                if verbose == True:
+                    print("Unexpected Error Finding ORFs")  # Should not happen
         # Now Check that we select the best ORF
         ### Multi_Match_ORFs Should contain All genes found by a specific ORF
         if perfect_Match == True:  # Check if the ORF is a perfect match to the Gene
@@ -317,7 +318,8 @@ def tool_comparison(ref_genes, orfs, genome):
             comp.genes_Detected.update({str(gene_details): g_pos})
             match_Statistics(o_Start, o_Stop, g_Start, g_Stop, g_Strand)
             perfect_Matched_Genes(g_Start, g_Stop, g_Strand)
-            print('Perfect Match')
+            if verbose == True:
+                print('Perfect Match')
         elif perfect_Match == False and len(
                 overlapping_ORFs) == 1:  # If we do not have a perfect match but 1 ORF which has passed the filtering
             orf_Pos = list(overlapping_ORFs.keys())[0]
@@ -333,7 +335,8 @@ def tool_comparison(ref_genes, orfs, genome):
             comp.matched_ORFs.update({orf_Pos: m_ORF_Details})
             comp.genes_Detected.update({str(gene_details): orf_Pos})
             match_Statistics(o_Start, o_Stop, g_Start, g_Stop, g_Strand)
-            print('Partial Match')
+            if verbose == True:
+                print('Partial Match')
             partial_Hit_Calc(g_Start, g_Stop, g_Strand, o_Start, o_Stop)
         elif perfect_Match == False and len(
                 overlapping_ORFs) >= 1:  # If we have more than 1 potential ORF match, we check to see which is the 'best' hit
@@ -349,14 +352,17 @@ def tool_comparison(ref_genes, orfs, genome):
             comp.matched_ORFs.update({orf_Pos: m_ORF_Details})
             comp.genes_Detected.update({str(gene_details): orf_Pos})
             match_Statistics(o_Start, o_Stop, g_Start, g_Stop, g_Strand)
-            print('There was more than 1 potential Match - Best Chosen')
+            if verbose == True:
+                print('There was more than 1 potential Match - Best Chosen')
             partial_Hit_Calc(g_Start, g_Stop, g_Strand, o_Start, o_Stop)
         elif out_Frame:  # Keep record of ORFs which overlap a gene but in the wrong frame
-            print("Out of Frame ORF")
+            if verbose == True:
+                print("Out of Frame ORF")
             genes_Unmatched(g_Start, g_Stop, g_Strand)  #
         else:
             genes_Unmatched(g_Start, g_Stop, g_Strand)  # No hit
-            print("No Hit")
+            if verbose == True:
+                print("No Hit")
     for orf_Key in comp.matched_ORFs:  # Remove ORFs from out of frame if ORF was correctly matched to another Gene
         if orf_Key in comp.out_Of_Frame_ORFs:
             del comp.out_Of_Frame_ORFs[orf_Key]
@@ -425,6 +431,11 @@ def tool_comparison(ref_genes, orfs, genome):
         o_Start = int(o_Positions.split(',')[0])
         o_Stop = int(o_Positions.split(',')[1])
         o_Strand = orf_Details[0]
+        # Get ORF Strand metrics:
+        if o_Strand == "+":  # Get number of Positive and Negative strand ORFs
+            comp.pos_Strand += 1
+        elif o_Strand == "-":
+            comp.neg_Strand += 1
         orf_Length = (o_Stop - o_Start)
         comp.orf_Lengths.append(orf_Length)
         orf_Nuc_Array[o_Start - 1:o_Stop] = [1]  # Changing all between the two positions to 1's
@@ -446,16 +457,12 @@ def tool_comparison(ref_genes, orfs, genome):
                     comp.orf_Neg_Olap.append(0)
             prev_ORF_Overlapped = False
         prev_ORF_Stop = o_Stop
-    if prev_ORF_Overlapped == True:  # If last has a prev overlap, count it
-        if '+' in o_Strand:
-            comp.orf_Pos_Olap.append(0)
-        elif '-' in o_Strand:
-            comp.orf_Neg_Olap.append(0)
-        # Get ORF Strand metrics:
-        if o_Strand == "+":  # Get number of Positive and Negative strand ORFs
-            comp.pos_Strand += 1
-        elif o_Strand == "-":
-            comp.neg_Strand += 1
+        if prev_ORF_Overlapped == True:  # If last has a prev overlap, count it
+            if '+' in o_Strand:
+                comp.orf_Pos_Olap.append(0)
+            elif '-' in o_Strand:
+                comp.orf_Neg_Olap.append(0)
+
     # Nucleotide Coverage calculated from ORFs matching a gene only
     matched_Prev_ORF_Stop = 0
     matched_Prev_ORF_Overlapped = False

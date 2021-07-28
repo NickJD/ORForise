@@ -21,11 +21,7 @@ Each tool requires its own directory and prediction output must be named as foll
 
 ### How to add your own Genome:
 
-Each prediction tool has a directory and data handling script which converts the different tool output into a dictionary
-that ORForise understands.  
-New genomes and tools can be added to the analysis but they must follow the same directory and naming structure as
-originals. To add a new genome, simply place the .fa and .gff files in the Genomes directory - Make sure the filename
-before the '.' is the same for both files.
+Corresponding FASTA and GFF files must be provided for the genome the analysis is to be performed on.
 
 ### How to add your own tool:
 
