@@ -9,16 +9,16 @@ except ImportError:
     from .Comparator import tool_comparison
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-t', '--tool', required=True, help='Which tool to analyse? (Prodigal)')
-parser.add_argument('-tp', '--tool_prediction', required=True, help='Tool genome prediction file (.gff) - Different Tool Parameters'
-                                                              ' are compared individually via separate files')
 parser.add_argument('-dna', '--genome_DNA', required=True, help='Genome DNA file (.fa) which both annotations '
                                                                 'are based on')
 parser.add_argument('-rt', '--reference_tool', required=False,
                     help='What type of Annotation to compare to? -- Leave blank for Ensembl reference'
                          '- Provide tool name to compare output from two tools (GeneMarkS)')
-parser.add_argument('-anno', '--annotation', required=True, help='Provide file for reference annotations to compare to (.gff for Ensembl) '
-                                                                 '-- For non-Ensembl reference, provide output from tool used as reference')
+parser.add_argument('-ref', '--reference_annotation', required=True,
+                    help='Which reference annotation file to use as reference?')
+parser.add_argument('-t', '--tool', required=True, help='Which tool to analyse? (Prodigal)')
+parser.add_argument('-tp', '--tool_prediction', required=True, help='Tool genome prediction file (.gff) - Different Tool Parameters'
+                                                              ' are compared individually via separate files')
 parser.add_argument('-o', '--outname', required=False,
                     help='Define full output filename (format is CSV) - If not provided, summary will be printed to std-out')
 parser.add_argument('-v', '--verbose', default='False', type=eval, choices=[True, False],
@@ -26,7 +26,7 @@ parser.add_argument('-v', '--verbose', default='False', type=eval, choices=[True
 args = parser.parse_args()
 
 
-def comparator(tool, tool_prediction, genome_DNA, reference_tool, annotation, outname, verbose):
+def comparator(tool, tool_prediction, genome_DNA, reference_tool, reference_annotation, outname, verbose):
     genome_Seq = ""
     with open(genome_DNA, 'r') as genome:
         for line in genome:
@@ -37,7 +37,7 @@ def comparator(tool, tool_prediction, genome_DNA, reference_tool, annotation, ou
     if not reference_tool:  # IF using Ensembl for comparison
         ref_genes = collections.OrderedDict()  # Order is important
         count = 0
-        with open(annotation, 'r') as genome_gff:
+        with open(reference_annotation, 'r') as genome_gff:
             for line in genome_gff:
                 line = line.split('\t')
                 try:
@@ -62,7 +62,7 @@ def comparator(tool, tool_prediction, genome_DNA, reference_tool, annotation, ou
                 sys.exit("Tool not available")
         reference_tool_ = getattr(reference_tool_, reference_tool)
         ############ Reformatting tool output for ref_genes
-        ref_genes_tmp = reference_tool_(annotation, genome_Seq)
+        ref_genes_tmp = reference_tool_(reference_annotation, genome_Seq)
         ref_genes = collections.OrderedDict()
         for i, (pos, details) in enumerate(ref_genes_tmp.items()):
             pos = pos.split(',')
@@ -80,7 +80,7 @@ def comparator(tool, tool_prediction, genome_DNA, reference_tool, annotation, ou
     all_Metrics, all_rep_Metrics, start_precision, stop_precision, other_starts, other_stops, perfect_Matches, missed_genes, unmatched_orfs, undetected_gene_metrics, unmatched_orf_metrics, gene_coverage_genome, multi_Matched_ORFs, partial_Hits = tool_comparison(
         ref_genes, orfs, genome_Seq, verbose)
     ############################################# To get default output filename from input file details
-    genome_name = annotation.split('/')[-1].split('.')[0]
+    genome_name = reference_annotation.split('/')[-1].split('.')[0]
     metric_description = list(all_Metrics.keys())
     metrics = list(all_Metrics.values())
     rep_metric_description = list(all_rep_Metrics.keys())
@@ -90,7 +90,7 @@ def comparator(tool, tool_prediction, genome_DNA, reference_tool, annotation, ou
     if reference_tool:
         print('Reference Tool Used: '+str(reference_tool))
     else:
-        print('Reference Used: ' + str(annotation))
+        print('Reference Used: ' + str(reference_annotation))
     print('Tool Compared: '+str(tool))
     print('Perfect Matches:' + str(len(perfect_Matches)) + '[' + str(len(ref_genes))+ ']')
     print('Partial Matches:' + str(len(partial_Hits)) + '[' + str(len(ref_genes))+ ']')
