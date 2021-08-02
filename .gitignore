@@ -6,3 +6,5 @@ setup.cfg
 dist/
 
 src/ORForise.egg-info/
+
+src/.idea

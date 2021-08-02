@@ -46,11 +46,11 @@ def gff_writer(genome_ID, genome_DNA, reference_annotation, reference_tool, ref_
         if pos not in ref_gene_set:  # Check if ref or additional
             type = additional_tool
             entry = (
-                        genome_ID + '\t' + type + '\tORF\t' + start + '\t' + stop + '\t.\t' + strand + '\t.\tID=Additional_Annotation' + '\n')
+                        genome_ID + '\t' + type + '\tCDS\t' + start + '\t' + stop + '\t.\t' + strand + '\t.\tID=Additional_Annotation' + '\n')
         else:
             type = reference_tool
             entry = (
-                        genome_ID + '\t' + type + '\tORF\t' + start + '\t' + stop + '\t.\t' + strand + '\t.\tID=Original_Annotation' + '\n')
+                        genome_ID + '\t' + type + '\t' + data[2] + '\t' + start + '\t' + stop + '\t.\t' + strand + '\t.\tID=Original_Annotation' + '\n')
         write_out.write(entry)
 
 
@@ -138,7 +138,7 @@ def gff_adder(genome_DNA, reference_tool, reference_annotation, additional_tool,
     combined_ORFs = sortORFs(combined_ORFs)
 
     if not reference_tool:
-        reference_tool = 'Reference Annotation'
+        reference_tool = 'Reference_Annotation'
     gff_writer(genome_ID, genome_DNA,reference_annotation, reference_tool, ref_gene_set, additional_annotation, additional_tool, combined_ORFs, output_file)
 
 if __name__ == "__main__":

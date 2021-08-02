@@ -3,6 +3,10 @@ import argparse
 import collections
 from datetime import date
 import sys
+try:
+    from utils import sortORFs
+except ImportError:
+    from .utils import sortORFs
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-dna', '--genome_DNA', required=True, help='Genome DNA file (.fa) which both annotations '
@@ -39,7 +43,7 @@ def gff_writer(genome_ID, genome_DNA,reference_annotation, reference_tool, ref_g
         strand = data[0]
         type = 'original'
         entry = (
-                    genome_ID + '\t' + type + '\tORF\t' + start + '\t' + stop + '\t.\t' + strand + '\t.\tID=Original_Annotation;Coverage=' + str(
+                    genome_ID + '\t' + type + '\t' + data[2] + '\t' + start + '\t' + stop + '\t.\t' + strand + '\t.\tID=Original_Annotation;Coverage=' + str(
                 data[1]) + '\n')
         write_out.write(entry)
 
@@ -118,9 +122,8 @@ def comparator(genome_DNA, reference_tool, reference_annotation, additional_tool
             o_Stop = int(orf.split(',')[1])
             o_Strand = data[0]
             try:
-                if ref_genes[str(o_Start) + ',' + str(o_Stop)]:
-                    genes_To_Keep.update(
-                        {str(o_Start) + ',' + str(o_Stop): [o_Strand, coverage]})  # o_ and g_ would be the same here
+                if ref_genes[str(o_Start) + ',' + str(o_Stop)][2] == "CDS" : # Make sure 100% match and is also CDS
+                    genes_To_Keep.update({str(o_Start) + ',' + str(o_Stop): [o_Strand, coverage,"CDS"]})  # o_ and g_ would be the same here
             except KeyError:
                 continue
     else:
@@ -137,10 +140,18 @@ def comparator(genome_DNA, reference_tool, reference_annotation, additional_tool
                 overlap = len(orf_Set.intersection(gene_Set))
                 cov = 100 * float(overlap) / float(len(gene_Set))
                 if abs(o_Stop - g_Stop) % 3 == 0 and o_Strand == g_Strand and cov >= coverage:
-                    genes_To_Keep.update({str(g_Start) + ',' + str(g_Stop): [g_Strand, int(cov)]})
+                    genes_To_Keep.update({str(g_Start) + ',' + str(g_Stop): [g_Strand, int(cov),g_data[2]]})
                 if g_Start > o_Stop:
                     break
     #########################################################
+    #### Currently, only CDSs are filtered
+    for gene, g_data in ref_genes.items():  # Very ineffecient
+        if "CDS" not in g_data[2]:
+            g_Start = int(gene.split(',')[0])
+            g_Stop = int(gene.split(',')[1])
+            g_Strand = g_data[0]
+            genes_To_Keep.update({str(g_Start) + ',' + str(g_Stop): [g_Strand, "N/A",g_data[2]]})
+    genes_To_Keep = sortORFs(genes_To_Keep)
     gff_writer(genome_ID, genome_DNA,reference_annotation, reference_tool, ref_gene_set, additional_annotation, additional_tool, genes_To_Keep, output_file)
 
 
