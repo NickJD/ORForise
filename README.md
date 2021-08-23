@@ -56,10 +56,10 @@ optional arguments:
                         Default - False: Print out runtime status
 ```
 
-### Compare a novel genome annotation to an Ensembl Gold Standard:
+### Compare a novel genome annotation to an Ensembl annotation:
 
 Genome annotation is a difficult process, 'even for Prokaryotes'. ORForise allows the direct and systematic analysis of
-a novel ORF prediction from a wide selection of tools to a Gold Standard Genome Annotation, such as those provided by
+a novel ORF prediction from a wide selection of tools to a reference Genome Annotation, such as those provided by
 Ensembl Bacteria.
 
 #### Example: Installation through pip will allow user to call the packages directly from the ORForise module.
@@ -68,7 +68,7 @@ Ensembl Bacteria.
 ```
 ### Compare different novel annotations with each other on a single Genome:
 
-If a Gold Standard Genome Annotation is not available or a direct comparison between two or more tools is wanted,
+If a reference Genome Annotation is not available or a direct comparison between two or more tools is wanted,
 ORForise can be used as the example below.
 
 #### Example: 
