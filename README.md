@@ -19,7 +19,7 @@ To run, you need:
 * Input Genome FASTA and corresponding GFF file or CDS predictions with the annotated genes for the genome you want to use as reference.
 * A prediction output from one of the compatible tools for the same genome.
 
-Each tool requires its own directory and prediction output must be named as follows '~toolName/toolName_Species.*'
+Each tool requires its own directory and prediction output must be named as follows 'toolName/toolName_Species.*'
 
 ### How to add your own Genome:
 
@@ -62,9 +62,9 @@ Genome annotation is a difficult process, even for Prokaryotes. ORForise allows 
 a novel ORF prediction from a wide selection of tools to a reference Genome Annotation, such as those provided by
 Ensembl Bacteria.
 
-#### Example: Installation through pip will allow user to call the packages directly from the ORForise module.
+#### Example: Installation through pip will allow user to call the programs directly from the ORForise package.
 ```python
- ORForise.Annotation_Compare -dna Genomes/Myco.fa -ref Genomes/Myco.gff -t Prodigal -tp Tools/Prodigal/Prodigal_Myco.gff
+ python3 -m ORForise.Annotation_Compare -dna Genomes/Myco.fa -ref Genomes/Myco.gff -t Prodigal -tp Tools/Prodigal/Prodigal_Myco.gff
 ```
 ### Compare different novel annotations with each other on a single Genome:
 
@@ -73,7 +73,7 @@ ORForise can be used as the example below.
 
 #### Example: 
 ```python
- ORForise.Annotation_Compare -dna Genomes/Myco.fa -rt  GeneMark_S_2 -ref Tools/GeneMark_S_2/GeneMark_S_2_Myco.gff -t Prodigal -tp Tools/Prodigal/Prodigal_Myco.gff
+ python3 -m ORForise.Annotation_Compare -dna Genomes/Myco.fa -rt  GeneMark_S_2 -ref Tools/GeneMark_S_2/GeneMark_S_2_Myco.gff -t Prodigal -tp Tools/Prodigal/Prodigal_Myco.gff
 ```
 This will compare the novel Prodigal predictions against the predictions made by GeneMarkS-2
 
