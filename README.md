@@ -8,15 +8,15 @@ and predictions from other tools.
 
 The ORForise platform is written in Python3.8 and only requires the NumPy library which is standard in most base
 installations of Python3. \
-Usually, ```pip3 install numpy``` is adaquate to install NumPy.
+Usually, ```pip3 install numpy``` is adequate to install NumPy.
 
 ### Intallation:
 
 The ORForise platform is available via github ```git clone https://github.com/NickJD/ORForise``` and the pip Python package manager ```pip install ORForise```. \
-Both methods of 'installation', cloning the repository or installing ORForise via pip, the same input files are required. 
+For both methods of 'installation', cloning the repository or installing ORForise via pip, the same input files are required when running the code. 
 
 To run, you need:
-* Input Genome FASTA and corresponding GFF file or CDS predictions with the annotated genes for the genome ou want to use as reference.
+* Input Genome FASTA and corresponding GFF file or CDS predictions with the annotated genes for the genome you want to use as reference.
 * A prediction output from one of the compatible tools for the same genome.
 
 Each tool requires its own directory and prediction output must be named as follows '~toolName/toolName_Species.*'
@@ -58,7 +58,7 @@ optional arguments:
 
 ### Compare a novel genome annotation to an Ensembl annotation:
 
-Genome annotation is a difficult process, 'even for Prokaryotes'. ORForise allows the direct and systematic analysis of
+Genome annotation is a difficult process, even for Prokaryotes. ORForise allows the direct and systematic analysis of
 a novel ORF prediction from a wide selection of tools to a reference Genome Annotation, such as those provided by
 Ensembl Bacteria.
 
@@ -82,7 +82,7 @@ This will compare the novel Prodigal predictions against the predictions made by
 ### GFF_Adder:
 
 GFF_Adder allows for the addition of predicted CDSs to an existing reference annotation (GFF or another tool) which produces a new GFF containing the original
-genes plus the new CDS from another prediction. Default filtering to remove additional CDSs that overlap existing genes by more than 50 nt.
+genes plus the new CDS from another prediction. Default filtering will remove additional CDSs that overlap existing genes by more than 50 nt.
 The ```-gi``` option can be used to allow for different genomic elements to be accounted for, other than only CDSs.
 
 For Help: python3 -m ORForise.GFF_Adder -h
@@ -146,7 +146,7 @@ optional arguments:
 
 # Genomes Available:
 
-The .fa and .gff files (from Ensembl Bacteria) for the Model Organisms below are available in the ~Genomes directory
+The .fa and .gff files (from Ensembl Bacteria) for the Model Organisms below are available in the Genomes directory
 
 * Escherichia coli K-12 - Strain ER3413 - Assembly ASM80076v1
 * Staphylococcus aureus - Strain 502A - Assembly ASM59796v1
