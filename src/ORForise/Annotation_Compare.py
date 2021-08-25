@@ -138,11 +138,11 @@ def comparator(tool, tool_prediction, genome_DNA, reference_tool, reference_anno
                 key = key.split(',')
                 id = ('>' + genome_name + '_' + key[0] + '_' + key[1] + '_' + key[2])
                 tool_out.writerow([id + '\n' + value + '\n'])
-            tool_out.writerow(['\nORFs_Without_Corresponding_Gene_In_Ensembl_Metrics:'])
+            tool_out.writerow(['\nORFs_Without_Corresponding_Gene_In_Reference_Metrics:'])
             tool_out.writerow([
                                   'ATG_Start,GTG_Start,TTG_Start,ATT_Start,CTG_Start,Alternative_Start_Codon,TGA_Stop,TAA_Stop,TAG_Stop,Alternative_Stop_Codon,Median_Length,ORFs_on_Positive_Strand,ORFs_on_Negative_Strand'])
             tool_out.writerow(unmatched_orf_metrics)
-            tool_out.writerow(['ORF_Without_Corresponding_Gene_in_Ensembl:'])
+            tool_out.writerow(['ORF_Without_Corresponding_Gene_in_Reference:'])
             for key, value in unmatched_orfs.items():
                 key = key.split(',')
                 id = ('>' + tool + '_' + key[0] + '_' + key[1] + '_' + key[2])

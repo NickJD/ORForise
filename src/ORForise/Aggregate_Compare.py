@@ -136,16 +136,30 @@ def comparator(tools, tool_predictions, genome_DNA, reference_tool, reference_an
             tool_out.writerow([
                                   'ATG_Start,GTG_Start,TTG_Start,ATT_Start,CTG_Start,Alternative_Start_Codon,TGA_Stop,TAA_Stop,TAG_Stop,Alternative_Stop_Codon,Median_Length,ORFs_on_Positive_Strand,ORFs_on_Negative_Strand'])
             tool_out.writerow(undetected_gene_metrics)
-            tool_out.writerow(['Undetected_Genes:'])
+            tool_out.writerow(['Perfect_Match_Genes:'])
+            for key, value in perfect_Matches.items():
+                key = key.split(',')
+                id = ('>' + genome_name + '_' + key[0] + '_' + key[1] + '_' + key[2])
+                tool_out.writerow([id + '\n' + value + '\n'])
+            ####
+            tool_out.writerow(['Partial_Match_Genes:'])
+            for key, seqs in partial_Hits.items():
+                key = key.split(';')
+                gene_Seq = seqs[0]
+                orf_Seq = seqs[1]
+                partial = (key[0] + '\n' + gene_Seq + '\n' + key[1] + '\n' + orf_Seq + '\n')
+                tool_out.writerow([partial])
+            ####
+            tool_out.writerow(['\nMissed_Genes:'])
             for key, value in missed_genes.items():
                 key = key.split(',')
-                id = ('>' + genome_ID + '_' + key[0] + '_' + key[1] + '_' + key[2])
-                tool_out.writerow([id + '\n' + value])
-            tool_out.writerow(['\nORFs_Without_Corresponding_Gene_In_Ensembl_Metrics:'])
+                id = ('>' + genome_name + '_' + key[0] + '_' + key[1] + '_' + key[2])
+                tool_out.writerow([id + '\n' + value + '\n'])
+            tool_out.writerow(['\nORFs_Without_Corresponding_Gene_In_Reference_Metrics:'])
             tool_out.writerow([
-                                  'ATG_Start,GTG_Start,TTG_Start,ATT_Start,CTG_Start,Alternative_Start_Codon,TGA_Stop,TAA_Stop,TAG_Stop,Alternative_Stop_Codon,Median_Length,ORFs_on_Positive_Strand,ORFs_on_Negative_Strand'])
+                'ATG_Start,GTG_Start,TTG_Start,ATT_Start,CTG_Start,Alternative_Start_Codon,TGA_Stop,TAA_Stop,TAG_Stop,Alternative_Stop_Codon,Median_Length,ORFs_on_Positive_Strand,ORFs_on_Negative_Strand'])
             tool_out.writerow(unmatched_orf_metrics)
-            tool_out.writerow(['ORF_Without_Corresponding_Gene_in_Ensembl:'])
+            tool_out.writerow(['ORF_Without_Corresponding_Gene_in_Reference:'])
             for key, value in unmatched_orfs.items():
                 key = key.split(',')
                 id = ('>' + tool + '_' + key[0] + '_' + key[1] + '_' + key[2])
@@ -154,20 +168,11 @@ def comparator(tools, tool_predictions, genome_DNA, reference_tool, reference_an
 
             try:
                 for key, value in multi_Matched_ORFs.items():
-                    key = key.split(',')  # Temp fix
-                    value = value[1].split(',')
-                    multi = ('ORF:' + key[0] + '-' + key[1] + '_Gene:' + value[0] + '-' + value[1])
+                    key = key.split(',')
+                    multi = ('ORF:' + key[0] + '-' + key[1] + '_Genes:' + '|'.join(value))
                     tool_out.writerow([multi])
             except IndexError:
                 pass
-
-            tool_out.writerow(['\n#####\nPartial_Gene_Hits'])
-            for key, seqs in partial_Hits.items():
-                key = key.split(';')
-                gene_Seq = seqs[0]
-                orf_Seq = seqs[1]
-                partial = (key[0] + '\n' + gene_Seq + '\n' + key[1] + '\n' + orf_Seq + '\n')
-                tool_out.writerow([partial])
 
 
 if __name__ == "__main__":

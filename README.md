@@ -12,27 +12,25 @@ Usually, ```pip3 install numpy``` is adequate to install NumPy.
 
 ### Intallation:
 
-The ORForise platform is available via github ```git clone https://github.com/NickJD/ORForise``` and the pip Python package manager ```pip install ORForise```. \
-For both methods of 'installation', cloning the repository or installing ORForise via pip, the same input files are required when running the code. 
+The ORForise platform is available via github ```git clone https://github.com/NickJD/ORForise``` and the pip Python package manager ```pip3 install ORForise```. \
+For both methods of 'installation', cloning the repository or installing ORForise via pip, the same input files are required when running the code as shown in the examples below. 
 
 To run, you need:
 * Input Genome FASTA and corresponding GFF file or CDS predictions with the annotated genes for the genome you want to use as reference.
 * A prediction output from one of the compatible tools for the same genome.
 
-Each tool requires its own directory and prediction output must be named as follows 'toolName/toolName_Species.*'
-
 ### How to add your own Genome:
 
-Corresponding FASTA and GFF files must be provided for the genome the analysis is to be performed on.
+Corresponding FASTA and GFF files must be provided for the genome the analysis is to be performed on, including the corresponding output of any tools to compare.
 
 ### How to add your own tool:
 
 If the new tool reports its predictions in GFF you can present ORForise with "GFF" for either the reference ```-rt``` or prediction ```-t``` option.
-If the tool uses another non-standard format, a request can be made to add it as an option.
+If the tool uses another non-standard format, a request can be made to add it as an option via GitHub.
 
 ## CDS Prediction Analysis:
 
-### Use-cases:
+### Use-cases: (Running if via pip)
 
 For Help: python3 -m ORForise.Annotation_Compare -h
 
@@ -59,7 +57,7 @@ optional arguments:
 ### Compare a novel genome annotation to an Ensembl annotation:
 
 Genome annotation is a difficult process, even for Prokaryotes. ORForise allows the direct and systematic analysis of
-a novel ORF prediction from a wide selection of tools to a reference Genome Annotation, such as those provided by
+a novel CDS prediction from a wide selection of tools to a reference Genome Annotation, such as those provided by
 Ensembl Bacteria.
 
 #### Example: Installation through pip will allow user to call the programs directly from the ORForise package.
@@ -71,11 +69,41 @@ Ensembl Bacteria.
 If a reference Genome Annotation is not available or a direct comparison between two or more tools is wanted,
 ORForise can be used as the example below.
 
+## Aggregate CDS Prediction Analysis:
+
+### Use-cases: (Running if via pip)
+
+For Help: python3 -m ORForise.Aggregate_Compare -h
+
+```python
+
+usage: Aggregate_Compare.py [-h] -dna GENOME_DNA -t TOOLS -tp TOOL_PREDICTIONS [-rt REFERENCE_TOOL] -ref REFERENCE_ANNOTATION [-o OUTNAME] [-v {True,False}]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -dna GENOME_DNA, --genome_DNA GENOME_DNA
+                        Genome DNA file (.fa) which both annotations are based on
+  -t TOOLS, --tools TOOLS
+                        Which tools to analyse? (Prodigal,GeneMarkS)
+  -tp TOOL_PREDICTIONS, --tool_predictions TOOL_PREDICTIONS
+                        Tool genome prediction file (.gff) - Providefile locations for each tool comma separated
+  -rt REFERENCE_TOOL, --reference_tool REFERENCE_TOOL
+                        What type of Annotation to compare to? -- Leave blank for Ensembl reference- Provide tool name to compare output from two tools
+                        (GeneMarkS)
+  -ref REFERENCE_ANNOTATION, --reference_annotation REFERENCE_ANNOTATION
+                        Which reference annotation file to use as reference?
+  -o OUTNAME, --outname OUTNAME
+                        Define full output filename (format is CSV) - If not provided, summary will be printed to std-out
+  -v {True,False}, --verbose {True,False}
+                        Default - False: Print out runtime status
+```
+
 #### Example: 
 ```python
- python3 -m ORForise.Annotation_Compare -dna Genomes/Myco.fa -rt  GeneMark_S_2 -ref Tools/GeneMark_S_2/GeneMark_S_2_Myco.gff -t Prodigal -tp Tools/Prodigal/Prodigal_Myco.gff
+python3 -m ORForise.Aggregate_Compare -ref /home/nick/Git/ORForise/src/Genomes/Myco.gff -dna /home/nick/Git/ORForise/src/Genomes/Myco.fa -t Prodigal,TransDecoder,GLIMMER_3 -tp /home/nick/Git/ORForise/src/ORForise/Tools/Prodigal/Prodigal_Myco.gff,/home/nick/Git/ORForise/src/ORForise/Tools/TransDecoder/TransDecoder_Myco.gff,/home/nick/Git/ORForise/src/ORForise/Tools/TransDecoder/TransDecoder_Myco.gff```
 ```
-This will compare the novel Prodigal predictions against the predictions made by GeneMarkS-2
+This will compare the Aggregate the predictions of Prodigal, TransDecoder and GLIMMER 3 against the Mycoplasma reference annotation provided by
+Ensembl Bacteria.
 
 ## GFF Tools:
 
@@ -83,7 +111,7 @@ This will compare the novel Prodigal predictions against the predictions made by
 
 GFF_Adder allows for the addition of predicted CDSs to an existing reference annotation (GFF or another tool) which produces a new GFF containing the original
 genes plus the new CDS from another prediction. Default filtering will remove additional CDSs that overlap existing genes by more than 50 nt.
-The ```-gi``` option can be used to allow for different genomic elements to be accounted for, other than only CDSs.
+The ```-gi``` option can be used to allow for different genomic elements to be accounted for, other than only CDSs in the reference annotation.
 
 For Help: python3 -m ORForise.GFF_Adder -h
 
@@ -116,7 +144,7 @@ optional arguments:
 GFF_Intersector enables the aggregation of different genome annotations and CDS predictions and creates a single GFF
 representing the intersection of the two existing annotations.
 GFF_Intersector also provides an option to allow the retention of genes that have a user defined difference (minimum % coverage and in-frame).
-The ```-gi``` option can be used to allow for different genomic elements to be accounted for, other than only CDSs.
+The ```-gi``` option can be used to allow for different genomic elements to be accounted for, other than only CDSs in the reference annotation.
 
 For Help: python3 -m ORForise.GFF_Intersector -h
 
@@ -146,7 +174,7 @@ optional arguments:
 
 # Genomes Available:
 
-The .fa and .gff files (from Ensembl Bacteria) for the Model Organisms below are available in the Genomes directory
+The .fa and .gff files (from Ensembl Bacteria) below are available in the Genomes directory.
 
 * Escherichia coli K-12 - Strain ER3413 - Assembly ASM80076v1
 * Staphylococcus aureus - Strain 502A - Assembly ASM59796v1
