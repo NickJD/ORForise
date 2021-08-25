@@ -125,7 +125,7 @@ def comparator(tool, tool_prediction, genome_DNA, reference_tool, reference_anno
                 id = ('>' + genome_name + '_' + key[0] + '_' + key[1] + '_' + key[2])
                 tool_out.writerow([id + '\n' + value + '\n'])
             ####
-            tool_out.writerow(['Partial_Gene_Hits:'])
+            tool_out.writerow(['Partial_Match_Genes:'])
             for key, seqs in partial_Hits.items():
                 key = key.split(';')
                 gene_Seq = seqs[0]
@@ -133,7 +133,7 @@ def comparator(tool, tool_prediction, genome_DNA, reference_tool, reference_anno
                 partial = (key[0] + '\n' + gene_Seq + '\n' + key[1] + '\n' + orf_Seq + '\n')
                 tool_out.writerow([partial])
             ####
-            tool_out.writerow(['\nUndetected_Genes:'])
+            tool_out.writerow(['\nMissed_Genes:'])
             for key, value in missed_genes.items():
                 key = key.split(',')
                 id = ('>' + genome_name + '_' + key[0] + '_' + key[1] + '_' + key[2])

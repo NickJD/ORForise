@@ -425,12 +425,12 @@ def tool_comparison(ref_genes, orfs, genome, verbose):
     prev_ORF_Stop = 0
     prev_ORF_Overlapped = False
     for o_Positions, orf_Details in orfs.items():
-        # Stats just for Unmatched ORFs
-        if o_Positions not in list(comp.matched_ORFs.keys()):
-            orf_Unmatched(o_Start, o_Stop, o_Strand)
         o_Start = int(o_Positions.split(',')[0])
         o_Stop = int(o_Positions.split(',')[1])
         o_Strand = orf_Details[0]
+        # Stats just for Unmatched ORFs
+        if o_Positions not in list(comp.matched_ORFs.keys()):
+            orf_Unmatched(o_Start, o_Stop, o_Strand)
         # Get ORF Strand metrics:
         if o_Strand == "+":  # Get number of Positive and Negative strand ORFs
             comp.pos_Strand += 1
@@ -715,7 +715,7 @@ def tool_comparison(ref_genes, orfs, genome, verbose):
          'Percent_Difference_of_Overlapping_ORFs': overlap_Difference,
          'Maximum_ORF_Overlap': max_All_ORF_Olap, 'Median_ORF_Overlap': median_ORF_Overlap,
          'Number_of_Matched_ORFs_Overlapping_Another_ORF': len(matched_ORF_Olap),
-         'Percent_Difference_of_Matched_ORFs_Overlapping_Another_ORF': matched_Overlap_Difference,
+         'Percentage_Difference_of_Matched_Overlapping_CDSs': matched_Overlap_Difference,
          'Maximum_Matched_ORF_Overlap': max_Matched_ORF_Olap, 'Median_Matched_ORF_Overlap': matched_Median_ORF_Overlap,
          'Number_of_Short-ORFs': num_ORF_Short, 'Percent_Difference_of_Short-ORFs': short_ORF_Difference,
          'Number_of_Short-Matched-ORFs': num_Matched_ORF_Short,
@@ -757,7 +757,7 @@ def tool_comparison(ref_genes, orfs, genome, verbose):
          'Percentage_of_Perfect_Matches': perfect_Matches_Percentage,
          'Median_Start_Difference_of_Matched_ORFs': median_Start_Difference,
          'Median_Stop_Difference_of_Matched_ORFs': median_Stop_Difference,
-         'Percent_Difference_of_Matched_ORFs_Overlapping_Another_ORF': matched_Overlap_Difference,
+         'Percentage_Difference_of_Matched_Overlapping_CDSs': matched_Overlap_Difference,
          'Percent_Difference_of_Short-Matched-ORFs': matched_Short_ORF_Difference,
          'Precision': precision,
          'Recall': recall,
