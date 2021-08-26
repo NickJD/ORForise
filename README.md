@@ -32,7 +32,7 @@ If the tool uses another non-standard format, a request can be made to add it as
 
 ### Use-cases: (Running if via pip)
 
-For Help: python3 -m ORForise.Annotation_Compare -h
+For Help: ```python python3 -m ORForise.Annotation_Compare -h ```
 
 ```python
 usage: Annotation_Compare.py [-h] -dna GENOME_DNA [-rt REFERENCE_TOOL] -ref REFERENCE_ANNOTATION -t TOOL -tp TOOL_PREDICTION [-o OUTNAME] [-v {True,False}]
@@ -73,7 +73,7 @@ ORForise can be used as the example below.
 
 ### Use-cases: (Running if via pip)
 
-For Help: python3 -m ORForise.Aggregate_Compare -h
+For Help: ```python python3 -m ORForise.Aggregate_Compare -h ```
 
 ```python
 
@@ -105,6 +105,71 @@ python3 -m ORForise.Aggregate_Compare -ref /home/nick/Git/ORForise/src/Genomes/M
 This will compare the Aggregate the predictions of Prodigal, TransDecoder and GLIMMER 3 against the Mycoplasma reference annotation provided by
 Ensembl Bacteria.
 
+## Annotation Comparison Output - The output format is the same for Annotation_Compare and Aggregate_Compare:
+### Print to screen example - Prodigal prediction compared to Ensembl Bacteria reference annotation of *Escherichia coli*:
+```bash
+/usr/bin/python3.8 /home/nick/Git/ORForise/src/ORForise/Annotation_Compare.py -ref /home/nick/Git/ORForise/src/Genomes/E-coli.gff -dna /home/nick/Git/ORForise/src/Genomes/E-coli.fa -t Prodigal -tp /home/nick/Git/ORForise/src/ORForise/Tools/Prodigal/Prodigal_E-coli.gff -o /home/nick/Git/ORForise/src/ORForise/Tools/Prodigal/Prodigal_E-coli.csv
+Genome Used: E-coli
+Reference Used: /home/nick/Git/ORForise/src/Genomes/E-coli.gff
+Tool Compared: Prodigal
+Perfect Matches:3737[4052]
+Partial Matches:236[4052]
+Missed Genes:79[4052]
+Complete
+```
+This is the default output of the comparison tools. 
+
+### '-o' Example output to CSV file - Prodigal prediction compared to Ensembl Bacteria reference annotation of *Escherichia coli*:
+The output is designed to be human-readable and interpretable by the included 'ORForise_Analysis' scripts. 
+The example below presents the 12 'Representative' and 72 'All' Metrics but only shows one entry for each of the induvidual prediction reports (Perfect_Match_Genes,Partial_Match_Genes,Missed_Genes,Predicted_CDS_Without_Corresponding_Gene_in_Reference,Predicted_CDSs_Which_Detected_more_than_one_Gene).
+
+```csv
+Representative_Metrics:
+Percentage_of_Genes_Detected,Percentage_of_ORFs_that_Detected_a_Gene,Percent_Difference_of_All_ORFs,Median_Length_Difference,Percentage_of_Perfect_Matches,Median_Start_Difference_of_Matched_ORFs,Median_Stop_Difference_of_Matched_ORFs,Percentage_Difference_of_Matched_Overlapping_CDSs,Percent_Difference_of_Short-Matched-ORFs,Precision,Recall,False_Discovery_Rate
+98.05,93.15,5.21,-2.83,94.11,-3.0,N/A,-3.83,-16.63,0.93,0.98,0.07
+All_Metrics:
+Number_of_ORFs,Percent_Difference_of_All_ORFs,Number_of_ORFs_that_Detected_a_Gene,Percentage_of_ORFs_that_Detected_a_Gene,Number_of_Genes_Detected,Percentage_of_Genes_Detected,Median_Length_of_All_ORFs,Median_Length_Difference,Minimum_Length_of_All_ORFs,Minimum_Length_Difference,Maximum_Length_of_All_ORFs,Maximum_Length_Difference,Median_GC_content_of_All_ORFs,Percent_Difference_of_All_ORFs_Median_GC,Median_GC_content_of_Matched_ORFs,Percent_Difference_of_Matched_ORF_GC,Number_of_ORFs_which_Overlap_Another_ORF,Percent_Difference_of_Overlapping_ORFs,Maximum_ORF_Overlap,Median_ORF_Overlap,Number_of_Matched_ORFs_Overlapping_Another_ORF,Percentage_Difference_of_Matched_Overlapping_CDSs,Maximum_Matched_ORF_Overlap,Median_Matched_ORF_Overlap,Number_of_Short-ORFs,Percent_Difference_of_Short-ORFs,Number_of_Short-Matched-ORFs,Percent_Difference_of_Short-Matched-ORFs,Number_of_Perfect_Matches,Percentage_of_Perfect_Matches,Number_of_Perfect_Starts,Percentage_of_Perfect_Starts,Number_of_Perfect_Stops,Percentage_of_Perfect_Stops,Number_of_Out_of_Frame_ORFs,Number_of_Matched_ORFs_Extending_a_Coding_Region,Percentage_of_Matched_ORFs_Extending_a_Coding_Region,Number_of_Matched_ORFs_Extending_Start_Region,Percentage_of_Matched_ORFs_Extending_Start_Region,Number_of_Matched_ORFs_Extending_Stop_Region,Percentage_of_Matched_ORFs_Extending_Stop_Region,Number_of_All_ORFs_on_Positive_Strand,Percentage_of_All_ORFs_on_Positive_Strand,Number_of_All_ORFs_on_Negative_Strand,Percentage_of_All_ORFs_on_Negative_Strand,Median_Start_Difference_of_Matched_ORFs,Median_Stop_Difference_of_Matched_ORFs,ATG_Start_Percentage,GTG_Start_Percentage,TTG_Start_Percentage,ATT_Start_Percentage,CTG_Start_Percentage,Other_Start_Codon_Percentage,TAG_Stop_Percentage,TAA_Stop_Percentage,TGA_Stop_Percentage,Other_Stop_Codon_Percentage,True_Positive,False_Positive,False_Negative,Precision,Recall,False_Discovery_Rate,Nucleotide_True_Positive,Nucleotide_False_Positive,Nucleotide_True_Negative,Nucleotide_False_Negative,Nucleotide_Precision,Nucleotide_Recall,Nucleotide_False_Discovery_Rate,ORF_Nucleotide_Coverage_of_Genome,Matched_ORF_Nucleotide_Coverage_of_Genome
+4263,5.21,3971,93.15,3973,98.05,824.0,-2.83,89,102.27,7103,0.38,52.06,-0.18,52.21,0.11,1592,74.37,143,0.00,878,-3.83,112,3.00,468,12.77,346,-16.63,3737,94.11,3737,94.11,3973,100.05,2,0,0.00,97,2.44,0,0.00,2074,0.49,2189,0.51,-3.0,N/A,90.62,7.65,1.71,0.00,0.00,0.02,7.79,63.31,28.90,0.00,0.98,0.07,0.02,0.93,0.98,0.07,1.00,0.23,0.77,0.00,0.96,1.00,0.04,87.56,83.96
+Reference_CDS_Gene_Coverage_of_Genome
+84.35
+Predicted_CDS_Coverage_of_Genome
+87.56
+Matched_Predicted_CDS_Coverage_of_Genome
+83.96
+Start_Position_Difference:
+57,6,-126,-111,-75,-3,-39,-33,3,108,6,21,-138,-9,27,123,78,414,-36,-24,-126,-12,-126,-75,-48,3,-39,-27,-6,-66,9,66,84,-3,33,3,-78,-54,-39,-33,6,3,-36,-126,180,-99,123,-78,-30,72,-36,39,69,-15,60,-3,-33,-135,-3,-6,-81,-48,21,108,9,-15,126,-45,3,-57,-30,-60,33,30,-27,3,39,30,63,-3,48,6,-111,30,-60,15,-27,66,-21,-39,-45,-15,-60,12,36,-123,33,45,-24,36,-21,-57,636,-12,-9,36,27,-12,-3,-6,-48,-9,-108,21,-3,-3,15,-12,66,-3,54,-84,54,57,57,-63,111,216,-57,-27,-33,3,-3,-36,-54,21,-36,3,-81,-45,-30,-126,-39,-36,-6,-18,3,12,42,-3,-15,21,45,18,3,-39,825,-45,51,3,-75,45,-27,105,3,72,30,189,60,-39,3,3,-141,6,-54,42,-72,36,-15,27,-111,120,-90,6,54,-108,9,15,-36,-3,12,-30,126,33,-36,-72,12,-72,-39,-36,12,-126,15,36,-3,48,72,-33,33,21,-6,48,-6,-24,-636,-90,6,-105,-57,-24,60,-126,54,-45,36,-468,9,3,12,45,12,15,36,3,21,30
+Stop_Position_Difference:
+
+Alternative_Starts_Predicted:
+CTT
+Alternative_Stops_Predicted:
+
+Undetected_Gene_Metrics:
+ATG_Start ,GTG_Start ,TTG_Start ,ATT_Start ,CTG_Start ,Alternative_Start_Codon ,TGA_Stop ,TAA_Stop ,TAG_Stop ,Alternative_Stop_Codon ,Median_Length ,ORFs_on_Positive_Strand ,ORFs_on_Negative_Strand
+86.08,10.13,3.80,0.00,0.00,0.00,34.18,56.96,7.59,1.27,128.00,39,40
+Perfect_Match_Genes:
+>E-coli_337_2799_+ 
+ATGCGAGTGTTGAAGTTCGGCGGTACATCAGTGGCAAATGCAGAACGTTTTCTGCGTGTTGCCGATATTCTGGAAAGCAATGCCAGGCAGGGGCAGGTGGCCACCGTCCTCTCTGCCCCCGCCAAAATCACCAACCACCTGGTGGCGATGATTGAAAAAACCATTAGCGGCCAGGATGCTTTACCCAATATCAGCGATGCCGAACGTATTTTTGCCGAACTTTTGACGGGACTCGCCGCCGCCCAGCCGGGGTTCCCGCTGGCGCAATTGAAAACTTTCGTCGATCAGGAATTTGCCCAAATAAAACATGTCCTGCATGGCATTAGTTTGTTGGGGCAGTGCCCGGATAGCATCAACGCTGCGCTGATTTGCCGTGGCGAGAAAATGTCGATCGCCATTATGGCCGGCGTATTAGAAGCGCGCGGTCACAACGTTACTGTTATCGATCCGGTCGAAAAACTGCTGGCAGTGGGGCATTACCTCGAATCTACCGTCGATATTGCTGAGTCCACCCGCCGTATTGCGGCAAGCCGCATTCCGGCTGATCACATGGTGCTGATGGCAGGTTTCACCGCCGGTAATGAAAAAGGCGAACTGGTGGTGCTTGGACGCAACGGTTCCGACTACTCTGCTGCGGTGCTGGCTGCCTGTTTACGCGCCGATTGTTGCGAGATTTGGACGGACGTTGACGGGGTCTATACCTGCGACCCGCGTCAGGTGCCCGATGCGAGGTTGTTGAAGTCGATGTCCTACCAGGAAGCGATGGAGCTTTCCTACTTCGGCGCTAAAGTTCTTCACCCCCGCACCATTACCCCCATCGCCCAGTTCCAGATCCCTTGCCTGATTAAAAATACCGGAAATCCTCAAGCACCAGGTACGCTCATTGGTGCCAGCCGTGATGAAGACGAATTACCGGTCAAGGGCATTTCCAATCTGAATAACATGGCAATGTTCAGCGTTTCTGGTCCGGGGATGAAAGGGATGGTCGGCATGGCGGCGCGCGTCTTTGCAGCGATGTCACGCGCCCGTATTTCCGTGGTGCTGATTACGCAATCATCTTCCGAATACAGCATCAGTTTCTGCGTTCCACAAAGCGACTGTGTGCGAGCTGAACGGGCAATGCAGGAAGAGTTCTACCTGGAACTGAAAGAAGGCTTACTGGAGCCGCTGGCAGTGACGGAACGGCTGGCCATTATCTCGGTGGTAGGTGATGGTATGCGCACCTTGCGTGGGATCTCGGCGAAATTCTTTGCCGCACTGGCCCGCGCCAATATCAACATTGTCGCCATTGCTCAGGGATCTTCTGAACGCTCAATCTCTGTCGTGGTAAATAACGATGATGCGACCACTGGCGTGCGCGTTACTCATCAGATGCTGTTCAATACCGATCAGGTTATCGAAGTGTTTGTGATTGGCGTCGGTGGCGTTGGCGGTGCGCTGCTGGAGCAACTGAAGCGTCAGCAAAGCTGGCTGAAGAATAAACATATCGACTTACGTGTCTGCGGTGTTGCCAACTCGAAGGCTCTGCTCACCAATGTACATGGCCTTAATCTGGAAAACTGGCAGGAAGAACTGGCGCAAGCCAAAGAGCCGTTTAATCTCGGGCGCTTAATTCGCCTCGTGAAAGAATATCATCTGCTGAACCCGGTCATTGTTGACTGCACTTCCAGCCAGGCAGTGGCGGATCAATATGCCGACTTCCTGCGCGAAGGTTTCCACGTTGTCACGCCGAACAAAAAGGCCAACACCTCGTCGATGGATTACTACCATCAGTTGCGTTATGCGGCGGAAAAATCGCGGCGTAAATTCCTCTATGACACCAACGTTGGGGCTGGATTACCGGTTATTGAGAACCTGCAAAATCTGCTCAATGCAGGTGATGAATTGATGAAGTTCTCCGGCATTCTTTCTGGTTCGCTTTCTTATATCTTCGGCAAGTTAGACGAAGGCATGAGTTTCTCCGAGGCGACCACGCTGGCGCGGGAAATGGGTTATACCGAACCGGACCCGCGAGATGATCTTTCTGGTATGGATGTGGCGCGTAAACTATTGATTCTCGCTCGTGAAACGGGACGTGAACTGGAGCTGGCGGATATTGAAATTGAACCTGTGCTGCCCGCAGAGTTTAACGCCGAGGGTGATGTTGCCGCTTTTATGGCGAATCTGTCACAACTCGACGATCTCTTTGCCGCGCGCGTGGCGAAGGCCCGTGATGAAGGAAAAGTTTTGCGCTATGTTGGCAATATTGATGAAGATGGCGTCTGCCGCGTGAAGATTGCCGAAGTGGATGGTAATGATCCGCTGTTCAAAGTGAAAAATGGCGAAAACGCCCTGGCCTTCTATAGCCACTATTATCAGCCGCTGCCGTTGGTACTGCGCGGATATGGTGCGGGCAATGACGTTACAGCTGCCGGTGTCTTTGCTGATCTGCTACGTACCCTCTCATGGAAGTTAGGAGTCTGA 
+Partial_Match_Genes:
+Gene:16751_16903_-_ATG_TAA 
+ATGAAGCAGCATAAGGCGATGATTGTCGCCCTGATCGTCATCTGTATCACCGCCGTAGTGGCGGCGCTGGTAACGAGAAAAGACCTCTGTGAGGTTCACATCCGAACTGGCCAGACGGAGGTTGCTGTTTTCACGGCTTACGAATCCGAGTAA 
+Predicted_CDS:16751_16960_-_ATG_TAA 
+ATGCTGAACACATGTAGAGTGCCTCTTACTGACCGTAAGGTCAAGGAGAAGAGAGCAATGAAGCAGCATAAGGCGATGATTGTCGCCCTGATCGTCATCTGTATCACCGCCGTAGTGGCGGCGCTGGTAACGAGAAAAGACCTCTGTGAGGTTCACATCCGAACTGGCCAGACGGAGGTTGCTGTTTTCACGGCTTACGAATCCGAGTAA 
+Missed_Genes:
+>E-coli_190_255_+ 
+ATGAAACGCATTAGCACCACCATTACCACCACCATCACCATTACCACAGGTAACGGTGCGGGCTGA 
+Predicted_CDSs_Without_Corresponding_Gene_In_Reference_Metrics:
+ATG_Start ,GTG_Start ,TTG_Start ,ATT_Start ,CTG_Start ,Alternative_Start_Codon ,TGA_Stop ,TAA_Stop ,TAG_Stop ,Alternative_Stop_Codon ,Median_Length ,ORFs_on_Positive_Strand ,ORFs_on_Negative_Strand
+82.88,12.33,4.45,0.00,0.00,0.34,36.99,42.81,20.21,0.00,356.00,152,140
+Predicted_CDS_Without_Corresponding_Gene_in_Reference:
+>Prodigal_3_98_+ 
+CTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGCTTCTGAACTGGTTACCTGCCGTGAGTAA
+Predicted_CDSs_Which_Detected_more_than_one_Gene:
+Predicted_CDS:16751-16960_Genes:16751-16960|16751-16903
+Predicted_CDS:2652100-2652990_Genes:2652100-2652990|2652100-2652165
+```
+
+
 ## GFF Tools:
 
 ### GFF_Adder:
@@ -113,7 +178,7 @@ GFF_Adder allows for the addition of predicted CDSs to an existing reference ann
 genes plus the new CDS from another prediction. Default filtering will remove additional CDSs that overlap existing genes by more than 50 nt.
 The ```-gi``` option can be used to allow for different genomic elements to be accounted for, other than only CDSs in the reference annotation.
 
-For Help: python3 -m ORForise.GFF_Adder -h
+For Help: ```python python3 -m ORForise.GFF_Adder -h ```
 
 ```python
 usage: GFF_Adder.py [-h] -dna GENOME_DNA [-rt REFERENCE_TOOL] -ref REFERENCE_ANNOTATION [-gi GENE_IDENT] -at ADDITIONAL_TOOL -add ADDITIONAL_ANNOTATION [-olap OVERLAP] -o OUTPUT_FILE
@@ -146,8 +211,7 @@ representing the intersection of the two existing annotations.
 GFF_Intersector also provides an option to allow the retention of genes that have a user defined difference (minimum % coverage and in-frame).
 The ```-gi``` option can be used to allow for different genomic elements to be accounted for, other than only CDSs in the reference annotation.
 
-For Help: python3 -m ORForise.GFF_Intersector -h
-
+For Help: ```python python3 -m ORForise.GFF_Intersector -h ``` 
 ```python
 usage: GFF_Intersector.py [-h] -dna GENOME_DNA [-rt REFERENCE_TOOL] -ref REFERENCE_ANNOTATION [-gi GENE_IDENT] -at ADDITIONAL_TOOL -add ADDITIONAL_ANNOTATION [-cov COVERAGE] -o OUTPUT_FILE
 
@@ -176,23 +240,23 @@ optional arguments:
 
 The .fa and .gff files (from Ensembl Bacteria) below are available in the Genomes directory.
 
-* Escherichia coli K-12 - Strain ER3413 - Assembly ASM80076v1
-* Staphylococcus aureus - Strain 502A - Assembly ASM59796v1
-* Bacillus subtilis - Strain BEST7003 - Assembly ASM52304v1
-* Mycoplasma genitalium - Strain G37 - Assembly ASM2732v1
-* Caulobacter crescentus - Strain CB15 - Assembly ASM690v1
-* Pseudomonas fluorescens - Strain UK4 - Assembly ASM73042v1
+* *Escherichia coli K-12* - Strain ER3413 - Assembly ASM80076v1
+* *Staphylococcus aureus* - Strain 502A - Assembly ASM59796v1
+* *Bacillus subtilis* - Strain BEST7003 - Assembly ASM52304v1
+* *Mycoplasma genitalium* - Strain G37 - Assembly ASM2732v1
+* *Caulobacter crescentus* - Strain CB15 - Assembly ASM690v1
+* *Pseudomonas fluorescens* - Strain UK4 - Assembly ASM73042v1
 
 # Prediction Tools Available:
 
 There are two Groups of tools - Those which do require a pre-built model and those which do not. \
-They are listed with the non-default options used and their predictions for each of the 6 model organisms are available in their respective
+For the example runs provided, each tool is listed with the non-default options used and their predictions for each of the 6 model organisms are available in their respective
 directories.
 ORForise only needs the tool name and the annotation file produced from any available model to undertake the analysis.
 
 ## GFF Standard Format:
 
-The GFF Tool directory allows for the analysis of user-provided annotations in the standard GFF3 format.
+The GFF Tool directory allows for the analysis of user-provided annotations in the standard GFF3 format. \
 This can be used to compare different cannonical annotations with eachother or additional tools which use the GFF3 format.
 
 ## Model Based Tools:

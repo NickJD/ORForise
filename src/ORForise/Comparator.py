@@ -241,7 +241,7 @@ def partial_Hit_Calc(g_Start, g_Stop, g_Strand, o_Start, o_Stop):
         r_O_Stop = comp.genome_Size - o_Start
         partial = "Gene:" + str(g_Start) + '_' + str(g_Stop) + '_' + g_Strand + '_' + comp.genome_Seq_Rev[
                                                                                       r_G_Start:r_G_Start + 3] + '_' + comp.genome_Seq_Rev[
-                                                                                                                       r_G_Stop - 2:r_G_Stop + 1] + ';ORF:' + str(
+                                                                                                                       r_G_Stop - 2:r_G_Stop + 1] + ';Predicted_CDS:' + str(
             o_Start) + '_' + str(o_Stop) + '_' + g_Strand + '_' + comp.genome_Seq_Rev[
                                                                   r_O_Start:r_O_Start + 3] + '_' + comp.genome_Seq_Rev[
                                                                                                    r_O_Stop - 2:r_O_Stop + 1]
@@ -251,7 +251,7 @@ def partial_Hit_Calc(g_Start, g_Stop, g_Strand, o_Start, o_Stop):
     elif g_Strand == '+':
         partial = "Gene:" + str(g_Start) + '_' + str(g_Stop) + '_' + g_Strand + '_' + comp.genome_Seq[
                                                                                       g_Start - 1:g_Start + 2] + '_' + comp.genome_Seq[
-                                                                                                                       g_Stop - 3:g_Stop] + ';ORF:' + str(
+                                                                                                                       g_Stop - 3:g_Stop] + ';Predicted_CDS:' + str(
             o_Start) + '_' + str(o_Stop) + '_' + g_Strand + '_' + comp.genome_Seq[
                                                                   o_Start - 1:o_Start + 2] + '_' + comp.genome_Seq[
                                                                                                    o_Stop - 3:o_Stop]
@@ -304,7 +304,7 @@ def tool_comparison(ref_genes, orfs, genome, verbose):
                     out_Frame = True
             else:
                 if verbose == True:
-                    print("Unexpected Error Finding ORFs")  # Should not happen
+                    print("Unexpected Error Finding Predicted CDSs")  # Should not happen
         # Now Check that we select the best ORF
         ### Multi_Match_ORFs Should contain All genes found by a specific ORF
         if perfect_Match == True:  # Check if the ORF is a perfect match to the Gene
@@ -357,7 +357,7 @@ def tool_comparison(ref_genes, orfs, genome, verbose):
             partial_Hit_Calc(g_Start, g_Stop, g_Strand, o_Start, o_Stop)
         elif out_Frame:  # Keep record of ORFs which overlap a gene but in the wrong frame
             if verbose == True:
-                print("Out of Frame ORF")
+                print("Out of Frame Predicted CDS")
             genes_Unmatched(g_Start, g_Stop, g_Strand)  #
         else:
             genes_Unmatched(g_Start, g_Stop, g_Strand)  # No hit
@@ -768,4 +768,4 @@ def tool_comparison(ref_genes, orfs, genome, verbose):
         if 'nan' == m_value:
             all_Metrics[m_key] = 'N/A'
 
-    return all_Metrics, rep_Metrics, start_Difference, stop_Difference, other_Starts, other_Stops, comp.perfect_Matches, comp.genes_Undetected, comp.unmatched_ORFs, undetected_Gene_Metrics, unmatched_ORF_Metrics, gene_Coverage_Genome, comp.multi_Matched_ORFs, comp.partial_Hits
+    return all_Metrics, rep_Metrics, start_Difference, stop_Difference, other_Starts, other_Stops, comp.perfect_Matches, comp.genes_Undetected, comp.unmatched_ORFs, undetected_Gene_Metrics, unmatched_ORF_Metrics, orf_Coverage_Genome, matched_ORF_Coverage_Genome, gene_Coverage_Genome, comp.multi_Matched_ORFs, comp.partial_Hits
