@@ -1,0 +1,14 @@
+Genome Metrics:
+"Number of Protein Coding Genes in Myco : 476 ,Median Length of PCGs: 885.5, Min Length of PCGs: 113, Max Length of PCGs: 5417, Number of PCGs on Pos Strand: 277, Number of PCGs on Neg Strand: 199
+Genome-Wide GC Content: 31.69Median GC of PCGs: 31.44, Number of Overlapping PCGs: 221, Longest PCG Overlap: 76, Median PCG Overlap: 7.0, Number of PCGs less than 100 amino acids: 23
+Percentage of Genome which is Protein Coding: 90.62, Number of Non-PCGs: 83, Percentage of Genome Non-PCG: 1.41, Percentage of All Genes in Genome: 92.03
+Percentage of Genes starting with ATG: 88.45
+Percentage of Genes starting with GTG: 7.56
+Percentage of Genes starting with TTG: 3.99
+Percentage of Genes starting with ATT: 0.00
+Percentage of Genes starting with CTG: 0.00
+Percentage of Genes starting with Alternative Start Codon: 0.00
+Percentage of Genes ending with TAG: 27.10
+Percentage of Genes ending with TAA: 72.90
+Percentage of Genes ending with TGA: 0.00
+Percentage of Genes ending with Alternative Stop Codon: 0.00"

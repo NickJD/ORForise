@@ -8,12 +8,12 @@ and predictions from other tools.
 
 The ORForise platform is written in Python3.8 and only requires the NumPy library which is standard in most base
 installations of Python3. \
-Usually, ```pip3 install numpy``` is adequate to install NumPy.
+Usually, ```pip3 install numpy``` is adequate to install NumPy. A ```requirements.txt``` files is available for installation via ```pip install -r requirements.txt``` if needed.
 
 ### Intallation:
 
 The ORForise platform is available via github ```git clone https://github.com/NickJD/ORForise``` and the pip Python package manager ```pip3 install ORForise```. \
-For both methods of 'installation', cloning the repository or installing ORForise via pip, the same input files are required when running the code as shown in the examples below. 
+For both methods of 'installation', cloning the repository or installing ORForise via pip (recommended), the same input files are required when running the code as shown in the examples below. 
 
 To run, you need:
 * Input Genome FASTA and corresponding GFF file or CDS predictions with the annotated genes for the genome you want to use as reference.
@@ -28,11 +28,17 @@ Corresponding FASTA and GFF files must be provided for the genome the analysis i
 If the new tool reports its predictions in GFF you can present ORForise with "GFF" for either the reference ```-rt``` or prediction ```-t``` option.
 If the tool uses another non-standard format, a request can be made to add it as an option via GitHub.
 
+
+### Testing:
+Precomputed testing and data which includes example input and output files for all tools presented below is available in the `~ORForise/Testing` directory of the GitHub repository. 
+Example output files from ```Annotation_Compare```, ```GFF_Adder``` and ```GFF_Intersector``` are made available to validate installation.
+
+
 ## CDS Prediction Analysis:
 
 ### Use-cases: (Running if via pip)
 
-For Help: ```python python3 -m ORForise.Annotation_Compare -h ```
+For Help: ```python3 -m ORForise.Annotation_Compare -h ```
 
 ```python
 usage: Annotation_Compare.py [-h] -dna GENOME_DNA [-rt REFERENCE_TOOL] -ref REFERENCE_ANNOTATION -t TOOL -tp TOOL_PREDICTION [-o OUTNAME] [-v {True,False}]
@@ -62,7 +68,7 @@ Ensembl Bacteria.
 
 #### Example: Installation through pip will allow user to call the programs directly from the ORForise package.
 ```python
- python3 -m ORForise.Annotation_Compare -dna Genomes/Myco.fa -ref Genomes/Myco.gff -t Prodigal -tp Tools/Prodigal/Prodigal_Myco.gff
+ python3 -m ORForise.Annotation_Compare -dna ~/ORForise/Genomes/Myco.fa -ref ~/ORForise/Genomes/Myco.gff -t Prodigal -tp ~/ORForise/Tools/Prodigal/Prodigal_Myco.gff
 ```
 ### Compare different novel annotations with each other on a single Genome:
 
@@ -73,7 +79,7 @@ ORForise can be used as the example below.
 
 ### Use-cases: (Running if via pip)
 
-For Help: ```python python3 -m ORForise.Aggregate_Compare -h ```
+For Help: ```python3 -m ORForise.Aggregate_Compare -h ```
 
 ```python
 
@@ -100,7 +106,7 @@ optional arguments:
 
 #### Example: 
 ```python
-python3 -m ORForise.Aggregate_Compare -ref /home/nick/Git/ORForise/src/Genomes/Myco.gff -dna /home/nick/Git/ORForise/src/Genomes/Myco.fa -t Prodigal,TransDecoder,GLIMMER_3 -tp /home/nick/Git/ORForise/src/ORForise/Tools/Prodigal/Prodigal_Myco.gff,/home/nick/Git/ORForise/src/ORForise/Tools/TransDecoder/TransDecoder_Myco.gff,/home/nick/Git/ORForise/src/ORForise/Tools/TransDecoder/TransDecoder_Myco.gff```
+python3 -m ORForise.Aggregate_Compare -ref ~/ORForise/Genomes/Myco.gff -dna ~/ORForise/Genomes/Myco.fa -t Prodigal,TransDecoder,GLIMMER_3 -tp /home/nick/Git/ORForise/src/ORForise/Tools/Prodigal/Prodigal_Myco.gff,/home/nick/Git/ORForise/src/ORForise/Tools/TransDecoder/TransDecoder_Myco.gff,/home/nick/Git/ORForise/src/ORForise/Tools/TransDecoder/TransDecoder_Myco.gff```
 ```
 This will compare the Aggregate the predictions of Prodigal, TransDecoder and GLIMMER 3 against the Mycoplasma reference annotation provided by
 Ensembl Bacteria.
@@ -178,7 +184,7 @@ GFF_Adder allows for the addition of predicted CDSs to an existing reference ann
 genes plus the new CDS from another prediction. Default filtering will remove additional CDSs that overlap existing genes by more than 50 nt.
 The ```-gi``` option can be used to allow for different genomic elements to be accounted for, other than only CDSs in the reference annotation.
 
-For Help: ```python python3 -m ORForise.GFF_Adder -h ```
+For Help: ```python3 -m ORForise.GFF_Adder -h ```
 
 ```python
 usage: GFF_Adder.py [-h] -dna GENOME_DNA [-rt REFERENCE_TOOL] -ref REFERENCE_ANNOTATION [-gi GENE_IDENT] -at ADDITIONAL_TOOL -add ADDITIONAL_ANNOTATION [-olap OVERLAP] -o OUTPUT_FILE
@@ -201,7 +207,31 @@ optional arguments:
                         Maximum overlap between reference and additional genic regions (CDS,rRNA etc) - Default: 50 nt
   -o OUTPUT_FILE, --output_file OUTPUT_FILE
                         Output filename
+```
 
+#### Example: Running GFF_Adder to combine the additional CDS predictions made by Prodial to the canonical annotations from Ensembl.
+``` python3 -m ORForise.GFF_Adder -dna ./Testing/Myco.fa -ref ./Testing/Myco.gff  -at Prodigal -add ./Testing/Prodigal_Myco.gff -o ./Testing/Myco_Ensembl_GFF_Adder_Prodigal.gff ```
+#### Example Output: ~/ORForise/Testing/Myco_Ensembl_GFF_Adder_Prodigal.gff
+```
+##gff-version	3
+#	GFF_Adder
+#	Run Date:2021-11-10
+##Genome DNA File:./Testing/Myco.fa
+##Original File: ./Testing/Myco.gff
+##Additional File: ./Testing/Prodigal_Myco.gff
+.......
+Chromosome	Reference_Annotation	CDS	68522	70225	.	-	.	ID=Original_Annotation
+Chromosome	Reference_Annotation	CDS	70530	72572	.	+	.	ID=Original_Annotation
+Chromosome	Reference_Annotation	CDS	72523	73434	.	+	.	ID=Original_Annotation
+Chromosome	Prodigal	CDS	73445	73648	.	+	.	ID=Additional_Annotation
+Chromosome	Reference_Annotation	CDS	73690	77685	.	+	.	ID=Original_Annotation
+Chromosome	Reference_Annotation	CDS	77685	79085	.	+	.	ID=Original_Annotation
+Chromosome	Reference_Annotation	CDS	79089	81035	.	+	.	ID=Original_Annotation
+Chromosome	Reference_Annotation	CDS	81046	82596	.	+	.	ID=Original_Annotation
+Chromosome	Reference_Annotation	CDS	82620	84044	.	+	.	ID=Original_Annotation
+Chromosome	Prodigal	CDS	84082	84312	.	+	.	ID=Additional_Annotation
+Chromosome	Prodigal	CDS	84532	84744	.	-	.	ID=Additional_Annotation
+Chromosome	Prodigal	CDS	84776	85051	.	+	.	ID=Additional_Annotation
 ```
 
 ### GFF_Intersector:
@@ -211,7 +241,7 @@ representing the intersection of the two existing annotations.
 GFF_Intersector also provides an option to allow the retention of genes that have a user defined difference (minimum % coverage and in-frame).
 The ```-gi``` option can be used to allow for different genomic elements to be accounted for, other than only CDSs in the reference annotation.
 
-For Help: ```python python3 -m ORForise.GFF_Intersector -h ``` 
+For Help: ```python3 -m ORForise.GFF_Intersector -h ``` 
 ```python
 usage: GFF_Intersector.py [-h] -dna GENOME_DNA [-rt REFERENCE_TOOL] -ref REFERENCE_ANNOTATION [-gi GENE_IDENT] -at ADDITIONAL_TOOL -add ADDITIONAL_ANNOTATION [-cov COVERAGE] -o OUTPUT_FILE
 
@@ -235,6 +265,30 @@ optional arguments:
                         Output filename
 
 ```
+
+#### Example: Running GFF_Intersector to combine the additional CDS predictions made by Prodial to the canonical annotations from Ensembl.
+``` python3 -m ORForise.GFF_Intersector -dna ./Testing/Myco.fa -ref ./Testing/Myco.gff --add ./Testing/Prodigal_Myco.gff -o ./Testing/Myco_Ensembl_GFF_Intersector_Prodigal.gff```
+
+#### Example Output: ~/ORForise/Testing/Myco_Ensembl_GFF_Intersector_Prodigal.gff
+```
+##gff-version	3
+#	GFF_Intersector
+#	Run Date:2021-11-10
+##Genome DNA File:./Testing/Myco.fa
+##Original File: ./Testing/Myco.gff
+##Intersecting File: ./Testing/Prodigal_Myco.gff
+Chromosome	original	CDS	686	1828	.	+	.	ID=Original_Annotation;Coverage=100
+Chromosome	original	CDS	4812	7322	.	+	.	ID=Original_Annotation;Coverage=100
+Chromosome	original	CDS	8551	9183	.	+	.	ID=Original_Annotation;Coverage=100
+Chromosome	original	CDS	22389	23558	.	+	.	ID=Original_Annotation;Coverage=100
+Chromosome	original	CDS	29552	30124	.	+	.	ID=Original_Annotation;Coverage=100
+Chromosome	original	CDS	31705	32325	.	-	.	ID=Original_Annotation;Coverage=100
+Chromosome	original	CDS	49376	49642	.	+	.	ID=Original_Annotation;Coverage=100
+Chromosome	original	CDS	59082	59753	.	+	.	ID=Original_Annotation;Coverage=100
+Chromosome	original	CDS	61014	61406	.	+	.	ID=Original_Annotation;Coverage=100
+Chromosome	original	CDS	82620	84044	.	+	.	ID=Original_Annotation;Coverage=100
+```
+
 
 # Genomes Available:
 

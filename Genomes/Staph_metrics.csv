@@ -1,0 +1,13 @@
+1Genome Metrics:
+"Number of Protein Coding Genes in Staph : 2478, Median Length of PCGs: 794.0, Min Length of PCGs: 113, Max Length of PCGs: 31421, Number of PCGs on Pos Strand: 1236, Number of PCGs on Neg Strand: 1242, Genome-Wide GC Content: 32.92Median GC of PCGs: 33.33, Number of Overlapping PCGs: 486, Longest PCG Overlap: 44, Median PCG Overlap: 3.0, Number of PCGs less than 100 amino acids: 249
+Percentage of Genome which is Protein Coding: 82.76, Number of Non-PCGs: 78, Percentage of Genome Non-PCG: 1.17, Percentage of All Genes in Genome: 83.93
+Percentage of Genes starting with ATG: 86.80
+Percentage of Genes starting with GTG: 6.62
+Percentage of Genes starting with TTG: 6.58
+Percentage of Genes starting with ATT: 0.00
+Percentage of Genes starting with CTG: 0.00
+Percentage of Genes starting with Alternative Start Codon: 0.00
+Percentage of Genes ending with TAG: 15.01
+Percentage of Genes ending with TAA: 74.17
+Percentage of Genes ending with TGA: 10.82
+Percentage of Genes ending with Alternative Stop Codon: 0.00"
