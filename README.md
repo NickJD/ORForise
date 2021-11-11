@@ -68,7 +68,7 @@ Ensembl Bacteria.
 
 #### Example: Installation through pip will allow user to call the programs directly from the ORForise package.
 ```python
- python3 -m ORForise.Annotation_Compare -dna ~/ORForise/Genomes/Myco.fa -ref ~/ORForise/Genomes/Myco.gff -t Prodigal -tp ~/ORForise/Tools/Prodigal/Prodigal_Myco.gff
+ python3 -m ORForise.Annotation_Compare -dna ~/Testing/Myco.fa -ref ~/Testing/Myco.gff -t Prodigal -tp ~/Testing/Prodigal_Myco.gff
 ```
 ### Compare different novel annotations with each other on a single Genome:
 
@@ -106,7 +106,7 @@ optional arguments:
 
 #### Example: 
 ```python
-python3 -m ORForise.Aggregate_Compare -ref ~/ORForise/Genomes/Myco.gff -dna ~/ORForise/Genomes/Myco.fa -t Prodigal,TransDecoder,GLIMMER_3 -tp /home/nick/Git/ORForise/src/ORForise/Tools/Prodigal/Prodigal_Myco.gff,/home/nick/Git/ORForise/src/ORForise/Tools/TransDecoder/TransDecoder_Myco.gff,/home/nick/Git/ORForise/src/ORForise/Tools/TransDecoder/TransDecoder_Myco.gff```
+python3 -m ORForise.Aggregate_Compare -ref ~/Testing/Myco.gff -dna ~/Testing/Myco.fa -t Prodigal,TransDecoder,GeneMark_S_2 -tp ~/Testing/Prodigal_Myco.gff,~/Testing/TransDecoder_Myco.gff,~/Testing/GeneMark_S_2_Myco.gff
 ```
 This will compare the Aggregate the predictions of Prodigal, TransDecoder and GLIMMER 3 against the Mycoplasma reference annotation provided by
 Ensembl Bacteria.
@@ -114,7 +114,7 @@ Ensembl Bacteria.
 ## Annotation Comparison Output - The output format is the same for Annotation_Compare and Aggregate_Compare:
 ### Print to screen example - Prodigal prediction compared to Ensembl Bacteria reference annotation of *Escherichia coli*:
 ```bash
-/usr/bin/python3.8 /home/nick/Git/ORForise/src/ORForise/Annotation_Compare.py -ref /home/nick/Git/ORForise/src/Genomes/E-coli.gff -dna /home/nick/Git/ORForise/src/Genomes/E-coli.fa -t Prodigal -tp /home/nick/Git/ORForise/src/ORForise/Tools/Prodigal/Prodigal_E-coli.gff -o /home/nick/Git/ORForise/src/ORForise/Tools/Prodigal/Prodigal_E-coli.csv
+python3 -m ORForise.Annotation_Compare.py -ref ~/Testing/E-coli.gff -dna ~/Testing/Myco.fa -t Prodigal -tp ~/Testing/Prodigal_Myco.gff -o ~/Testing/Prodigal_Myco.csv
 Genome Used: E-coli
 Reference Used: /home/nick/Git/ORForise/src/Genomes/E-coli.gff
 Tool Compared: Prodigal
@@ -210,7 +210,7 @@ optional arguments:
 ```
 
 #### Example: Running GFF_Adder to combine the additional CDS predictions made by Prodial to the canonical annotations from Ensembl.
-``` python3 -m ORForise.GFF_Adder -dna ./Testing/Myco.fa -ref ./Testing/Myco.gff  -at Prodigal -add ./Testing/Prodigal_Myco.gff -o ./Testing/Myco_Ensembl_GFF_Adder_Prodigal.gff ```
+``` python3 -m ORForise.GFF_Adder -dna ~/Testing/Myco.fa -ref ~/Testing/Myco.gff  -at Prodigal -add ~/Testing/Prodigal_Myco.gff -o ~/Testing/Myco_Ensembl_GFF_Adder_Prodigal.gff ```
 #### Example Output: ~/ORForise/Testing/Myco_Ensembl_GFF_Adder_Prodigal.gff
 ```
 ##gff-version	3
@@ -269,7 +269,7 @@ optional arguments:
 #### Example: Running GFF_Intersector to combine the additional CDS predictions made by Prodial to the canonical annotations from Ensembl.
 ``` python3 -m ORForise.GFF_Intersector -dna ./Testing/Myco.fa -ref ./Testing/Myco.gff --add ./Testing/Prodigal_Myco.gff -o ./Testing/Myco_Ensembl_GFF_Intersector_Prodigal.gff```
 
-#### Example Output: ~/ORForise/Testing/Myco_Ensembl_GFF_Intersector_Prodigal.gff
+#### Example Output: ~/Testing/Myco_Ensembl_GFF_Intersector_Prodigal.gff
 ```
 ##gff-version	3
 #	GFF_Intersector
