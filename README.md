@@ -311,7 +311,7 @@ optional arguments:
 ```
 
 #### Example: Running GFF_Intersector to combine the additional CDS predictions made by Prodial to the canonical annotations from Ensembl.
-``` python3 -m ORForise.GFF_Intersector -dna ./Testing/Myco.fa -ref ./Testing/Myco.gff --add ./Testing/Prodigal_Myco.gff -o ./Testing/Myco_Ensembl_GFF_Intersector_Prodigal.gff```
+``` python3 -m ORForise.GFF_Intersector -dna ~/Testing/Myco.fa -ref ~/Testing/Myco.gff -at Prodigal -add ~/Testing/Prodigal_Myco.gff -o ~/Testing/Myco_Ensembl_GFF_Intersector_Prodigal.gff```
 
 #### Example Output: ~/Testing/Myco_Ensembl_GFF_Intersector_Prodigal.gff
 ```
@@ -336,7 +336,7 @@ Chromosome	original	CDS	82620	84044	.	+	.	ID=Original_Annotation;Coverage=100
 
 # Genomes Available:
 
-The .fa and .gff files (from Ensembl Bacteria) below are available in the Genomes directory.
+The .fa and .gff files (from Ensembl Bacteria Release 46) below are available in the Genomes directory.
 
 * *Escherichia coli K-12* - Strain ER3413 - Assembly ASM80076v1
 * *Staphylococcus aureus* - Strain 502A - Assembly ASM59796v1
