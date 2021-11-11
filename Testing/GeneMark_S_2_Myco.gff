@@ -1,0 +1,1986 @@
+##gff-version 3
+# sequence-region Chromosome 1 580076
+Chromosome	GeneMark.hmm	gene	686	1828	.	+	.	ID=1
+Chromosome	GeneMark.hmm	CDS	686	1828	43.74	+	0	Parent=1; start_score=-0.70
+Chromosome	GeneMark.hmm	gene	1828	2073	.	+	.	ID=2
+Chromosome	GeneMark.hmm	CDS	1828	2073	12.05	+	0	Parent=2; start_score=-1.73
+Chromosome	GeneMark.hmm	gene	2845	2979	.	+	.	ID=3
+Chromosome	GeneMark.hmm	CDS	2845	2979	12.63	+	0	Parent=3; start_score=1.83
+Chromosome	GeneMark.hmm	gene	3010	3255	.	+	.	ID=4
+Chromosome	GeneMark.hmm	CDS	3010	3255	25.40	+	0	Parent=4; start_score=3.62
+Chromosome	GeneMark.hmm	gene	3319	3513	.	+	.	ID=5
+Chromosome	GeneMark.hmm	CDS	3319	3513	9.28	+	0	Parent=5; start_score=0.85
+Chromosome	GeneMark.hmm	gene	3529	4557	.	+	.	ID=6
+Chromosome	GeneMark.hmm	CDS	3529	4557	108.32	+	0	Parent=6; start_score=-0.15
+Chromosome	GeneMark.hmm	gene	4645	4797	.	+	.	ID=7
+Chromosome	GeneMark.hmm	CDS	4645	4797	18.37	+	0	Parent=7; start_score=5.84
+Chromosome	GeneMark.hmm	gene	4812	7322	.	+	.	ID=8
+Chromosome	GeneMark.hmm	CDS	4812	7322	260.70	+	0	Parent=8; start_score=1.18
+Chromosome	GeneMark.hmm	gene	7297	7857	.	+	.	ID=9
+Chromosome	GeneMark.hmm	CDS	7297	7857	53.16	+	0	Parent=9; start_score=3.71
+Chromosome	GeneMark.hmm	gene	8107	8295	.	+	.	ID=10
+Chromosome	GeneMark.hmm	CDS	8107	8295	13.92	+	0	Parent=10; start_score=-1.02
+Chromosome	GeneMark.hmm	gene	8296	8547	.	+	.	ID=11
+Chromosome	GeneMark.hmm	CDS	8296	8547	21.34	+	0	Parent=11; start_score=4.21
+Chromosome	GeneMark.hmm	gene	8551	9183	.	+	.	ID=12
+Chromosome	GeneMark.hmm	CDS	8551	9183	44.29	+	0	Parent=12; start_score=0.18
+Chromosome	GeneMark.hmm	gene	9468	9755	.	+	.	ID=13
+Chromosome	GeneMark.hmm	CDS	9468	9755	20.73	+	0	Parent=13; start_score=2.56
+Chromosome	GeneMark.hmm	gene	9791	9892	.	-	.	ID=14
+Chromosome	GeneMark.hmm	CDS	9791	9892	1.27	-	0	Parent=14; start_score=2.07
+Chromosome	GeneMark.hmm	gene	9923	11059	.	+	.	ID=15
+Chromosome	GeneMark.hmm	CDS	9923	11059	100.72	+	0	Parent=15; start_score=2.55
+Chromosome	GeneMark.hmm	gene	11251	11892	.	+	.	ID=16
+Chromosome	GeneMark.hmm	CDS	11251	11892	50.06	+	0	Parent=16; start_score=1.84
+Chromosome	GeneMark.hmm	gene	12929	13033	.	-	.	ID=17
+Chromosome	GeneMark.hmm	CDS	12929	13033	2.91	-	0	Parent=17; start_score=2.54
+Chromosome	GeneMark.hmm	gene	13256	13564	.	-	.	ID=18
+Chromosome	GeneMark.hmm	CDS	13256	13564	24.82	-	0	Parent=18; start_score=0.70
+Chromosome	GeneMark.hmm	gene	13569	14057	.	-	.	ID=19
+Chromosome	GeneMark.hmm	CDS	13569	14057	33.75	-	0	Parent=19; start_score=4.59
+Chromosome	GeneMark.hmm	gene	14217	14432	.	-	.	ID=20
+Chromosome	GeneMark.hmm	CDS	14217	14432	9.43	-	0	Parent=20; start_score=0.86
+Chromosome	GeneMark.hmm	gene	14503	15138	.	-	.	ID=21
+Chromosome	GeneMark.hmm	CDS	14503	15138	41.14	-	0	Parent=21; start_score=-1.61
+Chromosome	GeneMark.hmm	gene	15555	16310	.	+	.	ID=22
+Chromosome	GeneMark.hmm	CDS	15555	16310	53.34	+	0	Parent=22; start_score=0.15
+Chromosome	GeneMark.hmm	gene	16536	16967	.	+	.	ID=23
+Chromosome	GeneMark.hmm	CDS	16536	16967	31.27	+	0	Parent=23; start_score=0.10
+Chromosome	GeneMark.hmm	gene	17001	17426	.	+	.	ID=24
+Chromosome	GeneMark.hmm	CDS	17001	17426	39.53	+	0	Parent=24; start_score=2.61
+Chromosome	GeneMark.hmm	gene	17512	17784	.	+	.	ID=25
+Chromosome	GeneMark.hmm	CDS	17512	17784	18.38	+	0	Parent=25; start_score=-1.31
+Chromosome	GeneMark.hmm	gene	17809	18414	.	+	.	ID=26
+Chromosome	GeneMark.hmm	CDS	17809	18414	35.85	+	0	Parent=26; start_score=-0.63
+Chromosome	GeneMark.hmm	gene	18886	19242	.	+	.	ID=27
+Chromosome	GeneMark.hmm	CDS	18886	19242	20.45	+	0	Parent=27; start_score=-1.57
+Chromosome	GeneMark.hmm	gene	19252	19623	.	+	.	ID=28
+Chromosome	GeneMark.hmm	CDS	19252	19623	20.01	+	0	Parent=28; start_score=-0.59
+Chromosome	GeneMark.hmm	gene	19825	20736	.	+	.	ID=29
+Chromosome	GeneMark.hmm	CDS	19825	20736	60.91	+	0	Parent=29; start_score=0.79
+Chromosome	GeneMark.hmm	gene	20743	21177	.	+	.	ID=30
+Chromosome	GeneMark.hmm	CDS	20743	21177	32.00	+	0	Parent=30; start_score=2.44
+Chromosome	GeneMark.hmm	gene	21208	21321	.	+	.	ID=31
+Chromosome	GeneMark.hmm	CDS	21208	21321	7.03	+	0	Parent=31; start_score=1.03
+Chromosome	GeneMark.hmm	gene	21577	22128	.	+	.	ID=32
+Chromosome	GeneMark.hmm	CDS	21577	22128	55.63	+	0	Parent=32; start_score=1.71
+Chromosome	GeneMark.hmm	gene	22389	23558	.	+	.	ID=33
+Chromosome	GeneMark.hmm	CDS	22389	23558	128.18	+	0	Parent=33; start_score=0.62
+Chromosome	GeneMark.hmm	gene	23638	23838	.	+	.	ID=34
+Chromosome	GeneMark.hmm	CDS	23638	23838	10.30	+	0	Parent=34; start_score=-3.11
+Chromosome	GeneMark.hmm	gene	23968	24135	.	+	.	ID=35
+Chromosome	GeneMark.hmm	CDS	23968	24135	14.07	+	0	Parent=35; start_score=3.03
+Chromosome	GeneMark.hmm	gene	24247	24468	.	+	.	ID=36
+Chromosome	GeneMark.hmm	CDS	24247	24468	14.98	+	0	Parent=36; start_score=0.97
+Chromosome	GeneMark.hmm	gene	24468	24710	.	+	.	ID=37
+Chromosome	GeneMark.hmm	CDS	24468	24710	21.52	+	0	Parent=37; start_score=0.97
+Chromosome	GeneMark.hmm	gene	25371	25766	.	+	.	ID=38
+Chromosome	GeneMark.hmm	CDS	25371	25766	32.82	+	0	Parent=38; start_score=1.91
+Chromosome	GeneMark.hmm	gene	26036	26128	.	+	.	ID=39
+Chromosome	GeneMark.hmm	CDS	26036	26128	1.13	+	0	Parent=39; start_score=1.35
+Chromosome	GeneMark.hmm	gene	26261	26473	.	+	.	ID=40
+Chromosome	GeneMark.hmm	CDS	26261	26473	19.11	+	0	Parent=40; start_score=2.52
+Chromosome	GeneMark.hmm	gene	26479	27030	.	+	.	ID=41
+Chromosome	GeneMark.hmm	CDS	26479	27030	68.24	+	0	Parent=41; start_score=-0.93
+Chromosome	GeneMark.hmm	gene	27049	27345	.	+	.	ID=42
+Chromosome	GeneMark.hmm	CDS	27049	27345	24.98	+	0	Parent=42; start_score=2.21
+Chromosome	GeneMark.hmm	gene	27346	28233	.	+	.	ID=43
+Chromosome	GeneMark.hmm	CDS	27346	28233	75.98	+	0	Parent=43; start_score=-0.09
+Chromosome	GeneMark.hmm	gene	28652	29305	.	+	.	ID=44
+Chromosome	GeneMark.hmm	CDS	28652	29305	46.40	+	0	Parent=44; start_score=0.75
+Chromosome	GeneMark.hmm	gene	29552	30124	.	+	.	ID=45
+Chromosome	GeneMark.hmm	CDS	29552	30124	65.15	+	0	Parent=45; start_score=2.43
+Chromosome	GeneMark.hmm	gene	30093	30260	.	+	.	ID=46
+Chromosome	GeneMark.hmm	CDS	30093	30260	12.11	+	0	Parent=46; start_score=1.25
+Chromosome	GeneMark.hmm	gene	30330	30548	.	+	.	ID=47
+Chromosome	GeneMark.hmm	CDS	30330	30548	18.28	+	0	Parent=47; start_score=1.88
+Chromosome	GeneMark.hmm	gene	30983	31153	.	+	.	ID=48
+Chromosome	GeneMark.hmm	CDS	30983	31153	13.05	+	0	Parent=48; start_score=3.07
+Chromosome	GeneMark.hmm	gene	31143	31703	.	-	.	ID=49
+Chromosome	GeneMark.hmm	CDS	31143	31703	47.31	-	0	Parent=49; start_score=0.51
+Chromosome	GeneMark.hmm	gene	31705	32286	.	-	.	ID=50
+Chromosome	GeneMark.hmm	CDS	31705	32286	58.61	-	0	Parent=50; start_score=3.73
+Chromosome	GeneMark.hmm	gene	32359	32820	.	-	.	ID=51
+Chromosome	GeneMark.hmm	CDS	32359	32820	34.97	-	0	Parent=51; start_score=0.42
+Chromosome	GeneMark.hmm	gene	32851	33054	.	-	.	ID=52
+Chromosome	GeneMark.hmm	CDS	32851	33054	20.05	-	0	Parent=52; start_score=1.68
+Chromosome	GeneMark.hmm	gene	33130	33384	.	-	.	ID=53
+Chromosome	GeneMark.hmm	CDS	33130	33384	20.78	-	0	Parent=53; start_score=0.78
+Chromosome	GeneMark.hmm	gene	33463	33897	.	-	.	ID=54
+Chromosome	GeneMark.hmm	CDS	33463	33897	47.61	-	0	Parent=54; start_score=-0.33
+Chromosome	GeneMark.hmm	gene	34195	34365	.	-	.	ID=55
+Chromosome	GeneMark.hmm	CDS	34195	34365	10.61	-	0	Parent=55; start_score=1.18
+Chromosome	GeneMark.hmm	gene	34435	35109	.	-	.	ID=56
+Chromosome	GeneMark.hmm	CDS	34435	35109	52.75	-	0	Parent=56; start_score=-1.20
+Chromosome	GeneMark.hmm	gene	35113	35580	.	-	.	ID=57
+Chromosome	GeneMark.hmm	CDS	35113	35580	39.02	-	0	Parent=57; start_score=1.28
+Chromosome	GeneMark.hmm	gene	35638	35727	.	-	.	ID=58
+Chromosome	GeneMark.hmm	CDS	35638	35727	5.86	-	0	Parent=58; start_score=0.66
+Chromosome	GeneMark.hmm	gene	35902	36195	.	-	.	ID=59
+Chromosome	GeneMark.hmm	CDS	35902	36195	27.00	-	0	Parent=59; start_score=1.02
+Chromosome	GeneMark.hmm	gene	36514	36714	.	-	.	ID=60
+Chromosome	GeneMark.hmm	CDS	36514	36714	10.86	-	0	Parent=60; start_score=-1.61
+Chromosome	GeneMark.hmm	gene	36977	37957	.	+	.	ID=61
+Chromosome	GeneMark.hmm	CDS	36977	37957	99.01	+	0	Parent=61; start_score=0.51
+Chromosome	GeneMark.hmm	gene	38312	38440	.	+	.	ID=62
+Chromosome	GeneMark.hmm	CDS	38312	38440	10.53	+	0	Parent=62; start_score=4.64
+Chromosome	GeneMark.hmm	gene	38444	38533	.	+	.	ID=63
+Chromosome	GeneMark.hmm	CDS	38444	38533	5.33	+	0	Parent=63; start_score=3.55
+Chromosome	GeneMark.hmm	gene	38735	38977	.	+	.	ID=64
+Chromosome	GeneMark.hmm	CDS	38735	38977	22.07	+	0	Parent=64; start_score=5.43
+Chromosome	GeneMark.hmm	gene	39175	39291	.	+	.	ID=65
+Chromosome	GeneMark.hmm	CDS	39175	39291	3.54	+	0	Parent=65; start_score=-1.50
+Chromosome	GeneMark.hmm	gene	39538	39690	.	+	.	ID=66
+Chromosome	GeneMark.hmm	CDS	39538	39690	4.96	+	0	Parent=66; start_score=-1.44
+Chromosome	GeneMark.hmm	gene	39691	39813	.	+	.	ID=67
+Chromosome	GeneMark.hmm	CDS	39691	39813	7.40	+	0	Parent=67; start_score=3.89
+Chromosome	GeneMark.hmm	gene	40062	40253	.	+	.	ID=68
+Chromosome	GeneMark.hmm	CDS	40062	40253	5.03	+	0	Parent=68; start_score=3.55
+Chromosome	GeneMark.hmm	gene	40542	41069	.	+	.	ID=69
+Chromosome	GeneMark.hmm	CDS	40542	41069	35.74	+	0	Parent=69; start_score=-0.71
+Chromosome	GeneMark.hmm	gene	41151	41297	.	+	.	ID=70
+Chromosome	GeneMark.hmm	CDS	41151	41297	5.53	+	0	Parent=70; start_score=-1.76
+Chromosome	GeneMark.hmm	gene	41319	41567	.	+	.	ID=71
+Chromosome	GeneMark.hmm	CDS	41319	41567	19.56	+	0	Parent=71; start_score=3.37
+Chromosome	GeneMark.hmm	gene	42352	42888	.	+	.	ID=72
+Chromosome	GeneMark.hmm	CDS	42352	42888	36.91	+	0	Parent=72; start_score=2.56
+Chromosome	GeneMark.hmm	gene	43180	43404	.	+	.	ID=73
+Chromosome	GeneMark.hmm	CDS	43180	43404	20.97	+	0	Parent=73; start_score=-2.25
+Chromosome	GeneMark.hmm	gene	43404	43565	.	+	.	ID=74
+Chromosome	GeneMark.hmm	CDS	43404	43565	6.17	+	0	Parent=74; start_score=2.04
+Chromosome	GeneMark.hmm	gene	43593	44258	.	+	.	ID=75
+Chromosome	GeneMark.hmm	CDS	43593	44258	52.35	+	0	Parent=75; start_score=1.07
+Chromosome	GeneMark.hmm	gene	44403	44753	.	+	.	ID=76
+Chromosome	GeneMark.hmm	CDS	44403	44753	14.13	+	0	Parent=76; start_score=1.82
+Chromosome	GeneMark.hmm	gene	44891	45070	.	-	.	ID=77
+Chromosome	GeneMark.hmm	CDS	44891	45070	21.99	-	0	Parent=77; start_score=4.29
+Chromosome	GeneMark.hmm	gene	45188	45481	.	-	.	ID=78
+Chromosome	GeneMark.hmm	CDS	45188	45481	19.44	-	0	Parent=78; start_score=4.45
+Chromosome	GeneMark.hmm	gene	46004	46093	.	-	.	ID=79
+Chromosome	GeneMark.hmm	CDS	46004	46093	4.50	-	0	Parent=79; start_score=2.15
+Chromosome	GeneMark.hmm	gene	46139	46276	.	-	.	ID=80
+Chromosome	GeneMark.hmm	CDS	46139	46276	9.25	-	0	Parent=80; start_score=0.69
+Chromosome	GeneMark.hmm	gene	46297	46671	.	-	.	ID=81
+Chromosome	GeneMark.hmm	CDS	46297	46671	38.40	-	0	Parent=81; start_score=1.84
+Chromosome	GeneMark.hmm	gene	46975	47109	.	-	.	ID=82
+Chromosome	GeneMark.hmm	CDS	46975	47109	2.81	-	0	Parent=82; start_score=-0.96
+Chromosome	GeneMark.hmm	gene	47203	47421	.	-	.	ID=83
+Chromosome	GeneMark.hmm	CDS	47203	47421	16.29	-	0	Parent=83; start_score=0.64
+Chromosome	GeneMark.hmm	gene	47580	47855	.	+	.	ID=84
+Chromosome	GeneMark.hmm	CDS	47580	47855	14.21	+	0	Parent=84; start_score=1.26
+Chromosome	GeneMark.hmm	gene	48333	48929	.	+	.	ID=85
+Chromosome	GeneMark.hmm	CDS	48333	48929	63.48	+	0	Parent=85; start_score=-0.56
+Chromosome	GeneMark.hmm	gene	48954	49190	.	+	.	ID=86
+Chromosome	GeneMark.hmm	CDS	48954	49190	19.69	+	0	Parent=86; start_score=1.14
+Chromosome	GeneMark.hmm	gene	49376	49642	.	+	.	ID=87
+Chromosome	GeneMark.hmm	CDS	49376	49642	27.21	+	0	Parent=87; start_score=0.76
+Chromosome	GeneMark.hmm	gene	49840	50163	.	+	.	ID=88
+Chromosome	GeneMark.hmm	CDS	49840	50163	28.42	+	0	Parent=88; start_score=-0.76
+Chromosome	GeneMark.hmm	gene	50572	50724	.	+	.	ID=89
+Chromosome	GeneMark.hmm	CDS	50572	50724	10.02	+	0	Parent=89; start_score=1.82
+Chromosome	GeneMark.hmm	gene	50839	51168	.	+	.	ID=90
+Chromosome	GeneMark.hmm	CDS	50839	51168	37.44	+	0	Parent=90; start_score=1.74
+Chromosome	GeneMark.hmm	gene	51572	51700	.	+	.	ID=91
+Chromosome	GeneMark.hmm	CDS	51572	51700	10.42	+	0	Parent=91; start_score=1.14
+Chromosome	GeneMark.hmm	gene	51863	52357	.	+	.	ID=92
+Chromosome	GeneMark.hmm	CDS	51863	52357	41.27	+	0	Parent=92; start_score=1.40
+Chromosome	GeneMark.hmm	gene	52341	52769	.	+	.	ID=93
+Chromosome	GeneMark.hmm	CDS	52341	52769	33.13	+	0	Parent=93; start_score=0.47
+Chromosome	GeneMark.hmm	gene	52872	53207	.	+	.	ID=94
+Chromosome	GeneMark.hmm	CDS	52872	53207	15.56	+	0	Parent=94; start_score=2.99
+Chromosome	GeneMark.hmm	gene	53204	53488	.	+	.	ID=95
+Chromosome	GeneMark.hmm	CDS	53204	53488	19.46	+	0	Parent=95; start_score=2.34
+Chromosome	GeneMark.hmm	gene	53735	54568	.	+	.	ID=96
+Chromosome	GeneMark.hmm	CDS	53735	54568	96.37	+	0	Parent=96; start_score=2.02
+Chromosome	GeneMark.hmm	gene	54657	55271	.	+	.	ID=97
+Chromosome	GeneMark.hmm	CDS	54657	55271	56.65	+	0	Parent=97; start_score=1.72
+Chromosome	GeneMark.hmm	gene	55443	55604	.	+	.	ID=98
+Chromosome	GeneMark.hmm	CDS	55443	55604	15.13	+	0	Parent=98; start_score=1.83
+Chromosome	GeneMark.hmm	gene	55588	55818	.	+	.	ID=99
+Chromosome	GeneMark.hmm	CDS	55588	55818	16.53	+	0	Parent=99; start_score=2.33
+Chromosome	GeneMark.hmm	gene	55963	56478	.	+	.	ID=100
+Chromosome	GeneMark.hmm	CDS	55963	56478	54.28	+	0	Parent=100; start_score=2.47
+Chromosome	GeneMark.hmm	gene	57056	57175	.	-	.	ID=101
+Chromosome	GeneMark.hmm	CDS	57056	57175	1.95	-	0	Parent=101; start_score=-0.59
+Chromosome	GeneMark.hmm	gene	57194	57916	.	-	.	ID=102
+Chromosome	GeneMark.hmm	CDS	57194	57916	76.36	-	0	Parent=102; start_score=1.27
+Chromosome	GeneMark.hmm	gene	57944	58270	.	-	.	ID=103
+Chromosome	GeneMark.hmm	CDS	57944	58270	30.59	-	0	Parent=103; start_score=1.01
+Chromosome	GeneMark.hmm	gene	58272	58691	.	+	.	ID=104
+Chromosome	GeneMark.hmm	CDS	58272	58691	26.73	+	0	Parent=104; start_score=1.23
+Chromosome	GeneMark.hmm	gene	58716	59078	.	+	.	ID=105
+Chromosome	GeneMark.hmm	CDS	58716	59078	32.30	+	0	Parent=105; start_score=2.06
+Chromosome	GeneMark.hmm	gene	59082	59753	.	+	.	ID=106
+Chromosome	GeneMark.hmm	CDS	59082	59753	66.14	+	0	Parent=106; start_score=0.02
+Chromosome	GeneMark.hmm	gene	59740	60663	.	+	.	ID=107
+Chromosome	GeneMark.hmm	CDS	59740	60663	99.99	+	0	Parent=107; start_score=-0.91
+Chromosome	GeneMark.hmm	gene	60841	61005	.	+	.	ID=108
+Chromosome	GeneMark.hmm	CDS	60841	61005	4.23	+	0	Parent=108; start_score=1.91
+Chromosome	GeneMark.hmm	gene	61014	61406	.	+	.	ID=109
+Chromosome	GeneMark.hmm	CDS	61014	61406	19.83	+	0	Parent=109; start_score=-0.84
+Chromosome	GeneMark.hmm	gene	61406	62353	.	+	.	ID=110
+Chromosome	GeneMark.hmm	CDS	61406	62353	79.33	+	0	Parent=110; start_score=1.09
+Chromosome	GeneMark.hmm	gene	62459	62785	.	+	.	ID=111
+Chromosome	GeneMark.hmm	CDS	62459	62785	26.85	+	0	Parent=111; start_score=1.95
+Chromosome	GeneMark.hmm	gene	62840	63058	.	+	.	ID=112
+Chromosome	GeneMark.hmm	CDS	62840	63058	11.48	+	0	Parent=112; start_score=1.97
+Chromosome	GeneMark.hmm	gene	63035	63556	.	-	.	ID=113
+Chromosome	GeneMark.hmm	CDS	63035	63556	56.11	-	0	Parent=113; start_score=2.20
+Chromosome	GeneMark.hmm	gene	63662	63985	.	-	.	ID=114
+Chromosome	GeneMark.hmm	CDS	63662	63985	19.65	-	0	Parent=114; start_score=1.36
+Chromosome	GeneMark.hmm	gene	64145	64360	.	-	.	ID=115
+Chromosome	GeneMark.hmm	CDS	64145	64360	11.30	-	0	Parent=115; start_score=0.99
+Chromosome	GeneMark.hmm	gene	64668	64910	.	-	.	ID=116
+Chromosome	GeneMark.hmm	CDS	64668	64910	20.02	-	0	Parent=116; start_score=-0.00
+Chromosome	GeneMark.hmm	gene	65131	65730	.	-	.	ID=117
+Chromosome	GeneMark.hmm	CDS	65131	65730	39.40	-	0	Parent=117; start_score=-0.31
+Chromosome	GeneMark.hmm	gene	65865	66248	.	-	.	ID=118
+Chromosome	GeneMark.hmm	CDS	65865	66248	37.16	-	0	Parent=118; start_score=1.36
+Chromosome	GeneMark.hmm	gene	66227	67261	.	-	.	ID=119
+Chromosome	GeneMark.hmm	CDS	66227	67261	96.08	-	0	Parent=119; start_score=0.61
+Chromosome	GeneMark.hmm	gene	67293	67643	.	-	.	ID=120
+Chromosome	GeneMark.hmm	CDS	67293	67643	23.09	-	0	Parent=120; start_score=-3.04
+Chromosome	GeneMark.hmm	gene	67650	67916	.	+	.	ID=121
+Chromosome	GeneMark.hmm	CDS	67650	67916	17.96	+	0	Parent=121; start_score=1.01
+Chromosome	GeneMark.hmm	gene	68091	68303	.	+	.	ID=122
+Chromosome	GeneMark.hmm	CDS	68091	68303	14.40	+	0	Parent=122; start_score=3.30
+Chromosome	GeneMark.hmm	gene	68591	69037	.	-	.	ID=123
+Chromosome	GeneMark.hmm	CDS	68591	69037	38.50	-	0	Parent=123; start_score=4.01
+Chromosome	GeneMark.hmm	gene	69269	69979	.	-	.	ID=124
+Chromosome	GeneMark.hmm	CDS	69269	69979	52.26	-	0	Parent=124; start_score=2.28
+Chromosome	GeneMark.hmm	gene	69992	70225	.	-	.	ID=125
+Chromosome	GeneMark.hmm	CDS	69992	70225	6.87	-	0	Parent=125; start_score=0.86
+Chromosome	GeneMark.hmm	gene	70530	70796	.	+	.	ID=126
+Chromosome	GeneMark.hmm	CDS	70530	70796	16.13	+	0	Parent=126; start_score=1.02
+Chromosome	GeneMark.hmm	gene	70899	72572	.	+	.	ID=127
+Chromosome	GeneMark.hmm	CDS	70899	72572	179.03	+	0	Parent=127; start_score=0.28
+Chromosome	GeneMark.hmm	gene	72667	73434	.	+	.	ID=128
+Chromosome	GeneMark.hmm	CDS	72667	73434	43.08	+	0	Parent=128; start_score=3.81
+Chromosome	GeneMark.hmm	gene	73690	74580	.	+	.	ID=129
+Chromosome	GeneMark.hmm	CDS	73690	74580	74.60	+	0	Parent=129; start_score=1.46
+Chromosome	GeneMark.hmm	gene	75085	75393	.	+	.	ID=130
+Chromosome	GeneMark.hmm	CDS	75085	75393	17.59	+	0	Parent=130; start_score=-0.59
+Chromosome	GeneMark.hmm	gene	75433	75642	.	+	.	ID=131
+Chromosome	GeneMark.hmm	CDS	75433	75642	8.47	+	0	Parent=131; start_score=-1.38
+Chromosome	GeneMark.hmm	gene	75664	75816	.	+	.	ID=132
+Chromosome	GeneMark.hmm	CDS	75664	75816	5.50	+	0	Parent=132; start_score=-0.37
+Chromosome	GeneMark.hmm	gene	76078	76572	.	+	.	ID=133
+Chromosome	GeneMark.hmm	CDS	76078	76572	59.49	+	0	Parent=133; start_score=1.79
+Chromosome	GeneMark.hmm	gene	76582	77637	.	+	.	ID=134
+Chromosome	GeneMark.hmm	CDS	76582	77637	93.86	+	0	Parent=134; start_score=3.34
+Chromosome	GeneMark.hmm	gene	77685	77885	.	+	.	ID=135
+Chromosome	GeneMark.hmm	CDS	77685	77885	9.97	+	0	Parent=135; start_score=-0.29
+Chromosome	GeneMark.hmm	gene	78387	79079	.	+	.	ID=136
+Chromosome	GeneMark.hmm	CDS	78387	79079	89.19	+	0	Parent=136; start_score=3.15
+Chromosome	GeneMark.hmm	gene	79089	79940	.	+	.	ID=137
+Chromosome	GeneMark.hmm	CDS	79089	79940	94.08	+	0	Parent=137; start_score=2.70
+Chromosome	GeneMark.hmm	gene	79995	81035	.	+	.	ID=138
+Chromosome	GeneMark.hmm	CDS	79995	81035	99.54	+	0	Parent=138; start_score=-0.03
+Chromosome	GeneMark.hmm	gene	81073	81294	.	+	.	ID=139
+Chromosome	GeneMark.hmm	CDS	81073	81294	16.93	+	0	Parent=139; start_score=1.95
+Chromosome	GeneMark.hmm	gene	81529	81714	.	+	.	ID=140
+Chromosome	GeneMark.hmm	CDS	81529	81714	21.33	+	0	Parent=140; start_score=-2.14
+Chromosome	GeneMark.hmm	gene	82402	82539	.	+	.	ID=141
+Chromosome	GeneMark.hmm	CDS	82402	82539	3.85	+	0	Parent=141; start_score=1.35
+Chromosome	GeneMark.hmm	gene	82620	84044	.	+	.	ID=142
+Chromosome	GeneMark.hmm	CDS	82620	84044	126.71	+	0	Parent=142; start_score=0.10
+Chromosome	GeneMark.hmm	gene	84090	84212	.	-	.	ID=143
+Chromosome	GeneMark.hmm	CDS	84090	84212	0.14	-	0	Parent=143; start_score=1.10
+Chromosome	GeneMark.hmm	gene	84532	84744	.	-	.	ID=144
+Chromosome	GeneMark.hmm	CDS	84532	84744	3.12	-	0	Parent=144; start_score=0.29
+Chromosome	GeneMark.hmm	gene	84776	85051	.	+	.	ID=145
+Chromosome	GeneMark.hmm	CDS	84776	85051	9.99	+	0	Parent=145; start_score=0.31
+Chromosome	GeneMark.hmm	gene	85319	85555	.	+	.	ID=146
+Chromosome	GeneMark.hmm	CDS	85319	85555	10.35	+	0	Parent=146; start_score=2.23
+Chromosome	GeneMark.hmm	gene	85589	85942	.	+	.	ID=147
+Chromosome	GeneMark.hmm	CDS	85589	85942	61.27	+	0	Parent=147; start_score=8.93
+Chromosome	GeneMark.hmm	gene	86025	86141	.	-	.	ID=148
+Chromosome	GeneMark.hmm	CDS	86025	86141	16.84	-	0	Parent=148; start_score=2.30
+Chromosome	GeneMark.hmm	gene	86263	86535	.	+	.	ID=149
+Chromosome	GeneMark.hmm	CDS	86263	86535	50.59	+	0	Parent=149; start_score=11.83
+Chromosome	GeneMark.hmm	gene	86827	87033	.	+	.	ID=150
+Chromosome	GeneMark.hmm	CDS	86827	87033	25.78	+	0	Parent=150; start_score=4.98
+Chromosome	GeneMark.hmm	gene	87040	87210	.	+	.	ID=151
+Chromosome	GeneMark.hmm	CDS	87040	87210	18.19	+	0	Parent=151; start_score=7.17
+Chromosome	GeneMark.hmm	gene	87308	87634	.	+	.	ID=152
+Chromosome	GeneMark.hmm	CDS	87308	87634	48.83	+	0	Parent=152; start_score=8.38
+Chromosome	GeneMark.hmm	gene	88321	88629	.	+	.	ID=153
+Chromosome	GeneMark.hmm	CDS	88321	88629	33.29	+	0	Parent=153; start_score=1.44
+Chromosome	GeneMark.hmm	gene	88641	88739	.	-	.	ID=154
+Chromosome	GeneMark.hmm	CDS	88641	88739	2.63	-	0	Parent=154; start_score=-1.84
+Chromosome	GeneMark.hmm	gene	88756	88854	.	+	.	ID=155
+Chromosome	GeneMark.hmm	CDS	88756	88854	3.46	+	0	Parent=155; start_score=1.67
+Chromosome	GeneMark.hmm	gene	89076	89333	.	-	.	ID=156
+Chromosome	GeneMark.hmm	CDS	89076	89333	2.16	-	0	Parent=156; start_score=-0.50
+Chromosome	GeneMark.hmm	gene	89617	89823	.	+	.	ID=157
+Chromosome	GeneMark.hmm	CDS	89617	89823	19.38	+	0	Parent=157; start_score=1.70
+Chromosome	GeneMark.hmm	gene	89827	89919	.	+	.	ID=158
+Chromosome	GeneMark.hmm	CDS	89827	89919	8.22	+	0	Parent=158; start_score=-0.20
+Chromosome	GeneMark.hmm	gene	89965	90366	.	+	.	ID=159
+Chromosome	GeneMark.hmm	CDS	89965	90366	47.70	+	0	Parent=159; start_score=1.37
+Chromosome	GeneMark.hmm	gene	90373	90954	.	+	.	ID=160
+Chromosome	GeneMark.hmm	CDS	90373	90954	71.20	+	0	Parent=160; start_score=2.84
+Chromosome	GeneMark.hmm	gene	91167	91382	.	+	.	ID=161
+Chromosome	GeneMark.hmm	CDS	91167	91382	20.51	+	0	Parent=161; start_score=3.94
+Chromosome	GeneMark.hmm	gene	91641	91919	.	+	.	ID=162
+Chromosome	GeneMark.hmm	CDS	91641	91919	32.98	+	0	Parent=162; start_score=3.43
+Chromosome	GeneMark.hmm	gene	92257	92652	.	+	.	ID=163
+Chromosome	GeneMark.hmm	CDS	92257	92652	44.79	+	0	Parent=163; start_score=3.36
+Chromosome	GeneMark.hmm	gene	92812	93084	.	+	.	ID=164
+Chromosome	GeneMark.hmm	CDS	92812	93084	20.69	+	0	Parent=164; start_score=0.11
+Chromosome	GeneMark.hmm	gene	93160	93654	.	+	.	ID=165
+Chromosome	GeneMark.hmm	CDS	93160	93654	53.01	+	0	Parent=165; start_score=0.29
+Chromosome	GeneMark.hmm	gene	93694	94134	.	+	.	ID=166
+Chromosome	GeneMark.hmm	CDS	93694	94134	48.17	+	0	Parent=166; start_score=3.93
+Chromosome	GeneMark.hmm	gene	94165	94356	.	+	.	ID=167
+Chromosome	GeneMark.hmm	CDS	94165	94356	10.93	+	0	Parent=167; start_score=1.43
+Chromosome	GeneMark.hmm	gene	94535	95782	.	+	.	ID=168
+Chromosome	GeneMark.hmm	CDS	94535	95782	155.39	+	0	Parent=168; start_score=2.15
+Chromosome	GeneMark.hmm	gene	95783	96697	.	+	.	ID=169
+Chromosome	GeneMark.hmm	CDS	95783	96697	112.82	+	0	Parent=169; start_score=5.49
+Chromosome	GeneMark.hmm	gene	96707	96955	.	+	.	ID=170
+Chromosome	GeneMark.hmm	CDS	96707	96955	28.14	+	0	Parent=170; start_score=3.29
+Chromosome	GeneMark.hmm	gene	96933	98903	.	+	.	ID=171
+Chromosome	GeneMark.hmm	CDS	96933	98903	206.93	+	0	Parent=171; start_score=-0.07
+Chromosome	GeneMark.hmm	gene	98906	99112	.	+	.	ID=172
+Chromosome	GeneMark.hmm	CDS	98906	99112	6.29	+	0	Parent=172; start_score=1.13
+Chromosome	GeneMark.hmm	gene	99413	101779	.	+	.	ID=173
+Chromosome	GeneMark.hmm	CDS	99413	101779	239.18	+	0	Parent=173; start_score=1.11
+Chromosome	GeneMark.hmm	gene	102454	102870	.	-	.	ID=174
+Chromosome	GeneMark.hmm	CDS	102454	102870	23.17	-	0	Parent=174; start_score=1.12
+Chromosome	GeneMark.hmm	gene	103104	103304	.	+	.	ID=175
+Chromosome	GeneMark.hmm	CDS	103104	103304	15.16	+	0	Parent=175; start_score=1.62
+Chromosome	GeneMark.hmm	gene	103380	104123	.	+	.	ID=176
+Chromosome	GeneMark.hmm	CDS	103380	104123	71.52	+	0	Parent=176; start_score=1.49
+Chromosome	GeneMark.hmm	gene	104157	104327	.	+	.	ID=177
+Chromosome	GeneMark.hmm	CDS	104157	104327	9.66	+	0	Parent=177; start_score=0.58
+Chromosome	GeneMark.hmm	gene	104320	104805	.	+	.	ID=178
+Chromosome	GeneMark.hmm	CDS	104320	104805	47.66	+	0	Parent=178; start_score=0.79
+Chromosome	GeneMark.hmm	gene	104869	104982	.	+	.	ID=179
+Chromosome	GeneMark.hmm	CDS	104869	104982	9.72	+	0	Parent=179; start_score=2.24
+Chromosome	GeneMark.hmm	gene	105106	105450	.	+	.	ID=180
+Chromosome	GeneMark.hmm	CDS	105106	105450	30.96	+	0	Parent=180; start_score=2.15
+Chromosome	GeneMark.hmm	gene	105452	106564	.	+	.	ID=181
+Chromosome	GeneMark.hmm	CDS	105452	106564	118.72	+	0	Parent=181; start_score=-1.11
+Chromosome	GeneMark.hmm	gene	106660	107547	.	+	.	ID=182
+Chromosome	GeneMark.hmm	CDS	106660	107547	77.98	+	0	Parent=182; start_score=1.46
+Chromosome	GeneMark.hmm	gene	107590	108009	.	+	.	ID=183
+Chromosome	GeneMark.hmm	CDS	107590	108009	33.45	+	0	Parent=183; start_score=-0.14
+Chromosome	GeneMark.hmm	gene	108073	109179	.	+	.	ID=184
+Chromosome	GeneMark.hmm	CDS	108073	109179	113.19	+	0	Parent=184; start_score=2.73
+Chromosome	GeneMark.hmm	gene	109262	109675	.	+	.	ID=185
+Chromosome	GeneMark.hmm	CDS	109262	109675	49.11	+	0	Parent=185; start_score=0.36
+Chromosome	GeneMark.hmm	gene	109675	109992	.	+	.	ID=186
+Chromosome	GeneMark.hmm	CDS	109675	109992	47.18	+	0	Parent=186; start_score=2.70
+Chromosome	GeneMark.hmm	gene	110029	110355	.	+	.	ID=187
+Chromosome	GeneMark.hmm	CDS	110029	110355	30.14	+	0	Parent=187; start_score=1.12
+Chromosome	GeneMark.hmm	gene	110355	110924	.	+	.	ID=188
+Chromosome	GeneMark.hmm	CDS	110355	110924	43.29	+	0	Parent=188; start_score=2.68
+Chromosome	GeneMark.hmm	gene	110917	111129	.	+	.	ID=189
+Chromosome	GeneMark.hmm	CDS	110917	111129	14.94	+	0	Parent=189; start_score=2.27
+Chromosome	GeneMark.hmm	gene	111256	111354	.	+	.	ID=190
+Chromosome	GeneMark.hmm	CDS	111256	111354	7.22	+	0	Parent=190; start_score=1.68
+Chromosome	GeneMark.hmm	gene	111445	111789	.	+	.	ID=191
+Chromosome	GeneMark.hmm	CDS	111445	111789	29.63	+	0	Parent=191; start_score=1.73
+Chromosome	GeneMark.hmm	gene	111790	112725	.	+	.	ID=192
+Chromosome	GeneMark.hmm	CDS	111790	112725	102.66	+	0	Parent=192; start_score=-1.82
+Chromosome	GeneMark.hmm	gene	112820	113626	.	+	.	ID=193
+Chromosome	GeneMark.hmm	CDS	112820	113626	65.10	+	0	Parent=193; start_score=2.38
+Chromosome	GeneMark.hmm	gene	113702	113866	.	+	.	ID=194
+Chromosome	GeneMark.hmm	CDS	113702	113866	7.64	+	0	Parent=194; start_score=1.13
+Chromosome	GeneMark.hmm	gene	113895	114314	.	+	.	ID=195
+Chromosome	GeneMark.hmm	CDS	113895	114314	37.72	+	0	Parent=195; start_score=0.76
+Chromosome	GeneMark.hmm	gene	114331	114798	.	+	.	ID=196
+Chromosome	GeneMark.hmm	CDS	114331	114798	63.74	+	0	Parent=196; start_score=1.12
+Chromosome	GeneMark.hmm	gene	114808	115023	.	+	.	ID=197
+Chromosome	GeneMark.hmm	CDS	114808	115023	16.96	+	0	Parent=197; start_score=0.89
+Chromosome	GeneMark.hmm	gene	115042	115167	.	+	.	ID=198
+Chromosome	GeneMark.hmm	CDS	115042	115167	6.06	+	0	Parent=198; start_score=-0.54
+Chromosome	GeneMark.hmm	gene	115216	116874	.	+	.	ID=199
+Chromosome	GeneMark.hmm	CDS	115216	116874	232.57	+	0	Parent=199; start_score=3.24
+Chromosome	GeneMark.hmm	gene	116926	117396	.	+	.	ID=200
+Chromosome	GeneMark.hmm	CDS	116926	117396	50.72	+	0	Parent=200; start_score=0.39
+Chromosome	GeneMark.hmm	gene	117553	117702	.	+	.	ID=201
+Chromosome	GeneMark.hmm	CDS	117553	117702	11.11	+	0	Parent=201; start_score=2.33
+Chromosome	GeneMark.hmm	gene	117745	118035	.	+	.	ID=202
+Chromosome	GeneMark.hmm	CDS	117745	118035	30.23	+	0	Parent=202; start_score=-1.73
+Chromosome	GeneMark.hmm	gene	118028	118342	.	+	.	ID=203
+Chromosome	GeneMark.hmm	CDS	118028	118342	29.92	+	0	Parent=203; start_score=1.26
+Chromosome	GeneMark.hmm	gene	118345	118797	.	+	.	ID=204
+Chromosome	GeneMark.hmm	CDS	118345	118797	40.12	+	0	Parent=204; start_score=-2.54
+Chromosome	GeneMark.hmm	gene	118781	119410	.	+	.	ID=205
+Chromosome	GeneMark.hmm	CDS	118781	119410	78.21	+	0	Parent=205; start_score=1.71
+Chromosome	GeneMark.hmm	gene	119480	120187	.	+	.	ID=206
+Chromosome	GeneMark.hmm	CDS	119480	120187	75.31	+	0	Parent=206; start_score=2.28
+Chromosome	GeneMark.hmm	gene	120191	120538	.	+	.	ID=207
+Chromosome	GeneMark.hmm	CDS	120191	120538	32.50	+	0	Parent=207; start_score=-0.70
+Chromosome	GeneMark.hmm	gene	121067	121165	.	+	.	ID=208
+Chromosome	GeneMark.hmm	CDS	121067	121165	1.29	+	0	Parent=208; start_score=2.37
+Chromosome	GeneMark.hmm	gene	121214	121387	.	+	.	ID=209
+Chromosome	GeneMark.hmm	CDS	121214	121387	10.34	+	0	Parent=209; start_score=1.46
+Chromosome	GeneMark.hmm	gene	121571	123202	.	+	.	ID=210
+Chromosome	GeneMark.hmm	CDS	121571	123202	169.27	+	0	Parent=210; start_score=-0.08
+Chromosome	GeneMark.hmm	gene	123254	123523	.	+	.	ID=211
+Chromosome	GeneMark.hmm	CDS	123254	123523	14.23	+	0	Parent=211; start_score=3.77
+Chromosome	GeneMark.hmm	gene	124051	124278	.	+	.	ID=212
+Chromosome	GeneMark.hmm	CDS	124051	124278	6.41	+	0	Parent=212; start_score=-3.27
+Chromosome	GeneMark.hmm	gene	124417	125154	.	+	.	ID=213
+Chromosome	GeneMark.hmm	CDS	124417	125154	58.02	+	0	Parent=213; start_score=0.94
+Chromosome	GeneMark.hmm	gene	125242	125376	.	+	.	ID=214
+Chromosome	GeneMark.hmm	CDS	125242	125376	1.99	+	0	Parent=214; start_score=0.07
+Chromosome	GeneMark.hmm	gene	125392	125850	.	+	.	ID=215
+Chromosome	GeneMark.hmm	CDS	125392	125850	36.41	+	0	Parent=215; start_score=-1.32
+Chromosome	GeneMark.hmm	gene	125853	126662	.	+	.	ID=216
+Chromosome	GeneMark.hmm	CDS	125853	126662	102.30	+	0	Parent=216; start_score=1.27
+Chromosome	GeneMark.hmm	gene	126702	127253	.	+	.	ID=217
+Chromosome	GeneMark.hmm	CDS	126702	127253	54.06	+	0	Parent=217; start_score=2.28
+Chromosome	GeneMark.hmm	gene	127279	128712	.	+	.	ID=218
+Chromosome	GeneMark.hmm	CDS	127279	128712	141.93	+	0	Parent=218; start_score=-0.22
+Chromosome	GeneMark.hmm	gene	128906	129355	.	+	.	ID=219
+Chromosome	GeneMark.hmm	CDS	128906	129355	38.21	+	0	Parent=219; start_score=0.56
+Chromosome	GeneMark.hmm	gene	129357	130295	.	+	.	ID=220
+Chromosome	GeneMark.hmm	CDS	129357	130295	108.68	+	0	Parent=220; start_score=1.02
+Chromosome	GeneMark.hmm	gene	130417	131022	.	+	.	ID=221
+Chromosome	GeneMark.hmm	CDS	130417	131022	40.90	+	0	Parent=221; start_score=1.54
+Chromosome	GeneMark.hmm	gene	131149	131382	.	+	.	ID=222
+Chromosome	GeneMark.hmm	CDS	131149	131382	19.38	+	0	Parent=222; start_score=4.05
+Chromosome	GeneMark.hmm	gene	131385	131546	.	+	.	ID=223
+Chromosome	GeneMark.hmm	CDS	131385	131546	11.15	+	0	Parent=223; start_score=-0.69
+Chromosome	GeneMark.hmm	gene	131679	132965	.	+	.	ID=224
+Chromosome	GeneMark.hmm	CDS	131679	132965	114.01	+	0	Parent=224; start_score=5.56
+Chromosome	GeneMark.hmm	gene	133149	133562	.	+	.	ID=225
+Chromosome	GeneMark.hmm	CDS	133149	133562	38.44	+	0	Parent=225; start_score=-1.17
+Chromosome	GeneMark.hmm	gene	133921	134172	.	+	.	ID=226
+Chromosome	GeneMark.hmm	CDS	133921	134172	22.18	+	0	Parent=226; start_score=3.91
+Chromosome	GeneMark.hmm	gene	134516	134728	.	-	.	ID=227
+Chromosome	GeneMark.hmm	CDS	134516	134728	16.41	-	0	Parent=227; start_score=-3.12
+Chromosome	GeneMark.hmm	gene	134769	135338	.	+	.	ID=228
+Chromosome	GeneMark.hmm	CDS	134769	135338	50.75	+	0	Parent=228; start_score=-1.20
+Chromosome	GeneMark.hmm	gene	135338	135553	.	+	.	ID=229
+Chromosome	GeneMark.hmm	CDS	135338	135553	17.62	+	0	Parent=229; start_score=3.18
+Chromosome	GeneMark.hmm	gene	135806	136120	.	+	.	ID=230
+Chromosome	GeneMark.hmm	CDS	135806	136120	15.85	+	0	Parent=230; start_score=1.46
+Chromosome	GeneMark.hmm	gene	136105	137028	.	+	.	ID=231
+Chromosome	GeneMark.hmm	CDS	136105	137028	89.19	+	0	Parent=231; start_score=1.28
+Chromosome	GeneMark.hmm	gene	137089	137184	.	+	.	ID=232
+Chromosome	GeneMark.hmm	CDS	137089	137184	6.73	+	0	Parent=232; start_score=4.37
+Chromosome	GeneMark.hmm	gene	137381	137521	.	+	.	ID=233
+Chromosome	GeneMark.hmm	CDS	137381	137521	14.95	+	0	Parent=233; start_score=3.59
+Chromosome	GeneMark.hmm	gene	137531	138058	.	+	.	ID=234
+Chromosome	GeneMark.hmm	CDS	137531	138058	38.62	+	0	Parent=234; start_score=3.09
+Chromosome	GeneMark.hmm	gene	138112	138867	.	+	.	ID=235
+Chromosome	GeneMark.hmm	CDS	138112	138867	75.63	+	0	Parent=235; start_score=1.92
+Chromosome	GeneMark.hmm	gene	139030	139293	.	+	.	ID=236
+Chromosome	GeneMark.hmm	CDS	139030	139293	24.31	+	0	Parent=236; start_score=3.25
+Chromosome	GeneMark.hmm	gene	139312	139407	.	+	.	ID=237
+Chromosome	GeneMark.hmm	CDS	139312	139407	6.60	+	0	Parent=237; start_score=3.31
+Chromosome	GeneMark.hmm	gene	139397	140026	.	+	.	ID=238
+Chromosome	GeneMark.hmm	CDS	139397	140026	57.12	+	0	Parent=238; start_score=0.93
+Chromosome	GeneMark.hmm	gene	140040	140273	.	+	.	ID=239
+Chromosome	GeneMark.hmm	CDS	140040	140273	21.21	+	0	Parent=239; start_score=0.75
+Chromosome	GeneMark.hmm	gene	140316	141266	.	+	.	ID=240
+Chromosome	GeneMark.hmm	CDS	140316	141266	81.77	+	0	Parent=240; start_score=2.86
+Chromosome	GeneMark.hmm	gene	141276	141410	.	+	.	ID=241
+Chromosome	GeneMark.hmm	CDS	141276	141410	6.14	+	0	Parent=241; start_score=-2.41
+Chromosome	GeneMark.hmm	gene	141391	141669	.	+	.	ID=242
+Chromosome	GeneMark.hmm	CDS	141391	141669	17.36	+	0	Parent=242; start_score=-0.48
+Chromosome	GeneMark.hmm	gene	141688	141834	.	+	.	ID=243
+Chromosome	GeneMark.hmm	CDS	141688	141834	9.63	+	0	Parent=243; start_score=0.61
+Chromosome	GeneMark.hmm	gene	142081	142554	.	+	.	ID=244
+Chromosome	GeneMark.hmm	CDS	142081	142554	37.14	+	0	Parent=244; start_score=0.97
+Chromosome	GeneMark.hmm	gene	142563	143096	.	+	.	ID=245
+Chromosome	GeneMark.hmm	CDS	142563	143096	47.97	+	0	Parent=245; start_score=1.77
+Chromosome	GeneMark.hmm	gene	143205	143318	.	+	.	ID=246
+Chromosome	GeneMark.hmm	CDS	143205	143318	3.77	+	0	Parent=246; start_score=0.32
+Chromosome	GeneMark.hmm	gene	143311	143514	.	+	.	ID=247
+Chromosome	GeneMark.hmm	CDS	143311	143514	8.64	+	0	Parent=247; start_score=1.13
+Chromosome	GeneMark.hmm	gene	143602	143955	.	+	.	ID=248
+Chromosome	GeneMark.hmm	CDS	143602	143955	17.18	+	0	Parent=248; start_score=0.67
+Chromosome	GeneMark.hmm	gene	143936	144676	.	+	.	ID=249
+Chromosome	GeneMark.hmm	CDS	143936	144676	74.16	+	0	Parent=249; start_score=-0.23
+Chromosome	GeneMark.hmm	gene	144722	144826	.	+	.	ID=250
+Chromosome	GeneMark.hmm	CDS	144722	144826	4.65	+	0	Parent=250; start_score=3.16
+Chromosome	GeneMark.hmm	gene	144973	146136	.	+	.	ID=251
+Chromosome	GeneMark.hmm	CDS	144973	146136	126.03	+	0	Parent=251; start_score=3.38
+Chromosome	GeneMark.hmm	gene	146176	146271	.	+	.	ID=252
+Chromosome	GeneMark.hmm	CDS	146176	146271	4.86	+	0	Parent=252; start_score=0.87
+Chromosome	GeneMark.hmm	gene	146287	146667	.	+	.	ID=253
+Chromosome	GeneMark.hmm	CDS	146287	146667	49.88	+	0	Parent=253; start_score=-0.79
+Chromosome	GeneMark.hmm	gene	146758	147198	.	+	.	ID=254
+Chromosome	GeneMark.hmm	CDS	146758	147198	31.74	+	0	Parent=254; start_score=-1.04
+Chromosome	GeneMark.hmm	gene	147205	147339	.	+	.	ID=255
+Chromosome	GeneMark.hmm	CDS	147205	147339	9.62	+	0	Parent=255; start_score=0.82
+Chromosome	GeneMark.hmm	gene	147379	147807	.	+	.	ID=256
+Chromosome	GeneMark.hmm	CDS	147379	147807	48.48	+	0	Parent=256; start_score=3.07
+Chromosome	GeneMark.hmm	gene	147913	148053	.	+	.	ID=257
+Chromosome	GeneMark.hmm	CDS	147913	148053	4.35	+	0	Parent=257; start_score=2.35
+Chromosome	GeneMark.hmm	gene	148054	148236	.	+	.	ID=258
+Chromosome	GeneMark.hmm	CDS	148054	148236	8.67	+	0	Parent=258; start_score=3.12
+Chromosome	GeneMark.hmm	gene	148239	148436	.	+	.	ID=259
+Chromosome	GeneMark.hmm	CDS	148239	148436	20.94	+	0	Parent=259; start_score=-0.60
+Chromosome	GeneMark.hmm	gene	148536	148958	.	+	.	ID=260
+Chromosome	GeneMark.hmm	CDS	148536	148958	32.73	+	0	Parent=260; start_score=0.09
+Chromosome	GeneMark.hmm	gene	149217	149360	.	+	.	ID=261
+Chromosome	GeneMark.hmm	CDS	149217	149360	10.69	+	0	Parent=261; start_score=1.32
+Chromosome	GeneMark.hmm	gene	149529	150968	.	+	.	ID=262
+Chromosome	GeneMark.hmm	CDS	149529	150968	147.93	+	0	Parent=262; start_score=5.07
+Chromosome	GeneMark.hmm	gene	151017	151328	.	+	.	ID=263
+Chromosome	GeneMark.hmm	CDS	151017	151328	20.97	+	0	Parent=263; start_score=2.13
+Chromosome	GeneMark.hmm	gene	151306	152298	.	+	.	ID=264
+Chromosome	GeneMark.hmm	CDS	151306	152298	78.29	+	0	Parent=264; start_score=0.32
+Chromosome	GeneMark.hmm	gene	152434	152721	.	+	.	ID=265
+Chromosome	GeneMark.hmm	CDS	152434	152721	16.97	+	0	Parent=265; start_score=1.91
+Chromosome	GeneMark.hmm	gene	153082	153771	.	+	.	ID=266
+Chromosome	GeneMark.hmm	CDS	153082	153771	42.95	+	0	Parent=266; start_score=-1.70
+Chromosome	GeneMark.hmm	gene	153784	153939	.	+	.	ID=267
+Chromosome	GeneMark.hmm	CDS	153784	153939	10.08	+	0	Parent=267; start_score=1.15
+Chromosome	GeneMark.hmm	gene	153920	154963	.	-	.	ID=268
+Chromosome	GeneMark.hmm	CDS	153920	154963	93.29	-	0	Parent=268; start_score=-0.53
+Chromosome	GeneMark.hmm	gene	154999	155436	.	+	.	ID=269
+Chromosome	GeneMark.hmm	CDS	154999	155436	36.90	+	0	Parent=269; start_score=-0.29
+Chromosome	GeneMark.hmm	gene	155444	156223	.	+	.	ID=270
+Chromosome	GeneMark.hmm	CDS	155444	156223	67.68	+	0	Parent=270; start_score=1.74
+Chromosome	GeneMark.hmm	gene	156241	156576	.	+	.	ID=271
+Chromosome	GeneMark.hmm	CDS	156241	156576	17.62	+	0	Parent=271; start_score=-0.28
+Chromosome	GeneMark.hmm	gene	156566	157858	.	+	.	ID=272
+Chromosome	GeneMark.hmm	CDS	156566	157858	128.92	+	0	Parent=272; start_score=-2.22
+Chromosome	GeneMark.hmm	gene	157910	158020	.	+	.	ID=273
+Chromosome	GeneMark.hmm	CDS	157910	158020	3.79	+	0	Parent=273; start_score=5.53
+Chromosome	GeneMark.hmm	gene	158299	158604	.	+	.	ID=274
+Chromosome	GeneMark.hmm	CDS	158299	158604	11.64	+	0	Parent=274; start_score=3.52
+Chromosome	GeneMark.hmm	gene	158581	159006	.	-	.	ID=275
+Chromosome	GeneMark.hmm	CDS	158581	159006	41.81	-	0	Parent=275; start_score=2.24
+Chromosome	GeneMark.hmm	gene	159798	160100	.	+	.	ID=276
+Chromosome	GeneMark.hmm	CDS	159798	160100	28.23	+	0	Parent=276; start_score=-1.01
+Chromosome	GeneMark.hmm	gene	160072	160263	.	-	.	ID=277
+Chromosome	GeneMark.hmm	CDS	160072	160263	7.53	-	0	Parent=277; start_score=3.18
+Chromosome	GeneMark.hmm	gene	160285	160914	.	-	.	ID=278
+Chromosome	GeneMark.hmm	CDS	160285	160914	42.71	-	0	Parent=278; start_score=1.82
+Chromosome	GeneMark.hmm	gene	160963	161391	.	+	.	ID=279
+Chromosome	GeneMark.hmm	CDS	160963	161391	45.03	+	0	Parent=279; start_score=1.28
+Chromosome	GeneMark.hmm	gene	161458	161856	.	+	.	ID=280
+Chromosome	GeneMark.hmm	CDS	161458	161856	38.69	+	0	Parent=280; start_score=1.70
+Chromosome	GeneMark.hmm	gene	161902	162435	.	+	.	ID=281
+Chromosome	GeneMark.hmm	CDS	161902	162435	54.21	+	0	Parent=281; start_score=-0.66
+Chromosome	GeneMark.hmm	gene	162422	163237	.	+	.	ID=282
+Chromosome	GeneMark.hmm	CDS	162422	163237	81.53	+	0	Parent=282; start_score=0.55
+Chromosome	GeneMark.hmm	gene	163283	163471	.	+	.	ID=283
+Chromosome	GeneMark.hmm	CDS	163283	163471	11.36	+	0	Parent=283; start_score=1.37
+Chromosome	GeneMark.hmm	gene	163591	165387	.	+	.	ID=284
+Chromosome	GeneMark.hmm	CDS	163591	165387	180.56	+	0	Parent=284; start_score=2.80
+Chromosome	GeneMark.hmm	gene	165471	167129	.	+	.	ID=285
+Chromosome	GeneMark.hmm	CDS	165471	167129	188.90	+	0	Parent=285; start_score=-0.91
+Chromosome	GeneMark.hmm	gene	167209	167556	.	+	.	ID=286
+Chromosome	GeneMark.hmm	CDS	167209	167556	46.93	+	0	Parent=286; start_score=6.17
+Chromosome	GeneMark.hmm	gene	167495	167737	.	-	.	ID=287
+Chromosome	GeneMark.hmm	CDS	167495	167737	22.23	-	0	Parent=287; start_score=2.23
+Chromosome	GeneMark.hmm	gene	167859	168230	.	+	.	ID=288
+Chromosome	GeneMark.hmm	CDS	167859	168230	52.23	+	0	Parent=288; start_score=10.59
+Chromosome	GeneMark.hmm	gene	168421	168627	.	+	.	ID=289
+Chromosome	GeneMark.hmm	CDS	168421	168627	25.88	+	0	Parent=289; start_score=5.91
+Chromosome	GeneMark.hmm	gene	168634	168807	.	+	.	ID=290
+Chromosome	GeneMark.hmm	CDS	168634	168807	23.50	+	0	Parent=290; start_score=7.64
+Chromosome	GeneMark.hmm	gene	168887	169015	.	+	.	ID=291
+Chromosome	GeneMark.hmm	CDS	168887	169015	13.56	+	0	Parent=291; start_score=-0.47
+Chromosome	GeneMark.hmm	gene	169093	169293	.	+	.	ID=292
+Chromosome	GeneMark.hmm	CDS	169093	169293	28.99	+	0	Parent=292; start_score=7.18
+Chromosome	GeneMark.hmm	gene	169330	169545	.	+	.	ID=293
+Chromosome	GeneMark.hmm	CDS	169330	169545	48.83	+	0	Parent=293; start_score=4.53
+Chromosome	GeneMark.hmm	gene	169591	169815	.	+	.	ID=294
+Chromosome	GeneMark.hmm	CDS	169591	169815	28.22	+	0	Parent=294; start_score=5.08
+Chromosome	GeneMark.hmm	gene	174090	174200	.	+	.	ID=295
+Chromosome	GeneMark.hmm	CDS	174090	174200	9.03	+	0	Parent=295; start_score=3.22
+Chromosome	GeneMark.hmm	gene	174888	174980	.	+	.	ID=296
+Chromosome	GeneMark.hmm	CDS	174888	174980	12.27	+	0	Parent=296; start_score=4.85
+Chromosome	GeneMark.hmm	gene	175110	175256	.	+	.	ID=297
+Chromosome	GeneMark.hmm	CDS	175110	175256	12.64	+	0	Parent=297; start_score=2.39
+Chromosome	GeneMark.hmm	gene	175275	175394	.	+	.	ID=298
+Chromosome	GeneMark.hmm	CDS	175275	175394	12.15	+	0	Parent=298; start_score=2.78
+Chromosome	GeneMark.hmm	gene	175419	175667	.	+	.	ID=299
+Chromosome	GeneMark.hmm	CDS	175419	175667	20.08	+	0	Parent=299; start_score=1.06
+Chromosome	GeneMark.hmm	gene	175967	176257	.	+	.	ID=300
+Chromosome	GeneMark.hmm	CDS	175967	176257	28.19	+	0	Parent=300; start_score=2.76
+Chromosome	GeneMark.hmm	gene	176330	177181	.	+	.	ID=301
+Chromosome	GeneMark.hmm	CDS	176330	177181	99.72	+	0	Parent=301; start_score=2.00
+Chromosome	GeneMark.hmm	gene	177236	177556	.	+	.	ID=302
+Chromosome	GeneMark.hmm	CDS	177236	177556	14.94	+	0	Parent=302; start_score=0.91
+Chromosome	GeneMark.hmm	gene	177584	178276	.	+	.	ID=303
+Chromosome	GeneMark.hmm	CDS	177584	178276	76.92	+	0	Parent=303; start_score=2.96
+Chromosome	GeneMark.hmm	gene	178313	178447	.	+	.	ID=304
+Chromosome	GeneMark.hmm	CDS	178313	178447	12.90	+	0	Parent=304; start_score=5.75
+Chromosome	GeneMark.hmm	gene	178490	179068	.	+	.	ID=305
+Chromosome	GeneMark.hmm	CDS	178490	179068	54.24	+	0	Parent=305; start_score=2.28
+Chromosome	GeneMark.hmm	gene	179151	179834	.	+	.	ID=306
+Chromosome	GeneMark.hmm	CDS	179151	179834	83.50	+	0	Parent=306; start_score=-1.65
+Chromosome	GeneMark.hmm	gene	179877	180266	.	+	.	ID=307
+Chromosome	GeneMark.hmm	CDS	179877	180266	46.61	+	0	Parent=307; start_score=-0.99
+Chromosome	GeneMark.hmm	gene	180348	180746	.	+	.	ID=308
+Chromosome	GeneMark.hmm	CDS	180348	180746	39.56	+	0	Parent=308; start_score=0.34
+Chromosome	GeneMark.hmm	gene	180746	181018	.	+	.	ID=309
+Chromosome	GeneMark.hmm	CDS	180746	181018	14.13	+	0	Parent=309; start_score=-1.00
+Chromosome	GeneMark.hmm	gene	181005	182864	.	+	.	ID=310
+Chromosome	GeneMark.hmm	CDS	181005	182864	237.66	+	0	Parent=310; start_score=1.65
+Chromosome	GeneMark.hmm	gene	182851	183189	.	+	.	ID=311
+Chromosome	GeneMark.hmm	CDS	182851	183189	34.41	+	0	Parent=311; start_score=0.69
+Chromosome	GeneMark.hmm	gene	183214	183639	.	+	.	ID=312
+Chromosome	GeneMark.hmm	CDS	183214	183639	38.82	+	0	Parent=312; start_score=1.63
+Chromosome	GeneMark.hmm	gene	183706	183813	.	+	.	ID=313
+Chromosome	GeneMark.hmm	CDS	183706	183813	9.76	+	0	Parent=313; start_score=1.74
+Chromosome	GeneMark.hmm	gene	183880	184020	.	+	.	ID=314
+Chromosome	GeneMark.hmm	CDS	183880	184020	14.52	+	0	Parent=314; start_score=4.33
+Chromosome	GeneMark.hmm	gene	184053	184862	.	+	.	ID=315
+Chromosome	GeneMark.hmm	CDS	184053	184862	67.31	+	0	Parent=315; start_score=1.81
+Chromosome	GeneMark.hmm	gene	184875	185000	.	+	.	ID=316
+Chromosome	GeneMark.hmm	CDS	184875	185000	2.68	+	0	Parent=316; start_score=-1.71
+Chromosome	GeneMark.hmm	gene	185115	185324	.	+	.	ID=317
+Chromosome	GeneMark.hmm	CDS	185115	185324	12.53	+	0	Parent=317; start_score=4.15
+Chromosome	GeneMark.hmm	gene	185520	185915	.	+	.	ID=318
+Chromosome	GeneMark.hmm	CDS	185520	185915	42.16	+	0	Parent=318; start_score=0.91
+Chromosome	GeneMark.hmm	gene	185973	186149	.	+	.	ID=319
+Chromosome	GeneMark.hmm	CDS	185973	186149	10.99	+	0	Parent=319; start_score=0.23
+Chromosome	GeneMark.hmm	gene	186136	186789	.	+	.	ID=320
+Chromosome	GeneMark.hmm	CDS	186136	186789	39.99	+	0	Parent=320; start_score=-1.53
+Chromosome	GeneMark.hmm	gene	187012	187263	.	+	.	ID=321
+Chromosome	GeneMark.hmm	CDS	187012	187263	26.40	+	0	Parent=321; start_score=0.89
+Chromosome	GeneMark.hmm	gene	187302	187454	.	+	.	ID=322
+Chromosome	GeneMark.hmm	CDS	187302	187454	12.81	+	0	Parent=322; start_score=1.06
+Chromosome	GeneMark.hmm	gene	187539	187793	.	+	.	ID=323
+Chromosome	GeneMark.hmm	CDS	187539	187793	20.51	+	0	Parent=323; start_score=2.84
+Chromosome	GeneMark.hmm	gene	188007	188471	.	+	.	ID=324
+Chromosome	GeneMark.hmm	CDS	188007	188471	39.12	+	0	Parent=324; start_score=1.28
+Chromosome	GeneMark.hmm	gene	188607	189326	.	+	.	ID=325
+Chromosome	GeneMark.hmm	CDS	188607	189326	73.77	+	0	Parent=325; start_score=1.32
+Chromosome	GeneMark.hmm	gene	189801	189956	.	+	.	ID=326
+Chromosome	GeneMark.hmm	CDS	189801	189956	7.33	+	0	Parent=326; start_score=-1.13
+Chromosome	GeneMark.hmm	gene	190046	190366	.	+	.	ID=327
+Chromosome	GeneMark.hmm	CDS	190046	190366	25.89	+	0	Parent=327; start_score=0.44
+Chromosome	GeneMark.hmm	gene	190370	190747	.	+	.	ID=328
+Chromosome	GeneMark.hmm	CDS	190370	190747	39.48	+	0	Parent=328; start_score=2.61
+Chromosome	GeneMark.hmm	gene	190766	191143	.	+	.	ID=329
+Chromosome	GeneMark.hmm	CDS	190766	191143	43.98	+	0	Parent=329; start_score=3.88
+Chromosome	GeneMark.hmm	gene	191143	191778	.	+	.	ID=330
+Chromosome	GeneMark.hmm	CDS	191143	191778	73.96	+	0	Parent=330; start_score=2.72
+Chromosome	GeneMark.hmm	gene	191782	192102	.	+	.	ID=331
+Chromosome	GeneMark.hmm	CDS	191782	192102	33.07	+	0	Parent=331; start_score=1.12
+Chromosome	GeneMark.hmm	gene	192102	192959	.	+	.	ID=332
+Chromosome	GeneMark.hmm	CDS	192102	192959	107.70	+	0	Parent=332; start_score=-0.30
+Chromosome	GeneMark.hmm	gene	192959	193222	.	+	.	ID=333
+Chromosome	GeneMark.hmm	CDS	192959	193222	17.61	+	0	Parent=333; start_score=2.55
+Chromosome	GeneMark.hmm	gene	193225	193659	.	+	.	ID=334
+Chromosome	GeneMark.hmm	CDS	193225	193659	45.66	+	0	Parent=334; start_score=1.21
+Chromosome	GeneMark.hmm	gene	193818	194468	.	+	.	ID=335
+Chromosome	GeneMark.hmm	CDS	193818	194468	91.39	+	0	Parent=335; start_score=0.99
+Chromosome	GeneMark.hmm	gene	194474	194668	.	+	.	ID=336
+Chromosome	GeneMark.hmm	CDS	194474	194668	24.93	+	0	Parent=336; start_score=2.08
+Chromosome	GeneMark.hmm	gene	194687	194860	.	+	.	ID=337
+Chromosome	GeneMark.hmm	CDS	194687	194860	12.67	+	0	Parent=337; start_score=-0.37
+Chromosome	GeneMark.hmm	gene	194853	195461	.	-	.	ID=338
+Chromosome	GeneMark.hmm	CDS	194853	195461	12.44	-	0	Parent=338; start_score=1.26
+Chromosome	GeneMark.hmm	gene	195492	195716	.	+	.	ID=339
+Chromosome	GeneMark.hmm	CDS	195492	195716	20.97	+	0	Parent=339; start_score=2.13
+Chromosome	GeneMark.hmm	gene	195753	196121	.	+	.	ID=340
+Chromosome	GeneMark.hmm	CDS	195753	196121	37.52	+	0	Parent=340; start_score=-0.27
+Chromosome	GeneMark.hmm	gene	196121	196447	.	+	.	ID=341
+Chromosome	GeneMark.hmm	CDS	196121	196447	33.98	+	0	Parent=341; start_score=1.46
+Chromosome	GeneMark.hmm	gene	196453	196743	.	+	.	ID=342
+Chromosome	GeneMark.hmm	CDS	196453	196743	25.71	+	0	Parent=342; start_score=-0.74
+Chromosome	GeneMark.hmm	gene	196998	197180	.	+	.	ID=343
+Chromosome	GeneMark.hmm	CDS	196998	197180	18.19	+	0	Parent=343; start_score=2.45
+Chromosome	GeneMark.hmm	gene	197177	197602	.	+	.	ID=344
+Chromosome	GeneMark.hmm	CDS	197177	197602	42.01	+	0	Parent=344; start_score=-0.70
+Chromosome	GeneMark.hmm	gene	197609	198070	.	+	.	ID=345
+Chromosome	GeneMark.hmm	CDS	197609	198070	47.70	+	0	Parent=345; start_score=-1.10
+Chromosome	GeneMark.hmm	gene	198165	198512	.	+	.	ID=346
+Chromosome	GeneMark.hmm	CDS	198165	198512	35.95	+	0	Parent=346; start_score=3.70
+Chromosome	GeneMark.hmm	gene	198517	199152	.	+	.	ID=347
+Chromosome	GeneMark.hmm	CDS	198517	199152	76.65	+	0	Parent=347; start_score=-1.01
+Chromosome	GeneMark.hmm	gene	199158	199610	.	+	.	ID=348
+Chromosome	GeneMark.hmm	CDS	199158	199610	34.89	+	0	Parent=348; start_score=1.69
+Chromosome	GeneMark.hmm	gene	199610	201037	.	+	.	ID=349
+Chromosome	GeneMark.hmm	CDS	199610	201037	159.15	+	0	Parent=349; start_score=-0.50
+Chromosome	GeneMark.hmm	gene	201031	201675	.	+	.	ID=350
+Chromosome	GeneMark.hmm	CDS	201031	201675	61.41	+	0	Parent=350; start_score=1.60
+Chromosome	GeneMark.hmm	gene	201678	202424	.	+	.	ID=351
+Chromosome	GeneMark.hmm	CDS	201678	202424	70.28	+	0	Parent=351; start_score=-0.23
+Chromosome	GeneMark.hmm	gene	202424	202636	.	+	.	ID=352
+Chromosome	GeneMark.hmm	CDS	202424	202636	21.45	+	0	Parent=352; start_score=3.46
+Chromosome	GeneMark.hmm	gene	202760	203017	.	+	.	ID=353
+Chromosome	GeneMark.hmm	CDS	202760	203017	26.54	+	0	Parent=353; start_score=3.01
+Chromosome	GeneMark.hmm	gene	203134	203244	.	+	.	ID=354
+Chromosome	GeneMark.hmm	CDS	203134	203244	4.94	+	0	Parent=354; start_score=2.43
+Chromosome	GeneMark.hmm	gene	203320	203499	.	+	.	ID=355
+Chromosome	GeneMark.hmm	CDS	203320	203499	18.24	+	0	Parent=355; start_score=3.95
+Chromosome	GeneMark.hmm	gene	203515	203844	.	+	.	ID=356
+Chromosome	GeneMark.hmm	CDS	203515	203844	43.56	+	0	Parent=356; start_score=1.19
+Chromosome	GeneMark.hmm	gene	203920	204501	.	+	.	ID=357
+Chromosome	GeneMark.hmm	CDS	203920	204501	53.72	+	0	Parent=357; start_score=0.90
+Chromosome	GeneMark.hmm	gene	204559	204885	.	+	.	ID=358
+Chromosome	GeneMark.hmm	CDS	204559	204885	28.80	+	0	Parent=358; start_score=1.46
+Chromosome	GeneMark.hmm	gene	204872	205684	.	+	.	ID=359
+Chromosome	GeneMark.hmm	CDS	204872	205684	92.69	+	0	Parent=359; start_score=-0.75
+Chromosome	GeneMark.hmm	gene	205681	206595	.	+	.	ID=360
+Chromosome	GeneMark.hmm	CDS	205681	206595	90.75	+	0	Parent=360; start_score=1.32
+Chromosome	GeneMark.hmm	gene	206588	206923	.	+	.	ID=361
+Chromosome	GeneMark.hmm	CDS	206588	206923	21.20	+	0	Parent=361; start_score=0.88
+Chromosome	GeneMark.hmm	gene	206933	207394	.	+	.	ID=362
+Chromosome	GeneMark.hmm	CDS	206933	207394	40.12	+	0	Parent=362; start_score=1.36
+Chromosome	GeneMark.hmm	gene	207434	207850	.	+	.	ID=363
+Chromosome	GeneMark.hmm	CDS	207434	207850	37.41	+	0	Parent=363; start_score=2.49
+Chromosome	GeneMark.hmm	gene	207933	208577	.	+	.	ID=364
+Chromosome	GeneMark.hmm	CDS	207933	208577	47.43	+	0	Parent=364; start_score=3.02
+Chromosome	GeneMark.hmm	gene	208567	209211	.	+	.	ID=365
+Chromosome	GeneMark.hmm	CDS	208567	209211	63.47	+	0	Parent=365; start_score=2.57
+Chromosome	GeneMark.hmm	gene	209239	209598	.	+	.	ID=366
+Chromosome	GeneMark.hmm	CDS	209239	209598	32.58	+	0	Parent=366; start_score=-0.24
+Chromosome	GeneMark.hmm	gene	209674	210318	.	+	.	ID=367
+Chromosome	GeneMark.hmm	CDS	209674	210318	59.31	+	0	Parent=367; start_score=1.41
+Chromosome	GeneMark.hmm	gene	210391	211140	.	+	.	ID=368
+Chromosome	GeneMark.hmm	CDS	210391	211140	58.11	+	0	Parent=368; start_score=-1.10
+Chromosome	GeneMark.hmm	gene	211150	211344	.	+	.	ID=369
+Chromosome	GeneMark.hmm	CDS	211150	211344	13.66	+	0	Parent=369; start_score=2.49
+Chromosome	GeneMark.hmm	gene	211480	212070	.	+	.	ID=370
+Chromosome	GeneMark.hmm	CDS	211480	212070	59.88	+	0	Parent=370; start_score=1.76
+Chromosome	GeneMark.hmm	gene	212095	212259	.	+	.	ID=371
+Chromosome	GeneMark.hmm	CDS	212095	212259	15.70	+	0	Parent=371; start_score=1.51
+Chromosome	GeneMark.hmm	gene	212365	213549	.	+	.	ID=372
+Chromosome	GeneMark.hmm	CDS	212365	213549	121.94	+	0	Parent=372; start_score=3.00
+Chromosome	GeneMark.hmm	gene	213585	213935	.	+	.	ID=373
+Chromosome	GeneMark.hmm	CDS	213585	213935	63.98	+	0	Parent=373; start_score=8.93
+Chromosome	GeneMark.hmm	gene	214200	214571	.	+	.	ID=374
+Chromosome	GeneMark.hmm	CDS	214200	214571	55.38	+	0	Parent=374; start_score=10.59
+Chromosome	GeneMark.hmm	gene	214831	214968	.	+	.	ID=375
+Chromosome	GeneMark.hmm	CDS	214831	214968	17.36	+	0	Parent=375; start_score=4.48
+Chromosome	GeneMark.hmm	gene	214975	215142	.	+	.	ID=376
+Chromosome	GeneMark.hmm	CDS	214975	215142	22.25	+	0	Parent=376; start_score=9.25
+Chromosome	GeneMark.hmm	gene	215240	215422	.	+	.	ID=377
+Chromosome	GeneMark.hmm	CDS	215240	215422	27.51	+	0	Parent=377; start_score=7.40
+Chromosome	GeneMark.hmm	gene	215444	215881	.	+	.	ID=378
+Chromosome	GeneMark.hmm	CDS	215444	215881	44.08	+	0	Parent=378; start_score=5.19
+Chromosome	GeneMark.hmm	gene	216016	216174	.	+	.	ID=379
+Chromosome	GeneMark.hmm	CDS	216016	216174	6.99	+	0	Parent=379; start_score=-0.84
+Chromosome	GeneMark.hmm	gene	216190	216366	.	+	.	ID=380
+Chromosome	GeneMark.hmm	CDS	216190	216366	18.70	+	0	Parent=380; start_score=0.82
+Chromosome	GeneMark.hmm	gene	216406	216678	.	+	.	ID=381
+Chromosome	GeneMark.hmm	CDS	216406	216678	27.23	+	0	Parent=381; start_score=0.80
+Chromosome	GeneMark.hmm	gene	216761	217090	.	+	.	ID=382
+Chromosome	GeneMark.hmm	CDS	216761	217090	47.62	+	0	Parent=382; start_score=5.37
+Chromosome	GeneMark.hmm	gene	217103	217396	.	+	.	ID=383
+Chromosome	GeneMark.hmm	CDS	217103	217396	27.03	+	0	Parent=383; start_score=2.32
+Chromosome	GeneMark.hmm	gene	217517	218221	.	+	.	ID=384
+Chromosome	GeneMark.hmm	CDS	217517	218221	83.33	+	0	Parent=384; start_score=0.70
+Chromosome	GeneMark.hmm	gene	218300	218518	.	+	.	ID=385
+Chromosome	GeneMark.hmm	CDS	218300	218518	24.88	+	0	Parent=385; start_score=4.21
+Chromosome	GeneMark.hmm	gene	218614	218895	.	+	.	ID=386
+Chromosome	GeneMark.hmm	CDS	218614	218895	19.81	+	0	Parent=386; start_score=2.83
+Chromosome	GeneMark.hmm	gene	218932	219465	.	+	.	ID=387
+Chromosome	GeneMark.hmm	CDS	218932	219465	52.77	+	0	Parent=387; start_score=2.91
+Chromosome	GeneMark.hmm	gene	219608	219712	.	+	.	ID=388
+Chromosome	GeneMark.hmm	CDS	219608	219712	4.81	+	0	Parent=388; start_score=0.31
+Chromosome	GeneMark.hmm	gene	220010	220165	.	+	.	ID=389
+Chromosome	GeneMark.hmm	CDS	220010	220165	3.55	+	0	Parent=389; start_score=-1.37
+Chromosome	GeneMark.hmm	gene	220223	220438	.	+	.	ID=390
+Chromosome	GeneMark.hmm	CDS	220223	220438	13.08	+	0	Parent=390; start_score=0.51
+Chromosome	GeneMark.hmm	gene	220440	220598	.	+	.	ID=391
+Chromosome	GeneMark.hmm	CDS	220440	220598	9.29	+	0	Parent=391; start_score=0.61
+Chromosome	GeneMark.hmm	gene	220607	221374	.	+	.	ID=392
+Chromosome	GeneMark.hmm	CDS	220607	221374	72.17	+	0	Parent=392; start_score=0.77
+Chromosome	GeneMark.hmm	gene	222011	222532	.	+	.	ID=393
+Chromosome	GeneMark.hmm	CDS	222011	222532	81.51	+	0	Parent=393; start_score=3.34
+Chromosome	GeneMark.hmm	gene	222539	222691	.	+	.	ID=394
+Chromosome	GeneMark.hmm	CDS	222539	222691	17.13	+	0	Parent=394; start_score=2.41
+Chromosome	GeneMark.hmm	gene	222746	223078	.	+	.	ID=395
+Chromosome	GeneMark.hmm	CDS	222746	223078	37.46	+	0	Parent=395; start_score=2.09
+Chromosome	GeneMark.hmm	gene	223088	223360	.	+	.	ID=396
+Chromosome	GeneMark.hmm	CDS	223088	223360	30.24	+	0	Parent=396; start_score=3.66
+Chromosome	GeneMark.hmm	gene	223406	223561	.	+	.	ID=397
+Chromosome	GeneMark.hmm	CDS	223406	223561	11.68	+	0	Parent=397; start_score=2.42
+Chromosome	GeneMark.hmm	gene	223646	223789	.	+	.	ID=398
+Chromosome	GeneMark.hmm	CDS	223646	223789	11.31	+	0	Parent=398; start_score=1.81
+Chromosome	GeneMark.hmm	gene	223855	223992	.	-	.	ID=399
+Chromosome	GeneMark.hmm	CDS	223855	223992	20.89	-	0	Parent=399; start_score=2.23
+Chromosome	GeneMark.hmm	gene	224117	224581	.	+	.	ID=400
+Chromosome	GeneMark.hmm	CDS	224117	224581	82.15	+	0	Parent=400; start_score=10.59
+Chromosome	GeneMark.hmm	gene	224903	225904	.	+	.	ID=401
+Chromosome	GeneMark.hmm	CDS	224903	225904	112.36	+	0	Parent=401; start_score=1.55
+Chromosome	GeneMark.hmm	gene	225915	226277	.	+	.	ID=402
+Chromosome	GeneMark.hmm	CDS	225915	226277	34.84	+	0	Parent=402; start_score=1.77
+Chromosome	GeneMark.hmm	gene	226284	226457	.	+	.	ID=403
+Chromosome	GeneMark.hmm	CDS	226284	226457	25.41	+	0	Parent=403; start_score=9.26
+Chromosome	GeneMark.hmm	gene	226555	226731	.	+	.	ID=404
+Chromosome	GeneMark.hmm	CDS	226555	226731	23.42	+	0	Parent=404; start_score=7.93
+Chromosome	GeneMark.hmm	gene	226746	226946	.	+	.	ID=405
+Chromosome	GeneMark.hmm	CDS	226746	226946	30.23	+	0	Parent=405; start_score=6.99
+Chromosome	GeneMark.hmm	gene	226983	227189	.	+	.	ID=406
+Chromosome	GeneMark.hmm	CDS	226983	227189	44.68	+	0	Parent=406; start_score=4.53
+Chromosome	GeneMark.hmm	gene	227235	227618	.	+	.	ID=407
+Chromosome	GeneMark.hmm	CDS	227235	227618	51.91	+	0	Parent=407; start_score=5.08
+Chromosome	GeneMark.hmm	gene	227823	229067	.	+	.	ID=408
+Chromosome	GeneMark.hmm	CDS	227823	229067	151.48	+	0	Parent=408; start_score=2.55
+Chromosome	GeneMark.hmm	gene	229168	229275	.	+	.	ID=409
+Chromosome	GeneMark.hmm	CDS	229168	229275	6.08	+	0	Parent=409; start_score=1.48
+Chromosome	GeneMark.hmm	gene	229461	229811	.	+	.	ID=410
+Chromosome	GeneMark.hmm	CDS	229461	229811	55.15	+	0	Parent=410; start_score=3.98
+Chromosome	GeneMark.hmm	gene	229825	229995	.	-	.	ID=411
+Chromosome	GeneMark.hmm	CDS	229825	229995	22.19	-	0	Parent=411; start_score=3.09
+Chromosome	GeneMark.hmm	gene	230114	230242	.	+	.	ID=412
+Chromosome	GeneMark.hmm	CDS	230114	230242	23.36	+	0	Parent=412; start_score=7.38
+Chromosome	GeneMark.hmm	gene	230252	230383	.	+	.	ID=413
+Chromosome	GeneMark.hmm	CDS	230252	230383	11.86	+	0	Parent=413; start_score=1.29
+Chromosome	GeneMark.hmm	gene	230633	230764	.	+	.	ID=414
+Chromosome	GeneMark.hmm	CDS	230633	230764	13.12	+	0	Parent=414; start_score=3.88
+Chromosome	GeneMark.hmm	gene	230771	230944	.	+	.	ID=415
+Chromosome	GeneMark.hmm	CDS	230771	230944	27.39	+	0	Parent=415; start_score=9.26
+Chromosome	GeneMark.hmm	gene	231042	231155	.	+	.	ID=416
+Chromosome	GeneMark.hmm	CDS	231042	231155	15.74	+	0	Parent=416; start_score=7.40
+Chromosome	GeneMark.hmm	gene	231258	231359	.	+	.	ID=417
+Chromosome	GeneMark.hmm	CDS	231258	231359	10.52	+	0	Parent=417; start_score=3.21
+Chromosome	GeneMark.hmm	gene	231545	231673	.	+	.	ID=418
+Chromosome	GeneMark.hmm	CDS	231545	231673	9.58	+	0	Parent=418; start_score=5.69
+Chromosome	GeneMark.hmm	gene	232282	232842	.	+	.	ID=419
+Chromosome	GeneMark.hmm	CDS	232282	232842	38.89	+	0	Parent=419; start_score=1.94
+Chromosome	GeneMark.hmm	gene	232882	233034	.	+	.	ID=420
+Chromosome	GeneMark.hmm	CDS	232882	233034	16.54	+	0	Parent=420; start_score=2.42
+Chromosome	GeneMark.hmm	gene	233038	233511	.	+	.	ID=421
+Chromosome	GeneMark.hmm	CDS	233038	233511	56.19	+	0	Parent=421; start_score=0.47
+Chromosome	GeneMark.hmm	gene	233536	233772	.	+	.	ID=422
+Chromosome	GeneMark.hmm	CDS	233536	233772	13.82	+	0	Parent=422; start_score=2.74
+Chromosome	GeneMark.hmm	gene	233800	234444	.	+	.	ID=423
+Chromosome	GeneMark.hmm	CDS	233800	234444	64.35	+	0	Parent=423; start_score=0.89
+Chromosome	GeneMark.hmm	gene	234466	234849	.	+	.	ID=424
+Chromosome	GeneMark.hmm	CDS	234466	234849	31.17	+	0	Parent=424; start_score=3.21
+Chromosome	GeneMark.hmm	gene	234883	235284	.	+	.	ID=425
+Chromosome	GeneMark.hmm	CDS	234883	235284	34.38	+	0	Parent=425; start_score=0.82
+Chromosome	GeneMark.hmm	gene	235309	235458	.	+	.	ID=426
+Chromosome	GeneMark.hmm	CDS	235309	235458	12.59	+	0	Parent=426; start_score=4.70
+Chromosome	GeneMark.hmm	gene	235517	236062	.	+	.	ID=427
+Chromosome	GeneMark.hmm	CDS	235517	236062	56.08	+	0	Parent=427; start_score=2.28
+Chromosome	GeneMark.hmm	gene	236065	236244	.	+	.	ID=428
+Chromosome	GeneMark.hmm	CDS	236065	236244	12.35	+	0	Parent=428; start_score=1.78
+Chromosome	GeneMark.hmm	gene	236247	236621	.	+	.	ID=429
+Chromosome	GeneMark.hmm	CDS	236247	236621	38.65	+	0	Parent=429; start_score=0.83
+Chromosome	GeneMark.hmm	gene	236593	237300	.	-	.	ID=430
+Chromosome	GeneMark.hmm	CDS	236593	237300	57.14	-	0	Parent=430; start_score=-0.61
+Chromosome	GeneMark.hmm	gene	237347	237913	.	+	.	ID=431
+Chromosome	GeneMark.hmm	CDS	237347	237913	75.44	+	0	Parent=431; start_score=1.33
+Chromosome	GeneMark.hmm	gene	237891	238193	.	+	.	ID=432
+Chromosome	GeneMark.hmm	CDS	237891	238193	11.24	+	0	Parent=432; start_score=5.57
+Chromosome	GeneMark.hmm	gene	238187	239152	.	+	.	ID=433
+Chromosome	GeneMark.hmm	CDS	238187	239152	120.87	+	0	Parent=433; start_score=-1.84
+Chromosome	GeneMark.hmm	gene	239164	239616	.	+	.	ID=434
+Chromosome	GeneMark.hmm	CDS	239164	239616	53.03	+	0	Parent=434; start_score=-0.10
+Chromosome	GeneMark.hmm	gene	239617	239817	.	+	.	ID=435
+Chromosome	GeneMark.hmm	CDS	239617	239817	14.80	+	0	Parent=435; start_score=2.68
+Chromosome	GeneMark.hmm	gene	239827	240195	.	+	.	ID=436
+Chromosome	GeneMark.hmm	CDS	239827	240195	35.70	+	0	Parent=436; start_score=1.29
+Chromosome	GeneMark.hmm	gene	240323	242068	.	+	.	ID=437
+Chromosome	GeneMark.hmm	CDS	240323	242068	205.32	+	0	Parent=437; start_score=-0.84
+Chromosome	GeneMark.hmm	gene	242078	242224	.	+	.	ID=438
+Chromosome	GeneMark.hmm	CDS	242078	242224	8.31	+	0	Parent=438; start_score=2.73
+Chromosome	GeneMark.hmm	gene	242224	242511	.	+	.	ID=439
+Chromosome	GeneMark.hmm	CDS	242224	242511	35.08	+	0	Parent=439; start_score=1.15
+Chromosome	GeneMark.hmm	gene	242557	244569	.	+	.	ID=440
+Chromosome	GeneMark.hmm	CDS	242557	244569	221.65	+	0	Parent=440; start_score=4.71
+Chromosome	GeneMark.hmm	gene	244566	244796	.	-	.	ID=441
+Chromosome	GeneMark.hmm	CDS	244566	244796	27.62	-	0	Parent=441; start_score=3.39
+Chromosome	GeneMark.hmm	gene	244803	245597	.	-	.	ID=442
+Chromosome	GeneMark.hmm	CDS	244803	245597	98.00	-	0	Parent=442; start_score=1.24
+Chromosome	GeneMark.hmm	gene	245966	247426	.	+	.	ID=443
+Chromosome	GeneMark.hmm	CDS	245966	247426	155.95	+	0	Parent=443; start_score=2.66
+Chromosome	GeneMark.hmm	gene	247407	247565	.	+	.	ID=444
+Chromosome	GeneMark.hmm	CDS	247407	247565	11.70	+	0	Parent=444; start_score=-0.05
+Chromosome	GeneMark.hmm	gene	247566	247910	.	+	.	ID=445
+Chromosome	GeneMark.hmm	CDS	247566	247910	27.85	+	0	Parent=445; start_score=3.01
+Chromosome	GeneMark.hmm	gene	247903	248421	.	-	.	ID=446
+Chromosome	GeneMark.hmm	CDS	247903	248421	48.18	-	0	Parent=446; start_score=3.34
+Chromosome	GeneMark.hmm	gene	248477	249403	.	-	.	ID=447
+Chromosome	GeneMark.hmm	CDS	248477	249403	81.95	-	0	Parent=447; start_score=0.69
+Chromosome	GeneMark.hmm	gene	249610	249948	.	-	.	ID=448
+Chromosome	GeneMark.hmm	CDS	249610	249948	18.40	-	0	Parent=448; start_score=1.35
+Chromosome	GeneMark.hmm	gene	250551	250796	.	+	.	ID=449
+Chromosome	GeneMark.hmm	CDS	250551	250796	27.36	+	0	Parent=449; start_score=0.99
+Chromosome	GeneMark.hmm	gene	250808	250996	.	+	.	ID=450
+Chromosome	GeneMark.hmm	CDS	250808	250996	17.55	+	0	Parent=450; start_score=4.12
+Chromosome	GeneMark.hmm	gene	250998	251396	.	+	.	ID=451
+Chromosome	GeneMark.hmm	CDS	250998	251396	46.62	+	0	Parent=451; start_score=2.42
+Chromosome	GeneMark.hmm	gene	251444	251560	.	+	.	ID=452
+Chromosome	GeneMark.hmm	CDS	251444	251560	3.68	+	0	Parent=452; start_score=0.01
+Chromosome	GeneMark.hmm	gene	252000	252587	.	+	.	ID=453
+Chromosome	GeneMark.hmm	CDS	252000	252587	57.04	+	0	Parent=453; start_score=-0.07
+Chromosome	GeneMark.hmm	gene	252580	252708	.	+	.	ID=454
+Chromosome	GeneMark.hmm	CDS	252580	252708	6.31	+	0	Parent=454; start_score=0.24
+Chromosome	GeneMark.hmm	gene	252754	252942	.	+	.	ID=455
+Chromosome	GeneMark.hmm	CDS	252754	252942	10.52	+	0	Parent=455; start_score=2.87
+Chromosome	GeneMark.hmm	gene	253111	253995	.	+	.	ID=456
+Chromosome	GeneMark.hmm	CDS	253111	253995	90.45	+	0	Parent=456; start_score=-0.07
+Chromosome	GeneMark.hmm	gene	253979	254602	.	+	.	ID=457
+Chromosome	GeneMark.hmm	CDS	253979	254602	69.94	+	0	Parent=457; start_score=2.11
+Chromosome	GeneMark.hmm	gene	254621	255040	.	+	.	ID=458
+Chromosome	GeneMark.hmm	CDS	254621	255040	47.34	+	0	Parent=458; start_score=2.57
+Chromosome	GeneMark.hmm	gene	255125	255592	.	+	.	ID=459
+Chromosome	GeneMark.hmm	CDS	255125	255592	48.85	+	0	Parent=459; start_score=3.81
+Chromosome	GeneMark.hmm	gene	255595	256458	.	+	.	ID=460
+Chromosome	GeneMark.hmm	CDS	255595	256458	96.18	+	0	Parent=460; start_score=0.53
+Chromosome	GeneMark.hmm	gene	256468	256761	.	+	.	ID=461
+Chromosome	GeneMark.hmm	CDS	256468	256761	29.81	+	0	Parent=461; start_score=2.03
+Chromosome	GeneMark.hmm	gene	258041	259159	.	+	.	ID=462
+Chromosome	GeneMark.hmm	CDS	258041	259159	112.54	+	0	Parent=462; start_score=0.85
+Chromosome	GeneMark.hmm	gene	259177	262329	.	+	.	ID=463
+Chromosome	GeneMark.hmm	CDS	259177	262329	396.84	+	0	Parent=463; start_score=2.22
+Chromosome	GeneMark.hmm	gene	262530	262637	.	-	.	ID=464
+Chromosome	GeneMark.hmm	CDS	262530	262637	2.82	-	0	Parent=464; start_score=1.10
+Chromosome	GeneMark.hmm	gene	263104	264045	.	+	.	ID=465
+Chromosome	GeneMark.hmm	CDS	263104	264045	110.56	+	0	Parent=465; start_score=1.52
+Chromosome	GeneMark.hmm	gene	264118	264594	.	+	.	ID=466
+Chromosome	GeneMark.hmm	CDS	264118	264594	47.30	+	0	Parent=466; start_score=1.94
+Chromosome	GeneMark.hmm	gene	264597	265292	.	+	.	ID=467
+Chromosome	GeneMark.hmm	CDS	264597	265292	79.82	+	0	Parent=467; start_score=-0.94
+Chromosome	GeneMark.hmm	gene	265326	265637	.	+	.	ID=468
+Chromosome	GeneMark.hmm	CDS	265326	265637	32.03	+	0	Parent=468; start_score=2.28
+Chromosome	GeneMark.hmm	gene	265612	266043	.	+	.	ID=469
+Chromosome	GeneMark.hmm	CDS	265612	266043	47.37	+	0	Parent=469; start_score=0.57
+Chromosome	GeneMark.hmm	gene	266075	266278	.	-	.	ID=470
+Chromosome	GeneMark.hmm	CDS	266075	266278	12.54	-	0	Parent=470; start_score=0.29
+Chromosome	GeneMark.hmm	gene	266657	267091	.	+	.	ID=471
+Chromosome	GeneMark.hmm	CDS	266657	267091	39.34	+	0	Parent=471; start_score=0.22
+Chromosome	GeneMark.hmm	gene	267081	268010	.	+	.	ID=472
+Chromosome	GeneMark.hmm	CDS	267081	268010	84.63	+	0	Parent=472; start_score=0.29
+Chromosome	GeneMark.hmm	gene	268012	269247	.	+	.	ID=473
+Chromosome	GeneMark.hmm	CDS	268012	269247	114.18	+	0	Parent=473; start_score=-0.99
+Chromosome	GeneMark.hmm	gene	269250	270140	.	+	.	ID=474
+Chromosome	GeneMark.hmm	CDS	269250	270140	100.00	+	0	Parent=474; start_score=1.93
+Chromosome	GeneMark.hmm	gene	270189	270359	.	+	.	ID=475
+Chromosome	GeneMark.hmm	CDS	270189	270359	5.81	+	0	Parent=475; start_score=2.81
+Chromosome	GeneMark.hmm	gene	270405	270692	.	+	.	ID=476
+Chromosome	GeneMark.hmm	CDS	270405	270692	25.73	+	0	Parent=476; start_score=-0.15
+Chromosome	GeneMark.hmm	gene	270909	271874	.	+	.	ID=477
+Chromosome	GeneMark.hmm	CDS	270909	271874	78.26	+	0	Parent=477; start_score=1.09
+Chromosome	GeneMark.hmm	gene	271840	273117	.	+	.	ID=478
+Chromosome	GeneMark.hmm	CDS	271840	273117	131.40	+	0	Parent=478; start_score=1.19
+Chromosome	GeneMark.hmm	gene	273298	273462	.	-	.	ID=479
+Chromosome	GeneMark.hmm	CDS	273298	273462	20.73	-	0	Parent=479; start_score=2.23
+Chromosome	GeneMark.hmm	gene	273580	273720	.	+	.	ID=480
+Chromosome	GeneMark.hmm	CDS	273580	273720	11.92	+	0	Parent=480; start_score=6.59
+Chromosome	GeneMark.hmm	gene	273790	273972	.	+	.	ID=481
+Chromosome	GeneMark.hmm	CDS	273790	273972	13.55	+	0	Parent=481; start_score=1.18
+Chromosome	GeneMark.hmm	gene	274273	274653	.	+	.	ID=482
+Chromosome	GeneMark.hmm	CDS	274273	274653	27.80	+	0	Parent=482; start_score=2.38
+Chromosome	GeneMark.hmm	gene	274674	274904	.	+	.	ID=483
+Chromosome	GeneMark.hmm	CDS	274674	274904	19.05	+	0	Parent=483; start_score=4.36
+Chromosome	GeneMark.hmm	gene	274944	275135	.	+	.	ID=484
+Chromosome	GeneMark.hmm	CDS	274944	275135	3.82	+	0	Parent=484; start_score=-1.16
+Chromosome	GeneMark.hmm	gene	275141	275272	.	+	.	ID=485
+Chromosome	GeneMark.hmm	CDS	275141	275272	5.65	+	0	Parent=485; start_score=2.69
+Chromosome	GeneMark.hmm	gene	275284	275430	.	-	.	ID=486
+Chromosome	GeneMark.hmm	CDS	275284	275430	9.79	-	0	Parent=486; start_score=3.63
+Chromosome	GeneMark.hmm	gene	275492	276163	.	+	.	ID=487
+Chromosome	GeneMark.hmm	CDS	275492	276163	81.11	+	0	Parent=487; start_score=0.87
+Chromosome	GeneMark.hmm	gene	276167	276628	.	+	.	ID=488
+Chromosome	GeneMark.hmm	CDS	276167	276628	39.75	+	0	Parent=488; start_score=0.71
+Chromosome	GeneMark.hmm	gene	276647	278275	.	+	.	ID=489
+Chromosome	GeneMark.hmm	CDS	276647	278275	183.89	+	0	Parent=489; start_score=-3.03
+Chromosome	GeneMark.hmm	gene	278354	278812	.	+	.	ID=490
+Chromosome	GeneMark.hmm	CDS	278354	278812	50.93	+	0	Parent=490; start_score=-0.35
+Chromosome	GeneMark.hmm	gene	278905	279207	.	+	.	ID=491
+Chromosome	GeneMark.hmm	CDS	278905	279207	35.03	+	0	Parent=491; start_score=-0.04
+Chromosome	GeneMark.hmm	gene	279200	279499	.	+	.	ID=492
+Chromosome	GeneMark.hmm	CDS	279200	279499	34.38	+	0	Parent=492; start_score=0.39
+Chromosome	GeneMark.hmm	gene	279480	279806	.	+	.	ID=493
+Chromosome	GeneMark.hmm	CDS	279480	279806	29.44	+	0	Parent=493; start_score=0.60
+Chromosome	GeneMark.hmm	gene	279799	280644	.	+	.	ID=494
+Chromosome	GeneMark.hmm	CDS	279799	280644	91.07	+	0	Parent=494; start_score=2.41
+Chromosome	GeneMark.hmm	gene	280664	281086	.	+	.	ID=495
+Chromosome	GeneMark.hmm	CDS	280664	281086	35.22	+	0	Parent=495; start_score=2.31
+Chromosome	GeneMark.hmm	gene	281079	281963	.	+	.	ID=496
+Chromosome	GeneMark.hmm	CDS	281079	281963	84.62	+	0	Parent=496; start_score=2.53
+Chromosome	GeneMark.hmm	gene	282104	283327	.	+	.	ID=497
+Chromosome	GeneMark.hmm	CDS	282104	283327	134.58	+	0	Parent=497; start_score=4.58
+Chromosome	GeneMark.hmm	gene	283396	284373	.	+	.	ID=498
+Chromosome	GeneMark.hmm	CDS	283396	284373	120.30	+	0	Parent=498; start_score=1.11
+Chromosome	GeneMark.hmm	gene	284518	285783	.	+	.	ID=499
+Chromosome	GeneMark.hmm	CDS	284518	285783	174.44	+	0	Parent=499; start_score=2.45
+Chromosome	GeneMark.hmm	gene	285780	285998	.	-	.	ID=500
+Chromosome	GeneMark.hmm	CDS	285780	285998	13.86	-	0	Parent=500; start_score=1.45
+Chromosome	GeneMark.hmm	gene	286062	286463	.	-	.	ID=501
+Chromosome	GeneMark.hmm	CDS	286062	286463	30.54	-	0	Parent=501; start_score=-0.49
+Chromosome	GeneMark.hmm	gene	286488	286832	.	-	.	ID=502
+Chromosome	GeneMark.hmm	CDS	286488	286832	25.78	-	0	Parent=502; start_score=-0.27
+Chromosome	GeneMark.hmm	gene	286885	287343	.	+	.	ID=503
+Chromosome	GeneMark.hmm	CDS	286885	287343	41.56	+	0	Parent=503; start_score=2.16
+Chromosome	GeneMark.hmm	gene	287749	288234	.	+	.	ID=504
+Chromosome	GeneMark.hmm	CDS	287749	288234	39.61	+	0	Parent=504; start_score=-0.81
+Chromosome	GeneMark.hmm	gene	288259	288747	.	+	.	ID=505
+Chromosome	GeneMark.hmm	CDS	288259	288747	38.07	+	0	Parent=505; start_score=3.24
+Chromosome	GeneMark.hmm	gene	288753	289433	.	+	.	ID=506
+Chromosome	GeneMark.hmm	CDS	288753	289433	54.03	+	0	Parent=506; start_score=1.53
+Chromosome	GeneMark.hmm	gene	289512	289730	.	+	.	ID=507
+Chromosome	GeneMark.hmm	CDS	289512	289730	13.95	+	0	Parent=507; start_score=3.10
+Chromosome	GeneMark.hmm	gene	289836	289952	.	+	.	ID=508
+Chromosome	GeneMark.hmm	CDS	289836	289952	7.75	+	0	Parent=508; start_score=3.04
+Chromosome	GeneMark.hmm	gene	290001	290165	.	+	.	ID=509
+Chromosome	GeneMark.hmm	CDS	290001	290165	11.24	+	0	Parent=509; start_score=-0.01
+Chromosome	GeneMark.hmm	gene	290313	290627	.	+	.	ID=510
+Chromosome	GeneMark.hmm	CDS	290313	290627	20.84	+	0	Parent=510; start_score=1.02
+Chromosome	GeneMark.hmm	gene	290732	290851	.	+	.	ID=511
+Chromosome	GeneMark.hmm	CDS	290732	290851	4.14	+	0	Parent=511; start_score=3.00
+Chromosome	GeneMark.hmm	gene	291005	291328	.	+	.	ID=512
+Chromosome	GeneMark.hmm	CDS	291005	291328	18.41	+	0	Parent=512; start_score=2.96
+Chromosome	GeneMark.hmm	gene	291334	292098	.	+	.	ID=513
+Chromosome	GeneMark.hmm	CDS	291334	292098	65.05	+	0	Parent=513; start_score=1.21
+Chromosome	GeneMark.hmm	gene	292237	292596	.	+	.	ID=514
+Chromosome	GeneMark.hmm	CDS	292237	292596	27.32	+	0	Parent=514; start_score=1.57
+Chromosome	GeneMark.hmm	gene	292888	293445	.	+	.	ID=515
+Chromosome	GeneMark.hmm	CDS	292888	293445	46.23	+	0	Parent=515; start_score=4.79
+Chromosome	GeneMark.hmm	gene	293448	293945	.	+	.	ID=516
+Chromosome	GeneMark.hmm	CDS	293448	293945	41.43	+	0	Parent=516; start_score=0.92
+Chromosome	GeneMark.hmm	gene	293938	294093	.	+	.	ID=517
+Chromosome	GeneMark.hmm	CDS	293938	294093	12.16	+	0	Parent=517; start_score=-0.05
+Chromosome	GeneMark.hmm	gene	294139	294783	.	+	.	ID=518
+Chromosome	GeneMark.hmm	CDS	294139	294783	56.96	+	0	Parent=518; start_score=0.03
+Chromosome	GeneMark.hmm	gene	294966	295151	.	+	.	ID=519
+Chromosome	GeneMark.hmm	CDS	294966	295151	12.93	+	0	Parent=519; start_score=0.72
+Chromosome	GeneMark.hmm	gene	295250	295459	.	-	.	ID=520
+Chromosome	GeneMark.hmm	CDS	295250	295459	9.37	-	0	Parent=520; start_score=3.36
+Chromosome	GeneMark.hmm	gene	295473	296129	.	-	.	ID=521
+Chromosome	GeneMark.hmm	CDS	295473	296129	47.84	-	0	Parent=521; start_score=1.80
+Chromosome	GeneMark.hmm	gene	296113	296628	.	-	.	ID=522
+Chromosome	GeneMark.hmm	CDS	296113	296628	59.06	-	0	Parent=522; start_score=-2.92
+Chromosome	GeneMark.hmm	gene	296731	297135	.	-	.	ID=523
+Chromosome	GeneMark.hmm	CDS	296731	297135	48.26	-	0	Parent=523; start_score=3.89
+Chromosome	GeneMark.hmm	gene	297241	297606	.	-	.	ID=524
+Chromosome	GeneMark.hmm	CDS	297241	297606	41.29	-	0	Parent=524; start_score=4.56
+Chromosome	GeneMark.hmm	gene	297651	297785	.	-	.	ID=525
+Chromosome	GeneMark.hmm	CDS	297651	297785	3.04	-	0	Parent=525; start_score=2.39
+Chromosome	GeneMark.hmm	gene	297843	297968	.	-	.	ID=526
+Chromosome	GeneMark.hmm	CDS	297843	297968	6.53	-	0	Parent=526; start_score=-0.01
+Chromosome	GeneMark.hmm	gene	298011	298211	.	-	.	ID=527
+Chromosome	GeneMark.hmm	CDS	298011	298211	16.05	-	0	Parent=527; start_score=0.14
+Chromosome	GeneMark.hmm	gene	298434	299063	.	-	.	ID=528
+Chromosome	GeneMark.hmm	CDS	298434	299063	55.26	-	0	Parent=528; start_score=1.32
+Chromosome	GeneMark.hmm	gene	299232	299474	.	-	.	ID=529
+Chromosome	GeneMark.hmm	CDS	299232	299474	14.50	-	0	Parent=529; start_score=-0.43
+Chromosome	GeneMark.hmm	gene	299485	299658	.	-	.	ID=530
+Chromosome	GeneMark.hmm	CDS	299485	299658	12.23	-	0	Parent=530; start_score=-1.23
+Chromosome	GeneMark.hmm	gene	299662	299970	.	-	.	ID=531
+Chromosome	GeneMark.hmm	CDS	299662	299970	24.39	-	0	Parent=531; start_score=0.62
+Chromosome	GeneMark.hmm	gene	299974	300411	.	-	.	ID=532
+Chromosome	GeneMark.hmm	CDS	299974	300411	42.28	-	0	Parent=532; start_score=-1.78
+Chromosome	GeneMark.hmm	gene	300577	300804	.	-	.	ID=533
+Chromosome	GeneMark.hmm	CDS	300577	300804	18.62	-	0	Parent=533; start_score=1.40
+Chromosome	GeneMark.hmm	gene	300833	300943	.	-	.	ID=534
+Chromosome	GeneMark.hmm	CDS	300833	300943	4.16	-	0	Parent=534; start_score=2.19
+Chromosome	GeneMark.hmm	gene	301043	301348	.	-	.	ID=535
+Chromosome	GeneMark.hmm	CDS	301043	301348	23.46	-	0	Parent=535; start_score=0.84
+Chromosome	GeneMark.hmm	gene	301385	301552	.	-	.	ID=536
+Chromosome	GeneMark.hmm	CDS	301385	301552	7.79	-	0	Parent=536; start_score=1.84
+Chromosome	GeneMark.hmm	gene	301894	302154	.	-	.	ID=537
+Chromosome	GeneMark.hmm	CDS	301894	302154	23.19	-	0	Parent=537; start_score=5.10
+Chromosome	GeneMark.hmm	gene	302326	302841	.	-	.	ID=538
+Chromosome	GeneMark.hmm	CDS	302326	302841	41.20	-	0	Parent=538; start_score=1.49
+Chromosome	GeneMark.hmm	gene	302852	304048	.	-	.	ID=539
+Chromosome	GeneMark.hmm	CDS	302852	304048	97.17	-	0	Parent=539; start_score=-0.29
+Chromosome	GeneMark.hmm	gene	304109	304864	.	-	.	ID=540
+Chromosome	GeneMark.hmm	CDS	304109	304864	66.17	-	0	Parent=540; start_score=-0.59
+Chromosome	GeneMark.hmm	gene	305001	305294	.	+	.	ID=541
+Chromosome	GeneMark.hmm	CDS	305001	305294	18.51	+	0	Parent=541; start_score=1.09
+Chromosome	GeneMark.hmm	gene	305463	306098	.	+	.	ID=542
+Chromosome	GeneMark.hmm	CDS	305463	306098	37.94	+	0	Parent=542; start_score=3.32
+Chromosome	GeneMark.hmm	gene	306295	306654	.	+	.	ID=543
+Chromosome	GeneMark.hmm	CDS	306295	306654	20.99	+	0	Parent=543; start_score=0.69
+Chromosome	GeneMark.hmm	gene	306821	307000	.	+	.	ID=544
+Chromosome	GeneMark.hmm	CDS	306821	307000	11.27	+	0	Parent=544; start_score=1.31
+Chromosome	GeneMark.hmm	gene	307202	307342	.	+	.	ID=545
+Chromosome	GeneMark.hmm	CDS	307202	307342	4.77	+	0	Parent=545; start_score=0.06
+Chromosome	GeneMark.hmm	gene	307622	307930	.	+	.	ID=546
+Chromosome	GeneMark.hmm	CDS	307622	307930	17.00	+	0	Parent=546; start_score=0.16
+Chromosome	GeneMark.hmm	gene	307930	308370	.	+	.	ID=547
+Chromosome	GeneMark.hmm	CDS	307930	308370	43.23	+	0	Parent=547; start_score=3.89
+Chromosome	GeneMark.hmm	gene	308404	309009	.	+	.	ID=548
+Chromosome	GeneMark.hmm	CDS	308404	309009	71.76	+	0	Parent=548; start_score=0.76
+Chromosome	GeneMark.hmm	gene	309229	309492	.	+	.	ID=549
+Chromosome	GeneMark.hmm	CDS	309229	309492	26.94	+	0	Parent=549; start_score=1.33
+Chromosome	GeneMark.hmm	gene	309661	310050	.	+	.	ID=550
+Chromosome	GeneMark.hmm	CDS	309661	310050	23.73	+	0	Parent=550; start_score=0.91
+Chromosome	GeneMark.hmm	gene	310105	310218	.	+	.	ID=551
+Chromosome	GeneMark.hmm	CDS	310105	310218	0.97	+	0	Parent=551; start_score=-0.61
+Chromosome	GeneMark.hmm	gene	310511	311146	.	+	.	ID=552
+Chromosome	GeneMark.hmm	CDS	310511	311146	66.18	+	0	Parent=552; start_score=2.14
+Chromosome	GeneMark.hmm	gene	311663	312808	.	+	.	ID=553
+Chromosome	GeneMark.hmm	CDS	311663	312808	103.54	+	0	Parent=553; start_score=3.68
+Chromosome	GeneMark.hmm	gene	312846	313193	.	+	.	ID=554
+Chromosome	GeneMark.hmm	CDS	312846	313193	59.10	+	0	Parent=554; start_score=8.98
+Chromosome	GeneMark.hmm	gene	313496	313768	.	+	.	ID=555
+Chromosome	GeneMark.hmm	CDS	313496	313768	41.38	+	0	Parent=555; start_score=10.49
+Chromosome	GeneMark.hmm	gene	314207	314347	.	+	.	ID=556
+Chromosome	GeneMark.hmm	CDS	314207	314347	17.79	+	0	Parent=556; start_score=4.48
+Chromosome	GeneMark.hmm	gene	314354	314527	.	+	.	ID=557
+Chromosome	GeneMark.hmm	CDS	314354	314527	33.50	+	0	Parent=557; start_score=9.62
+Chromosome	GeneMark.hmm	gene	314625	314738	.	+	.	ID=558
+Chromosome	GeneMark.hmm	CDS	314625	314738	17.98	+	0	Parent=558; start_score=7.40
+Chromosome	GeneMark.hmm	gene	314714	315232	.	+	.	ID=559
+Chromosome	GeneMark.hmm	CDS	314714	315232	63.65	+	0	Parent=559; start_score=6.16
+Chromosome	GeneMark.hmm	gene	315467	315697	.	+	.	ID=560
+Chromosome	GeneMark.hmm	CDS	315467	315697	18.86	+	0	Parent=560; start_score=0.01
+Chromosome	GeneMark.hmm	gene	315701	316063	.	+	.	ID=561
+Chromosome	GeneMark.hmm	CDS	315701	316063	29.28	+	0	Parent=561; start_score=3.95
+Chromosome	GeneMark.hmm	gene	316196	317308	.	+	.	ID=562
+Chromosome	GeneMark.hmm	CDS	316196	317308	101.09	+	0	Parent=562; start_score=2.12
+Chromosome	GeneMark.hmm	gene	317381	317824	.	+	.	ID=563
+Chromosome	GeneMark.hmm	CDS	317381	317824	39.55	+	0	Parent=563; start_score=0.24
+Chromosome	GeneMark.hmm	gene	318065	318238	.	+	.	ID=564
+Chromosome	GeneMark.hmm	CDS	318065	318238	10.62	+	0	Parent=564; start_score=-0.33
+Chromosome	GeneMark.hmm	gene	318461	319207	.	+	.	ID=565
+Chromosome	GeneMark.hmm	CDS	318461	319207	71.78	+	0	Parent=565; start_score=1.33
+Chromosome	GeneMark.hmm	gene	319207	320061	.	+	.	ID=566
+Chromosome	GeneMark.hmm	CDS	319207	320061	59.71	+	0	Parent=566; start_score=0.79
+Chromosome	GeneMark.hmm	gene	320408	320554	.	+	.	ID=567
+Chromosome	GeneMark.hmm	CDS	320408	320554	14.27	+	0	Parent=567; start_score=2.95
+Chromosome	GeneMark.hmm	gene	320732	320929	.	+	.	ID=568
+Chromosome	GeneMark.hmm	CDS	320732	320929	21.70	+	0	Parent=568; start_score=3.13
+Chromosome	GeneMark.hmm	gene	321046	321324	.	+	.	ID=569
+Chromosome	GeneMark.hmm	CDS	321046	321324	21.21	+	0	Parent=569; start_score=-1.40
+Chromosome	GeneMark.hmm	gene	321578	322414	.	-	.	ID=570
+Chromosome	GeneMark.hmm	CDS	321578	322414	68.07	-	0	Parent=570; start_score=0.43
+Chromosome	GeneMark.hmm	gene	322433	322954	.	-	.	ID=571
+Chromosome	GeneMark.hmm	CDS	322433	322954	43.49	-	0	Parent=571; start_score=3.94
+Chromosome	GeneMark.hmm	gene	322988	323191	.	-	.	ID=572
+Chromosome	GeneMark.hmm	CDS	322988	323191	10.01	-	0	Parent=572; start_score=-0.29
+Chromosome	GeneMark.hmm	gene	323372	323860	.	-	.	ID=573
+Chromosome	GeneMark.hmm	CDS	323372	323860	57.47	-	0	Parent=573; start_score=2.49
+Chromosome	GeneMark.hmm	gene	324230	324322	.	-	.	ID=574
+Chromosome	GeneMark.hmm	CDS	324230	324322	8.69	-	0	Parent=574; start_score=5.16
+Chromosome	GeneMark.hmm	gene	324518	324703	.	-	.	ID=575
+Chromosome	GeneMark.hmm	CDS	324518	324703	16.94	-	0	Parent=575; start_score=2.16
+Chromosome	GeneMark.hmm	gene	325205	325405	.	-	.	ID=576
+Chromosome	GeneMark.hmm	CDS	325205	325405	10.94	-	0	Parent=576; start_score=1.29
+Chromosome	GeneMark.hmm	gene	325502	325879	.	-	.	ID=577
+Chromosome	GeneMark.hmm	CDS	325502	325879	31.70	-	0	Parent=577; start_score=-0.85
+Chromosome	GeneMark.hmm	gene	326030	327052	.	-	.	ID=578
+Chromosome	GeneMark.hmm	CDS	326030	327052	102.51	-	0	Parent=578; start_score=0.32
+Chromosome	GeneMark.hmm	gene	327045	327431	.	-	.	ID=579
+Chromosome	GeneMark.hmm	CDS	327045	327431	36.88	-	0	Parent=579; start_score=0.13
+Chromosome	GeneMark.hmm	gene	327721	327831	.	-	.	ID=580
+Chromosome	GeneMark.hmm	CDS	327721	327831	8.24	-	0	Parent=580; start_score=0.88
+Chromosome	GeneMark.hmm	gene	327856	328377	.	-	.	ID=581
+Chromosome	GeneMark.hmm	CDS	327856	328377	55.46	-	0	Parent=581; start_score=1.51
+Chromosome	GeneMark.hmm	gene	328454	329467	.	-	.	ID=582
+Chromosome	GeneMark.hmm	CDS	328454	329467	107.73	-	0	Parent=582; start_score=0.67
+Chromosome	GeneMark.hmm	gene	329591	329827	.	-	.	ID=583
+Chromosome	GeneMark.hmm	CDS	329591	329827	26.13	-	0	Parent=583; start_score=2.63
+Chromosome	GeneMark.hmm	gene	329831	330985	.	-	.	ID=584
+Chromosome	GeneMark.hmm	CDS	329831	330985	154.68	-	0	Parent=584; start_score=1.30
+Chromosome	GeneMark.hmm	gene	331235	331459	.	-	.	ID=585
+Chromosome	GeneMark.hmm	CDS	331235	331459	16.96	-	0	Parent=585; start_score=0.82
+Chromosome	GeneMark.hmm	gene	331484	332215	.	-	.	ID=586
+Chromosome	GeneMark.hmm	CDS	331484	332215	90.67	-	0	Parent=586; start_score=1.18
+Chromosome	GeneMark.hmm	gene	332233	332604	.	-	.	ID=587
+Chromosome	GeneMark.hmm	CDS	332233	332604	38.66	-	0	Parent=587; start_score=3.28
+Chromosome	GeneMark.hmm	gene	332758	332865	.	-	.	ID=588
+Chromosome	GeneMark.hmm	CDS	332758	332865	7.55	-	0	Parent=588; start_score=3.40
+Chromosome	GeneMark.hmm	gene	332971	333123	.	-	.	ID=589
+Chromosome	GeneMark.hmm	CDS	332971	333123	12.41	-	0	Parent=589; start_score=3.31
+Chromosome	GeneMark.hmm	gene	333139	333309	.	-	.	ID=590
+Chromosome	GeneMark.hmm	CDS	333139	333309	9.58	-	0	Parent=590; start_score=1.96
+Chromosome	GeneMark.hmm	gene	333337	334401	.	-	.	ID=591
+Chromosome	GeneMark.hmm	CDS	333337	334401	117.00	-	0	Parent=591; start_score=3.45
+Chromosome	GeneMark.hmm	gene	334429	334773	.	-	.	ID=592
+Chromosome	GeneMark.hmm	CDS	334429	334773	32.08	-	0	Parent=592; start_score=0.33
+Chromosome	GeneMark.hmm	gene	334856	335398	.	-	.	ID=593
+Chromosome	GeneMark.hmm	CDS	334856	335398	61.10	-	0	Parent=593; start_score=0.30
+Chromosome	GeneMark.hmm	gene	335526	336146	.	-	.	ID=594
+Chromosome	GeneMark.hmm	CDS	335526	336146	43.54	-	0	Parent=594; start_score=-0.19
+Chromosome	GeneMark.hmm	gene	336294	336389	.	-	.	ID=595
+Chromosome	GeneMark.hmm	CDS	336294	336389	3.95	-	0	Parent=595; start_score=5.14
+Chromosome	GeneMark.hmm	gene	336507	336941	.	-	.	ID=596
+Chromosome	GeneMark.hmm	CDS	336507	336941	30.05	-	0	Parent=596; start_score=1.51
+Chromosome	GeneMark.hmm	gene	337485	337940	.	-	.	ID=597
+Chromosome	GeneMark.hmm	CDS	337485	337940	35.59	-	0	Parent=597; start_score=3.21
+Chromosome	GeneMark.hmm	gene	337941	338249	.	-	.	ID=598
+Chromosome	GeneMark.hmm	CDS	337941	338249	32.12	-	0	Parent=598; start_score=0.35
+Chromosome	GeneMark.hmm	gene	338367	339755	.	+	.	ID=599
+Chromosome	GeneMark.hmm	CDS	338367	339755	141.34	+	0	Parent=599; start_score=3.77
+Chromosome	GeneMark.hmm	gene	339765	340022	.	+	.	ID=600
+Chromosome	GeneMark.hmm	CDS	339765	340022	22.39	+	0	Parent=600; start_score=2.09
+Chromosome	GeneMark.hmm	gene	340119	340262	.	+	.	ID=601
+Chromosome	GeneMark.hmm	CDS	340119	340262	7.71	+	0	Parent=601; start_score=1.59
+Chromosome	GeneMark.hmm	gene	340323	340517	.	+	.	ID=602
+Chromosome	GeneMark.hmm	CDS	340323	340517	17.29	+	0	Parent=602; start_score=3.48
+Chromosome	GeneMark.hmm	gene	340526	341182	.	-	.	ID=603
+Chromosome	GeneMark.hmm	CDS	340526	341182	55.62	-	0	Parent=603; start_score=-0.79
+Chromosome	GeneMark.hmm	gene	341175	341921	.	-	.	ID=604
+Chromosome	GeneMark.hmm	CDS	341175	341921	69.66	-	0	Parent=604; start_score=-0.52
+Chromosome	GeneMark.hmm	gene	342033	342863	.	-	.	ID=605
+Chromosome	GeneMark.hmm	CDS	342033	342863	94.71	-	0	Parent=605; start_score=0.60
+Chromosome	GeneMark.hmm	gene	343047	343703	.	-	.	ID=606
+Chromosome	GeneMark.hmm	CDS	343047	343703	68.80	-	0	Parent=606; start_score=-0.88
+Chromosome	GeneMark.hmm	gene	344365	344850	.	-	.	ID=607
+Chromosome	GeneMark.hmm	CDS	344365	344850	49.20	-	0	Parent=607; start_score=1.43
+Chromosome	GeneMark.hmm	gene	345031	345165	.	+	.	ID=608
+Chromosome	GeneMark.hmm	CDS	345031	345165	5.70	+	0	Parent=608; start_score=0.92
+Chromosome	GeneMark.hmm	gene	345182	345295	.	+	.	ID=609
+Chromosome	GeneMark.hmm	CDS	345182	345295	3.09	+	0	Parent=609; start_score=1.16
+Chromosome	GeneMark.hmm	gene	345305	345631	.	+	.	ID=610
+Chromosome	GeneMark.hmm	CDS	345305	345631	18.79	+	0	Parent=610; start_score=0.08
+Chromosome	GeneMark.hmm	gene	345812	346633	.	+	.	ID=611
+Chromosome	GeneMark.hmm	CDS	345812	346633	72.55	+	0	Parent=611; start_score=2.70
+Chromosome	GeneMark.hmm	gene	347040	347180	.	+	.	ID=612
+Chromosome	GeneMark.hmm	CDS	347040	347180	7.79	+	0	Parent=612; start_score=-0.86
+Chromosome	GeneMark.hmm	gene	347215	347448	.	+	.	ID=613
+Chromosome	GeneMark.hmm	CDS	347215	347448	13.41	+	0	Parent=613; start_score=1.81
+Chromosome	GeneMark.hmm	gene	347659	347796	.	+	.	ID=614
+Chromosome	GeneMark.hmm	CDS	347659	347796	6.68	+	0	Parent=614; start_score=0.05
+Chromosome	GeneMark.hmm	gene	347800	348009	.	+	.	ID=615
+Chromosome	GeneMark.hmm	CDS	347800	348009	16.09	+	0	Parent=615; start_score=-1.01
+Chromosome	GeneMark.hmm	gene	348100	348258	.	+	.	ID=616
+Chromosome	GeneMark.hmm	CDS	348100	348258	10.76	+	0	Parent=616; start_score=4.49
+Chromosome	GeneMark.hmm	gene	348303	348773	.	+	.	ID=617
+Chromosome	GeneMark.hmm	CDS	348303	348773	43.89	+	0	Parent=617; start_score=-0.68
+Chromosome	GeneMark.hmm	gene	348883	349137	.	+	.	ID=618
+Chromosome	GeneMark.hmm	CDS	348883	349137	21.22	+	0	Parent=618; start_score=3.07
+Chromosome	GeneMark.hmm	gene	349282	349620	.	+	.	ID=619
+Chromosome	GeneMark.hmm	CDS	349282	349620	65.04	+	0	Parent=619; start_score=7.19
+Chromosome	GeneMark.hmm	gene	349634	349804	.	-	.	ID=620
+Chromosome	GeneMark.hmm	CDS	349634	349804	22.57	-	0	Parent=620; start_score=2.03
+Chromosome	GeneMark.hmm	gene	349923	350327	.	+	.	ID=621
+Chromosome	GeneMark.hmm	CDS	349923	350327	59.39	+	0	Parent=621; start_score=7.95
+Chromosome	GeneMark.hmm	gene	350455	350598	.	+	.	ID=622
+Chromosome	GeneMark.hmm	CDS	350455	350598	22.97	+	0	Parent=622; start_score=5.13
+Chromosome	GeneMark.hmm	gene	350605	350778	.	+	.	ID=623
+Chromosome	GeneMark.hmm	CDS	350605	350778	24.70	+	0	Parent=623; start_score=7.64
+Chromosome	GeneMark.hmm	gene	350876	351055	.	+	.	ID=624
+Chromosome	GeneMark.hmm	CDS	350876	351055	28.07	+	0	Parent=624; start_score=7.09
+Chromosome	GeneMark.hmm	gene	351070	351270	.	+	.	ID=625
+Chromosome	GeneMark.hmm	CDS	351070	351270	29.14	+	0	Parent=625; start_score=7.18
+Chromosome	GeneMark.hmm	gene	351307	351507	.	+	.	ID=626
+Chromosome	GeneMark.hmm	CDS	351307	351507	40.57	+	0	Parent=626; start_score=4.53
+Chromosome	GeneMark.hmm	gene	351553	351825	.	+	.	ID=627
+Chromosome	GeneMark.hmm	CDS	351553	351825	37.09	+	0	Parent=627; start_score=6.13
+Chromosome	GeneMark.hmm	gene	351791	352054	.	-	.	ID=628
+Chromosome	GeneMark.hmm	CDS	351791	352054	13.69	-	0	Parent=628; start_score=2.90
+Chromosome	GeneMark.hmm	gene	352710	352859	.	+	.	ID=629
+Chromosome	GeneMark.hmm	CDS	352710	352859	1.75	+	0	Parent=629; start_score=0.79
+Chromosome	GeneMark.hmm	gene	352892	353035	.	-	.	ID=630
+Chromosome	GeneMark.hmm	CDS	352892	353035	9.06	-	0	Parent=630; start_score=0.38
+Chromosome	GeneMark.hmm	gene	353299	353682	.	-	.	ID=631
+Chromosome	GeneMark.hmm	CDS	353299	353682	17.60	-	0	Parent=631; start_score=-0.75
+Chromosome	GeneMark.hmm	gene	354060	354476	.	+	.	ID=632
+Chromosome	GeneMark.hmm	CDS	354060	354476	19.94	+	0	Parent=632; start_score=1.73
+Chromosome	GeneMark.hmm	gene	354636	354848	.	+	.	ID=633
+Chromosome	GeneMark.hmm	CDS	354636	354848	14.48	+	0	Parent=633; start_score=2.39
+Chromosome	GeneMark.hmm	gene	354939	355130	.	+	.	ID=634
+Chromosome	GeneMark.hmm	CDS	354939	355130	6.99	+	0	Parent=634; start_score=0.97
+Chromosome	GeneMark.hmm	gene	355207	355452	.	+	.	ID=635
+Chromosome	GeneMark.hmm	CDS	355207	355452	12.61	+	0	Parent=635; start_score=4.76
+Chromosome	GeneMark.hmm	gene	355675	355857	.	+	.	ID=636
+Chromosome	GeneMark.hmm	CDS	355675	355857	4.14	+	0	Parent=636; start_score=1.67
+Chromosome	GeneMark.hmm	gene	356543	356701	.	+	.	ID=637
+Chromosome	GeneMark.hmm	CDS	356543	356701	2.72	+	0	Parent=637; start_score=-0.58
+Chromosome	GeneMark.hmm	gene	356762	357214	.	+	.	ID=638
+Chromosome	GeneMark.hmm	CDS	356762	357214	21.43	+	0	Parent=638; start_score=2.96
+Chromosome	GeneMark.hmm	gene	357221	357478	.	+	.	ID=639
+Chromosome	GeneMark.hmm	CDS	357221	357478	6.94	+	0	Parent=639; start_score=0.83
+Chromosome	GeneMark.hmm	gene	357475	357891	.	-	.	ID=640
+Chromosome	GeneMark.hmm	CDS	357475	357891	28.23	-	0	Parent=640; start_score=0.55
+Chromosome	GeneMark.hmm	gene	357891	358394	.	-	.	ID=641
+Chromosome	GeneMark.hmm	CDS	357891	358394	33.65	-	0	Parent=641; start_score=0.84
+Chromosome	GeneMark.hmm	gene	358497	358784	.	-	.	ID=642
+Chromosome	GeneMark.hmm	CDS	358497	358784	23.59	-	0	Parent=642; start_score=1.63
+Chromosome	GeneMark.hmm	gene	358914	359312	.	-	.	ID=643
+Chromosome	GeneMark.hmm	CDS	358914	359312	33.04	-	0	Parent=643; start_score=2.70
+Chromosome	GeneMark.hmm	gene	359331	359765	.	-	.	ID=644
+Chromosome	GeneMark.hmm	CDS	359331	359765	38.38	-	0	Parent=644; start_score=-0.31
+Chromosome	GeneMark.hmm	gene	360183	360329	.	-	.	ID=645
+Chromosome	GeneMark.hmm	CDS	360183	360329	10.45	-	0	Parent=645; start_score=0.92
+Chromosome	GeneMark.hmm	gene	360810	361385	.	-	.	ID=646
+Chromosome	GeneMark.hmm	CDS	360810	361385	43.86	-	0	Parent=646; start_score=0.69
+Chromosome	GeneMark.hmm	gene	361399	361581	.	-	.	ID=647
+Chromosome	GeneMark.hmm	CDS	361399	361581	12.85	-	0	Parent=647; start_score=3.88
+Chromosome	GeneMark.hmm	gene	361591	361974	.	-	.	ID=648
+Chromosome	GeneMark.hmm	CDS	361591	361974	32.39	-	0	Parent=648; start_score=2.06
+Chromosome	GeneMark.hmm	gene	362050	362268	.	-	.	ID=649
+Chromosome	GeneMark.hmm	CDS	362050	362268	8.62	-	0	Parent=649; start_score=-0.24
+Chromosome	GeneMark.hmm	gene	362494	362796	.	-	.	ID=650
+Chromosome	GeneMark.hmm	CDS	362494	362796	31.16	-	0	Parent=650; start_score=1.66
+Chromosome	GeneMark.hmm	gene	362920	363156	.	-	.	ID=651
+Chromosome	GeneMark.hmm	CDS	362920	363156	6.62	-	0	Parent=651; start_score=2.78
+Chromosome	GeneMark.hmm	gene	363427	363732	.	-	.	ID=652
+Chromosome	GeneMark.hmm	CDS	363427	363732	17.59	-	0	Parent=652; start_score=-0.55
+Chromosome	GeneMark.hmm	gene	363751	364023	.	-	.	ID=653
+Chromosome	GeneMark.hmm	CDS	363751	364023	16.89	-	0	Parent=653; start_score=-0.99
+Chromosome	GeneMark.hmm	gene	364026	364415	.	-	.	ID=654
+Chromosome	GeneMark.hmm	CDS	364026	364415	24.16	-	0	Parent=654; start_score=0.97
+Chromosome	GeneMark.hmm	gene	364535	364888	.	-	.	ID=655
+Chromosome	GeneMark.hmm	CDS	364535	364888	36.75	-	0	Parent=655; start_score=-0.55
+Chromosome	GeneMark.hmm	gene	365018	365575	.	-	.	ID=656
+Chromosome	GeneMark.hmm	CDS	365018	365575	49.84	-	0	Parent=656; start_score=-1.04
+Chromosome	GeneMark.hmm	gene	365582	366418	.	-	.	ID=657
+Chromosome	GeneMark.hmm	CDS	365582	366418	103.51	-	0	Parent=657; start_score=4.92
+Chromosome	GeneMark.hmm	gene	366527	367852	.	-	.	ID=658
+Chromosome	GeneMark.hmm	CDS	366527	367852	152.29	-	0	Parent=658; start_score=1.99
+Chromosome	GeneMark.hmm	gene	368081	368530	.	-	.	ID=659
+Chromosome	GeneMark.hmm	CDS	368081	368530	46.18	-	0	Parent=659; start_score=-2.78
+Chromosome	GeneMark.hmm	gene	368937	369590	.	-	.	ID=660
+Chromosome	GeneMark.hmm	CDS	368937	369590	68.24	-	0	Parent=660; start_score=-0.25
+Chromosome	GeneMark.hmm	gene	369713	369823	.	-	.	ID=661
+Chromosome	GeneMark.hmm	CDS	369713	369823	11.38	-	0	Parent=661; start_score=3.42
+Chromosome	GeneMark.hmm	gene	369956	370963	.	-	.	ID=662
+Chromosome	GeneMark.hmm	CDS	369956	370963	94.69	-	0	Parent=662; start_score=0.54
+Chromosome	GeneMark.hmm	gene	370950	371963	.	-	.	ID=663
+Chromosome	GeneMark.hmm	CDS	370950	371963	110.21	-	0	Parent=663; start_score=1.48
+Chromosome	GeneMark.hmm	gene	372108	372440	.	-	.	ID=664
+Chromosome	GeneMark.hmm	CDS	372108	372440	16.31	-	0	Parent=664; start_score=-0.41
+Chromosome	GeneMark.hmm	gene	372618	372770	.	-	.	ID=665
+Chromosome	GeneMark.hmm	CDS	372618	372770	7.20	-	0	Parent=665; start_score=1.77
+Chromosome	GeneMark.hmm	gene	372926	373999	.	-	.	ID=666
+Chromosome	GeneMark.hmm	CDS	372926	373999	78.05	-	0	Parent=666; start_score=1.39
+Chromosome	GeneMark.hmm	gene	373981	374793	.	-	.	ID=667
+Chromosome	GeneMark.hmm	CDS	373981	374793	77.21	-	0	Parent=667; start_score=0.35
+Chromosome	GeneMark.hmm	gene	374979	376706	.	-	.	ID=668
+Chromosome	GeneMark.hmm	CDS	374979	376706	241.57	-	0	Parent=668; start_score=0.98
+Chromosome	GeneMark.hmm	gene	376944	377207	.	-	.	ID=669
+Chromosome	GeneMark.hmm	CDS	376944	377207	26.62	-	0	Parent=669; start_score=1.19
+Chromosome	GeneMark.hmm	gene	377334	377435	.	-	.	ID=670
+Chromosome	GeneMark.hmm	CDS	377334	377435	3.74	-	0	Parent=670; start_score=0.83
+Chromosome	GeneMark.hmm	gene	377703	377975	.	-	.	ID=671
+Chromosome	GeneMark.hmm	CDS	377703	377975	15.18	-	0	Parent=671; start_score=4.38
+Chromosome	GeneMark.hmm	gene	377975	379027	.	-	.	ID=672
+Chromosome	GeneMark.hmm	CDS	377975	379027	116.92	-	0	Parent=672; start_score=-0.37
+Chromosome	GeneMark.hmm	gene	379049	379756	.	-	.	ID=673
+Chromosome	GeneMark.hmm	CDS	379049	379756	66.09	-	0	Parent=673; start_score=3.36
+Chromosome	GeneMark.hmm	gene	379922	380353	.	-	.	ID=674
+Chromosome	GeneMark.hmm	CDS	379922	380353	33.94	-	0	Parent=674; start_score=0.15
+Chromosome	GeneMark.hmm	gene	380675	380899	.	-	.	ID=675
+Chromosome	GeneMark.hmm	CDS	380675	380899	24.14	-	0	Parent=675; start_score=5.14
+Chromosome	GeneMark.hmm	gene	381089	381508	.	-	.	ID=676
+Chromosome	GeneMark.hmm	CDS	381089	381508	32.25	-	0	Parent=676; start_score=2.77
+Chromosome	GeneMark.hmm	gene	381505	381672	.	-	.	ID=677
+Chromosome	GeneMark.hmm	CDS	381505	381672	12.18	-	0	Parent=677; start_score=4.03
+Chromosome	GeneMark.hmm	gene	381853	382269	.	-	.	ID=678
+Chromosome	GeneMark.hmm	CDS	381853	382269	21.89	-	0	Parent=678; start_score=-0.25
+Chromosome	GeneMark.hmm	gene	382636	382725	.	-	.	ID=679
+Chromosome	GeneMark.hmm	CDS	382636	382725	2.65	-	0	Parent=679; start_score=1.42
+Chromosome	GeneMark.hmm	gene	382747	383556	.	-	.	ID=680
+Chromosome	GeneMark.hmm	CDS	382747	383556	68.70	-	0	Parent=680; start_score=2.61
+Chromosome	GeneMark.hmm	gene	383656	383787	.	-	.	ID=681
+Chromosome	GeneMark.hmm	CDS	383656	383787	7.36	-	0	Parent=681; start_score=1.64
+Chromosome	GeneMark.hmm	gene	384148	385467	.	-	.	ID=682
+Chromosome	GeneMark.hmm	CDS	384148	385467	157.11	-	0	Parent=682; start_score=0.83
+Chromosome	GeneMark.hmm	gene	385987	386349	.	-	.	ID=683
+Chromosome	GeneMark.hmm	CDS	385987	386349	30.15	-	0	Parent=683; start_score=1.81
+Chromosome	GeneMark.hmm	gene	386463	386678	.	+	.	ID=684
+Chromosome	GeneMark.hmm	CDS	386463	386678	12.20	+	0	Parent=684; start_score=1.05
+Chromosome	GeneMark.hmm	gene	386679	387092	.	+	.	ID=685
+Chromosome	GeneMark.hmm	CDS	386679	387092	40.90	+	0	Parent=685; start_score=1.98
+Chromosome	GeneMark.hmm	gene	387297	387893	.	-	.	ID=686
+Chromosome	GeneMark.hmm	CDS	387297	387893	53.87	-	0	Parent=686; start_score=1.17
+Chromosome	GeneMark.hmm	gene	387916	390051	.	-	.	ID=687
+Chromosome	GeneMark.hmm	CDS	387916	390051	214.08	-	0	Parent=687; start_score=2.06
+Chromosome	GeneMark.hmm	gene	390606	390959	.	+	.	ID=688
+Chromosome	GeneMark.hmm	CDS	390606	390959	6.34	+	0	Parent=688; start_score=-1.03
+Chromosome	GeneMark.hmm	gene	390994	391335	.	-	.	ID=689
+Chromosome	GeneMark.hmm	CDS	390994	391335	41.62	-	0	Parent=689; start_score=1.49
+Chromosome	GeneMark.hmm	gene	391395	392108	.	-	.	ID=690
+Chromosome	GeneMark.hmm	CDS	391395	392108	49.38	-	0	Parent=690; start_score=1.66
+Chromosome	GeneMark.hmm	gene	392134	392247	.	+	.	ID=691
+Chromosome	GeneMark.hmm	CDS	392134	392247	1.77	+	0	Parent=691; start_score=0.67
+Chromosome	GeneMark.hmm	gene	392303	392491	.	-	.	ID=692
+Chromosome	GeneMark.hmm	CDS	392303	392491	16.55	-	0	Parent=692; start_score=0.90
+Chromosome	GeneMark.hmm	gene	392582	393016	.	-	.	ID=693
+Chromosome	GeneMark.hmm	CDS	392582	393016	29.90	-	0	Parent=693; start_score=1.22
+Chromosome	GeneMark.hmm	gene	393041	393634	.	-	.	ID=694
+Chromosome	GeneMark.hmm	CDS	393041	393634	52.10	-	0	Parent=694; start_score=0.53
+Chromosome	GeneMark.hmm	gene	393658	394122	.	-	.	ID=695
+Chromosome	GeneMark.hmm	CDS	393658	394122	27.07	-	0	Parent=695; start_score=0.11
+Chromosome	GeneMark.hmm	gene	394222	394551	.	-	.	ID=696
+Chromosome	GeneMark.hmm	CDS	394222	394551	14.81	-	0	Parent=696; start_score=-1.20
+Chromosome	GeneMark.hmm	gene	394739	395110	.	-	.	ID=697
+Chromosome	GeneMark.hmm	CDS	394739	395110	16.76	-	0	Parent=697; start_score=-0.20
+Chromosome	GeneMark.hmm	gene	395327	395437	.	-	.	ID=698
+Chromosome	GeneMark.hmm	CDS	395327	395437	4.41	-	0	Parent=698; start_score=1.58
+Chromosome	GeneMark.hmm	gene	395772	396242	.	-	.	ID=699
+Chromosome	GeneMark.hmm	CDS	395772	396242	34.00	-	0	Parent=699; start_score=0.35
+Chromosome	GeneMark.hmm	gene	396282	397424	.	-	.	ID=700
+Chromosome	GeneMark.hmm	CDS	396282	397424	127.18	-	0	Parent=700; start_score=1.17
+Chromosome	GeneMark.hmm	gene	397439	397783	.	-	.	ID=701
+Chromosome	GeneMark.hmm	CDS	397439	397783	36.99	-	0	Parent=701; start_score=3.31
+Chromosome	GeneMark.hmm	gene	397795	398004	.	+	.	ID=702
+Chromosome	GeneMark.hmm	CDS	397795	398004	4.01	+	0	Parent=702; start_score=-0.74
+Chromosome	GeneMark.hmm	gene	398078	398263	.	-	.	ID=703
+Chromosome	GeneMark.hmm	CDS	398078	398263	14.49	-	0	Parent=703; start_score=3.19
+Chromosome	GeneMark.hmm	gene	398298	398786	.	-	.	ID=704
+Chromosome	GeneMark.hmm	CDS	398298	398786	47.31	-	0	Parent=704; start_score=1.58
+Chromosome	GeneMark.hmm	gene	399043	399219	.	-	.	ID=705
+Chromosome	GeneMark.hmm	CDS	399043	399219	11.78	-	0	Parent=705; start_score=1.52
+Chromosome	GeneMark.hmm	gene	399346	399798	.	-	.	ID=706
+Chromosome	GeneMark.hmm	CDS	399346	399798	39.88	-	0	Parent=706; start_score=-1.58
+Chromosome	GeneMark.hmm	gene	400305	400709	.	-	.	ID=707
+Chromosome	GeneMark.hmm	CDS	400305	400709	40.80	-	0	Parent=707; start_score=1.97
+Chromosome	GeneMark.hmm	gene	401413	401535	.	+	.	ID=708
+Chromosome	GeneMark.hmm	CDS	401413	401535	6.67	+	0	Parent=708; start_score=2.71
+Chromosome	GeneMark.hmm	gene	401613	401720	.	-	.	ID=709
+Chromosome	GeneMark.hmm	CDS	401613	401720	2.72	-	0	Parent=709; start_score=0.26
+Chromosome	GeneMark.hmm	gene	401901	402923	.	-	.	ID=710
+Chromosome	GeneMark.hmm	CDS	401901	402923	114.88	-	0	Parent=710; start_score=2.86
+Chromosome	GeneMark.hmm	gene	403723	405033	.	-	.	ID=711
+Chromosome	GeneMark.hmm	CDS	403723	405033	124.38	-	0	Parent=711; start_score=-0.45
+Chromosome	GeneMark.hmm	gene	405456	406139	.	+	.	ID=712
+Chromosome	GeneMark.hmm	CDS	405456	406139	80.02	+	0	Parent=712; start_score=1.09
+Chromosome	GeneMark.hmm	gene	407080	407238	.	-	.	ID=713
+Chromosome	GeneMark.hmm	CDS	407080	407238	9.87	-	0	Parent=713; start_score=-1.76
+Chromosome	GeneMark.hmm	gene	407470	407784	.	-	.	ID=714
+Chromosome	GeneMark.hmm	CDS	407470	407784	7.65	-	0	Parent=714; start_score=-1.25
+Chromosome	GeneMark.hmm	gene	407759	408406	.	-	.	ID=715
+Chromosome	GeneMark.hmm	CDS	407759	408406	69.57	-	0	Parent=715; start_score=1.77
+Chromosome	GeneMark.hmm	gene	408467	408634	.	-	.	ID=716
+Chromosome	GeneMark.hmm	CDS	408467	408634	4.98	-	0	Parent=716; start_score=-0.25
+Chromosome	GeneMark.hmm	gene	408692	408793	.	-	.	ID=717
+Chromosome	GeneMark.hmm	CDS	408692	408793	5.10	-	0	Parent=717; start_score=0.45
+Chromosome	GeneMark.hmm	gene	408971	409465	.	-	.	ID=718
+Chromosome	GeneMark.hmm	CDS	408971	409465	42.94	-	0	Parent=718; start_score=2.08
+Chromosome	GeneMark.hmm	gene	409466	409858	.	-	.	ID=719
+Chromosome	GeneMark.hmm	CDS	409466	409858	47.00	-	0	Parent=719; start_score=0.07
+Chromosome	GeneMark.hmm	gene	409871	410677	.	-	.	ID=720
+Chromosome	GeneMark.hmm	CDS	409871	410677	53.24	-	0	Parent=720; start_score=-1.98
+Chromosome	GeneMark.hmm	gene	410664	411134	.	-	.	ID=721
+Chromosome	GeneMark.hmm	CDS	410664	411134	59.32	-	0	Parent=721; start_score=0.74
+Chromosome	GeneMark.hmm	gene	411549	412934	.	-	.	ID=722
+Chromosome	GeneMark.hmm	CDS	411549	412934	147.14	-	0	Parent=722; start_score=1.48
+Chromosome	GeneMark.hmm	gene	412973	414319	.	-	.	ID=723
+Chromosome	GeneMark.hmm	CDS	412973	414319	123.49	-	0	Parent=723; start_score=-0.21
+Chromosome	GeneMark.hmm	gene	414323	414769	.	-	.	ID=724
+Chromosome	GeneMark.hmm	CDS	414323	414769	46.59	-	0	Parent=724; start_score=-1.78
+Chromosome	GeneMark.hmm	gene	415291	415488	.	-	.	ID=725
+Chromosome	GeneMark.hmm	CDS	415291	415488	8.00	-	0	Parent=725; start_score=-2.97
+Chromosome	GeneMark.hmm	gene	415611	416330	.	-	.	ID=726
+Chromosome	GeneMark.hmm	CDS	415611	416330	60.09	-	0	Parent=726; start_score=-1.65
+Chromosome	GeneMark.hmm	gene	416337	416474	.	-	.	ID=727
+Chromosome	GeneMark.hmm	CDS	416337	416474	4.42	-	0	Parent=727; start_score=1.90
+Chromosome	GeneMark.hmm	gene	416511	416675	.	-	.	ID=728
+Chromosome	GeneMark.hmm	CDS	416511	416675	12.74	-	0	Parent=728; start_score=0.02
+Chromosome	GeneMark.hmm	gene	416808	416930	.	-	.	ID=729
+Chromosome	GeneMark.hmm	CDS	416808	416930	8.89	-	0	Parent=729; start_score=-0.30
+Chromosome	GeneMark.hmm	gene	417795	418028	.	-	.	ID=730
+Chromosome	GeneMark.hmm	CDS	417795	418028	15.73	-	0	Parent=730; start_score=-1.97
+Chromosome	GeneMark.hmm	gene	418500	418661	.	-	.	ID=731
+Chromosome	GeneMark.hmm	CDS	418500	418661	4.46	-	0	Parent=731; start_score=-1.10
+Chromosome	GeneMark.hmm	gene	418749	418937	.	-	.	ID=732
+Chromosome	GeneMark.hmm	CDS	418749	418937	8.47	-	0	Parent=732; start_score=-0.66
+Chromosome	GeneMark.hmm	gene	419470	420045	.	-	.	ID=733
+Chromosome	GeneMark.hmm	CDS	419470	420045	22.48	-	0	Parent=733; start_score=0.46
+Chromosome	GeneMark.hmm	gene	420053	420274	.	-	.	ID=734
+Chromosome	GeneMark.hmm	CDS	420053	420274	11.94	-	0	Parent=734; start_score=1.24
+Chromosome	GeneMark.hmm	gene	420333	420845	.	+	.	ID=735
+Chromosome	GeneMark.hmm	CDS	420333	420845	30.12	+	0	Parent=735; start_score=1.96
+Chromosome	GeneMark.hmm	gene	421467	421850	.	+	.	ID=736
+Chromosome	GeneMark.hmm	CDS	421467	421850	25.07	+	0	Parent=736; start_score=1.54
+Chromosome	GeneMark.hmm	gene	422238	422693	.	+	.	ID=737
+Chromosome	GeneMark.hmm	CDS	422238	422693	25.44	+	0	Parent=737; start_score=-0.52
+Chromosome	GeneMark.hmm	gene	422697	423113	.	+	.	ID=738
+Chromosome	GeneMark.hmm	CDS	422697	423113	23.31	+	0	Parent=738; start_score=2.61
+Chromosome	GeneMark.hmm	gene	423100	423276	.	-	.	ID=739
+Chromosome	GeneMark.hmm	CDS	423100	423276	10.91	-	0	Parent=739; start_score=-3.63
+Chromosome	GeneMark.hmm	gene	423322	423678	.	-	.	ID=740
+Chromosome	GeneMark.hmm	CDS	423322	423678	17.91	-	0	Parent=740; start_score=-0.66
+Chromosome	GeneMark.hmm	gene	423682	423939	.	-	.	ID=741
+Chromosome	GeneMark.hmm	CDS	423682	423939	12.66	-	0	Parent=741; start_score=0.37
+Chromosome	GeneMark.hmm	gene	424192	424377	.	-	.	ID=742
+Chromosome	GeneMark.hmm	CDS	424192	424377	11.74	-	0	Parent=742; start_score=1.27
+Chromosome	GeneMark.hmm	gene	424420	424617	.	-	.	ID=743
+Chromosome	GeneMark.hmm	CDS	424420	424617	15.49	-	0	Parent=743; start_score=1.66
+Chromosome	GeneMark.hmm	gene	424687	425205	.	-	.	ID=744
+Chromosome	GeneMark.hmm	CDS	424687	425205	47.94	-	0	Parent=744; start_score=1.19
+Chromosome	GeneMark.hmm	gene	425251	425556	.	-	.	ID=745
+Chromosome	GeneMark.hmm	CDS	425251	425556	21.59	-	0	Parent=745; start_score=0.77
+Chromosome	GeneMark.hmm	gene	425617	425754	.	-	.	ID=746
+Chromosome	GeneMark.hmm	CDS	425617	425754	8.98	-	0	Parent=746; start_score=1.81
+Chromosome	GeneMark.hmm	gene	426262	426405	.	-	.	ID=747
+Chromosome	GeneMark.hmm	CDS	426262	426405	2.02	-	0	Parent=747; start_score=0.91
+Chromosome	GeneMark.hmm	gene	426658	426861	.	-	.	ID=748
+Chromosome	GeneMark.hmm	CDS	426658	426861	10.82	-	0	Parent=748; start_score=3.59
+Chromosome	GeneMark.hmm	gene	427090	428112	.	-	.	ID=749
+Chromosome	GeneMark.hmm	CDS	427090	428112	74.36	-	0	Parent=749; start_score=-1.68
+Chromosome	GeneMark.hmm	gene	428307	428450	.	+	.	ID=750
+Chromosome	GeneMark.hmm	CDS	428307	428450	12.96	+	0	Parent=750; start_score=0.64
+Chromosome	GeneMark.hmm	gene	428457	428627	.	+	.	ID=751
+Chromosome	GeneMark.hmm	CDS	428457	428627	19.03	+	0	Parent=751; start_score=9.26
+Chromosome	GeneMark.hmm	gene	428904	429122	.	+	.	ID=752
+Chromosome	GeneMark.hmm	CDS	428904	429122	30.15	+	0	Parent=752; start_score=2.62
+Chromosome	GeneMark.hmm	gene	429159	429359	.	+	.	ID=753
+Chromosome	GeneMark.hmm	CDS	429159	429359	41.50	+	0	Parent=753; start_score=4.70
+Chromosome	GeneMark.hmm	gene	429405	429662	.	+	.	ID=754
+Chromosome	GeneMark.hmm	CDS	429405	429662	29.46	+	0	Parent=754; start_score=4.81
+Chromosome	GeneMark.hmm	gene	429607	429900	.	+	.	ID=755
+Chromosome	GeneMark.hmm	CDS	429607	429900	48.17	+	0	Parent=755; start_score=-1.20
+Chromosome	GeneMark.hmm	gene	429914	430105	.	-	.	ID=756
+Chromosome	GeneMark.hmm	CDS	429914	430105	29.12	-	0	Parent=756; start_score=2.23
+Chromosome	GeneMark.hmm	gene	430230	430358	.	+	.	ID=757
+Chromosome	GeneMark.hmm	CDS	430230	430358	22.35	+	0	Parent=757; start_score=10.59
+Chromosome	GeneMark.hmm	gene	430368	430556	.	+	.	ID=758
+Chromosome	GeneMark.hmm	CDS	430368	430556	20.71	+	0	Parent=758; start_score=1.59
+Chromosome	GeneMark.hmm	gene	430580	432103	.	-	.	ID=759
+Chromosome	GeneMark.hmm	CDS	430580	432103	166.23	-	0	Parent=759; start_score=-1.67
+Chromosome	GeneMark.hmm	gene	432110	434155	.	-	.	ID=760
+Chromosome	GeneMark.hmm	CDS	432110	434155	207.23	-	0	Parent=760; start_score=2.00
+Chromosome	GeneMark.hmm	gene	434186	434293	.	-	.	ID=761
+Chromosome	GeneMark.hmm	CDS	434186	434293	7.37	-	0	Parent=761; start_score=2.46
+Chromosome	GeneMark.hmm	gene	434360	434458	.	-	.	ID=762
+Chromosome	GeneMark.hmm	CDS	434360	434458	4.34	-	0	Parent=762; start_score=-0.62
+Chromosome	GeneMark.hmm	gene	434468	434737	.	-	.	ID=763
+Chromosome	GeneMark.hmm	CDS	434468	434737	20.17	-	0	Parent=763; start_score=3.11
+Chromosome	GeneMark.hmm	gene	434768	435844	.	-	.	ID=764
+Chromosome	GeneMark.hmm	CDS	434768	435844	129.83	-	0	Parent=764; start_score=-1.37
+Chromosome	GeneMark.hmm	gene	435944	438640	.	-	.	ID=765
+Chromosome	GeneMark.hmm	CDS	435944	438640	297.86	-	0	Parent=765; start_score=-1.08
+Chromosome	GeneMark.hmm	gene	438730	439236	.	-	.	ID=766
+Chromosome	GeneMark.hmm	CDS	438730	439236	41.04	-	0	Parent=766; start_score=0.62
+Chromosome	GeneMark.hmm	gene	439315	439458	.	-	.	ID=767
+Chromosome	GeneMark.hmm	CDS	439315	439458	4.33	-	0	Parent=767; start_score=1.09
+Chromosome	GeneMark.hmm	gene	439594	439989	.	-	.	ID=768
+Chromosome	GeneMark.hmm	CDS	439594	439989	15.97	-	0	Parent=768; start_score=-1.49
+Chromosome	GeneMark.hmm	gene	440116	440355	.	-	.	ID=769
+Chromosome	GeneMark.hmm	CDS	440116	440355	10.56	-	0	Parent=769; start_score=-0.61
+Chromosome	GeneMark.hmm	gene	440359	440643	.	-	.	ID=770
+Chromosome	GeneMark.hmm	CDS	440359	440643	3.10	-	0	Parent=770; start_score=-0.40
+Chromosome	GeneMark.hmm	gene	440671	440880	.	-	.	ID=771
+Chromosome	GeneMark.hmm	CDS	440671	440880	8.75	-	0	Parent=771; start_score=-0.05
+Chromosome	GeneMark.hmm	gene	441347	441562	.	-	.	ID=772
+Chromosome	GeneMark.hmm	CDS	441347	441562	8.33	-	0	Parent=772; start_score=-1.46
+Chromosome	GeneMark.hmm	gene	442031	442276	.	-	.	ID=773
+Chromosome	GeneMark.hmm	CDS	442031	442276	12.52	-	0	Parent=773; start_score=1.47
+Chromosome	GeneMark.hmm	gene	442394	442495	.	-	.	ID=774
+Chromosome	GeneMark.hmm	CDS	442394	442495	2.86	-	0	Parent=774; start_score=-0.68
+Chromosome	GeneMark.hmm	gene	442682	442954	.	-	.	ID=775
+Chromosome	GeneMark.hmm	CDS	442682	442954	22.55	-	0	Parent=775; start_score=-1.54
+Chromosome	GeneMark.hmm	gene	443321	443686	.	-	.	ID=776
+Chromosome	GeneMark.hmm	CDS	443321	443686	23.06	-	0	Parent=776; start_score=1.56
+Chromosome	GeneMark.hmm	gene	444207	444320	.	+	.	ID=777
+Chromosome	GeneMark.hmm	CDS	444207	444320	2.38	+	0	Parent=777; start_score=-1.22
+Chromosome	GeneMark.hmm	gene	444413	444754	.	+	.	ID=778
+Chromosome	GeneMark.hmm	CDS	444413	444754	24.25	+	0	Parent=778; start_score=1.35
+Chromosome	GeneMark.hmm	gene	444890	445045	.	+	.	ID=779
+Chromosome	GeneMark.hmm	CDS	444890	445045	6.59	+	0	Parent=779; start_score=2.46
+Chromosome	GeneMark.hmm	gene	445197	445718	.	-	.	ID=780
+Chromosome	GeneMark.hmm	CDS	445197	445718	58.16	-	0	Parent=780; start_score=1.58
+Chromosome	GeneMark.hmm	gene	445854	446099	.	-	.	ID=781
+Chromosome	GeneMark.hmm	CDS	445854	446099	14.06	-	0	Parent=781; start_score=-0.90
+Chromosome	GeneMark.hmm	gene	446888	447130	.	+	.	ID=782
+Chromosome	GeneMark.hmm	CDS	446888	447130	16.18	+	0	Parent=782; start_score=3.25
+Chromosome	GeneMark.hmm	gene	447248	447589	.	+	.	ID=783
+Chromosome	GeneMark.hmm	CDS	447248	447589	17.16	+	0	Parent=783; start_score=-0.39
+Chromosome	GeneMark.hmm	gene	447790	448005	.	+	.	ID=784
+Chromosome	GeneMark.hmm	CDS	447790	448005	10.27	+	0	Parent=784; start_score=-1.61
+Chromosome	GeneMark.hmm	gene	448204	448449	.	+	.	ID=785
+Chromosome	GeneMark.hmm	CDS	448204	448449	7.66	+	0	Parent=785; start_score=-0.34
+Chromosome	GeneMark.hmm	gene	449408	449617	.	-	.	ID=786
+Chromosome	GeneMark.hmm	CDS	449408	449617	5.66	-	0	Parent=786; start_score=2.05
+Chromosome	GeneMark.hmm	gene	449665	449826	.	+	.	ID=787
+Chromosome	GeneMark.hmm	CDS	449665	449826	6.33	+	0	Parent=787; start_score=-2.16
+Chromosome	GeneMark.hmm	gene	449872	450105	.	+	.	ID=788
+Chromosome	GeneMark.hmm	CDS	449872	450105	14.72	+	0	Parent=788; start_score=1.00
+Chromosome	GeneMark.hmm	gene	450414	450722	.	+	.	ID=789
+Chromosome	GeneMark.hmm	CDS	450414	450722	6.66	+	0	Parent=789; start_score=-0.45
+Chromosome	GeneMark.hmm	gene	450734	451048	.	-	.	ID=790
+Chromosome	GeneMark.hmm	CDS	450734	451048	25.37	-	0	Parent=790; start_score=1.04
+Chromosome	GeneMark.hmm	gene	451197	451610	.	+	.	ID=791
+Chromosome	GeneMark.hmm	CDS	451197	451610	30.12	+	0	Parent=791; start_score=1.49
+Chromosome	GeneMark.hmm	gene	451613	452497	.	-	.	ID=792
+Chromosome	GeneMark.hmm	CDS	451613	452497	75.25	-	0	Parent=792; start_score=0.26
+Chromosome	GeneMark.hmm	gene	452792	453064	.	-	.	ID=793
+Chromosome	GeneMark.hmm	CDS	452792	453064	25.50	-	0	Parent=793; start_score=1.65
+Chromosome	GeneMark.hmm	gene	453119	453757	.	-	.	ID=794
+Chromosome	GeneMark.hmm	CDS	453119	453757	74.00	-	0	Parent=794; start_score=0.94
+Chromosome	GeneMark.hmm	gene	454394	454753	.	-	.	ID=795
+Chromosome	GeneMark.hmm	CDS	454394	454753	13.05	-	0	Parent=795; start_score=-0.50
+Chromosome	GeneMark.hmm	gene	454766	455248	.	-	.	ID=796
+Chromosome	GeneMark.hmm	CDS	454766	455248	48.14	-	0	Parent=796; start_score=0.82
+Chromosome	GeneMark.hmm	gene	455450	455947	.	-	.	ID=797
+Chromosome	GeneMark.hmm	CDS	455450	455947	40.75	-	0	Parent=797; start_score=-1.81
+Chromosome	GeneMark.hmm	gene	456055	456264	.	+	.	ID=798
+Chromosome	GeneMark.hmm	CDS	456055	456264	3.45	+	0	Parent=798; start_score=1.23
+Chromosome	GeneMark.hmm	gene	456426	456554	.	+	.	ID=799
+Chromosome	GeneMark.hmm	CDS	456426	456554	4.93	+	0	Parent=799; start_score=2.54
+Chromosome	GeneMark.hmm	gene	456872	457372	.	+	.	ID=800
+Chromosome	GeneMark.hmm	CDS	456872	457372	48.34	+	0	Parent=800; start_score=0.67
+Chromosome	GeneMark.hmm	gene	457347	458270	.	+	.	ID=801
+Chromosome	GeneMark.hmm	CDS	457347	458270	55.38	+	0	Parent=801; start_score=-0.67
+Chromosome	GeneMark.hmm	gene	458260	458547	.	-	.	ID=802
+Chromosome	GeneMark.hmm	CDS	458260	458547	7.81	-	0	Parent=802; start_score=-1.05
+Chromosome	GeneMark.hmm	gene	458932	459495	.	-	.	ID=803
+Chromosome	GeneMark.hmm	CDS	458932	459495	24.26	-	0	Parent=803; start_score=-0.46
+Chromosome	GeneMark.hmm	gene	459615	460103	.	+	.	ID=804
+Chromosome	GeneMark.hmm	CDS	459615	460103	43.54	+	0	Parent=804; start_score=0.93
+Chromosome	GeneMark.hmm	gene	460126	460494	.	+	.	ID=805
+Chromosome	GeneMark.hmm	CDS	460126	460494	48.40	+	0	Parent=805; start_score=0.14
+Chromosome	GeneMark.hmm	gene	460685	460951	.	-	.	ID=806
+Chromosome	GeneMark.hmm	CDS	460685	460951	14.89	-	0	Parent=806; start_score=0.84
+Chromosome	GeneMark.hmm	gene	461015	461170	.	+	.	ID=807
+Chromosome	GeneMark.hmm	CDS	461015	461170	4.75	+	0	Parent=807; start_score=1.57
+Chromosome	GeneMark.hmm	gene	461189	461545	.	+	.	ID=808
+Chromosome	GeneMark.hmm	CDS	461189	461545	26.39	+	0	Parent=808; start_score=0.46
+Chromosome	GeneMark.hmm	gene	461558	461689	.	+	.	ID=809
+Chromosome	GeneMark.hmm	CDS	461558	461689	1.88	+	0	Parent=809; start_score=1.21
+Chromosome	GeneMark.hmm	gene	461682	462047	.	+	.	ID=810
+Chromosome	GeneMark.hmm	CDS	461682	462047	16.38	+	0	Parent=810; start_score=-1.25
+Chromosome	GeneMark.hmm	gene	462595	463560	.	+	.	ID=811
+Chromosome	GeneMark.hmm	CDS	462595	463560	49.20	+	0	Parent=811; start_score=1.37
+Chromosome	GeneMark.hmm	gene	464215	464496	.	+	.	ID=812
+Chromosome	GeneMark.hmm	CDS	464215	464496	12.70	+	0	Parent=812; start_score=-2.47
+Chromosome	GeneMark.hmm	gene	464646	464768	.	-	.	ID=813
+Chromosome	GeneMark.hmm	CDS	464646	464768	2.12	-	0	Parent=813; start_score=-0.89
+Chromosome	GeneMark.hmm	gene	464829	465125	.	-	.	ID=814
+Chromosome	GeneMark.hmm	CDS	464829	465125	19.80	-	0	Parent=814; start_score=-1.46
+Chromosome	GeneMark.hmm	gene	465424	466410	.	-	.	ID=815
+Chromosome	GeneMark.hmm	CDS	465424	466410	72.37	-	0	Parent=815; start_score=-2.14
+Chromosome	GeneMark.hmm	gene	466410	467564	.	-	.	ID=816
+Chromosome	GeneMark.hmm	CDS	466410	467564	102.86	-	0	Parent=816; start_score=3.27
+Chromosome	GeneMark.hmm	gene	467571	468083	.	-	.	ID=817
+Chromosome	GeneMark.hmm	CDS	467571	468083	34.99	-	0	Parent=817; start_score=-1.35
+Chromosome	GeneMark.hmm	gene	468530	469123	.	-	.	ID=818
+Chromosome	GeneMark.hmm	CDS	468530	469123	29.39	-	0	Parent=818; start_score=-1.41
+Chromosome	GeneMark.hmm	gene	469110	469229	.	-	.	ID=819
+Chromosome	GeneMark.hmm	CDS	469110	469229	2.53	-	0	Parent=819; start_score=-0.38
+Chromosome	GeneMark.hmm	gene	469278	469532	.	-	.	ID=820
+Chromosome	GeneMark.hmm	CDS	469278	469532	20.69	-	0	Parent=820; start_score=-0.07
+Chromosome	GeneMark.hmm	gene	469707	470084	.	-	.	ID=821
+Chromosome	GeneMark.hmm	CDS	469707	470084	17.36	-	0	Parent=821; start_score=0.53
+Chromosome	GeneMark.hmm	gene	470077	471234	.	-	.	ID=822
+Chromosome	GeneMark.hmm	CDS	470077	471234	89.86	-	0	Parent=822; start_score=-1.51
+Chromosome	GeneMark.hmm	gene	471305	471466	.	-	.	ID=823
+Chromosome	GeneMark.hmm	CDS	471305	471466	11.79	-	0	Parent=823; start_score=0.27
+Chromosome	GeneMark.hmm	gene	471533	471892	.	-	.	ID=824
+Chromosome	GeneMark.hmm	CDS	471533	471892	31.04	-	0	Parent=824; start_score=-0.94
+Chromosome	GeneMark.hmm	gene	471899	472066	.	-	.	ID=825
+Chromosome	GeneMark.hmm	CDS	471899	472066	5.05	-	0	Parent=825; start_score=-3.53
+Chromosome	GeneMark.hmm	gene	472067	472366	.	-	.	ID=826
+Chromosome	GeneMark.hmm	CDS	472067	472366	13.45	-	0	Parent=826; start_score=0.92
+Chromosome	GeneMark.hmm	gene	472884	473468	.	-	.	ID=827
+Chromosome	GeneMark.hmm	CDS	472884	473468	49.92	-	0	Parent=827; start_score=-2.07
+Chromosome	GeneMark.hmm	gene	473487	473945	.	-	.	ID=828
+Chromosome	GeneMark.hmm	CDS	473487	473945	27.98	-	0	Parent=828; start_score=1.90
+Chromosome	GeneMark.hmm	gene	474006	474188	.	-	.	ID=829
+Chromosome	GeneMark.hmm	CDS	474006	474188	5.85	-	0	Parent=829; start_score=0.43
+Chromosome	GeneMark.hmm	gene	474261	474578	.	-	.	ID=830
+Chromosome	GeneMark.hmm	CDS	474261	474578	5.37	-	0	Parent=830; start_score=0.15
+Chromosome	GeneMark.hmm	gene	474650	474799	.	-	.	ID=831
+Chromosome	GeneMark.hmm	CDS	474650	474799	2.03	-	0	Parent=831; start_score=1.78
+Chromosome	GeneMark.hmm	gene	474898	475056	.	-	.	ID=832
+Chromosome	GeneMark.hmm	CDS	474898	475056	3.63	-	0	Parent=832; start_score=-1.00
+Chromosome	GeneMark.hmm	gene	475099	475479	.	-	.	ID=833
+Chromosome	GeneMark.hmm	CDS	475099	475479	35.11	-	0	Parent=833; start_score=-0.01
+Chromosome	GeneMark.hmm	gene	475526	475966	.	-	.	ID=834
+Chromosome	GeneMark.hmm	CDS	475526	475966	21.18	-	0	Parent=834; start_score=0.08
+Chromosome	GeneMark.hmm	gene	475970	476146	.	-	.	ID=835
+Chromosome	GeneMark.hmm	CDS	475970	476146	7.05	-	0	Parent=835; start_score=-3.90
+Chromosome	GeneMark.hmm	gene	476411	476863	.	-	.	ID=836
+Chromosome	GeneMark.hmm	CDS	476411	476863	19.52	-	0	Parent=836; start_score=-1.60
+Chromosome	GeneMark.hmm	gene	477168	478472	.	+	.	ID=837
+Chromosome	GeneMark.hmm	CDS	477168	478472	102.13	+	0	Parent=837; start_score=-4.05
+Chromosome	GeneMark.hmm	gene	478473	479006	.	+	.	ID=838
+Chromosome	GeneMark.hmm	CDS	478473	479006	35.37	+	0	Parent=838; start_score=1.54
+Chromosome	GeneMark.hmm	gene	478999	479577	.	+	.	ID=839
+Chromosome	GeneMark.hmm	CDS	478999	479577	20.55	+	0	Parent=839; start_score=0.35
+Chromosome	GeneMark.hmm	gene	479885	480226	.	+	.	ID=840
+Chromosome	GeneMark.hmm	CDS	479885	480226	10.44	+	0	Parent=840; start_score=1.81
+Chromosome	GeneMark.hmm	gene	480691	480894	.	+	.	ID=841
+Chromosome	GeneMark.hmm	CDS	480691	480894	12.97	+	0	Parent=841; start_score=0.26
+Chromosome	GeneMark.hmm	gene	481632	482075	.	-	.	ID=842
+Chromosome	GeneMark.hmm	CDS	481632	482075	37.16	-	0	Parent=842; start_score=-0.42
+Chromosome	GeneMark.hmm	gene	482251	483231	.	-	.	ID=843
+Chromosome	GeneMark.hmm	CDS	482251	483231	84.96	-	0	Parent=843; start_score=1.57
+Chromosome	GeneMark.hmm	gene	484070	484516	.	-	.	ID=844
+Chromosome	GeneMark.hmm	CDS	484070	484516	12.85	-	0	Parent=844; start_score=-0.42
+Chromosome	GeneMark.hmm	gene	484592	484699	.	-	.	ID=845
+Chromosome	GeneMark.hmm	CDS	484592	484699	3.94	-	0	Parent=845; start_score=-0.82
+Chromosome	GeneMark.hmm	gene	485242	487647	.	-	.	ID=846
+Chromosome	GeneMark.hmm	CDS	485242	487647	314.40	-	0	Parent=846; start_score=0.12
+Chromosome	GeneMark.hmm	gene	487706	487903	.	+	.	ID=847
+Chromosome	GeneMark.hmm	CDS	487706	487903	5.99	+	0	Parent=847; start_score=0.11
+Chromosome	GeneMark.hmm	gene	489058	489552	.	-	.	ID=848
+Chromosome	GeneMark.hmm	CDS	489058	489552	33.01	-	0	Parent=848; start_score=0.39
+Chromosome	GeneMark.hmm	gene	490232	490711	.	-	.	ID=849
+Chromosome	GeneMark.hmm	CDS	490232	490711	40.37	-	0	Parent=849; start_score=-0.06
+Chromosome	GeneMark.hmm	gene	490840	491163	.	-	.	ID=850
+Chromosome	GeneMark.hmm	CDS	490840	491163	11.34	-	0	Parent=850; start_score=-2.83
+Chromosome	GeneMark.hmm	gene	491201	491395	.	-	.	ID=851
+Chromosome	GeneMark.hmm	CDS	491201	491395	3.25	-	0	Parent=851; start_score=-0.57
+Chromosome	GeneMark.hmm	gene	491420	491530	.	-	.	ID=852
+Chromosome	GeneMark.hmm	CDS	491420	491530	1.58	-	0	Parent=852; start_score=-1.54
+Chromosome	GeneMark.hmm	gene	491534	491881	.	-	.	ID=853
+Chromosome	GeneMark.hmm	CDS	491534	491881	20.82	-	0	Parent=853; start_score=-0.15
+Chromosome	GeneMark.hmm	gene	492143	492823	.	-	.	ID=854
+Chromosome	GeneMark.hmm	CDS	492143	492823	51.43	-	0	Parent=854; start_score=0.53
+Chromosome	GeneMark.hmm	gene	493223	493516	.	-	.	ID=855
+Chromosome	GeneMark.hmm	CDS	493223	493516	24.46	-	0	Parent=855; start_score=0.98
+Chromosome	GeneMark.hmm	gene	493624	493857	.	-	.	ID=856
+Chromosome	GeneMark.hmm	CDS	493624	493857	16.39	-	0	Parent=856; start_score=3.25
+Chromosome	GeneMark.hmm	gene	493912	494967	.	-	.	ID=857
+Chromosome	GeneMark.hmm	CDS	493912	494967	105.24	-	0	Parent=857; start_score=-1.24
+Chromosome	GeneMark.hmm	gene	494984	496615	.	-	.	ID=858
+Chromosome	GeneMark.hmm	CDS	494984	496615	218.57	-	0	Parent=858; start_score=0.14
+Chromosome	GeneMark.hmm	gene	496628	496918	.	-	.	ID=859
+Chromosome	GeneMark.hmm	CDS	496628	496918	30.17	-	0	Parent=859; start_score=0.49
+Chromosome	GeneMark.hmm	gene	497086	497412	.	-	.	ID=860
+Chromosome	GeneMark.hmm	CDS	497086	497412	16.89	-	0	Parent=860; start_score=-1.87
+Chromosome	GeneMark.hmm	gene	497437	498306	.	-	.	ID=861
+Chromosome	GeneMark.hmm	CDS	497437	498306	65.90	-	0	Parent=861; start_score=-0.77
+Chromosome	GeneMark.hmm	gene	498316	499023	.	-	.	ID=862
+Chromosome	GeneMark.hmm	CDS	498316	499023	55.84	-	0	Parent=862; start_score=-0.55
+Chromosome	GeneMark.hmm	gene	499543	499890	.	-	.	ID=863
+Chromosome	GeneMark.hmm	CDS	499543	499890	26.07	-	0	Parent=863; start_score=-1.09
+Chromosome	GeneMark.hmm	gene	500051	500182	.	+	.	ID=864
+Chromosome	GeneMark.hmm	CDS	500051	500182	3.98	+	0	Parent=864; start_score=1.07
+Chromosome	GeneMark.hmm	gene	500261	500719	.	-	.	ID=865
+Chromosome	GeneMark.hmm	CDS	500261	500719	40.67	-	0	Parent=865; start_score=-1.50
+Chromosome	GeneMark.hmm	gene	500720	501487	.	-	.	ID=866
+Chromosome	GeneMark.hmm	CDS	500720	501487	55.54	-	0	Parent=866; start_score=1.16
+Chromosome	GeneMark.hmm	gene	501530	501880	.	-	.	ID=867
+Chromosome	GeneMark.hmm	CDS	501530	501880	17.33	-	0	Parent=867; start_score=-2.20
+Chromosome	GeneMark.hmm	gene	502109	502402	.	-	.	ID=868
+Chromosome	GeneMark.hmm	CDS	502109	502402	8.92	-	0	Parent=868; start_score=-1.70
+Chromosome	GeneMark.hmm	gene	502422	502814	.	-	.	ID=869
+Chromosome	GeneMark.hmm	CDS	502422	502814	25.40	-	0	Parent=869; start_score=0.12
+Chromosome	GeneMark.hmm	gene	502828	504258	.	-	.	ID=870
+Chromosome	GeneMark.hmm	CDS	502828	504258	151.78	-	0	Parent=870; start_score=-1.77
+Chromosome	GeneMark.hmm	gene	504260	504655	.	-	.	ID=871
+Chromosome	GeneMark.hmm	CDS	504260	504655	27.70	-	0	Parent=871; start_score=1.29
+Chromosome	GeneMark.hmm	gene	504752	505099	.	-	.	ID=872
+Chromosome	GeneMark.hmm	CDS	504752	505099	17.93	-	0	Parent=872; start_score=0.73
+Chromosome	GeneMark.hmm	gene	505099	505887	.	-	.	ID=873
+Chromosome	GeneMark.hmm	CDS	505099	505887	74.95	-	0	Parent=873; start_score=3.43
+Chromosome	GeneMark.hmm	gene	505909	506655	.	-	.	ID=874
+Chromosome	GeneMark.hmm	CDS	505909	506655	84.29	-	0	Parent=874; start_score=-0.77
+Chromosome	GeneMark.hmm	gene	506671	507201	.	-	.	ID=875
+Chromosome	GeneMark.hmm	CDS	506671	507201	30.37	-	0	Parent=875; start_score=-0.87
+Chromosome	GeneMark.hmm	gene	507194	507439	.	-	.	ID=876
+Chromosome	GeneMark.hmm	CDS	507194	507439	20.11	-	0	Parent=876; start_score=0.70
+Chromosome	GeneMark.hmm	gene	507823	508131	.	-	.	ID=877
+Chromosome	GeneMark.hmm	CDS	507823	508131	28.20	-	0	Parent=877; start_score=1.80
+Chromosome	GeneMark.hmm	gene	508554	508775	.	-	.	ID=878
+Chromosome	GeneMark.hmm	CDS	508554	508775	12.03	-	0	Parent=878; start_score=-0.83
+Chromosome	GeneMark.hmm	gene	509198	509470	.	+	.	ID=879
+Chromosome	GeneMark.hmm	CDS	509198	509470	4.85	+	0	Parent=879; start_score=1.75
+Chromosome	GeneMark.hmm	gene	509502	509876	.	-	.	ID=880
+Chromosome	GeneMark.hmm	CDS	509502	509876	40.23	-	0	Parent=880; start_score=-0.34
+Chromosome	GeneMark.hmm	gene	510093	510836	.	-	.	ID=881
+Chromosome	GeneMark.hmm	CDS	510093	510836	62.07	-	0	Parent=881; start_score=-0.71
+Chromosome	GeneMark.hmm	gene	511373	512050	.	-	.	ID=882
+Chromosome	GeneMark.hmm	CDS	511373	512050	30.74	-	0	Parent=882; start_score=1.18
+Chromosome	GeneMark.hmm	gene	512053	512397	.	-	.	ID=883
+Chromosome	GeneMark.hmm	CDS	512053	512397	26.27	-	0	Parent=883; start_score=2.72
+Chromosome	GeneMark.hmm	gene	512404	512559	.	-	.	ID=884
+Chromosome	GeneMark.hmm	CDS	512404	512559	12.83	-	0	Parent=884; start_score=2.02
+Chromosome	GeneMark.hmm	gene	512770	513003	.	-	.	ID=885
+Chromosome	GeneMark.hmm	CDS	512770	513003	13.63	-	0	Parent=885; start_score=-1.68
+Chromosome	GeneMark.hmm	gene	513027	513656	.	-	.	ID=886
+Chromosome	GeneMark.hmm	CDS	513027	513656	21.88	-	0	Parent=886; start_score=-1.14
+Chromosome	GeneMark.hmm	gene	513681	513857	.	-	.	ID=887
+Chromosome	GeneMark.hmm	CDS	513681	513857	11.53	-	0	Parent=887; start_score=-1.03
+Chromosome	GeneMark.hmm	gene	514131	514781	.	-	.	ID=888
+Chromosome	GeneMark.hmm	CDS	514131	514781	33.30	-	0	Parent=888; start_score=-0.79
+Chromosome	GeneMark.hmm	gene	514791	514991	.	-	.	ID=889
+Chromosome	GeneMark.hmm	CDS	514791	514991	6.44	-	0	Parent=889; start_score=1.37
+Chromosome	GeneMark.hmm	gene	515249	515635	.	-	.	ID=890
+Chromosome	GeneMark.hmm	CDS	515249	515635	17.19	-	0	Parent=890; start_score=-1.49
+Chromosome	GeneMark.hmm	gene	515819	516124	.	-	.	ID=891
+Chromosome	GeneMark.hmm	CDS	515819	516124	24.31	-	0	Parent=891; start_score=-0.27
+Chromosome	GeneMark.hmm	gene	516527	517270	.	-	.	ID=892
+Chromosome	GeneMark.hmm	CDS	516527	517270	46.52	-	0	Parent=892; start_score=0.15
+Chromosome	GeneMark.hmm	gene	517376	518014	.	-	.	ID=893
+Chromosome	GeneMark.hmm	CDS	517376	518014	44.85	-	0	Parent=893; start_score=1.54
+Chromosome	GeneMark.hmm	gene	518024	518290	.	-	.	ID=894
+Chromosome	GeneMark.hmm	CDS	518024	518290	14.89	-	0	Parent=894; start_score=1.81
+Chromosome	GeneMark.hmm	gene	519104	519355	.	-	.	ID=895
+Chromosome	GeneMark.hmm	CDS	519104	519355	10.67	-	0	Parent=895; start_score=-1.13
+Chromosome	GeneMark.hmm	gene	519468	519977	.	-	.	ID=896
+Chromosome	GeneMark.hmm	CDS	519468	519977	25.74	-	0	Parent=896; start_score=1.53
+Chromosome	GeneMark.hmm	gene	520140	520640	.	-	.	ID=897
+Chromosome	GeneMark.hmm	CDS	520140	520640	27.88	-	0	Parent=897; start_score=-0.80
+Chromosome	GeneMark.hmm	gene	520689	521333	.	-	.	ID=898
+Chromosome	GeneMark.hmm	CDS	520689	521333	44.09	-	0	Parent=898; start_score=0.80
+Chromosome	GeneMark.hmm	gene	521470	521868	.	-	.	ID=899
+Chromosome	GeneMark.hmm	CDS	521470	521868	33.98	-	0	Parent=899; start_score=0.34
+Chromosome	GeneMark.hmm	gene	521880	522032	.	-	.	ID=900
+Chromosome	GeneMark.hmm	CDS	521880	522032	6.50	-	0	Parent=900; start_score=-0.42
+Chromosome	GeneMark.hmm	gene	522084	522314	.	-	.	ID=901
+Chromosome	GeneMark.hmm	CDS	522084	522314	13.87	-	0	Parent=901; start_score=0.09
+Chromosome	GeneMark.hmm	gene	522352	522465	.	-	.	ID=902
+Chromosome	GeneMark.hmm	CDS	522352	522465	1.72	-	0	Parent=902; start_score=0.85
+Chromosome	GeneMark.hmm	gene	522811	523917	.	-	.	ID=903
+Chromosome	GeneMark.hmm	CDS	522811	523917	92.36	-	0	Parent=903; start_score=-1.13
+Chromosome	GeneMark.hmm	gene	523948	524145	.	-	.	ID=904
+Chromosome	GeneMark.hmm	CDS	523948	524145	9.77	-	0	Parent=904; start_score=-1.31
+Chromosome	GeneMark.hmm	gene	524151	525785	.	-	.	ID=905
+Chromosome	GeneMark.hmm	CDS	524151	525785	150.31	-	0	Parent=905; start_score=-2.09
+Chromosome	GeneMark.hmm	gene	526029	526547	.	-	.	ID=906
+Chromosome	GeneMark.hmm	CDS	526029	526547	46.04	-	0	Parent=906; start_score=0.30
+Chromosome	GeneMark.hmm	gene	526987	527250	.	-	.	ID=907
+Chromosome	GeneMark.hmm	CDS	526987	527250	7.87	-	0	Parent=907; start_score=1.62
+Chromosome	GeneMark.hmm	gene	527251	527490	.	-	.	ID=908
+Chromosome	GeneMark.hmm	CDS	527251	527490	1.53	-	0	Parent=908; start_score=-0.42
+Chromosome	GeneMark.hmm	gene	527971	528324	.	-	.	ID=909
+Chromosome	GeneMark.hmm	CDS	527971	528324	8.58	-	0	Parent=909; start_score=0.18
+Chromosome	GeneMark.hmm	gene	528358	528510	.	-	.	ID=910
+Chromosome	GeneMark.hmm	CDS	528358	528510	1.47	-	0	Parent=910; start_score=0.99
+Chromosome	GeneMark.hmm	gene	528604	529041	.	-	.	ID=911
+Chromosome	GeneMark.hmm	CDS	528604	529041	17.27	-	0	Parent=911; start_score=0.15
+Chromosome	GeneMark.hmm	gene	529330	529494	.	-	.	ID=912
+Chromosome	GeneMark.hmm	CDS	529330	529494	10.91	-	0	Parent=912; start_score=-0.07
+Chromosome	GeneMark.hmm	gene	529532	530977	.	-	.	ID=913
+Chromosome	GeneMark.hmm	CDS	529532	530977	139.05	-	0	Parent=913; start_score=0.10
+Chromosome	GeneMark.hmm	gene	531056	531217	.	-	.	ID=914
+Chromosome	GeneMark.hmm	CDS	531056	531217	20.13	-	0	Parent=914; start_score=4.28
+Chromosome	GeneMark.hmm	gene	531220	531480	.	-	.	ID=915
+Chromosome	GeneMark.hmm	CDS	531220	531480	14.73	-	0	Parent=915; start_score=2.16
+Chromosome	GeneMark.hmm	gene	531669	532007	.	+	.	ID=916
+Chromosome	GeneMark.hmm	CDS	531669	532007	29.38	+	0	Parent=916; start_score=0.03
+Chromosome	GeneMark.hmm	gene	532056	533003	.	+	.	ID=917
+Chromosome	GeneMark.hmm	CDS	532056	533003	66.51	+	0	Parent=917; start_score=-1.09
+Chromosome	GeneMark.hmm	gene	533041	533235	.	+	.	ID=918
+Chromosome	GeneMark.hmm	CDS	533041	533235	11.20	+	0	Parent=918; start_score=1.25
+Chromosome	GeneMark.hmm	gene	533301	533561	.	+	.	ID=919
+Chromosome	GeneMark.hmm	CDS	533301	533561	18.39	+	0	Parent=919; start_score=2.29
+Chromosome	GeneMark.hmm	gene	534026	534322	.	+	.	ID=920
+Chromosome	GeneMark.hmm	CDS	534026	534322	11.55	+	0	Parent=920; start_score=-0.76
+Chromosome	GeneMark.hmm	gene	534319	534549	.	-	.	ID=921
+Chromosome	GeneMark.hmm	CDS	534319	534549	18.55	-	0	Parent=921; start_score=1.38
+Chromosome	GeneMark.hmm	gene	534556	535053	.	-	.	ID=922
+Chromosome	GeneMark.hmm	CDS	534556	535053	41.41	-	0	Parent=922; start_score=-0.45
+Chromosome	GeneMark.hmm	gene	535114	535302	.	-	.	ID=923
+Chromosome	GeneMark.hmm	CDS	535114	535302	16.47	-	0	Parent=923; start_score=0.71
+Chromosome	GeneMark.hmm	gene	535318	536037	.	-	.	ID=924
+Chromosome	GeneMark.hmm	CDS	535318	536037	83.51	-	0	Parent=924; start_score=1.94
+Chromosome	GeneMark.hmm	gene	536041	537564	.	-	.	ID=925
+Chromosome	GeneMark.hmm	CDS	536041	537564	136.56	-	0	Parent=925; start_score=-2.60
+Chromosome	GeneMark.hmm	gene	537803	538291	.	-	.	ID=926
+Chromosome	GeneMark.hmm	CDS	537803	538291	45.51	-	0	Parent=926; start_score=-2.16
+Chromosome	GeneMark.hmm	gene	538351	538563	.	-	.	ID=927
+Chromosome	GeneMark.hmm	CDS	538351	538563	13.47	-	0	Parent=927; start_score=0.59
+Chromosome	GeneMark.hmm	gene	538576	538851	.	-	.	ID=928
+Chromosome	GeneMark.hmm	CDS	538576	538851	21.07	-	0	Parent=928; start_score=0.39
+Chromosome	GeneMark.hmm	gene	539023	539355	.	-	.	ID=929
+Chromosome	GeneMark.hmm	CDS	539023	539355	14.59	-	0	Parent=929; start_score=-0.16
+Chromosome	GeneMark.hmm	gene	539633	539749	.	+	.	ID=930
+Chromosome	GeneMark.hmm	CDS	539633	539749	4.52	+	0	Parent=930; start_score=2.53
+Chromosome	GeneMark.hmm	gene	539846	540238	.	+	.	ID=931
+Chromosome	GeneMark.hmm	CDS	539846	540238	38.47	+	0	Parent=931; start_score=-1.19
+Chromosome	GeneMark.hmm	gene	540510	541241	.	+	.	ID=932
+Chromosome	GeneMark.hmm	CDS	540510	541241	69.66	+	0	Parent=932; start_score=-2.59
+Chromosome	GeneMark.hmm	gene	541388	541792	.	+	.	ID=933
+Chromosome	GeneMark.hmm	CDS	541388	541792	32.98	+	0	Parent=933; start_score=0.33
+Chromosome	GeneMark.hmm	gene	541789	542094	.	-	.	ID=934
+Chromosome	GeneMark.hmm	CDS	541789	542094	10.64	-	0	Parent=934; start_score=1.65
+Chromosome	GeneMark.hmm	gene	542279	542389	.	+	.	ID=935
+Chromosome	GeneMark.hmm	CDS	542279	542389	4.87	+	0	Parent=935; start_score=0.51
+Chromosome	GeneMark.hmm	gene	543066	543581	.	+	.	ID=936
+Chromosome	GeneMark.hmm	CDS	543066	543581	35.62	+	0	Parent=936; start_score=-0.13
+Chromosome	GeneMark.hmm	gene	543606	544157	.	+	.	ID=937
+Chromosome	GeneMark.hmm	CDS	543606	544157	37.54	+	0	Parent=937; start_score=-0.29
+Chromosome	GeneMark.hmm	gene	544562	544915	.	-	.	ID=938
+Chromosome	GeneMark.hmm	CDS	544562	544915	17.03	-	0	Parent=938; start_score=-3.32
+Chromosome	GeneMark.hmm	gene	545171	545380	.	-	.	ID=939
+Chromosome	GeneMark.hmm	CDS	545171	545380	14.45	-	0	Parent=939; start_score=-0.02
+Chromosome	GeneMark.hmm	gene	545380	545952	.	-	.	ID=940
+Chromosome	GeneMark.hmm	CDS	545380	545952	47.17	-	0	Parent=940; start_score=3.36
+Chromosome	GeneMark.hmm	gene	545962	546156	.	-	.	ID=941
+Chromosome	GeneMark.hmm	CDS	545962	546156	7.16	-	0	Parent=941; start_score=0.13
+Chromosome	GeneMark.hmm	gene	546880	547647	.	-	.	ID=942
+Chromosome	GeneMark.hmm	CDS	546880	547647	59.38	-	0	Parent=942; start_score=0.69
+Chromosome	GeneMark.hmm	gene	547664	548056	.	-	.	ID=943
+Chromosome	GeneMark.hmm	CDS	547664	548056	25.35	-	0	Parent=943; start_score=1.42
+Chromosome	GeneMark.hmm	gene	548354	548851	.	-	.	ID=944
+Chromosome	GeneMark.hmm	CDS	548354	548851	22.85	-	0	Parent=944; start_score=0.51
+Chromosome	GeneMark.hmm	gene	548867	549226	.	-	.	ID=945
+Chromosome	GeneMark.hmm	CDS	548867	549226	38.61	-	0	Parent=945; start_score=0.46
+Chromosome	GeneMark.hmm	gene	549210	549761	.	-	.	ID=946
+Chromosome	GeneMark.hmm	CDS	549210	549761	43.11	-	0	Parent=946; start_score=0.29
+Chromosome	GeneMark.hmm	gene	551040	551942	.	-	.	ID=947
+Chromosome	GeneMark.hmm	CDS	551040	551942	51.70	-	0	Parent=947; start_score=-1.28
+Chromosome	GeneMark.hmm	gene	552018	552446	.	-	.	ID=948
+Chromosome	GeneMark.hmm	CDS	552018	552446	30.72	-	0	Parent=948; start_score=-3.19
+Chromosome	GeneMark.hmm	gene	552447	552632	.	-	.	ID=949
+Chromosome	GeneMark.hmm	CDS	552447	552632	12.42	-	0	Parent=949; start_score=-2.15
+Chromosome	GeneMark.hmm	gene	552696	552899	.	-	.	ID=950
+Chromosome	GeneMark.hmm	CDS	552696	552899	12.94	-	0	Parent=950; start_score=-0.96
+Chromosome	GeneMark.hmm	gene	552896	553297	.	-	.	ID=951
+Chromosome	GeneMark.hmm	CDS	552896	553297	29.80	-	0	Parent=951; start_score=-1.22
+Chromosome	GeneMark.hmm	gene	553423	553548	.	-	.	ID=952
+Chromosome	GeneMark.hmm	CDS	553423	553548	3.83	-	0	Parent=952; start_score=-0.24
+Chromosome	GeneMark.hmm	gene	553558	553827	.	-	.	ID=953
+Chromosome	GeneMark.hmm	CDS	553558	553827	9.51	-	0	Parent=953; start_score=-0.17
+Chromosome	GeneMark.hmm	gene	554122	554430	.	-	.	ID=954
+Chromosome	GeneMark.hmm	CDS	554122	554430	16.30	-	0	Parent=954; start_score=-3.23
+Chromosome	GeneMark.hmm	gene	554430	555614	.	-	.	ID=955
+Chromosome	GeneMark.hmm	CDS	554430	555614	158.57	-	0	Parent=955; start_score=-1.23
+Chromosome	GeneMark.hmm	gene	555784	555933	.	+	.	ID=956
+Chromosome	GeneMark.hmm	CDS	555784	555933	7.83	+	0	Parent=956; start_score=1.54
+Chromosome	GeneMark.hmm	gene	555934	556311	.	+	.	ID=957
+Chromosome	GeneMark.hmm	CDS	555934	556311	11.33	+	0	Parent=957; start_score=0.58
+Chromosome	GeneMark.hmm	gene	556437	557315	.	+	.	ID=958
+Chromosome	GeneMark.hmm	CDS	556437	557315	98.46	+	0	Parent=958; start_score=0.79
+Chromosome	GeneMark.hmm	gene	557305	557727	.	-	.	ID=959
+Chromosome	GeneMark.hmm	CDS	557305	557727	35.71	-	0	Parent=959; start_score=-0.53
+Chromosome	GeneMark.hmm	gene	557759	558124	.	+	.	ID=960
+Chromosome	GeneMark.hmm	CDS	557759	558124	30.26	+	0	Parent=960; start_score=-0.60
+Chromosome	GeneMark.hmm	gene	558239	558463	.	+	.	ID=961
+Chromosome	GeneMark.hmm	CDS	558239	558463	20.74	+	0	Parent=961; start_score=0.82
+Chromosome	GeneMark.hmm	gene	558557	558880	.	+	.	ID=962
+Chromosome	GeneMark.hmm	CDS	558557	558880	24.68	+	0	Parent=962; start_score=0.51
+Chromosome	GeneMark.hmm	gene	558939	559655	.	-	.	ID=963
+Chromosome	GeneMark.hmm	CDS	558939	559655	48.59	-	0	Parent=963; start_score=-0.80
+Chromosome	GeneMark.hmm	gene	559665	559943	.	-	.	ID=964
+Chromosome	GeneMark.hmm	CDS	559665	559943	20.27	-	0	Parent=964; start_score=0.34
+Chromosome	GeneMark.hmm	gene	560291	560512	.	-	.	ID=965
+Chromosome	GeneMark.hmm	CDS	560291	560512	8.65	-	0	Parent=965; start_score=-1.09
+Chromosome	GeneMark.hmm	gene	560496	561938	.	-	.	ID=966
+Chromosome	GeneMark.hmm	CDS	560496	561938	180.63	-	0	Parent=966; start_score=5.69
+Chromosome	GeneMark.hmm	gene	562014	562169	.	-	.	ID=967
+Chromosome	GeneMark.hmm	CDS	562014	562169	8.63	-	0	Parent=967; start_score=-0.15
+Chromosome	GeneMark.hmm	gene	562782	563309	.	-	.	ID=968
+Chromosome	GeneMark.hmm	CDS	562782	563309	47.01	-	0	Parent=968; start_score=-2.13
+Chromosome	GeneMark.hmm	gene	563512	563820	.	-	.	ID=969
+Chromosome	GeneMark.hmm	CDS	563512	563820	20.81	-	0	Parent=969; start_score=-1.25
+Chromosome	GeneMark.hmm	gene	563993	564931	.	+	.	ID=970
+Chromosome	GeneMark.hmm	CDS	563993	564931	102.35	+	0	Parent=970; start_score=-1.26
+Chromosome	GeneMark.hmm	gene	565075	565344	.	-	.	ID=971
+Chromosome	GeneMark.hmm	CDS	565075	565344	15.03	-	0	Parent=971; start_score=-0.69
+Chromosome	GeneMark.hmm	gene	565447	566205	.	-	.	ID=972
+Chromosome	GeneMark.hmm	CDS	565447	566205	71.69	-	0	Parent=972; start_score=1.66
+Chromosome	GeneMark.hmm	gene	566186	566344	.	-	.	ID=973
+Chromosome	GeneMark.hmm	CDS	566186	566344	4.02	-	0	Parent=973; start_score=1.88
+Chromosome	GeneMark.hmm	gene	566387	566608	.	-	.	ID=974
+Chromosome	GeneMark.hmm	CDS	566387	566608	8.93	-	0	Parent=974; start_score=1.71
+Chromosome	GeneMark.hmm	gene	566783	567025	.	-	.	ID=975
+Chromosome	GeneMark.hmm	CDS	566783	567025	26.82	-	0	Parent=975; start_score=2.88
+Chromosome	GeneMark.hmm	gene	567143	567640	.	-	.	ID=976
+Chromosome	GeneMark.hmm	CDS	567143	567640	42.78	-	0	Parent=976; start_score=2.10
+Chromosome	GeneMark.hmm	gene	567627	568406	.	-	.	ID=977
+Chromosome	GeneMark.hmm	CDS	567627	568406	35.69	-	0	Parent=977; start_score=-3.44
+Chromosome	GeneMark.hmm	gene	568399	568713	.	-	.	ID=978
+Chromosome	GeneMark.hmm	CDS	568399	568713	16.65	-	0	Parent=978; start_score=-0.98
+Chromosome	GeneMark.hmm	gene	568732	569160	.	-	.	ID=979
+Chromosome	GeneMark.hmm	CDS	568732	569160	32.40	-	0	Parent=979; start_score=-0.58
+Chromosome	GeneMark.hmm	gene	569883	570029	.	-	.	ID=980
+Chromosome	GeneMark.hmm	CDS	569883	570029	6.00	-	0	Parent=980; start_score=-0.13
+Chromosome	GeneMark.hmm	gene	570055	570450	.	-	.	ID=981
+Chromosome	GeneMark.hmm	CDS	570055	570450	33.55	-	0	Parent=981; start_score=1.17
+Chromosome	GeneMark.hmm	gene	571033	571398	.	-	.	ID=982
+Chromosome	GeneMark.hmm	CDS	571033	571398	33.10	-	0	Parent=982; start_score=-0.32
+Chromosome	GeneMark.hmm	gene	571522	573243	.	-	.	ID=983
+Chromosome	GeneMark.hmm	CDS	571522	573243	159.51	-	0	Parent=983; start_score=1.03
+Chromosome	GeneMark.hmm	gene	573259	574032	.	-	.	ID=984
+Chromosome	GeneMark.hmm	CDS	573259	574032	59.90	-	0	Parent=984; start_score=3.33
+Chromosome	GeneMark.hmm	gene	574042	574212	.	-	.	ID=985
+Chromosome	GeneMark.hmm	CDS	574042	574212	13.34	-	0	Parent=985; start_score=-1.31
+Chromosome	GeneMark.hmm	gene	574351	574500	.	-	.	ID=986
+Chromosome	GeneMark.hmm	CDS	574351	574500	14.71	-	0	Parent=986; start_score=3.37
+Chromosome	GeneMark.hmm	gene	574855	575055	.	-	.	ID=987
+Chromosome	GeneMark.hmm	CDS	574855	575055	13.41	-	0	Parent=987; start_score=-0.97
+Chromosome	GeneMark.hmm	gene	575470	576345	.	-	.	ID=988
+Chromosome	GeneMark.hmm	CDS	575470	576345	89.62	-	0	Parent=988; start_score=-3.25
+Chromosome	GeneMark.hmm	gene	576357	577205	.	-	.	ID=989
+Chromosome	GeneMark.hmm	CDS	576357	577205	80.09	-	0	Parent=989; start_score=-1.61
+Chromosome	GeneMark.hmm	gene	577268	578581	.	-	.	ID=990
+Chromosome	GeneMark.hmm	CDS	577268	578581	113.01	-	0	Parent=990; start_score=0.61
+Chromosome	GeneMark.hmm	gene	578989	579234	.	-	.	ID=991
+Chromosome	GeneMark.hmm	CDS	578989	579234	11.19	-	0	Parent=991; start_score=0.59
+Chromosome	GeneMark.hmm	gene	579224	579985	.	-	.	ID=992
+Chromosome	GeneMark.hmm	CDS	579224	579985	49.53	-	0	Parent=992; start_score=3.74
