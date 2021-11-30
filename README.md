@@ -114,7 +114,7 @@ Ensembl Bacteria.
 ## Annotation Comparison Output - The output format is the same for Annotation_Compare and Aggregate_Compare:
 ### Print to screen example - Prodigal prediction compared to Ensembl Bacteria reference annotation of *Escherichia coli*:
 ```bash
-python3 -m ORForise.Annotation_Compare.py -ref -dna ./Testing/Myco.fa -ref ./Testing/Myco.gff -t Prodigal -tp ./Testing/Prodigal_Myco.gff
+python3 -m ORForise.Annotation_Compare.py  -ref ./Testing/Myco.gff -dna ./Testing/Myco.fa -t Prodigal -tp ./Testing/Prodigal_Myco.gff
 Genome Used: Myco
 Reference Used: Testing/Myco.gff
 Tool Compared: Prodigal
