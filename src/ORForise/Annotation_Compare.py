@@ -92,9 +92,9 @@ def comparator(tool, tool_prediction, genome_DNA, reference_tool, reference_anno
     else:
         print('Reference Used: ' + str(reference_annotation))
     print('Tool Compared: '+str(tool))
-    print('Perfect Matches:' + str(len(perfect_Matches)) + '[' + str(len(ref_genes))+ ']')
-    print('Partial Matches:' + str(len(partial_Hits)) + '[' + str(len(ref_genes))+ ']')
-    print('Missed Genes:' + str(len(missed_genes)) + '[' + str(len(ref_genes))+ ']')
+    print('Perfect Matches:' + str(len(perfect_Matches)) + '[' + str(len(ref_genes))+ '] -'+ format(100 * len(perfect_Matches)/len(ref_genes),'.2f')+'%')
+    print('Partial Matches:' + str(len(partial_Hits)) + '[' + str(len(ref_genes))+ '] - '+ format(100 * len(partial_Hits)/len(ref_genes),'.2f')+'%')
+    print('Missed Genes:' + str(len(missed_genes)) + '[' + str(len(ref_genes))+ '] - '+ format(100 * len(missed_genes)/len(ref_genes),'.2f')+'%')
     if outname:
         with open(outname, 'w', newline='\n', encoding='utf-8') as out_file:  # Clear write out of report
             tool_out = csv.writer(out_file, quoting=csv.QUOTE_NONE, escapechar=" ")
@@ -160,8 +160,6 @@ def comparator(tool, tool_prediction, genome_DNA, reference_tool, reference_anno
                     tool_out.writerow([multi])
             except IndexError:
                 pass
-
-
 
 
 

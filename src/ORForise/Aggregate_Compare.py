@@ -109,9 +109,9 @@ def comparator(tools, tool_predictions, genome_DNA, reference_tool, reference_an
     else:
         print('Reference Used: ' + str(reference_annotation))
     print('Tools Compared: ' + str(tools))
-    print('Perfect Matches:' + str(len(perfect_Matches)) + '[' + str(len(ref_genes)) + ']')
-    print('Partial Matches:' + str(len(partial_Hits)) + '[' + str(len(ref_genes)) + ']')
-    print('Missed Genes:' + str(len(missed_genes)) + '[' + str(len(ref_genes)) + ']')
+    print('Perfect Matches:' + str(len(perfect_Matches)) + '[' + str(len(ref_genes))+ '] -'+ format(100 * len(perfect_Matches)/len(ref_genes),'.2f')+'%')
+    print('Partial Matches:' + str(len(partial_Hits)) + '[' + str(len(ref_genes))+ '] - '+ format(100 * len(partial_Hits)/len(ref_genes),'.2f')+'%')
+    print('Missed Genes:' + str(len(missed_genes)) + '[' + str(len(ref_genes))+ '] - '+ format(100 * len(missed_genes)/len(ref_genes),'.2f')+'%')
     if outname:
         with open(outname, 'w', newline='\n',
                   encoding='utf-8') as out_file:  # Clear write out of report
