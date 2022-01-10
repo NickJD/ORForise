@@ -338,12 +338,12 @@ Chromosome	original	CDS	82620	84044	.	+	.	ID=Original_Annotation;Coverage=100
 
 The .fa and .gff files (from Ensembl Bacteria Release 46) below are available in the Genomes directory.
 
-* *Bacillus subtilis* - Strain BEST7003 - Assembly ASM52304v1
-* *Caulobacter crescentus* - Strain CB15 - Assembly ASM690v1
 * *Escherichia coli K-12* - Strain ER3413 - Assembly ASM80076v1
-* *Mycoplasma genitalium* - Strain G37 - Assembly ASM2732v1
-* *Pseudomonas fluorescens* - Strain UK4 - Assembly ASM73042v1
 * *Staphylococcus aureus* - Strain 502A - Assembly ASM59796v1
+* *Bacillus subtilis* - Strain BEST7003 - Assembly ASM52304v1
+* *Mycoplasma genitalium* - Strain G37 - Assembly ASM2732v1
+* *Caulobacter crescentus* - Strain CB15 - Assembly ASM690v1
+* *Pseudomonas fluorescens* - Strain UK4 - Assembly ASM73042v1
 
 # Prediction Tools Available:
 
@@ -404,9 +404,6 @@ GFF was chosen as output type.
 GFF was chosen as output type.
 
 **TransDecoder - Version 5.5.0** - https://github.com/TransDecoder/TransDecoder/wiki  
-Defaults options were used.
-
-****Balrog - Version `2021'`** - https://github.com/salzberg-lab/Balrog 
 Defaults options were used.
 
 
