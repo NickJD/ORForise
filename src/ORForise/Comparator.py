@@ -6,7 +6,6 @@ except ImportError:
     from ORForise.utils import *
 
 
-
 class comparator:  # Class to hold global-type variables
     def __init__(self, perfect_Starts=0, perfect_Stops=0, genome_Seq='',
                  genome_Seq_Rev='',
@@ -329,9 +328,13 @@ def tool_comparison(ref_genes, orfs, genome, verbose):
             m_ORF_Details = orf_Details[:]
             m_ORF_Details.append(g_pos)
             if orf_Pos in comp.matched_ORFs.keys():
-                previously_Covered_Gene = comp.matched_ORFs[g_pos][-1]
+                try:
+                    previously_Covered_Gene = comp.matched_ORFs[g_pos][-1]
+                except KeyError:
+                    last_key = [*comp.matched_ORFs.keys()][-1]
+                    previously_Covered_Gene = comp.matched_ORFs[last_key][-1]
                 comp.multi_Matched_ORFs[orf_Pos] += [g_pos.replace(',', '-'), previously_Covered_Gene.replace(',',
-                                                                                                              '-')]  # ORF collects multiple gene pos'
+                                                                                                   '-')]  # ORF collects multiple gene pos'
             comp.matched_ORFs.update({orf_Pos: m_ORF_Details})
             comp.genes_Detected.update({str(gene_details): orf_Pos})
             match_Statistics(o_Start, o_Stop, g_Start, g_Stop, g_Strand)
@@ -346,7 +349,11 @@ def tool_comparison(ref_genes, orfs, genome, verbose):
             m_ORF_Details = orf_Details[:]
             m_ORF_Details.append(g_pos)
             if orf_Pos in comp.matched_ORFs.keys():
-                previously_Covered_Gene = comp.matched_ORFs[g_pos][-1]
+                try:
+                    previously_Covered_Gene = comp.matched_ORFs[g_pos][-1]
+                except KeyError:
+                    last_key = [*comp.matched_ORFs.keys()][-1]
+                    previously_Covered_Gene = comp.matched_ORFs[last_key][-1]
                 comp.multi_Matched_ORFs[orf_Pos] += [g_pos.replace(',', '-'), previously_Covered_Gene.replace(',',
                                                                                                               '-')]  # ORF collects multiple gene pos'
             comp.matched_ORFs.update({orf_Pos: m_ORF_Details})

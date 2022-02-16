@@ -118,9 +118,9 @@ python3 -m ORForise.Annotation_Compare.py  -ref ./Testing/Myco.gff -dna ./Testin
 Genome Used: Myco
 Reference Used: Testing/Myco.gff
 Tool Compared: Prodigal
-Perfect Matches:128[476]
-Partial Matches:62[476]
-Missed Genes:286[476]
+Perfect Matches:128[476] -26.89%
+Partial Matches:62[476] - 13.03%
+Missed Genes:286[476] - 60.08%
 Complete
 ```
 
@@ -406,7 +406,7 @@ GFF was chosen as output type.
 **TransDecoder - Version 5.5.0** - https://github.com/TransDecoder/TransDecoder/wiki  
 Defaults options were used.
 
-****Balrog - Version `2021'`** - https://github.com/salzberg-lab/Balrog 
+**Balrog - Version 2021`** - https://github.com/salzberg-lab/Balrog 
 Defaults options were used.
 
 

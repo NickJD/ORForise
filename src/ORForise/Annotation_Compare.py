@@ -8,6 +8,11 @@ try:
 except ImportError:
     from .Comparator import tool_comparison
 
+try:
+    from utils import *
+except ImportError:
+    from ORForise.utils import *
+
 parser = argparse.ArgumentParser()
 parser.add_argument('-dna', '--genome_DNA', required=True, help='Genome DNA file (.fa) which both annotations '
                                                                 'are based on')
@@ -50,6 +55,7 @@ def comparator(tool, tool_prediction, genome_DNA, reference_tool, reference_anno
                         count += 1
                 except IndexError:
                     continue
+        ref_genes = sortGenes(ref_genes) # sorted GFF refernce
     else:  # IF using a tool as reference
         try:
             reference_tool_ = import_module('Tools.' + reference_tool + '.' + reference_tool,
