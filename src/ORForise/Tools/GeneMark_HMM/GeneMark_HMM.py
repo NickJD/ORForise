@@ -15,11 +15,11 @@ def GeneMark_HMM(tool_pred, genome):
     genome_rev = revCompIterative(genome)
     with open(tool_pred, 'r') as GeneMark_HMM_input:
         for line in GeneMark_HMM_input:
-            line = line.split()
-            if len(line) >= 9 and "CDS" in line[5]:
-                start = int(line[6])
-                stop = int(line[7])
-                strand = line[9]
+            line = line.split('\t')
+            if len(line) >= 9 and "CDS" in line[2]:
+                start = int(line[3])
+                stop = int(line[4])
+                strand = line[6]
                 if '-' in strand:  # Reverse Compliment starts and stops adjusted
                     r_start = genome_size - stop
                     r_stop = genome_size - start
