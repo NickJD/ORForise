@@ -41,21 +41,26 @@ Example output files from ```Annotation_Compare```, ```GFF_Adder``` and ```GFF_I
 For Help: ```python3 -m ORForise.Annotation_Compare -h ```
 
 ```python
-usage: Annotation_Compare.py [-h] -dna GENOME_DNA [-rt REFERENCE_TOOL] -ref REFERENCE_ANNOTATION -t TOOL -tp TOOL_PREDICTION [-o OUTNAME] [-v {True,False}]
+usage: Annotation_Compare.py [-h] -dna GENOME_DNA [-rt REFERENCE_TOOL] 
+-ref REFERENCE_ANNOTATION -t TOOL -tp TOOL_PREDICTION [-o OUTNAME] [-v {True,False}]
 
 optional arguments:
   -h, --help            show this help message and exit
   -dna GENOME_DNA, --genome_DNA GENOME_DNA
                         Genome DNA file (.fa) which both annotations are based on
   -rt REFERENCE_TOOL, --reference_tool REFERENCE_TOOL
-                        What type of Annotation to compare to? -- Leave blank for Ensembl reference- Provide tool name to compare output from two tools (GeneMarkS)
+                        What type of Annotation to compare to? -- Leave blank 
+                        for Ensembl reference- Provide tool name to compare output 
+                        from two tools (GeneMarkS)
   -ref REFERENCE_ANNOTATION, --reference_annotation REFERENCE_ANNOTATION
                         Which reference annotation file to use as reference?
   -t TOOL, --tool TOOL  Which tool to analyse? (Prodigal)
   -tp TOOL_PREDICTION, --tool_prediction TOOL_PREDICTION
-                        Tool genome prediction file (.gff) - Different Tool Parameters are compared individually via separate files
+                        Tool genome prediction file (.gff) - Different Tool Parameters
+                        are compared individually via separate files
   -o OUTNAME, --outname OUTNAME
-                        Define full output filename (format is CSV) - If not provided, summary will be printed to std-out
+                        Define full output filename (format is CSV) - If not provided, 
+                        summary will be printed to std-out
   -v {True,False}, --verbose {True,False}
                         Default - False: Print out runtime status
 ```
@@ -83,7 +88,8 @@ For Help: ```python3 -m ORForise.Aggregate_Compare -h ```
 
 ```python
 
-usage: Aggregate_Compare.py [-h] -dna GENOME_DNA -t TOOLS -tp TOOL_PREDICTIONS [-rt REFERENCE_TOOL] -ref REFERENCE_ANNOTATION [-o OUTNAME] [-v {True,False}]
+usage: Aggregate_Compare.py [-h] -dna GENOME_DNA -t TOOLS -tp TOOL_PREDICTIONS 
+[-rt REFERENCE_TOOL] -ref REFERENCE_ANNOTATION [-o OUTNAME] [-v {True,False}]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -92,14 +98,17 @@ optional arguments:
   -t TOOLS, --tools TOOLS
                         Which tools to analyse? (Prodigal,GeneMarkS)
   -tp TOOL_PREDICTIONS, --tool_predictions TOOL_PREDICTIONS
-                        Tool genome prediction file (.gff) - Providefile locations for each tool comma separated
+                        Tool genome prediction file (.gff) - Providefile locations 
+                        for each tool comma separated
   -rt REFERENCE_TOOL, --reference_tool REFERENCE_TOOL
-                        What type of Annotation to compare to? -- Leave blank for Ensembl reference- Provide tool name to compare output from two tools
+                        What type of Annotation to compare to? -- Leave blank for 
+                        Ensembl reference- Provide tool name to compare output from two tools
                         (GeneMarkS)
   -ref REFERENCE_ANNOTATION, --reference_annotation REFERENCE_ANNOTATION
                         Which reference annotation file to use as reference?
   -o OUTNAME, --outname OUTNAME
-                        Define full output filename (format is CSV) - If not provided, summary will be printed to std-out
+                        Define full output filename (format is CSV) - If not provided,
+                        summary will be printed to std-out
   -v {True,False}, --verbose {True,False}
                         Default - False: Print out runtime status
 ```
@@ -231,24 +240,29 @@ The ```-gi``` option can be used to allow for different genomic elements to be a
 For Help: ```python3 -m ORForise.GFF_Adder -h ```
 
 ```python
-usage: GFF_Adder.py [-h] -dna GENOME_DNA [-rt REFERENCE_TOOL] -ref REFERENCE_ANNOTATION [-gi GENE_IDENT] -at ADDITIONAL_TOOL -add ADDITIONAL_ANNOTATION [-olap OVERLAP] -o OUTPUT_FILE
+usage: GFF_Adder.py [-h] -dna GENOME_DNA [-rt REFERENCE_TOOL] -ref REFERENCE_ANNOTATION 
+[-gi GENE_IDENT] -at ADDITIONAL_TOOL -add ADDITIONAL_ANNOTATION [-olap OVERLAP] -o OUTPUT_FILE
 
 optional arguments:
   -h, --help            show this help message and exit
   -dna GENOME_DNA, --genome_DNA GENOME_DNA
                         Genome DNA file (.fa) which both annotations are based on
   -rt REFERENCE_TOOL, --reference_tool REFERENCE_TOOL
-                        Which tool format to use as reference? - If not provided, will default to standard Ensembl GFF format, can be Prodigal or any of the other tools available
+                        Which tool format to use as reference? - If not provided,
+                        will default to standard Ensembl GFF format, can be Prodigal 
+                        or any of the other tools available
   -ref REFERENCE_ANNOTATION, --reference_annotation REFERENCE_ANNOTATION
                         Which reference annotation file to use as reference?
   -gi GENE_IDENT, --gene_ident GENE_IDENT
-                        Identifier used for extraction of "genic" regions from reference annotation "CDS,rRNA,tRNA": Default for is "CDS"
+                        Identifier used for extraction of "genic" regions from reference
+                        annotation "CDS,rRNA,tRNA": Default for is "CDS"
   -at ADDITIONAL_TOOL, --additional_tool ADDITIONAL_TOOL
                         Which format to use for additional annotation?
   -add ADDITIONAL_ANNOTATION, --additional_annotation ADDITIONAL_ANNOTATION
                         Which annotation file to add to reference annotation?
   -olap OVERLAP, --overlap OVERLAP
-                        Maximum overlap between reference and additional genic regions (CDS,rRNA etc) - Default: 50 nt
+                        Maximum overlap between reference and additional genic regions 
+                        (CDS,rRNA etc) - Default: 50 nt
   -o OUTPUT_FILE, --output_file OUTPUT_FILE
                         Output filename
 ```
@@ -287,24 +301,29 @@ The ```-gi``` option can be used to allow for different genomic elements to be a
 
 For Help: ```python3 -m ORForise.GFF_Intersector -h ``` 
 ```python
-usage: GFF_Intersector.py [-h] -dna GENOME_DNA [-rt REFERENCE_TOOL] -ref REFERENCE_ANNOTATION [-gi GENE_IDENT] -at ADDITIONAL_TOOL -add ADDITIONAL_ANNOTATION [-cov COVERAGE] -o OUTPUT_FILE
+usage: GFF_Intersector.py [-h] -dna GENOME_DNA [-rt REFERENCE_TOOL] -ref REFERENCE_ANNOTATION
+[-gi GENE_IDENT] -at ADDITIONAL_TOOL -add ADDITIONAL_ANNOTATION [-cov COVERAGE] -o OUTPUT_FILE
 
 optional arguments:
   -h, --help            show this help message and exit
   -dna GENOME_DNA, --genome_DNA GENOME_DNA
                         Genome DNA file (.fa) which both annotations are based on
   -rt REFERENCE_TOOL, --reference_tool REFERENCE_TOOL
-                        Which tool format to use as reference? - If not provided, will default to standard Ensembl GFF format, can be Prodigal or any of the other tools available
+                        Which tool format to use as reference? - If not provided, 
+                        will default to standard Ensembl GFF format, can be Prodigal or 
+                        any of the other tools available
   -ref REFERENCE_ANNOTATION, --reference_annotation REFERENCE_ANNOTATION
                         Which reference annotation file to use as reference?
   -gi GENE_IDENT, --gene_ident GENE_IDENT
-                        Identifier used for extraction of "genic" regions from reference annotation "CDS,rRNA,tRNA": Default for is "CDS"
+                        Identifier used for extraction of "genic" regions from 
+                        reference annotation "CDS,rRNA,tRNA": Default for is "CDS"
   -at ADDITIONAL_TOOL, --additional_tool ADDITIONAL_TOOL
                         Which format to use for additional annotation?
   -add ADDITIONAL_ANNOTATION, --additional_annotation ADDITIONAL_ANNOTATION
                         Which annotation file to add to reference annotation?
   -cov COVERAGE, --coverage COVERAGE
-                        Percentage coverage of reference annotation needed to confirm intersection - Default: 100 == exact match
+                        Percentage coverage of reference annotation needed to confirm 
+                        intersection - Default: 100 == exact match
   -o OUTPUT_FILE, --output_file OUTPUT_FILE
                         Output filename
 
