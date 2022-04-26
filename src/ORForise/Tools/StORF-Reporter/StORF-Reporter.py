@@ -15,7 +15,7 @@ def StORF(tool_pred, genome):
     with open(tool_pred, 'r') as storf_input:
         for line in storf_input:
             line = line.split()
-            if "StORF" in line[1] and "ORF" in line[2]:
+            if "StORF-Reporter" in line[1] and "StORF" in line[2]:
                 start = int(line[3])
                 stop = int(line[4])
                 strand = line[6]
