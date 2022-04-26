@@ -1,2 +1,2 @@
 numpy==1.19.5
-ORForise==1.0.0
+ORForise==1.1.2
