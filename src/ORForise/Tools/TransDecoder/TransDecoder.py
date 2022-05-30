@@ -28,7 +28,7 @@ def TransDecoder(tool_pred, genome):
                     startCodon = genome[start - 1:start + 2]
                     stopCodon = genome[stop - 3:stop]
                 po = str(start) + ',' + str(stop)
-                orf = [strand, startCodon, stopCodon]
+                orf = [strand, startCodon, stopCodon, 'CDS']
                 transDecoder_ORFs.update({po: orf})
 
     transDecoder_ORFs = sortORFs(transDecoder_ORFs)

@@ -28,7 +28,7 @@ def FragGeneScan(tool_pred, genome):
                     startCodon = genome[start - 1:start + 2]
                     stopCodon = genome[stop - 3:stop]
                 po = str(start) + ',' + str(stop)
-                orf = [strand, startCodon, stopCodon]
+                orf = [strand, startCodon, stopCodon, 'CDS']
                 fragGeneScan_ORFs.update({po: orf})
 
     fragGeneScan_ORFs = sortORFs(fragGeneScan_ORFs)

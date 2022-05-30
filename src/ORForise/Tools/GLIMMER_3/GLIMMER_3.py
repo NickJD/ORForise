@@ -33,7 +33,7 @@ def GLIMMER_3(tool_pred, genome):
                         startCodon = genome[start - 1:start + 3]
                         stopCodon = genome[stop - 3:stop]
                     po = str(start) + ',' + str(stop)
-                    orf = [strand, startCodon, stopCodon]
+                    orf = [strand, startCodon, stopCodon, 'CDS']
                     GLIMMER_ORFs.update({po: orf})
 
     GLIMMER_ORFs = sortORFs(GLIMMER_ORFs)

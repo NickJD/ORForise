@@ -21,8 +21,10 @@ parser.add_argument('-ref', '--reference_annotation', required=True,
 parser.add_argument('-gi', '--gene_ident',  default='CDS', required=False,
                     help='Identifier used for extraction of "genic" regions from reference annotation '
                          '"CDS,rRNA,tRNA": Default for is "CDS"')
-parser.add_argument('-at', '--additional_tool', required=True,
+parser.add_argument('-at', '--additional_tool', dest='additional_tool', required=True,
                     help='Which format to use for additional annotation?')
+parser.add_argument('-gene_ident', action='store', dest='gene_ident', default='CDS',
+                    help='Identifier used for identifying genomic features "CDS,rRNA,tRNA"')
 parser.add_argument('-add', '--additional_annotation', required=True,
                     help='Which annotation file to add to reference annotation?')
 parser.add_argument('-olap', '--overlap', default=50, type=int, required=False,
@@ -50,7 +52,7 @@ def gff_writer(genome_ID, genome_DNA, reference_annotation, reference_tool, ref_
         else:
             type = reference_tool
             entry = (
-                        genome_ID + '\t' + type + '\t' + data[2] + '\t' + start + '\t' + stop + '\t.\t' + strand + '\t.\tID=Original_Annotation' + '\n')
+                        genome_ID + '\t' + type + '\t' + data[3] + '\t' + start + '\t' + stop + '\t.\t' + strand + '\t.\tID=Original_Annotation' + '\n')
         write_out.write(entry)
 
 
@@ -102,7 +104,7 @@ def gff_adder(genome_DNA, reference_tool, reference_annotation, additional_tool,
                 sys.exit("Tool not available")
         reference_tool_ = getattr(reference_tool_, reference_tool)
         ############ Reformatting tool output for ref_genes
-        ref_genes = reference_tool_(reference_annotation, genome_seq)
+        ref_genes = reference_tool_(reference_annotation=reference_annotation, genome_seq=genome_seq,gene_ident=args.gene_ident)
     ref_gene_set = list(ref_genes.keys())
     ################ Get Add'
     try:
@@ -115,7 +117,7 @@ def gff_adder(genome_DNA, reference_tool, reference_annotation, additional_tool,
         except ModuleNotFoundError:
             sys.exit("Tool not available")
     additional_tool_ = getattr(additional_tool_, additional_tool)
-    additional_orfs = additional_tool_(additional_annotation, genome_seq)
+    additional_orfs = additional_tool_(additional_annotation=additional_annotation, genome_seq=genome_seq,gene_ident=args.gene_ident)
     orfs_to_remove = []
     for orf in additional_orfs.keys():
         o_start = int(orf.split(',')[0])

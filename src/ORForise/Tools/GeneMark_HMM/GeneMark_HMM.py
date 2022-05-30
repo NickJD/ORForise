@@ -29,7 +29,7 @@ def GeneMark_HMM(tool_pred, genome):
                     startCodon = genome[start - 1:start + 2]
                     stopCodon = genome[stop - 3:stop]
                 po = str(start) + ',' + str(stop)
-                orf = [strand, startCodon, stopCodon]
+                orf = [strand, startCodon, stopCodon, 'CDS']
                 geneMark_HMM_ORFs.update({po: orf})
 
     geneMark_HMM_ORFs = sortORFs(geneMark_HMM_ORFs)

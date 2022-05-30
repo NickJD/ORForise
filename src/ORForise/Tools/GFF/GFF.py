@@ -8,7 +8,8 @@ except ImportError:
     from ORForise.utils import sortORFs
 
 
-def GFF(tool_pred, genome):
+def GFF(**kwargs):
+    tool_pred, genome,types = list(kwargs.values())
     GFF_ORFs = collections.OrderedDict()
     genome_size = len(genome)
     genome_rev = revCompIterative(genome)
@@ -16,7 +17,8 @@ def GFF(tool_pred, genome):
         for line in gff_input:
             if '#' not in line:
                 line = line.split('\t')
-                if "CDS" in line[2] and len(line) == 9:
+                gene_types = types.split(',')
+                if any(gene_type in line[2] for gene_type in gene_types)and len(line) == 9:  # line[2] for normalrun
                     start = int(line[3])
                     stop = int(line[4])
                     strand = line[6]
@@ -29,7 +31,7 @@ def GFF(tool_pred, genome):
                         startCodon = genome[start - 1:start + 2]
                         stopCodon = genome[stop - 3:stop]
                     po = str(start) + ',' + str(stop)
-                    orf = [strand, startCodon, stopCodon]
+                    orf = [strand, startCodon, stopCodon, 'CDS'] # This needs to detect the type
                     GFF_ORFs.update({po: orf})
                 elif "CDS" in line[2]:
                     sys.exit("SAS")

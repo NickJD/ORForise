@@ -32,7 +32,7 @@ def GeneMark(tool_pred, genome):
                             startCodon = genome_rev[r_start:r_start + 3]
                             stopCodon = genome_rev[r_stop - 2:r_stop + 1]
                             po = str(start) + ',' + str(stop)
-                            orf = [strand, startCodon, stopCodon]
+                            orf = [strand, startCodon, stopCodon, 'CDS']
                             geneMark_ORFs.update({po: orf})
                     elif 'direct' in strand:
                         if stop != prev_Stop:
@@ -40,7 +40,7 @@ def GeneMark(tool_pred, genome):
                             stopCodon = genome[stop - 3:stop]
                             strand = '+'
                             po = str(start) + ',' + str(stop)
-                            orf = [strand, startCodon, stopCodon]
+                            orf = [strand, startCodon, stopCodon, 'CDS']
                             geneMark_ORFs.update({po: orf})
                     prev_Start = start
                     prev_Stop = stop
