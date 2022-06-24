@@ -37,22 +37,26 @@ args = parser.parse_args()
 
 def gff_writer(genome_ID, genome_DNA, reference_annotation, reference_tool, ref_gene_set, additional_annotation, additional_tool, combined_ORFs, output_file):
     write_out = open(output_file, 'w')
+    write_out.write('##sequence-region ' + genome_ID + ' 1 ' + str(len(genome_DNA)) + '\n')
     write_out.write("##gff-version\t3\n#\tGFF_Adder\n#\tRun Date:" + str(date.today()) + '\n')
     write_out.write("##Genome DNA File:" + genome_DNA + '\n')
     write_out.write("##Original File: " + reference_annotation + "\n##Additional File: " + additional_annotation + '\n')
+    storf_num = 0
     for pos, data in combined_ORFs.items():
         pos_ = pos.split(',')
         start = pos_[0]
         stop = pos_[-1]
         strand = data[0]
+        length = int(stop) - int(start)
         if pos not in ref_gene_set:  # Check if ref or additional
             type = additional_tool
             entry = (
-                        genome_ID + '\t' + type + '\tCDS\t' + start + '\t' + stop + '\t.\t' + strand + '\t.\tID=Additional_Annotation' + '\n')
+                        genome_ID + '\t' + type + '\tCDS\t' + start + '\t' + stop + '\t.\t' + strand + '\t.\tID=Additional_Annotation_StORF_' + str(storf_num) + ';Length=' + str(length) +  '\n')
+            storf_num +=1
         else:
             type = reference_tool
             entry = (
-                        genome_ID + '\t' + type + '\t' + data[3] + '\t' + start + '\t' + stop + '\t.\t' + strand + '\t.\tID=Original_Annotation' + '\n')
+                        genome_ID + '\t' + type + '\t' + data[3] + '\t' + start + '\t' + stop + '\t.\t' + strand + '\t.\tID=Original_Annotation_' + data[4] + ';Length=' + str(length) +  '\n')
         write_out.write(entry)
 
 

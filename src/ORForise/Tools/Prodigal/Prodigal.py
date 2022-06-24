@@ -16,7 +16,8 @@ def Prodigal(**kwargs):
     with open(tool_pred, 'r') as prodigal_input:
         for line in prodigal_input:
             line = line.split()
-            if "Prodigal" in line[1] and "CDS" in line[2]:
+            #if "Prodigal" in line[1] and "CDS" in line[2]:
+            if "StORF-Reporter" in line:
                 start = int(line[3])
                 stop = int(line[4])
                 strand = line[6]
