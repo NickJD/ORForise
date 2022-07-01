@@ -96,7 +96,9 @@ def gff_adder(genome_DNA, reference_tool, reference_annotation, additional_tool,
                             count += 1
                 except IndexError:
                     continue
-    else:  # IF using a tool as reference
+    elif reference_tool: # IF using a tool as reference
+        if 'StORF-Reporter' == reference_tool:
+            reference_tool = 'StORF_Reporter'
         try:
             reference_tool_ = import_module('Tools.' + reference_tool + '.' + reference_tool,
                                              package='my_current_pkg')
@@ -110,7 +112,9 @@ def gff_adder(genome_DNA, reference_tool, reference_annotation, additional_tool,
         ############ Reformatting tool output for ref_genes
         ref_genes = reference_tool_(reference_annotation=reference_annotation, genome_seq=genome_seq,gene_ident=args.gene_ident)
     ref_gene_set = list(ref_genes.keys())
-    ################ Get Add'
+    ################ Get Additional Tool'
+    if 'StORF-Reporter' == additional_tool:
+        additional_tool = 'StORF_Reporter'
     try:
         additional_tool_ = import_module('Tools.' + additional_tool + '.' + additional_tool,
                                         package='my_current_pkg')

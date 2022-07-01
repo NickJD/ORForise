@@ -6,17 +6,22 @@ and predictions from other tools.
 
 ## Requirements and Installation:
 
-The ORForise platform is written in Python3.8 and only requires the NumPy library which is standard in most base
-installations of Python3. \
+The ORForise platform is written in Python3.8 and only requires the NumPy library (should be installed automatically by pip when installing ORForise) which is standard in most base
+installations of Python3. 
+
 Usually, ```pip3 install numpy``` is adequate to install NumPy. A ```requirements.txt``` files is available for installation via ```pip install -r requirements.txt``` if needed.
+
+Preliminary testing has been preformed on WSL (Windows subsystem for Linux) but full compatibility cannot be promised.
 
 ### Intallation:
 
 The ORForise platform is available via github ```git clone https://github.com/NickJD/ORForise``` and the pip Python package manager ```pip3 install ORForise```. \
 For both methods of 'installation', cloning the repository or installing ORForise via pip (recommended), the same input files are required when running the code as shown in the examples below. 
 
+## Required Files:
+
 To run, you need:
-* Input Genome FASTA and corresponding GFF file or CDS predictions with the annotated genes for the genome you want to use as reference.
+* Input Genome FASTA and corresponding GFF file (or CDS predictions with the annotated genes for the genome you want to use as reference in one of the tool output formats listed below).
 * A prediction output from one of the compatible tools for the same genome.
 
 ### How to add your own Genome:
@@ -390,7 +395,7 @@ This tool has two comparisons with the organism models *E. coli - K12* and *S. a
 **GeneMark - Version 2.5** - http://exon.gatech.edu/GeneMark/gm.cgi  
 This tool has two comparisons with the organism models *E. coli - K12 - MG165* and *S. aureus Mu50*.
 
-**GeneMark.hmm - Version 3.2.5** -  http://exon.gatech.edu/GeneMark/gmhmmp.cgi
+**GeneMark.hmm - Version 3.2.5** -  http://exon.gatech.edu/GeneMark/gmhmmp.cgi  
 This tool has two comparisons with the organism models *E. coli - K12 - MG165* and *S. aureus Mu50*.
 
 ## Self-Training/Non-Model Based Tools
@@ -425,7 +430,7 @@ GFF was chosen as output type.
 **TransDecoder - Version 5.5.0** - https://github.com/TransDecoder/TransDecoder/wiki  
 Defaults options were used.
 
-**Balrog - Version 2021`** - https://github.com/salzberg-lab/Balrog 
+**Balrog - Version 2021`** - https://github.com/salzberg-lab/Balrog  
 Defaults options were used.
 
 

@@ -56,8 +56,8 @@ src/ORForise/Tools/MetaGeneMark/MetaGeneMark.py
 src/ORForise/Tools/MetaGeneMark/__init__.py
 src/ORForise/Tools/Prodigal/Prodigal.py
 src/ORForise/Tools/Prodigal/__init__.py
-src/ORForise/Tools/StORF/StORF.py
-src/ORForise/Tools/StORF/__init__.py
+src/ORForise/Tools/StORF_Reporter/StORF_Reporter.py
+src/ORForise/Tools/StORF_Reporter/__init__.py
 src/ORForise/Tools/StORF_Undetected/StORF_Undetected.py
 src/ORForise/Tools/StORF_Undetected/__init__.py
 src/ORForise/Tools/StORF_Undetected/Completely_Undetected/Completey_Undetected.py
