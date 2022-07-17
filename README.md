@@ -1,5 +1,5 @@
 # ORForise - Prokaryote Genome Annotation Comparison and Analysis Platform
-
+## Published in Bioinformatics :   https://academic.oup.com/bioinformatics/article/38/5/1198/6454948
 Platform for analysing Prokaryote CoDing Sequence (CDS) Gene Predictors. \
 Novel genome annotations can be compared to a provided reference annotation from Ensembl (or any given GFF annotation) 
 and predictions from other tools.
