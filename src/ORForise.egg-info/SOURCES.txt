@@ -13,6 +13,8 @@ src/ORForise/utils.py
 src/ORForise.egg-info/PKG-INFO
 src/ORForise.egg-info/SOURCES.txt
 src/ORForise.egg-info/dependency_links.txt
+src/ORForise.egg-info/entry_points.txt
+src/ORForise.egg-info/requires.txt
 src/ORForise.egg-info/top_level.txt
 src/ORForise/ORForise_Analysis/__init__.py
 src/ORForise/ORForise_Analysis/cds_checker.py

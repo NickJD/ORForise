@@ -11,26 +11,7 @@ except ImportError:
     from .Comparator import tool_comparison
     from .utils import sortORFs
 
-
-
-
-parser = argparse.ArgumentParser()
-parser.add_argument('-dna', '--genome_DNA', required=True, help='Genome DNA file (.fa) which both annotations '
-                                                                'are based on')
-parser.add_argument('-t', '--tools', required=True, help='Which tools to analyse? (Prodigal,GeneMarkS)')
-parser.add_argument('-tp', '--tool_predictions', required=True, help='Tool genome prediction file (.gff) - Provide'
-                                                                     'file locations for each tool comma separated')
-parser.add_argument('-rt', '--reference_tool', required=False,
-                    help='What type of Annotation to compare to? -- Leave blank for Ensembl reference'
-                         '- Provide tool name to compare output from two tools (GeneMarkS)')
-parser.add_argument('-ref', '--reference_annotation', required=True,
-                    help='Which reference annotation file to use as reference?')
-parser.add_argument('-o', '--outname', required=False,
-                    help='Define full output filename (format is CSV) - If not provided, summary will be printed to std-out')
-parser.add_argument('-v', '--verbose', default='False', type=eval, choices=[True, False],
-                    help='Default - False: Print out runtime status')
-args = parser.parse_args()
-
+############################################
 
 def comparator(tools, tool_predictions, genome_DNA, reference_tool, reference_annotation, outname, verbose):
     genome_seq = ""
@@ -179,5 +160,26 @@ def comparator(tools, tool_predictions, genome_DNA, reference_tool, reference_an
                 pass
 
 
-if __name__ == "__main__":
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-dna', '--genome_DNA', required=True, help='Genome DNA file (.fa) which both annotations '
+                                                                    'are based on')
+    parser.add_argument('-t', '--tools', required=True, help='Which tools to analyse? (Prodigal,GeneMarkS)')
+    parser.add_argument('-tp', '--tool_predictions', required=True, help='Tool genome prediction file (.gff) - Provide'
+                                                                         'file locations for each tool comma separated')
+    parser.add_argument('-rt', '--reference_tool', required=False,
+                        help='What type of Annotation to compare to? -- Leave blank for Ensembl reference'
+                             '- Provide tool name to compare output from two tools (GeneMarkS)')
+    parser.add_argument('-ref', '--reference_annotation', required=True,
+                        help='Which reference annotation file to use as reference?')
+    parser.add_argument('-o', '--outname', required=False,
+                        help='Define full output filename (format is CSV) - If not provided, summary will be printed to std-out')
+    parser.add_argument('-v', '--verbose', default='False', type=eval, choices=[True, False],
+                        help='Default - False: Print out runtime status')
+    args = parser.parse_args()
     comparator(**vars(args))
+
+if __name__ == "__main__":
+    main()
+    print("Complete")
+

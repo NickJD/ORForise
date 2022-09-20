@@ -9,36 +9,13 @@ except ImportError:
     from .utils import sortORFs
 
 
-
-parser = argparse.ArgumentParser()
-parser.add_argument('-dna', '--genome_DNA', required=True, help='Genome DNA file (.fa) which both annotations '
-                                                                'are based on')
-parser.add_argument('-rt', '--reference_tool', required=False,
-                    help='Which tool format to use as reference? - If not provided, will default to '
-                         'standard Ensembl GFF format, can be Prodigal or any of the other tools available')
-parser.add_argument('-ref', '--reference_annotation', required=True,
-                    help='Which reference annotation file to use as reference?')
-parser.add_argument('-gi', '--gene_ident',  default='CDS', required=False,
-                    help='Identifier used for extraction of "genic" regions from reference annotation '
-                         '"CDS,rRNA,tRNA": Default for is "CDS"')
-parser.add_argument('-at', '--additional_tool', dest='additional_tool', required=True,
-                    help='Which format to use for additional annotation?')
-parser.add_argument('-gene_ident', action='store', dest='gene_ident', default='CDS',
-                    help='Identifier used for identifying genomic features "CDS,rRNA,tRNA"')
-parser.add_argument('-add', '--additional_annotation', required=True,
-                    help='Which annotation file to add to reference annotation?')
-parser.add_argument('-olap', '--overlap', default=50, type=int, required=False,
-                    help='Maximum overlap between reference and additional genic regions (CDS,rRNA etc) - Default: 50 nt')
-parser.add_argument('-o', '--output_file', required=True,
-                    help='Output filename')
-args = parser.parse_args()
-
+########################################
 
 
 def gff_writer(genome_ID, genome_DNA, reference_annotation, reference_tool, ref_gene_set, additional_annotation, additional_tool, combined_ORFs, output_file):
     write_out = open(output_file, 'w')
     write_out.write('##sequence-region ' + genome_ID + ' 1 ' + str(len(genome_DNA)) + '\n')
-    write_out.write("##gff-version\t3\n#\tGFF_Adder\n#\tRun Date:" + str(date.today()) + '\n')
+    write_out.write("##gff-version\t3\n#\tGFF-Adder\n#\tRun Date:" + str(date.today()) + '\n')
     write_out.write("##Genome DNA File:" + genome_DNA + '\n')
     write_out.write("##Original File: " + reference_annotation + "\n##Additional File: " + additional_annotation + '\n')
     storf_num = 0
@@ -97,7 +74,7 @@ def gff_adder(genome_DNA, reference_tool, reference_annotation, additional_tool,
                 except IndexError:
                     continue
     elif reference_tool: # IF using a tool as reference
-        if 'StORF-Reporter' == reference_tool:
+        if 'StORF_Reporter' == reference_tool:
             reference_tool = 'StORF_Reporter'
         try:
             reference_tool_ = import_module('Tools.' + reference_tool + '.' + reference_tool,
@@ -113,7 +90,7 @@ def gff_adder(genome_DNA, reference_tool, reference_annotation, additional_tool,
         ref_genes = reference_tool_(reference_annotation=reference_annotation, genome_seq=genome_seq,gene_ident=args.gene_ident)
     ref_gene_set = list(ref_genes.keys())
     ################ Get Additional Tool'
-    if 'StORF-Reporter' == additional_tool:
+    if 'StORF_Reporter' == additional_tool:
         additional_tool = 'StORF_Reporter'
     try:
         additional_tool_ = import_module('Tools.' + additional_tool + '.' + additional_tool,
@@ -151,7 +128,34 @@ def gff_adder(genome_DNA, reference_tool, reference_annotation, additional_tool,
         reference_tool = 'Reference_Annotation'
     gff_writer(genome_ID, genome_DNA,reference_annotation, reference_tool, ref_gene_set, additional_annotation, additional_tool, combined_ORFs, output_file)
 
-if __name__ == "__main__":
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-dna', '--genome_DNA', required=True, help='Genome DNA file (.fa) which both annotations '
+                                                                    'are based on')
+    parser.add_argument('-rt', '--reference_tool', required=False,
+                        help='Which tool format to use as reference? - If not provided, will default to '
+                             'standard Ensembl GFF format, can be Prodigal or any of the other tools available')
+    parser.add_argument('-ref', '--reference_annotation', required=True,
+                        help='Which reference annotation file to use as reference?')
+    parser.add_argument('-gi', '--gene_ident', default='CDS', required=False,
+                        help='Identifier used for extraction of "genic" regions from reference annotation '
+                             '"CDS,rRNA,tRNA": Default for is "CDS"')
+    parser.add_argument('-at', '--additional_tool', dest='additional_tool', required=True,
+                        help='Which format to use for additional annotation?')
+    parser.add_argument('-gene_ident', action='store', dest='gene_ident', default='CDS',
+                        help='Identifier used for identifying genomic features "CDS,rRNA,tRNA"')
+    parser.add_argument('-add', '--additional_annotation', required=True,
+                        help='Which annotation file to add to reference annotation?')
+    parser.add_argument('-olap', '--overlap', default=50, type=int, required=False,
+                        help='Maximum overlap between reference and additional genic regions (CDS,rRNA etc) - Default: 50 nt')
+    parser.add_argument('-o', '--output_file', required=True,
+                        help='Output filename')
+    args = parser.parse_args()
+
     gff_adder(**vars(args))
 
+
+if __name__ == "__main__":
+    main()
     print("Complete")

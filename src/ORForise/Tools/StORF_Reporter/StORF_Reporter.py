@@ -17,7 +17,7 @@ def StORF_Reporter(**kwargs):
         for line in storf_input:
             if '#' not in line:
                 line = line.split()
-                if 'StORF-Reporter' in line[1] or 'StoRF_Reporter' in line[1]: # need to harmonise this.
+                if 'StORF_Reporter' in line[1] or 'StoRF_Reporter' in line[1]: # need to harmonise this.
                     start = int(line[3])
                     stop = int(line[4])
                     strand = line[6]

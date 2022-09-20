@@ -6,12 +6,7 @@ import csv
 
 from Comparator import tool_comparison
 
-parser = argparse.ArgumentParser()
-parser.add_argument('-t', '--tool', default='GFF', help='Which tool/format would you analyse with StORF-R?')
-parser.add_argument('-i', '--input_to_analyse', default='', help='Location of file containing missed genes')
-parser.add_argument('-stf', '--storfs_to_find_missing', default='', help='STORFs to find missing.')
-parser.add_argument('-g', '--genome_to_compare', default='', help='Which genome to analyse?')
-args = parser.parse_args()
+###################
 
 
 def comparator(tool, input_to_analyse, storfs_to_find_missing, genome_to_compare):
@@ -102,5 +97,15 @@ def comparator(tool, input_to_analyse, storfs_to_find_missing, genome_to_compare
             tool_out.writerow([partial])
 
 
-if __name__ == "__main__":
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-t', '--tool', default='GFF', help='Which tool/format would you analyse with StORF-R?')
+    parser.add_argument('-i', '--input_to_analyse', default='', help='Location of file containing missed genes')
+    parser.add_argument('-stf', '--storfs_to_find_missing', default='', help='STORFs to find missing.')
+    parser.add_argument('-g', '--genome_to_compare', default='', help='Which genome to analyse?')
+    args = parser.parse_args()
+
     comparator(**vars(args))
+
+if __name__ == "__main__":
+    main()

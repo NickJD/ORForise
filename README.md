@@ -1,22 +1,16 @@
-# ORForise - Prokaryote Genome Annotation Comparison and Analysis Platform
+# ORForise - Prokaryote Genome Annotation Analysis and Comparison Platform
 ## Published in Bioinformatics :   https://academic.oup.com/bioinformatics/article/38/5/1198/6454948
-Platform for analysing Prokaryote CoDing Sequence (CDS) Gene Predictors. \
-Novel genome annotations can be compared to a provided reference annotation from Ensembl (or any given GFF annotation) 
-and predictions from other tools.
+### Platform for analysing and comparing Prokaryote CoDing Sequence (CDS) Gene Predictions. 
+### Novel genome annotations can be compared to a provided reference annotation from Ensembl and predictions from other tools (or any given GFF annotation) .
 
-## Requirements and Installation:
+# Requirements and Installation:
 
-The ORForise platform is written in Python3.8 and only requires the NumPy library (should be installed automatically by pip when installing ORForise) which is standard in most base
-installations of Python3. 
+### The ORForise platform is written in Python3.8 and only requires the NumPy library (should be installed automatically by pip when installing ORForise) which is standard in most base installations of Python3.
 
-Usually, ```pip3 install numpy``` is adequate to install NumPy. A ```requirements.txt``` files is available for installation via ```pip install -r requirements.txt``` if needed.
+## Intallation:
 
-Preliminary testing has been preformed on WSL (Windows subsystem for Linux) but full compatibility cannot be promised.
-
-### Intallation:
-
-The ORForise platform is available via github ```git clone https://github.com/NickJD/ORForise``` and the pip Python package manager ```pip3 install ORForise```. \
-For both methods of 'installation', cloning the repository or installing ORForise via pip (recommended), the same input files are required when running the code as shown in the examples below. 
+### The ORForise platform is available via the pip Python package manager ```pip3 install ORForise```. 
+### Consider using '--no-cache-dir' with pip to ensure the download of the newest version of the package.
 
 ## Required Files:
 
@@ -36,41 +30,47 @@ If the tool uses another non-standard format, a request can be made to add it as
 
 ### Testing:
 Precomputed testing and data which includes example input and output files for all tools presented below is available in the `~ORForise/Testing` directory of the GitHub repository. 
-Example output files from ```Annotation_Compare```, ```GFF_Adder``` and ```GFF_Intersector``` are made available to validate installation.
+Example output files from ```Annotation-Compare```, ```GFF-Adder``` and ```GFF-Intersector``` are made available to validate installation.
 
 
 ## CDS Prediction Analysis:
 
 ### Use-cases: (Running if via pip)
 
-For Help: ```python3 -m ORForise.Annotation_Compare -h ```
+For Help: ```Annotation-Compare -h ```
 
 ```python
-usage: Annotation_Compare.py [-h] -dna GENOME_DNA [-rt REFERENCE_TOOL] 
--ref REFERENCE_ANNOTATION -t TOOL -tp TOOL_PREDICTION [-o OUTNAME] [-v {True,False}]
+usage: Annotation-Compare [-h] -dna GENOME_DNA [-rt REFERENCE_TOOL] -ref
+                             REFERENCE_ANNOTATION -t TOOL -tp TOOL_PREDICTION
+                             [-o OUTNAME] [-v {True,False}]
 
 optional arguments:
   -h, --help            show this help message and exit
   -dna GENOME_DNA, --genome_DNA GENOME_DNA
-                        Genome DNA file (.fa) which both annotations are based on
+                        Genome DNA file (.fa) which both annotations are based
+                        on
   -rt REFERENCE_TOOL, --reference_tool REFERENCE_TOOL
-                        What type of Annotation to compare to? -- Leave blank 
-                        for Ensembl reference- Provide tool name to compare output 
-                        from two tools (GeneMarkS)
+                        What type of Annotation to compare to? -- Leave blank
+                        for Ensembl reference- Provide tool name to compare
+                        output from two tools (GeneMarkS)
   -ref REFERENCE_ANNOTATION, --reference_annotation REFERENCE_ANNOTATION
                         Which reference annotation file to use as reference?
   -t TOOL, --tool TOOL  Which tool to analyse? (Prodigal)
   -tp TOOL_PREDICTION, --tool_prediction TOOL_PREDICTION
-                        Tool genome prediction file (.gff) - Different Tool Parameters
-                        are compared individually via separate files
+                        Tool genome prediction file (.gff) - Different Tool
+                        Parameters are compared individually via separate
+                        files
   -o OUTNAME, --outname OUTNAME
-                        Define full output filename (format is CSV) - If not provided, 
-                        summary will be printed to std-out
+                        Define full output filename (format is CSV) - If not
+                        provided, summary will be printed to std-out
   -v {True,False}, --verbose {True,False}
                         Default - False: Print out runtime status
+
+
+
 ```
 
-### Compare a novel genome annotation to an Ensembl annotation:
+## Compare a novel genome annotation to an Ensembl annotation:
 
 Genome annotation is a difficult process, even for Prokaryotes. ORForise allows the direct and systematic analysis of
 a novel CDS prediction from a wide selection of tools to a reference Genome Annotation, such as those provided by
@@ -78,7 +78,7 @@ Ensembl Bacteria.
 
 #### Example: Installation through pip will allow user to call the programs directly from the ORForise package.
 ```python
- python3 -m ORForise.Annotation_Compare -dna ~/Testing/Myco.fa -ref ~/Testing/Myco.gff -t Prodigal -tp ~/Testing/Prodigal_Myco.gff
+Annotation-Compare -dna ~/Testing/Myco.fa -ref ~/Testing/Myco.gff -t Prodigal -tp ~/Testing/Prodigal_Myco.gff
 ```
 ### Compare different novel annotations with each other on a single Genome:
 
@@ -89,38 +89,43 @@ ORForise can be used as the example below.
 
 ### Use-cases: (Running if via pip)
 
-For Help: ```python3 -m ORForise.Aggregate_Compare -h ```
+For Help: ```Aggregate-Compare -h ```
 
 ```python
 
-usage: Aggregate_Compare.py [-h] -dna GENOME_DNA -t TOOLS -tp TOOL_PREDICTIONS 
-[-rt REFERENCE_TOOL] -ref REFERENCE_ANNOTATION [-o OUTNAME] [-v {True,False}]
+usage: Aggregate-Compare [-h] -dna GENOME_DNA -t TOOLS -tp TOOL_PREDICTIONS
+                            [-rt REFERENCE_TOOL] -ref REFERENCE_ANNOTATION
+                            [-o OUTNAME] [-v {True,False}]
 
 optional arguments:
   -h, --help            show this help message and exit
   -dna GENOME_DNA, --genome_DNA GENOME_DNA
-                        Genome DNA file (.fa) which both annotations are based on
+                        Genome DNA file (.fa) which both annotations are based
+                        on
   -t TOOLS, --tools TOOLS
                         Which tools to analyse? (Prodigal,GeneMarkS)
   -tp TOOL_PREDICTIONS, --tool_predictions TOOL_PREDICTIONS
-                        Tool genome prediction file (.gff) - Providefile locations 
-                        for each tool comma separated
+                        Tool genome prediction file (.gff) - Providefile
+                        locations for each tool comma separated
   -rt REFERENCE_TOOL, --reference_tool REFERENCE_TOOL
-                        What type of Annotation to compare to? -- Leave blank for 
-                        Ensembl reference- Provide tool name to compare output from two tools
-                        (GeneMarkS)
+                        What type of Annotation to compare to? -- Leave blank
+                        for Ensembl reference- Provide tool name to compare
+                        output from two tools (GeneMarkS)
   -ref REFERENCE_ANNOTATION, --reference_annotation REFERENCE_ANNOTATION
                         Which reference annotation file to use as reference?
   -o OUTNAME, --outname OUTNAME
-                        Define full output filename (format is CSV) - If not provided,
-                        summary will be printed to std-out
+                        Define full output filename (format is CSV) - If not
+                        provided, summary will be printed to std-out
   -v {True,False}, --verbose {True,False}
                         Default - False: Print out runtime status
+
+
+
 ```
 
 #### Example: 
 ```python
-python3 -m ORForise.Aggregate_Compare -ref ~/Testing/Myco.gff -dna ~/Testing/Myco.fa -t Prodigal,TransDecoder,GeneMark_S_2 -tp ~/Testing/Prodigal_Myco.gff,~/Testing/TransDecoder_Myco.gff,~/Testing/GeneMark_S_2_Myco.gff
+Aggregate-Compare -ref ~/Testing/Myco.gff -dna ~/Testing/Myco.fa -t Prodigal,TransDecoder,GeneMark_S_2 -tp ~/Testing/Prodigal_Myco.gff,~/Testing/TransDecoder_Myco.gff,~/Testing/GeneMark_S_2_Myco.gff
 ```
 This will compare the Aggregate the predictions of Prodigal, TransDecoder and GLIMMER 3 against the Mycoplasma reference annotation provided by
 Ensembl Bacteria.
@@ -128,7 +133,7 @@ Ensembl Bacteria.
 ## Annotation Comparison Output - The output format is the same for Annotation_Compare and Aggregate_Compare:
 ### Print to screen example - Prodigal prediction compared to Ensembl Bacteria reference annotation of *Escherichia coli*:
 ```bash
-python3 -m ORForise.Annotation_Compare.py  -ref ./Testing/Myco.gff -dna ./Testing/Myco.fa -t Prodigal -tp ./Testing/Prodigal_Myco.gff
+Annotation-Compare.py  -ref ./Testing/Myco.gff -dna ./Testing/Myco.fa -t Prodigal -tp ./Testing/Prodigal_Myco.gff
 Genome Used: Myco
 Reference Used: Testing/Myco.gff
 Tool Compared: Prodigal
@@ -139,7 +144,7 @@ Complete
 ```
 
 ``` bash
-python3 -m ORForise.Aggregate_Compare -ref ./Testing/Myco.gff -dna ./Testing/Myco.fa -t Prodigal,TransDecoder,GeneMark_S_2 -tp ./Testing/Prodigal_Myco.gff,./Testing/TransDecoder_Myco.gff,./Testing/GeneMark_S_2_Myco.gff
+Aggregate-Compare -ref ./Testing/Myco.gff -dna ./Testing/Myco.fa -t Prodigal,TransDecoder,GeneMark_S_2 -tp ./Testing/Prodigal_Myco.gff,./Testing/TransDecoder_Myco.gff,./Testing/GeneMark_S_2_Myco.gff
 Prodigal
 TransDecoder
 GeneMark_S_2
@@ -236,48 +241,55 @@ ORFs_Which_Detected_more_than_one_Gene:
 
 ## GFF Tools:
 
-### GFF_Adder:
+### GFF-Adder:
 
-GFF_Adder allows for the addition of predicted CDSs to an existing reference annotation (GFF or another tool) which produces a new GFF containing the original
+GFF-Adder allows for the addition of predicted CDSs to an existing reference annotation (GFF or another tool) which produces a new GFF containing the original
 genes plus the new CDS from another prediction. Default filtering will remove additional CDSs that overlap existing genes by more than 50 nt.
 The ```-gi``` option can be used to allow for different genomic elements to be accounted for, other than only CDSs in the reference annotation.
 
-For Help: ```python3 -m ORForise.GFF_Adder -h ```
+For Help: ```GFF-Adder -h ```
 
 ```python
-usage: GFF_Adder.py [-h] -dna GENOME_DNA [-rt REFERENCE_TOOL] -ref REFERENCE_ANNOTATION 
-[-gi GENE_IDENT] -at ADDITIONAL_TOOL -add ADDITIONAL_ANNOTATION [-olap OVERLAP] -o OUTPUT_FILE
+usage: GFF-Adder [-h] -dna GENOME_DNA [-rt REFERENCE_TOOL] -ref
+                    REFERENCE_ANNOTATION [-gi GENE_IDENT] -at ADDITIONAL_TOOL
+                    [-gene_ident GENE_IDENT] -add ADDITIONAL_ANNOTATION
+                    [-olap OVERLAP] -o OUTPUT_FILE
 
 optional arguments:
   -h, --help            show this help message and exit
   -dna GENOME_DNA, --genome_DNA GENOME_DNA
-                        Genome DNA file (.fa) which both annotations are based on
+                        Genome DNA file (.fa) which both annotations are based
+                        on
   -rt REFERENCE_TOOL, --reference_tool REFERENCE_TOOL
-                        Which tool format to use as reference? - If not provided,
-                        will default to standard Ensembl GFF format, can be Prodigal 
-                        or any of the other tools available
+                        Which tool format to use as reference? - If not
+                        provided, will default to standard Ensembl GFF format,
+                        can be Prodigal or any of the other tools available
   -ref REFERENCE_ANNOTATION, --reference_annotation REFERENCE_ANNOTATION
                         Which reference annotation file to use as reference?
   -gi GENE_IDENT, --gene_ident GENE_IDENT
-                        Identifier used for extraction of "genic" regions from reference
-                        annotation "CDS,rRNA,tRNA": Default for is "CDS"
+                        Identifier used for extraction of "genic" regions from
+                        reference annotation "CDS,rRNA,tRNA": Default for is
+                        "CDS"
   -at ADDITIONAL_TOOL, --additional_tool ADDITIONAL_TOOL
                         Which format to use for additional annotation?
+  -gene_ident GENE_IDENT
+                        Identifier used for identifying genomic features
+                        "CDS,rRNA,tRNA"
   -add ADDITIONAL_ANNOTATION, --additional_annotation ADDITIONAL_ANNOTATION
                         Which annotation file to add to reference annotation?
   -olap OVERLAP, --overlap OVERLAP
-                        Maximum overlap between reference and additional genic regions 
-                        (CDS,rRNA etc) - Default: 50 nt
+                        Maximum overlap between reference and additional genic
+                        regions (CDS,rRNA etc) - Default: 50 nt
   -o OUTPUT_FILE, --output_file OUTPUT_FILE
                         Output filename
 ```
 
-#### Example: Running GFF_Adder to combine the additional CDS predictions made by Prodial to the canonical annotations from Ensembl.
-``` python3 -m ORForise.GFF_Adder -dna ~/Testing/Myco.fa -ref ~/Testing/Myco.gff  -at Prodigal -add ~/Testing/Prodigal_Myco.gff -o ~/Testing/Myco_Ensembl_GFF_Adder_Prodigal.gff ```
+#### Example: Running GFF-Adder to combine the additional CDS predictions made by Prodial to the canonical annotations from Ensembl.
+``` GFF-Adder -dna ~/Testing/Myco.fa -ref ~/Testing/Myco.gff  -at Prodigal -add ~/Testing/Prodigal_Myco.gff -o ~/Testing/Myco_Ensembl_GFF_Adder_Prodigal.gff ```
 #### Example Output: ~/ORForise/Testing/Myco_Ensembl_GFF_Adder_Prodigal.gff
 ```
 ##gff-version	3
-#	GFF_Adder
+#	GFF-Adder
 #	Run Date:2021-11-10
 ##Genome DNA File:./Testing/Myco.fa
 ##Original File: ./Testing/Myco.gff
@@ -297,50 +309,54 @@ Chromosome	Prodigal	CDS	84532	84744	.	-	.	ID=Additional_Annotation
 Chromosome	Prodigal	CDS	84776	85051	.	+	.	ID=Additional_Annotation
 ```
 
-### GFF_Intersector:
+### GFF-Intersector:
 
-GFF_Intersector enables the aggregation of different genome annotations and CDS predictions and creates a single GFF
+GFF-Intersector enables the aggregation of different genome annotations and CDS predictions and creates a single GFF
 representing the intersection of the two existing annotations.
-GFF_Intersector also provides an option to allow the retention of genes that have a user defined difference (minimum % coverage and in-frame).
+GFF-Intersector also provides an option to allow the retention of genes that have a user defined difference (minimum % coverage and in-frame).
 The ```-gi``` option can be used to allow for different genomic elements to be accounted for, other than only CDSs in the reference annotation.
 
-For Help: ```python3 -m ORForise.GFF_Intersector -h ``` 
+For Help: ```GFF-Intersector -h ``` 
 ```python
-usage: GFF_Intersector.py [-h] -dna GENOME_DNA [-rt REFERENCE_TOOL] -ref REFERENCE_ANNOTATION
-[-gi GENE_IDENT] -at ADDITIONAL_TOOL -add ADDITIONAL_ANNOTATION [-cov COVERAGE] -o OUTPUT_FILE
+usage: GFF-Intersector [-h] -dna GENOME_DNA [-rt REFERENCE_TOOL] -ref
+                          REFERENCE_ANNOTATION [-gi GENE_IDENT] -at
+                          ADDITIONAL_TOOL -add ADDITIONAL_ANNOTATION
+                          [-cov COVERAGE] -o OUTPUT_FILE
 
 optional arguments:
   -h, --help            show this help message and exit
   -dna GENOME_DNA, --genome_DNA GENOME_DNA
-                        Genome DNA file (.fa) which both annotations are based on
+                        Genome DNA file (.fa) which both annotations are based
+                        on
   -rt REFERENCE_TOOL, --reference_tool REFERENCE_TOOL
-                        Which tool format to use as reference? - If not provided, 
-                        will default to standard Ensembl GFF format, can be Prodigal or 
-                        any of the other tools available
+                        Which tool format to use as reference? - If not
+                        provided, will default to standard Ensembl GFF format,
+                        can be Prodigal or any of the other tools available
   -ref REFERENCE_ANNOTATION, --reference_annotation REFERENCE_ANNOTATION
                         Which reference annotation file to use as reference?
   -gi GENE_IDENT, --gene_ident GENE_IDENT
-                        Identifier used for extraction of "genic" regions from 
-                        reference annotation "CDS,rRNA,tRNA": Default for is "CDS"
+                        Identifier used for extraction of "genic" regions from
+                        reference annotation "CDS,rRNA,tRNA": Default for is
+                        "CDS"
   -at ADDITIONAL_TOOL, --additional_tool ADDITIONAL_TOOL
                         Which format to use for additional annotation?
   -add ADDITIONAL_ANNOTATION, --additional_annotation ADDITIONAL_ANNOTATION
                         Which annotation file to add to reference annotation?
   -cov COVERAGE, --coverage COVERAGE
-                        Percentage coverage of reference annotation needed to confirm 
-                        intersection - Default: 100 == exact match
+                        Percentage coverage of reference annotation needed to
+                        confirm intersection - Default: 100 == exact match
   -o OUTPUT_FILE, --output_file OUTPUT_FILE
                         Output filename
 
 ```
 
-#### Example: Running GFF_Intersector to combine the additional CDS predictions made by Prodial to the canonical annotations from Ensembl.
-``` python3 -m ORForise.GFF_Intersector -dna ~/Testing/Myco.fa -ref ~/Testing/Myco.gff -at Prodigal -add ~/Testing/Prodigal_Myco.gff -o ~/Testing/Myco_Ensembl_GFF_Intersector_Prodigal.gff```
+#### Example: Running GFF-Intersector to combine the additional CDS predictions made by Prodial to the canonical annotations from Ensembl.
+``` GFF-Intersector -dna ~/Testing/Myco.fa -ref ~/Testing/Myco.gff -at Prodigal -add ~/Testing/Prodigal_Myco.gff -o ~/Testing/Myco_Ensembl_GFF_Intersector_Prodigal.gff```
 
 #### Example Output: ~/Testing/Myco_Ensembl_GFF_Intersector_Prodigal.gff
 ```
 ##gff-version	3
-#	GFF_Intersector
+#	GFF-Intersector
 #	Run Date:2021-11-10
 ##Genome DNA File:./Testing/Myco.fa
 ##Original File: ./Testing/Myco.gff

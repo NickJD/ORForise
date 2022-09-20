@@ -8,32 +8,12 @@ try:
 except ImportError:
     from .utils import sortORFs
 
-parser = argparse.ArgumentParser()
-parser.add_argument('-dna', '--genome_DNA', required=True, help='Genome DNA file (.fa) which both annotations '
-                                                                'are based on')
-parser.add_argument('-rt', '--reference_tool', required=False,
-                    help='Which tool format to use as reference? - If not provided, will default to '
-                         'standard Ensembl GFF format, can be Prodigal or any of the other tools available')
-parser.add_argument('-ref', '--reference_annotation', required=True,
-                    help='Which reference annotation file to use as reference?')
-parser.add_argument('-gi', '--gene_ident',  default='CDS', required=False,
-                    help='Identifier used for extraction of "genic" regions from reference annotation '
-                         '"CDS,rRNA,tRNA": Default for is "CDS"')
-parser.add_argument('-at', '--additional_tool', required=True,
-                    help='Which format to use for additional annotation?')
-parser.add_argument('-add', '--additional_annotation', required=True,
-                    help='Which annotation file to add to reference annotation?')
-parser.add_argument('-cov', '--coverage', default=100, type=int, required=False,
-                    help='Percentage coverage of reference annotation needed to confirm intersection'
-                         ' - Default: 100 == exact match')
-parser.add_argument('-o', '--output_file', required=True,
-                    help='Output filename')
-args = parser.parse_args()
+################################
 
 
 def gff_writer(genome_ID, genome_DNA,reference_annotation, reference_tool, ref_gene_set, additional_annotation, additional_tool, genes_To_Keep, output_file):
     write_out = open(output_file, 'w')
-    write_out.write("##gff-version\t3\n#\tGFF_Intersector\n#\tRun Date:" + str(date.today()) + '\n')
+    write_out.write("##gff-version\t3\n#\tGFF-Intersector\n#\tRun Date:" + str(date.today()) + '\n')
     write_out.write("##Genome DNA File:" + genome_DNA + '\n')
     write_out.write("##Original File: " + reference_annotation + "\n##Intersecting File: " + additional_annotation + '\n')
     for pos, data in genes_To_Keep.items():
@@ -154,8 +134,32 @@ def comparator(genome_DNA, reference_tool, reference_annotation, additional_tool
     genes_To_Keep = sortORFs(genes_To_Keep)
     gff_writer(genome_ID, genome_DNA,reference_annotation, reference_tool, ref_gene_set, additional_annotation, additional_tool, genes_To_Keep, output_file)
 
-
-if __name__ == "__main__":
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-dna', '--genome_DNA', required=True, help='Genome DNA file (.fa) which both annotations '
+                                                                    'are based on')
+    parser.add_argument('-rt', '--reference_tool', required=False,
+                        help='Which tool format to use as reference? - If not provided, will default to '
+                             'standard Ensembl GFF format, can be Prodigal or any of the other tools available')
+    parser.add_argument('-ref', '--reference_annotation', required=True,
+                        help='Which reference annotation file to use as reference?')
+    parser.add_argument('-gi', '--gene_ident', default='CDS', required=False,
+                        help='Identifier used for extraction of "genic" regions from reference annotation '
+                             '"CDS,rRNA,tRNA": Default for is "CDS"')
+    parser.add_argument('-at', '--additional_tool', required=True,
+                        help='Which format to use for additional annotation?')
+    parser.add_argument('-add', '--additional_annotation', required=True,
+                        help='Which annotation file to add to reference annotation?')
+    parser.add_argument('-cov', '--coverage', default=100, type=int, required=False,
+                        help='Percentage coverage of reference annotation needed to confirm intersection'
+                             ' - Default: 100 == exact match')
+    parser.add_argument('-o', '--output_file', required=True,
+                        help='Output filename')
+    args = parser.parse_args()
     comparator(**vars(args))
 
+
+
+if __name__ == "__main__":
+    main()
     print("Complete")
