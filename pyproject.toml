@@ -1,7 +1,7 @@
 [build-system]
 requires = [
-    "setuptools>=61.0",
+    "setuptools",
     "wheel",
-    "numpy>=1.22.0"
+    "numpy"
 ]
 build-backend = "setuptools.build_meta"

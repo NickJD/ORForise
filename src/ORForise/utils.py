@@ -4,6 +4,7 @@ import collections
 # Constants
 SHORT_ORF_LENGTH = 300
 MIN_COVERAGE = 75
+ORForise_Version = 'v1.2.2'
 
 
 def revCompIterative(watson):  # Gets Reverse Complement

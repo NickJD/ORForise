@@ -8,8 +8,7 @@ except ImportError:
     from ORForise.utils import sortORFs
 
 
-def Prodigal(**kwargs):
-    tool_pred, genome,types = list(kwargs.values())
+def Prodigal(tool_pred, genome):
     prodigalORFs = collections.OrderedDict()
     genome_size = len(genome)
     genome_rev = revCompIterative(genome)

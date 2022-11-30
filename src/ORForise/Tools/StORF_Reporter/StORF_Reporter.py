@@ -8,8 +8,7 @@ except ImportError:
     from ORForise.utils import sortORFs
 
 
-def StORF_Reporter(**kwargs):
-    tool_pred, genome,types = list(kwargs.values())
+def StORF_Reporter(tool_pred, genome):
     storf_orfs = collections.OrderedDict()
     genome_size = len(genome)
     genome_rev = revCompIterative(genome)
