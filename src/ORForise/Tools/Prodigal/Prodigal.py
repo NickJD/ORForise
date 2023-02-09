@@ -19,6 +19,7 @@ def Prodigal(tool_pred, genome):
                 start = int(line[3])
                 stop = int(line[4])
                 strand = line[6]
+                info = line[8]
                 if '-' in strand:  # Reverse Compliment starts and stops adjusted
                     r_start = genome_size - stop
                     r_stop = genome_size - start
@@ -28,7 +29,7 @@ def Prodigal(tool_pred, genome):
                     startCodon = genome[start - 1:start + 2]
                     stopCodon = genome[stop - 3:stop]
                 po = str(start) + ',' + str(stop)
-                orf = [strand, startCodon, stopCodon, 'CDS']
+                orf = [strand, startCodon, stopCodon, 'CDS', info]
                 prodigalORFs.update({po: orf})
 
     prodigalORFs = sortORFs(prodigalORFs)

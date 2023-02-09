@@ -21,9 +21,11 @@ def gff_writer(genome_ID, genome_DNA,reference_annotation, reference_tool, ref_g
         start = pos_[0]
         stop = pos_[-1]
         strand = data[0]
-        type = 'original'
+        ref = reference_annotation.split('/')[-1].split('.')[0]
+        data[4] = data[4].replace('\n', '').replace('ID=','')
+        data[5] = data[5].replace('\n', '').replace('ID=','')
         entry = (
-                    genome_ID + '\t' + type + '\t' + data[2] + '\t' + start + '\t' + stop + '\t.\t' + strand + '\t.\tID=Original_Annotation;Coverage=' + str(
+                    genome_ID + '\t' + ref + '\t' + data[2] + '\t' + start + '\t' + stop + '\t.\t' + strand + '\t.\tID=Original_Annotation=' + data[4] + ';Additional_Annotation=' + data[5] + ';Coverage=' + str(
                 data[1]) + '\n')
         write_out.write(entry)
 
@@ -51,7 +53,8 @@ def comparator(options):  # Only works for single contig genome
                             stop = int(line[4])
                             strand = line[6]
                             pos = str(start) + ',' + str(stop)
-                            ref_genes.update({pos: [strand, 'ref', 'CDS']})
+                            info = line[8]
+                            ref_genes.update({pos: [strand, 'ref', 'CDS',info]})
                             count += 1
                     else:
                         gene_types = options.gene_ident.split(',')
@@ -60,8 +63,9 @@ def comparator(options):  # Only works for single contig genome
                             stop = int(line[4])
                             strand = line[6]
                             pos = str(start) + ',' + str(stop)
+                            info = line[8]
                             ref_genes.update(
-                                {pos: [strand, 'ref', line[2]]})  # Report what type of gene/rRNA etc we have here
+                                {pos: [strand, 'ref', line[2],info]})  # Report what type of gene/rRNA etc we have here
                             count += 1
                 except IndexError:
                     continue
@@ -90,7 +94,7 @@ def comparator(options):  # Only works for single contig genome
         except ModuleNotFoundError:
             sys.exit("Tool not available")
     additional_tool_ = getattr(additional_tool_, options.additional_tool)
-    additional_orfs = additional_tool_(options.additional_annotation, genome_seq)
+    additional_orfs = additional_tool_(options.additional_annotation,genome_seq,options.gene_ident)
     ##############################
 
 
@@ -101,36 +105,51 @@ def comparator(options):  # Only works for single contig genome
             o_Start = int(orf.split(',')[0])
             o_Stop = int(orf.split(',')[1])
             o_Strand = data[0]
+            additional_type = data[3]
+            additional_info = data[4]
             try:
-                if ref_genes[str(o_Start) + ',' + str(o_Stop)][2] == "CDS" : # Make sure 100% match and is also CDS
-                    genes_To_Keep.update({str(o_Start) + ',' + str(o_Stop): [o_Strand, options.coverage,"CDS"]})  # o_ and g_ would be the same here
+                ref_type = ref_genes[str(o_Start) + ',' + str(o_Stop)][2]
+                ref_info = ref_genes[str(o_Start) + ',' + str(o_Stop)][3]
             except KeyError:
                 continue
+            #try:
+                #if ref_genes[str(o_Start) + ',' + str(o_Stop)][2] == "CDS" : # Make sure 100% match and is also CDS
+            if additional_type == ref_type:
+                genes_To_Keep.update({str(o_Start) + ',' + str(o_Stop): [o_Strand, options.coverage,additional_type,ref_type,additional_info,ref_info]})  # o_ and g_ would be the same here
+            #except KeyError:
+            #    continue
     else:
         for orf, data in additional_orfs.items():  # Currently allows ORF to be bigger than Gene
             o_Start = int(orf.split(',')[0])
             o_Stop = int(orf.split(',')[1])
             o_Strand = data[0]
             orf_Set = set(range(int(o_Start), int(o_Stop) + 1))
-            for gene, g_data in ref_genes.items():  # Very ineffecient
+            for gene, r_data in ref_genes.items():  # Very ineffecient
                 g_Start = int(gene.split(',')[0])
                 g_Stop = int(gene.split(',')[1])
-                g_Strand = g_data[0]
+                g_Strand = r_data[0]
                 gene_Set = set(range(int(g_Start), int(g_Stop) + 1))
                 overlap = len(orf_Set.intersection(gene_Set))
                 cov = 100 * float(overlap) / float(len(gene_Set))
+
+                additional_type = data[3]
+                additional_info = data[4]
+                ref_type = r_data[2]
+                ref_info = r_data[3]
+
                 if abs(o_Stop - g_Stop) % 3 == 0 and o_Strand == g_Strand and cov >= options.coverage:
-                    genes_To_Keep.update({str(g_Start) + ',' + str(g_Stop): [g_Strand, int(cov),g_data[2]]})
+                    if additional_type == ref_type:
+                        genes_To_Keep.update({str(g_Start) + ',' + str(g_Stop): [g_Strand, int(cov),additional_type,ref_type,additional_info,ref_info]})
                 if g_Start > o_Stop:
                     break
     #########################################################
     #### Currently, only CDSs are filtered
-    for gene, g_data in ref_genes.items():  # Very ineffecient
-        if "CDS" not in g_data[2]:
-            g_Start = int(gene.split(',')[0])
-            g_Stop = int(gene.split(',')[1])
-            g_Strand = g_data[0]
-            genes_To_Keep.update({str(g_Start) + ',' + str(g_Stop): [g_Strand, "N/A",g_data[2]]})
+    # for gene, g_data in ref_genes.items():  # Very ineffecient
+    #     if "CDS" not in g_data[2]:
+    #         g_Start = int(gene.split(',')[0])
+    #         g_Stop = int(gene.split(',')[1])
+    #         g_Strand = g_data[0]
+    #         genes_To_Keep.update({str(g_Start) + ',' + str(g_Stop): [g_Strand, "N/A",g_data[2]]})
     genes_To_Keep = sortORFs(genes_To_Keep)
     gff_writer(genome_ID, options.genome_DNA, options.reference_annotation, options.reference_tool, ref_gene_set, options.additional_annotation, options.additional_tool, genes_To_Keep, options.output_file)
 
@@ -154,11 +173,11 @@ def main():
 
     optional = parser.add_argument_group('Optional Arguments')
     optional.add_argument('-rt', dest='reference_tool', required=False,
-                        help='Which tool format to use as reference? - If not provided, will default to '
-                             'standard Ensembl GFF format, can be Prodigal or any of the other tools available')
+                        help='Which tool format to use as reference? - If not provided, will default to the '
+                             'standard GFF format and will only look for "CDS" features')
     optional.add_argument('-gi', dest='gene_ident', default='CDS', required=False,
                         help='Identifier used for extraction of "genic" regions from reference annotation '
-                             '"CDS,rRNA,tRNA": Default for is "CDS"')
+                             '"CDS,rRNA,tRNA": Default for is "CDS" ')
     optional.add_argument('-cov', dest='coverage', default=100, type=int, required=False,
                         help='Percentage coverage of reference annotation needed to confirm intersection'
                              ' - Default: 100 == exact match')

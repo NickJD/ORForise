@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: ORForise
-Version: 1.2.1
+Version: 1.2.2
 Summary: ORForise - Platform for analysing and comparing Prokaryote CoDing Sequence (CDS) Gene Predictions.
 Home-page: https://github.com/NickJD/ORForise
 Author: Nicholas Dimonaco
@@ -55,34 +55,32 @@ Example output files from ```Annotation-Compare```, ```GFF-Adder``` and ```GFF-I
 For Help: ```Annotation-Compare -h ```
 
 ```python
-usage: Annotation-Compare [-h] -dna GENOME_DNA [-rt REFERENCE_TOOL] -ref
-                             REFERENCE_ANNOTATION -t TOOL -tp TOOL_PREDICTION
-                             [-o OUTNAME] [-v {True,False}]
+Thank you for using ORForise
+Please report any issues to: https://github.com/NickJD/ORForise/issues
+#####
+usage: Annotation_Compare.py [-h] -dna GENOME_DNA -ref REFERENCE_ANNOTATION -t TOOL -tp TOOL_PREDICTION
+                             [-rt REFERENCE_TOOL] [-o OUTNAME] [-v {True,False}]
 
-optional arguments:
-  -h, --help            show this help message and exit
-  -dna GENOME_DNA, --genome_DNA GENOME_DNA
-                        Genome DNA file (.fa) which both annotations are based
-                        on
-  -rt REFERENCE_TOOL, --reference_tool REFERENCE_TOOL
-                        What type of Annotation to compare to? -- Leave blank
-                        for Ensembl reference- Provide tool name to compare
-                        output from two tools (GeneMarkS)
-  -ref REFERENCE_ANNOTATION, --reference_annotation REFERENCE_ANNOTATION
+ORForise v1.2.2: Annotatione-Compare Run Parameters.
+
+Required Arguments:
+  -dna GENOME_DNA       Genome DNA file (.fa) which both annotations are based on
+  -ref REFERENCE_ANNOTATION
                         Which reference annotation file to use as reference?
-  -t TOOL, --tool TOOL  Which tool to analyse? (Prodigal)
-  -tp TOOL_PREDICTION, --tool_prediction TOOL_PREDICTION
-                        Tool genome prediction file (.gff) - Different Tool
-                        Parameters are compared individually via separate
-                        files
-  -o OUTNAME, --outname OUTNAME
-                        Define full output filename (format is CSV) - If not
-                        provided, summary will be printed to std-out
-  -v {True,False}, --verbose {True,False}
-                        Default - False: Print out runtime status
+  -t TOOL               Which tool to analyse? (Prodigal)
+  -tp TOOL_PREDICTION   Tool genome prediction file (.gff) - Different Tool Parameters are compared individually via
+                        separate files
 
+Optional Arguments:
+  -rt REFERENCE_TOOL    What type of Annotation to compare to? -- Leave blank for Ensembl reference- Provide tool
+                        name to compare output from two tools
 
+Output:
+  -o OUTNAME            Define full output filename (format is CSV) - If not provided, summary will be printed to
+                        std-out
 
+Misc:
+  -v {True,False}       Default - False: Print out runtime status
 ```
 
 ## Compare a novel genome annotation to an Ensembl annotation:
@@ -107,35 +105,31 @@ ORForise can be used as the example below.
 For Help: ```Aggregate-Compare -h ```
 
 ```python
+Thank you for using ORForise
+Please report any issues to: https://github.com/NickJD/ORForise/issues
+#####
+usage: Aggregate_Compare.py [-h] -dna GENOME_DNA -t TOOLS -tp TOOL_PREDICTIONS -ref REFERENCE_ANNOTATION
+                            [-rt REFERENCE_TOOL] [-o OUTNAME] [-v {True,False}]
 
-usage: Aggregate-Compare [-h] -dna GENOME_DNA -t TOOLS -tp TOOL_PREDICTIONS
-                            [-rt REFERENCE_TOOL] -ref REFERENCE_ANNOTATION
-                            [-o OUTNAME] [-v {True,False}]
+ORForise v1.2.2: Aggregate-Compare Run Parameters.
 
-optional arguments:
-  -h, --help            show this help message and exit
-  -dna GENOME_DNA, --genome_DNA GENOME_DNA
-                        Genome DNA file (.fa) which both annotations are based
-                        on
-  -t TOOLS, --tools TOOLS
-                        Which tools to analyse? (Prodigal,GeneMarkS)
-  -tp TOOL_PREDICTIONS, --tool_predictions TOOL_PREDICTIONS
-                        Tool genome prediction file (.gff) - Providefile
-                        locations for each tool comma separated
-  -rt REFERENCE_TOOL, --reference_tool REFERENCE_TOOL
-                        What type of Annotation to compare to? -- Leave blank
-                        for Ensembl reference- Provide tool name to compare
-                        output from two tools (GeneMarkS)
-  -ref REFERENCE_ANNOTATION, --reference_annotation REFERENCE_ANNOTATION
+Required Arguments:
+  -dna GENOME_DNA       Genome DNA file (.fa) which both annotations are based on
+  -t TOOLS              Which tools to analyse? (Prodigal,GeneMarkS)
+  -tp TOOL_PREDICTIONS  Tool genome prediction file (.gff) - Providefile locations for each tool comma separated
+  -ref REFERENCE_ANNOTATION
                         Which reference annotation file to use as reference?
-  -o OUTNAME, --outname OUTNAME
-                        Define full output filename (format is CSV) - If not
-                        provided, summary will be printed to std-out
-  -v {True,False}, --verbose {True,False}
-                        Default - False: Print out runtime status
 
+Optional Arguments:
+  -rt REFERENCE_TOOL    What type of Annotation to compare to? -- Leave blank for Ensembl reference- Provide tool
+                        name to compare output from two tools
 
+Output:
+  -o OUTNAME            Define full output filename (format is CSV) - If not provided, summary will be printed to
+                        std-out
 
+Misc:
+  -v {True,False}       Default - False: Print out runtime status
 ```
 
 #### Example: 
@@ -265,38 +259,32 @@ The ```-gi``` option can be used to allow for different genomic elements to be a
 For Help: ```GFF-Adder -h ```
 
 ```python
-usage: GFF-Adder [-h] -dna GENOME_DNA [-rt REFERENCE_TOOL] -ref
-                    REFERENCE_ANNOTATION [-gi GENE_IDENT] -at ADDITIONAL_TOOL
-                    [-gene_ident GENE_IDENT] -add ADDITIONAL_ANNOTATION
-                    [-olap OVERLAP] -o OUTPUT_FILE
+Thank you for using ORForise
+Please report any issues to: https://github.com/NickJD/ORForise/issues
+#####
+usage: GFF_Adder.py [-h] -dna GENOME_DNA -ref REFERENCE_ANNOTATION -at ADDITIONAL_TOOL -add ADDITIONAL_ANNOTATION -o
+                    OUTPUT_FILE [-rt REFERENCE_TOOL] [-gi GENE_IDENT] [-gene_ident GENE_IDENT] [-olap OVERLAP]
 
-optional arguments:
-  -h, --help            show this help message and exit
-  -dna GENOME_DNA, --genome_DNA GENOME_DNA
-                        Genome DNA file (.fa) which both annotations are based
-                        on
-  -rt REFERENCE_TOOL, --reference_tool REFERENCE_TOOL
-                        Which tool format to use as reference? - If not
-                        provided, will default to standard Ensembl GFF format,
-                        can be Prodigal or any of the other tools available
-  -ref REFERENCE_ANNOTATION, --reference_annotation REFERENCE_ANNOTATION
+ORForise v1.2.2: GFF-Adder Run Parameters.
+
+Required Arguments:
+  -dna GENOME_DNA       Genome DNA file (.fa) which both annotations are based on
+  -ref REFERENCE_ANNOTATION
                         Which reference annotation file to use as reference?
-  -gi GENE_IDENT, --gene_ident GENE_IDENT
-                        Identifier used for extraction of "genic" regions from
-                        reference annotation "CDS,rRNA,tRNA": Default for is
-                        "CDS"
-  -at ADDITIONAL_TOOL, --additional_tool ADDITIONAL_TOOL
-                        Which format to use for additional annotation?
-  -gene_ident GENE_IDENT
-                        Identifier used for identifying genomic features
-                        "CDS,rRNA,tRNA"
-  -add ADDITIONAL_ANNOTATION, --additional_annotation ADDITIONAL_ANNOTATION
+  -at ADDITIONAL_TOOL   Which format to use for additional annotation?
+  -add ADDITIONAL_ANNOTATION
                         Which annotation file to add to reference annotation?
-  -olap OVERLAP, --overlap OVERLAP
-                        Maximum overlap between reference and additional genic
-                        regions (CDS,rRNA etc) - Default: 50 nt
-  -o OUTPUT_FILE, --output_file OUTPUT_FILE
-                        Output filename
+  -o OUTPUT_FILE        Output filename
+
+Optional Arguments:
+  -rt REFERENCE_TOOL    Which tool format to use as reference? - If not provided, will default to standard Ensembl
+                        GFF format, can be Prodigal or any of the other tools available
+  -gi GENE_IDENT        Identifier used for extraction of "genic" regions from reference annotation "CDS,rRNA,tRNA":
+                        Default for is "CDS"
+  -gene_ident GENE_IDENT
+                        Identifier used for identifying genomic features in reference annotation "CDS,rRNA,tRNA"
+  -olap OVERLAP         Maximum overlap between reference and additional genic regions (CDS,rRNA etc) - Default: 50
+                        nt
 ```
 
 #### Example: Running GFF-Adder to combine the additional CDS predictions made by Prodial to the canonical annotations from Ensembl.
@@ -333,36 +321,30 @@ The ```-gi``` option can be used to allow for different genomic elements to be a
 
 For Help: ```GFF-Intersector -h ``` 
 ```python
-usage: GFF-Intersector [-h] -dna GENOME_DNA [-rt REFERENCE_TOOL] -ref
-                          REFERENCE_ANNOTATION [-gi GENE_IDENT] -at
-                          ADDITIONAL_TOOL -add ADDITIONAL_ANNOTATION
-                          [-cov COVERAGE] -o OUTPUT_FILE
+Thank you for using ORForise
+Please report any issues to: https://github.com/NickJD/ORForise/issues
+#####
+usage: GFF_Intersector.py [-h] -dna GENOME_DNA -ref REFERENCE_ANNOTATION -at ADDITIONAL_TOOL -add
+                          ADDITIONAL_ANNOTATION -o OUTPUT_FILE [-rt REFERENCE_TOOL] [-gi GENE_IDENT] [-cov COVERAGE]
 
-optional arguments:
-  -h, --help            show this help message and exit
-  -dna GENOME_DNA, --genome_DNA GENOME_DNA
-                        Genome DNA file (.fa) which both annotations are based
-                        on
-  -rt REFERENCE_TOOL, --reference_tool REFERENCE_TOOL
-                        Which tool format to use as reference? - If not
-                        provided, will default to standard Ensembl GFF format,
-                        can be Prodigal or any of the other tools available
-  -ref REFERENCE_ANNOTATION, --reference_annotation REFERENCE_ANNOTATION
+ORForise v1.2.2: GFF-Intersector Run Parameters.
+
+Required Arguments:
+  -dna GENOME_DNA       Genome DNA file (.fa) which both annotations are based on
+  -ref REFERENCE_ANNOTATION
                         Which reference annotation file to use as reference?
-  -gi GENE_IDENT, --gene_ident GENE_IDENT
-                        Identifier used for extraction of "genic" regions from
-                        reference annotation "CDS,rRNA,tRNA": Default for is
-                        "CDS"
-  -at ADDITIONAL_TOOL, --additional_tool ADDITIONAL_TOOL
-                        Which format to use for additional annotation?
-  -add ADDITIONAL_ANNOTATION, --additional_annotation ADDITIONAL_ANNOTATION
+  -at ADDITIONAL_TOOL   Which format to use for additional annotation?
+  -add ADDITIONAL_ANNOTATION
                         Which annotation file to add to reference annotation?
-  -cov COVERAGE, --coverage COVERAGE
-                        Percentage coverage of reference annotation needed to
-                        confirm intersection - Default: 100 == exact match
-  -o OUTPUT_FILE, --output_file OUTPUT_FILE
-                        Output filename
+  -o OUTPUT_FILE        Output filename
 
+Optional Arguments:
+  -rt REFERENCE_TOOL    Which tool format to use as reference? - If not provided, will default to standard Ensembl
+                        GFF format, can be Prodigal or any of the other tools available
+  -gi GENE_IDENT        Identifier used for extraction of "genic" regions from reference annotation "CDS,rRNA,tRNA":
+                        Default for is "CDS"
+  -cov COVERAGE         Percentage coverage of reference annotation needed to confirm intersection - Default: 100 ==
+                        exact match
 ```
 
 #### Example: Running GFF-Intersector to combine the additional CDS predictions made by Prodial to the canonical annotations from Ensembl.
