@@ -1,5 +1,4 @@
 import numpy as np
-import time
 try:
     from utils import *
 except ImportError:
@@ -263,14 +262,8 @@ def tool_comparison(ref_genes, orfs, genome, verbose):
     comp.genome_Seq = genome
     comp.genome_Seq_Rev = revCompIterative(genome)
     comp.genome_Size = len(genome)
-    start_time = time.time()
 
-
-
-
-    better_pos_orfs_items = [[(int(pos.split(',')[0]), int(pos.split(',')[1])), orf_Details] for pos, orf_Details in orfs.items()]
-
-
+    better_pos_orfs_items = [[(int(pos.split(',')[0]), int(pos.split(',')[1])), orf_Details] for pos, orf_Details in orfs.items()] #TODO: turn pos into tuple instead of string everywhere
 
     for gene_num, gene_details in ref_genes.items():  # Loop through each gene to compare against predicted ORFs
         g_Start = int(gene_details[0])
@@ -377,7 +370,6 @@ def tool_comparison(ref_genes, orfs, genome, verbose):
             genes_Unmatched(g_Start, g_Stop, g_Strand)  # No hit
             if verbose == True:
                 print("No Hit")
-    print(time.time() - start_time)
     for orf_Key in comp.matched_ORFs:  # Remove ORFs from out of frame if ORF was correctly matched to another Gene
         if orf_Key in comp.out_Of_Frame_ORFs:
             del comp.out_Of_Frame_ORFs[orf_Key]
