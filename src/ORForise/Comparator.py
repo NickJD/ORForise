@@ -1,5 +1,5 @@
 import numpy as np
-
+import time
 try:
     from utils import *
 except ImportError:
@@ -263,6 +263,15 @@ def tool_comparison(ref_genes, orfs, genome, verbose):
     comp.genome_Seq = genome
     comp.genome_Seq_Rev = revCompIterative(genome)
     comp.genome_Size = len(genome)
+    start_time = time.time()
+
+
+
+
+    better_pos_orfs_items = [[(int(pos.split(',')[0]), int(pos.split(',')[1])), orf_Details] for pos, orf_Details in orfs.items()]
+
+
+
     for gene_num, gene_details in ref_genes.items():  # Loop through each gene to compare against predicted ORFs
         g_Start = int(gene_details[0])
         g_Stop = int(gene_details[1])
@@ -273,9 +282,8 @@ def tool_comparison(ref_genes, orfs, genome, verbose):
         overlapping_ORFs = collections.OrderedDict()
         perfect_Match = False
         out_Frame = False
-        for pos, orf_Details in orfs.items():  # Check if perfect match, if not check if match covers at least 75% of gene - Loop through ALL ORFs - SLOW
-            o_Start = int(pos.split(',')[0])
-            o_Stop = int(pos.split(',')[1])
+        for pos, orf_Details in better_pos_orfs_items:  # Check if perfect match, if not check if match covers at least 75% of gene - Loop through ALL ORFs - SLOW
+            o_Start,o_Stop = pos
             o_Strand = orf_Details[0]
             if o_Stop <= g_Start or o_Start >= g_Stop:  # Not caught up yet
                 continue
@@ -287,18 +295,18 @@ def tool_comparison(ref_genes, orfs, genome, verbose):
                 coverage = 100 * float(overlap) / float(len(gene_Set))
                 orf_Details.append(coverage)
                 if abs(o_Stop - g_Stop) % 3 == 0 and o_Strand == g_Strand and coverage >= MIN_COVERAGE:  # Only continue if ORF covers at least 75% of the gene and is in frame
-                    overlapping_ORFs.update({pos: orf_Details})
+                    overlapping_ORFs.update({f'{o_Start},{o_Stop}': orf_Details})
                 elif coverage >= MIN_COVERAGE:  # Not in frame / on same strand
-                    comp.out_Of_Frame_ORFs.update({pos: orf_Details})
+                    comp.out_Of_Frame_ORFs.update({f'{o_Start},{o_Stop}': orf_Details})
                     out_Frame = True
             elif o_Start <= g_Start and o_Stop >= g_Stop:  # If ORF extends one or both ends of the gene
                 overlap = max(min(o_Stop, g_Stop) - max(o_Start, g_Start), -1) + 1
                 coverage = 100 * float(overlap) / float(len(gene_Set))
                 orf_Details.append(coverage)
                 if abs(o_Stop - g_Stop) % 3 == 0 and o_Strand == g_Strand and coverage >= MIN_COVERAGE:  # Only continue if ORF covers at least 75% of the gene and is in frame
-                    overlapping_ORFs.update({pos: orf_Details})
+                    overlapping_ORFs.update({f'{o_Start},{o_Stop}': orf_Details})
                 elif coverage >= MIN_COVERAGE:
-                    comp.out_Of_Frame_ORFs.update({pos: orf_Details})
+                    comp.out_Of_Frame_ORFs.update({f'{o_Start},{o_Stop}': orf_Details})
                     out_Frame = True
             else:
                 if verbose == True:
@@ -369,6 +377,7 @@ def tool_comparison(ref_genes, orfs, genome, verbose):
             genes_Unmatched(g_Start, g_Stop, g_Strand)  # No hit
             if verbose == True:
                 print("No Hit")
+    print(time.time() - start_time)
     for orf_Key in comp.matched_ORFs:  # Remove ORFs from out of frame if ORF was correctly matched to another Gene
         if orf_Key in comp.out_Of_Frame_ORFs:
             del comp.out_Of_Frame_ORFs[orf_Key]
