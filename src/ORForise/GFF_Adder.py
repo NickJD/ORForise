@@ -1,6 +1,7 @@
 from importlib import import_module
 import argparse
 import collections
+
 from datetime import date
 import sys
 try:
@@ -14,35 +15,94 @@ except ImportError:
 
 def gff_writer(options,genome_ID, genome_DNA, reference_annotation, reference_tool, ref_gene_set, additional_annotation, additional_tool, combined_ORFs, output_file):
     write_out = open(output_file, 'w')
+
     #write_out.write('##sequence-region ' + genome_ID + ' 1 ' + str(len(genome_DNA)) + '\n')
     write_out.write("##gff-version\t3\n#\tGFF-Adder\n#\tRun Date:" + str(date.today()) + '\n')
     write_out.write("##Genome DNA File:" + genome_DNA + '\n')
     write_out.write("##Original File: " + reference_annotation + "\n##Additional File: " + additional_annotation + '\n')
-    storf_num = 0
+
+
+    #meta counts
+    Ref_Only = 0
+    Ref_Combined = collections.defaultdict(int)
+    Non_Ref_Combined = collections.defaultdict(int)
+
+
     for pos, data in combined_ORFs.items():
         pos_ = pos.split(',')
+        if '15040' in pos:
+            print(2)
         start = pos_[0]
         stop = pos_[-1]
         strand = data[0]
         length = int(stop) - int(start)
+        additional_annotation_info = ''
+        tools = additional_tool.split(',')
+        matched_tools = ''
+        matching = []
+        matched = False
+        for tool in tools:
+
+            try:
+                if options.mark_consensus == True:
+                    match = [s for s in data if tool in s]
+                    matching.append(match[0].replace('\n', '').replace('ID=',''))
+                else:
+                    match = [s for s in data if tool in s]
+                    matching.append(match[0].replace('\n', '').replace('ID=',''))
+                if matching:
+                    matched = True
+
+                matched_tools += tool + ','
+            except Exception as e:
+                if options.verbose == True:
+                    print("Exception - (No matching annotation) : " + str(e))
+                continue
+        #temporary verbose fix
+        additional_annotation_info = 'ID='
+        if len(match) >1:
+            for match in matching:
+                additional_annotation_info += match+'|'
+            additional_annotation_info = additional_annotation_info[:-1]
+        elif len(match) == 1:
+            additional_annotation_info += matching[0].replace('Prokka|','').replace('GeneMark_S_2|','')
+
+        matching = None
+
         if pos not in ref_gene_set:  # Check if ref or additional
-            data[4] = data[4].replace('\n', '').replace('ID=','')
-            type = additional_tool
-            entry = (
-                        genome_ID + '\t' + type + '\t' + data[3] + '\t' + start + '\t' + stop + '\t.\t' + strand + '\t.\tID=Additional_Annotation;' + data[4] +  '\n')
-            storf_num +=1
-        else:
-            data[3] = data[3].replace('\n', '').replace('ID=','')
-            if options.mark_consensus == True and len(data) == 5:
-                data[4] = data[4].replace('\n', '').replace('ID=','')
-                info_tag = data[3] + ';Matched_Annotation=' + data[4]
+            type = matched_tools[:-1]
+            Non_Ref_Combined[len(matched_tools.split(','))] += 1
+            if options.clean == False:
+                entry = (genome_ID + '\t' + type + '\t' + data[3] + '\t' + start + '\t' + stop + '\t.\t' + strand + '\t.\tID=Additional_Annotations;' + additional_annotation_info  +  '\n')
             else:
-                info_tag = data[3]
-            type = reference_annotation.split('/')[-1].split('.')[0]
-            entry = (
-                        genome_ID + '\t' + type + '\t' + data[2] + '\t' + start + '\t' + stop + '\t.\t' + strand + '\t.\tID=Original_Annotation;' + info_tag + '\n')
+                entry = (genome_ID + '\t' + type + '\t' + data[3] + '\t' + start + '\t' + stop + '\t.\t' + strand + '\t.\t' +  additional_annotation_info + '\n')
+
+        else:
+            data[3] = data[3].replace('\n', '')#.replace('ID=', '')
+            if not additional_annotation_info:
+                Ref_Only += 1
+                type = reference_annotation.split('/')[-1].split('.')[0]
+                if options.clean == False:
+                    entry = (genome_ID + '\t' + type + '\t' + data[2] + '\t' + start + '\t' + stop + '\t.\t' + strand + '\t.\tID=Original_Annotation;' + data[3] + '\n')
+                else:
+                    entry = (genome_ID + '\t' + type + '\t' + data[2] + '\t' + start + '\t' + stop + '\t.\t' + strand + '\t.\t' + data[3] + '\n')
+            else:
+                Ref_Combined[len(matched_tools.split(','))] +=1
+                type = reference_annotation.split('/')[-1].split('.')[0]
+                if options.clean == False:
+                    entry = (genome_ID + '\t' + type + '\t' + data[2] + '\t' + start + '\t' + stop + '\t.\t' + strand + '\t.\tID=Original_Annotation;' + data[3] +
+                    ';Matched_Annotations=' + additional_annotation_info + '\n')
+                else:
+                    entry = (genome_ID + '\t' + type + '\t' + data[2] + '\t' + start + '\t' + stop + '\t.\t' + strand + '\t.\t' + data[3] + '\n')
         write_out.write(entry)
 
+    if options.output_meta == True:
+        meta_out = open(output_file.replace('.gff','_Meta.txt'),'w')
+        meta_out.write('Reference Only Genes: ' +  str(Ref_Only) + '\n')
+        Ref_Combined_counter = collections.Counter(Ref_Combined)
+        meta_out.write('Reference Combined Genes: ' + str(Ref_Combined_counter) + '\n')
+        Non_Ref_Combined_counter = collections.Counter(Non_Ref_Combined)
+        meta_out.write('Non_Reference Combined Genes: ' + str(Non_Ref_Combined_counter) + '\n')
 
 def gff_adder(options):#genome_DNA, reference_tool, reference_annotation, additional_tool, additional_annotation, gene_ident, overlap, output_file):  # Only works for single contig genome
     genome_seq = ""
@@ -102,40 +162,59 @@ def gff_adder(options):#genome_DNA, reference_tool, reference_annotation, additi
     ################ Get Additional Tool'
     # if 'StORF_Reporter' == options.additional_tool:
     #     additional_tool = 'StORF_Reporter'
-    try:
-        additional_tool_ = import_module('Tools.' + options.additional_tool + '.' + options.additional_tool,
-                                        package='my_current_pkg')
-    except ModuleNotFoundError:
+    additional_annotations = collections.OrderedDict()
+    tool_count = 0
+    for tool in options.additional_tool.split(','):
         try:
-            additional_tool_ = import_module('ORForise.Tools.' + options.additional_tool + '.' + options.additional_tool,
+            additional_tool_ = import_module('Tools.' + tool + '.' + tool,
                                             package='my_current_pkg')
         except ModuleNotFoundError:
-            sys.exit("Tool not available")
-    additional_tool_ = getattr(additional_tool_, options.additional_tool)
-    additional_orfs = additional_tool_(options.additional_annotation, genome_seq,options.gene_ident)#,gene_ident=options.gene_ident)
-    orfs_to_remove = []
-    for orf in additional_orfs.keys():
-        o_start = int(orf.split(',')[0])
-        o_stop = int(orf.split(',')[1])
-        orf_set = set(range(int(o_start), int(o_stop) + 1))
-        for pos, details in ref_genes.items():  # Loop through each gene to compare against predicted ORFs - Slow
-            g_start = int(pos.split(',')[0])
-            g_stop = int(pos.split(',')[1])
-            gene_set = set(range(int(g_start), int(g_stop) + 1))
-            cov = len(orf_set.intersection(gene_set))
-            if g_start > o_stop:
+            try:
+                additional_tool_ = import_module('ORForise.Tools.' + tool + '.' + tool,
+                                                package='my_current_pkg')
+            except ModuleNotFoundError:
+                sys.exit("Tool not available")
+        additional_tool_ = getattr(additional_tool_, tool)
+        current_additional_orfs = additional_tool_(options.additional_annotation.split(',')[tool_count], genome_seq,options.gene_ident)#,gene_ident=options.gene_ident)
+        tool_count += 1
+        orfs_to_remove = []
+        for orf in current_additional_orfs.keys():
+            o_start = int(orf.split(',')[0])
+            o_stop = int(orf.split(',')[1])
+            orf_set = set(range(int(o_start), int(o_stop) + 1))
+            for pos, details in ref_genes.items():  # Loop through each gene to compare against predicted ORFs - Slow
+                g_start = int(pos.split(',')[0])
+                g_stop = int(pos.split(',')[1])
+
+                gene_set = set(range(int(g_start), int(g_stop) + 1))
+                cov = len(orf_set.intersection(gene_set))
+                if g_start > o_stop:
+                    break
+                if cov >= options.overlap:
+                    orfs_to_remove.append(str(o_start) + ',' + str(o_stop))
+                    ref_genes[pos].append(current_additional_orfs[orf][4]) # record overlap
+                    break
+            try:
+                for pos, details in additional_annotations.items():
+                    a_start = int(pos.split(',')[0])
+                    a_stop = int(pos.split(',')[1])
+                    add_set = set(range(int(a_start), int(a_stop) + 1))
+                    cov = len(orf_set.intersection(add_set))
+                    if a_start > a_stop:
+                        break
+                    if cov >= options.overlap:
+                        #orfs_to_remove.append(str(a_start) + ',' + str(a_stop))
+                        additional_annotations[pos].append(current_additional_orfs[orf][4]) # record overlap
+                        break
+            except:
                 break
-            if cov >= options.overlap:
-                orfs_to_remove.append(str(o_start) + ',' + str(o_stop))
-                ref_genes[pos].append(additional_orfs[orf][4])
 
-
-
-    for orf_key in orfs_to_remove:  # Remove ORFs from out of frame if ORF was correctly matched to another Gene
-        if orf_key in additional_orfs:
-            del additional_orfs[orf_key]
+        for orf_key in orfs_to_remove:  # Remove ORFs from out of frame if ORF was correctly matched to another Gene
+            if orf_key in current_additional_orfs:
+                del current_additional_orfs[orf_key]
+        additional_annotations.update(current_additional_orfs)
     #########################################################
-    combined_ORFs = {**ref_genes, **additional_orfs}
+    combined_ORFs = {**ref_genes, **additional_annotations}
     combined_ORFs = sortORFs(combined_ORFs)
 
     if not options.reference_tool:
@@ -155,9 +234,9 @@ def main():
     required.add_argument('-ref', dest='reference_annotation', required=True,
                         help='Which reference annotation file to use as reference?')
     required.add_argument('-at', dest='additional_tool', required=True,
-                        help='Which format to use for additional annotation?')
+                        help='Which format to use for additional annotation? - Can provide multiple annotations (Tool1,Tool2)')
     required.add_argument('-add', dest='additional_annotation', required=True,
-                        help='Which annotation file to add to reference annotation?')
+                        help='Which annotation file to add to reference annotation? - Can provide multiple annotations (1.GFF,2.GFF)')
     required.add_argument('-o', dest='output_file', required=True,
                         help='Output filename')
 
@@ -169,12 +248,21 @@ def main():
                         help='Identifier used for identifying genomic features in reference annotation "CDS,rRNA,tRNA"')
     optional.add_argument('-mc', dest='mark_consensus', default=False, type=bool, required=False,
                         help='Default - False: Mark reference annotations which where present in the additional tool annotation')
+    optional.add_argument('-c', dest='clean', default=False, type=bool, required=False,
+                        help='Default - False: Do not mark 9th column with "Original/Matched/Additional tag"')
+    optional.add_argument('-meta', dest='output_meta', default=False, type=bool, required=False,
+                        help='Default - False: Output metadata file')
     optional.add_argument('-olap', dest='overlap', default=50, type=int, required=False,
                         help='Maximum overlap between reference and additional genic regions (CDS,rRNA etc) - Default: 50 nt')
+
+    misc = parser.add_argument_group('Misc')
+    misc.add_argument('-v', dest='verbose', default='False', type=eval, choices=[True, False],
+                      help='Default - False: Print out runtime status')
 
     options = parser.parse_args()
 
     gff_adder(options)
+
 
 
 if __name__ == "__main__":

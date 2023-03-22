@@ -8,7 +8,10 @@ except ImportError:
     from ORForise.utils import sortORFs
 
 
-def Prodigal(tool_pred, genome):
+def Prodigal(*args):
+    tool_pred = args[0]
+    genome = args[1]
+    #types = args[2]
     prodigalORFs = collections.OrderedDict()
     genome_size = len(genome)
     genome_rev = revCompIterative(genome)
@@ -29,7 +32,7 @@ def Prodigal(tool_pred, genome):
                     startCodon = genome[start - 1:start + 2]
                     stopCodon = genome[stop - 3:stop]
                 po = str(start) + ',' + str(stop)
-                orf = [strand, startCodon, stopCodon, 'CDS', info]
+                orf = [strand, startCodon, stopCodon, 'CDS', 'Prodigal|'+info]
                 prodigalORFs.update({po: orf})
 
     prodigalORFs = sortORFs(prodigalORFs)
