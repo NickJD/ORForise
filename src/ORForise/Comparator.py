@@ -399,7 +399,8 @@ def tool_comparison(ref_genes, orfs, genome, verbose):
         g_Start = int(gene_details[0])
         g_Stop = int(gene_details[1])
         g_Strand = gene_details[2]
-        gene_Length = (g_Stop - g_Start)
+        gene_Length = (g_Stop - g_Start) +1
+        if gene_Length == 0: print(g_Start, g_Stop, "!!!!!!!!!!!!!!!!!!!!!!!!")
         comp.gene_Lengths.append(gene_Length)
         gene_Nuc_Array[g_Start - 1:g_Stop] = True  # Changing all between the two positions to 1's
         comp.gene_GC.append(nuc_Count(g_Start, g_Stop, g_Strand))
@@ -443,7 +444,7 @@ def tool_comparison(ref_genes, orfs, genome, verbose):
             comp.pos_Strand += 1
         elif o_Strand == "-":
             comp.neg_Strand += 1
-        orf_Length = (o_Stop - o_Start)
+        orf_Length = (o_Stop - o_Start) +1
         comp.orf_Lengths.append(orf_Length)
         orf_Nuc_Array[o_Start - 1:o_Stop] = True  # Changing all between the two positions to 1's
         comp.orf_GC.append(nuc_Count(o_Start, o_Stop, o_Strand))
