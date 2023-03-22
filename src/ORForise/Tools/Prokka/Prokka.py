@@ -12,7 +12,7 @@ def Prokka(*args):
     tool_pred = args[0]
     genome = args[1]
     types = args[2]
-    prokkaORFs = collections.OrderedDict()
+    prokkaORFs = collections.defaultdict(list)
     genome_size = len(genome)
     genome_rev = revCompIterative(genome)
     with open(tool_pred, 'r') as prodigal_input:
@@ -33,7 +33,7 @@ def Prokka(*args):
                         startCodon = genome[start - 1:start + 2]
                         stopCodon = genome[stop - 3:stop]
                     po = str(start) + ',' + str(stop)
-                    orf = [strand, startCodon, stopCodon, line[2], info]
+                    orf = [strand, startCodon, stopCodon, line[2], 'Prokka|'+info]
                     prokkaORFs.update({po: orf})
 
     prodigalORFs = sortORFs(prokkaORFs)

@@ -278,12 +278,14 @@ def tool_comparison(ref_genes, orfs, genome, verbose):
         for pos, orf_Details in better_pos_orfs_items:  # Check if perfect match, if not check if match covers at least 75% of gene - Loop through ALL ORFs - SLOW
             o_Start,o_Stop = pos
             o_Strand = orf_Details[0]
+            #orf_Set = set(range(o_Start, o_Stop + 1)) Removed for optimisation
             if o_Stop <= g_Start or o_Start >= g_Stop:  # Not caught up yet
                 continue
             elif o_Start == g_Start and o_Stop == g_Stop:  # If perfect match, break and skip the rest of the ORFs
                 perfect_Match = True
                 break
             elif g_Start <= o_Start < g_Stop or g_Start < o_Stop < g_Stop:  # If ORF Start or Stop is between gene Start or Stop
+                #overlap = len(gene_Set.intersection(orf_Set)) # Replaced for optimisation
                 overlap = max(min(o_Stop, g_Stop) - max(o_Start, g_Start), -1) + 1
                 coverage = 100 * float(overlap) / float(len(gene_Set))
                 orf_Details.append(coverage)
@@ -293,6 +295,7 @@ def tool_comparison(ref_genes, orfs, genome, verbose):
                     comp.out_Of_Frame_ORFs.update({f'{o_Start},{o_Stop}': orf_Details})
                     out_Frame = True
             elif o_Start <= g_Start and o_Stop >= g_Stop:  # If ORF extends one or both ends of the gene
+                #overlap = len(gene_Set.intersection(orf_Set)) # Replaced for optimisation
                 overlap = max(min(o_Stop, g_Stop) - max(o_Start, g_Start), -1) + 1
                 coverage = 100 * float(overlap) / float(len(gene_Set))
                 orf_Details.append(coverage)
