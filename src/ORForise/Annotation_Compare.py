@@ -16,12 +16,8 @@ except ImportError:
 ##########################
 
 def comparator(options):
-    genome_Seq = ""
-    with open(options.genome_DNA, 'r') as genome:
-        for line in genome:
-            line = line.replace("\n", "")
-            if not line.startswith('>'):
-                genome_Seq += str(line)
+    with open(options.genome_DNA, mode='r') as genome:
+        genome_Seq = "".join(line.rstrip() for line in genome if not line.startswith('>'))
     ##############################################
     if not options.reference_tool:  # IF using Ensembl for comparison
         ref_genes = collections.OrderedDict()  # Order is important
