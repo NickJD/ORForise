@@ -11,7 +11,7 @@ from Comparator import tool_comparison
 
 def comparator(tool, input_to_analyse, storfs_to_find_missing, genome_to_compare):
     genome_Seq = ""
-    with open('Genomes/' + genome_to_compare + '.fa', 'r') as genome:
+    with open(genome_to_compare, 'r') as genome:
         for line in genome:
             line = line.replace("\n", "")
             if ">" not in line:
@@ -19,23 +19,23 @@ def comparator(tool, input_to_analyse, storfs_to_find_missing, genome_to_compare
     ##############################################
     genes = collections.OrderedDict()
     count = 0
-    with open('Tools/StORF_Undetected/' + input_to_analyse, 'r') as genome_gff:  # Get list of missed genes
+    with open(input_to_analyse, 'r') as genome_gff:  # Get list of missed genes
         for line in genome_gff:
             if ">" in line:
                 line = line.strip()
-                Start = int(line.split('_')[1])
-                Stop = int(line.split('_')[2])
-                Strand = line.split('_')[3]
-                Gene = str(Start) + ',' + str(Stop) + ',' + Strand
-                genes.update({count: Gene})
+                start = int(line.split('_')[1])
+                stop = int(line.split('_')[2])
+                strand = line.split('_')[3]
+                gene_details = [start,stop,strand]
+                genes.update({count: gene_details})
                 count += 1
     ##################################
     tool_predictions = import_module('Tools.' + tool + '.' + tool)
     tool_predictions = getattr(tool_predictions, tool)
     orfs = tool_predictions(storfs_to_find_missing, genome_Seq)
-    all_Metrics, all_rep_Metrics, start_precision, stop_precision, other_starts, other_stops, missed_genes, unmatched_orfs, undetected_gene_metrics, unmatched_orf_metrics, gene_coverage_genome, multi_Matched_ORFs, partial_Hits = tool_comparison(
-        genes, orfs, genome_Seq)
-    outname = tool + '_' + genome_to_compare
+    all_Metrics, all_rep_Metrics, start_precision, stop_precision, other_starts, other_stops, perfect_Matches, missed_genes, unmatched_orfs, undetected_gene_metrics, unmatched_orf_metrics, orf_Coverage_Genome, matched_ORF_Coverage_Genome, gene_coverage_genome, multi_Matched_ORFs, partial_Hits = tool_comparison(
+        genes, orfs, genome_Seq,True)
+    outname = tool + '_' + genome_to_compare.split('/')[-1].split('.')[0]
     metric_description = list(all_Metrics.keys())
     metrics = list(all_Metrics.values())
     rep_metric_description = list(all_rep_Metrics.keys())

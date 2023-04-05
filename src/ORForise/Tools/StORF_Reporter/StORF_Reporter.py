@@ -14,12 +14,13 @@ def StORF_Reporter(tool_pred, genome):
     genome_rev = revCompIterative(genome)
     with open(tool_pred, 'r') as storf_input:
         for line in storf_input:
-            if '#' not in line:
+            if not line.startswith('#') and not line.startswith('\n'):
                 line = line.split()
-                if 'StORF_Reporter' in line[1] or 'StoRF_Reporter' in line[1]: # need to harmonise this.
+                if 'StORF_Reporter' in line[1] or 'StoRF_Reporter' in line[1]  or 'StORF' in line[1] or 'StORF-Reporter' in line[1]: # need to harmonise this.
                     start = int(line[3])
                     stop = int(line[4])
                     strand = line[6]
+                    info = line[8]
                     if '-' in strand:  # Reverse Compliment starts and stops adjusted
                         r_start = genome_size - stop
                         r_stop = genome_size - start
@@ -29,7 +30,7 @@ def StORF_Reporter(tool_pred, genome):
                         startCodon = genome[start:start + 3]
                         stopCodon = genome[stop - 3:stop]
                     po = str(start) + ',' + str(stop)
-                    orf = [strand, startCodon, stopCodon, line[2]] # StORF/Con-StORF or CDS??
+                    orf = [strand, startCodon, stopCodon, 'CDS', info] # StORF/Con-StORF or CDS??
                     storf_orfs.update({po: orf})
 
     storf_orfs = sortORFs(storf_orfs)
