@@ -30,8 +30,6 @@ def gff_writer(options,genome_ID, genome_DNA, reference_annotation, reference_to
 
     for pos, data in combined_ORFs.items():
         pos_ = pos.split(',')
-        if '15040' in pos:
-            print(2)
         start = pos_[0]
         stop = pos_[-1]
         strand = data[0]

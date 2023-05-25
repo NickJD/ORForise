@@ -45,7 +45,8 @@ comp = comparator()
 #     else:
 #         print ('Key not found')
 
-
+def is_double_range(range1, range2):
+    return len(range1) >= 2 * len(range2)
 def nuc_Count(start, stop, strand):  # Gets correct seq then returns GC
     if strand == '-':
         r_Start = comp.genome_Size - stop
@@ -284,6 +285,8 @@ def tool_comparison(ref_genes, orfs, genome, verbose):
             elif o_Start == g_Start and o_Stop == g_Stop:  # If perfect match, break and skip the rest of the ORFs
                 perfect_Match = True
                 break
+            elif is_double_range(range(o_Start, o_Stop), range(g_Start,g_Stop)):  # If ORF is double or more than the length of the gene, we do not count as found.
+                continue
             elif g_Start <= o_Start < g_Stop or g_Start < o_Stop < g_Stop:  # If ORF Start or Stop is between gene Start or Stop
                 #overlap = len(gene_Set.intersection(orf_Set)) # Replaced for optimisation
                 overlap = max(min(o_Stop, g_Stop) - max(o_Start, g_Start), -1) + 1

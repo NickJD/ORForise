@@ -11,7 +11,7 @@ except ImportError:
 def GFF(*args):
     tool_pred = args[0]
     genome = args[1]
-    types = args[2]
+    #types = args[2]
     GFF_ORFs = collections.OrderedDict()
     genome_size = len(genome)
     genome_rev = revCompIterative(genome)
@@ -19,8 +19,9 @@ def GFF(*args):
         for line in gff_input:
             if '#' not in line:
                 line = line.split('\t')
-                gene_types = types.split(',')
-                if any(gene_type == line[2] for gene_type in gene_types)and len(line) == 9:  # line[2] for normalrun
+                #gene_types = types.split(',') - Temporary fix
+                #if any(gene_type == line[2] for gene_type in gene_types) and len(line) == 9:  # line[2] for normalrun
+                if 'CDS' in line[2] and len(line) == 9:
                     start = int(line[3])
                     stop = int(line[4])
                     strand = line[6]
