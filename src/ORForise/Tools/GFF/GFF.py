@@ -26,15 +26,32 @@ def GFF(*args):
                     stop = int(line[4])
                     strand = line[6]
                     info = line[8]
-                    #name = line[8].split('Name=')[1].split(';')[0] # Issue with multiple records for each gene.
-                    if '-' in strand:  # Reverse Compliment starts and stops adjusted
-                        r_start = genome_size - stop
-                        r_stop = genome_size - start
-                        startCodon = genome_rev[r_start:r_start + 3]
-                        stopCodon = genome_rev[r_stop - 2:r_stop + 1]
-                    elif '+' in strand:
-                        startCodon = genome[start - 1:start + 2]
-                        stopCodon = genome[stop - 3:stop]
+                    if stop >= genome_size:
+                        extra_stop = stop - genome_size
+                        corrected_stop = genome_size
+                        if '-' in strand:  # Reverse Compliment starts and stops adjusted
+                            r_start = genome_size - corrected_stop
+                            r_stop = genome_size - start
+                            seq = genome_rev[r_start:r_stop + 1]
+                            extra_seq = genome_rev[-extra_stop - 1:]
+                            seq = extra_seq+seq
+                            startCodon = seq[:3]
+                            stopCodon = seq[-3:]
+                        elif '+' in strand:
+                            seq = genome[start -1 :corrected_stop]
+                            extra_seq = genome[:extra_stop +1]
+                            seq = seq+extra_seq
+                            startCodon = seq[:3]
+                            stopCodon = seq[-3:]
+                    else:
+                        if '-' in strand:  # Reverse Compliment starts and stops adjusted
+                            r_start = genome_size - stop
+                            r_stop = genome_size - start
+                            startCodon = genome_rev[r_start:r_start + 3]
+                            stopCodon = genome_rev[r_stop - 2:r_stop + 1]
+                        elif '+' in strand:
+                            startCodon = genome[start - 1:start + 2]
+                            stopCodon = genome[stop - 3:stop]
                     po = str(start) + ',' + str(stop)
                     orf = [strand, startCodon, stopCodon, line[2],info] # This needs to detect the type
                     GFF_ORFs.update({po: orf})

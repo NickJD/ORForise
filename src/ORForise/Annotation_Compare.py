@@ -72,11 +72,11 @@ def comparator(options):
     rep_metric_description = list(all_rep_Metrics.keys())
     rep_metrics = list(all_rep_Metrics.values())
     ############## Printing to std-out and optional csv file
-    print('Genome Used: ' + str(options.reference_annotation.split('/')[-1]))
+    print('Genome Used: ' + str(options.genome_DNA.split('/')[-1]))
     if options.reference_tool:
         print('Reference Tool Used: '+str(options.reference_tool))
     else:
-        print('Reference Used: ' + str(options.reference_annotation))
+        print('Reference Used: ' + str(options.reference_annotation.split('/')[-1]))
     print('Tool Compared: '+str(options.tool))
     print('Perfect Matches: ' + str(len(perfect_Matches)) + ' [' + str(len(ref_genes))+ '] - '+ format(100 * len(perfect_Matches)/len(ref_genes),'.2f')+'%')
     print('Partial Matches: ' + str(len(partial_Hits)) + ' [' + str(len(ref_genes))+ '] - '+ format(100 * len(partial_Hits)/len(ref_genes),'.2f')+'%')

@@ -46,7 +46,7 @@ Please report any issues to: https://github.com/NickJD/ORForise/issues
 usage: Annotation_Compare.py [-h] -dna GENOME_DNA -ref REFERENCE_ANNOTATION -t TOOL -tp TOOL_PREDICTION
                              [-rt REFERENCE_TOOL] [-o OUTNAME] [-v {True,False}]
 
-ORForise v1.4.1: Annotatione-Compare Run Parameters.
+ORForise v1.4.2: Annotatione-Compare Run Parameters.
 
 Required Arguments:
   -dna GENOME_DNA       Genome DNA file (.fa) which both annotations are based on
@@ -96,7 +96,7 @@ Please report any issues to: https://github.com/NickJD/ORForise/issues
 usage: Aggregate_Compare.py [-h] -dna GENOME_DNA -t TOOLS -tp TOOL_PREDICTIONS -ref REFERENCE_ANNOTATION
                             [-rt REFERENCE_TOOL] [-o OUTNAME] [-v {True,False}]
 
-ORForise v1.4.1: Aggregate-Compare Run Parameters.
+ORForise v1.4.2: Aggregate-Compare Run Parameters.
 
 Required Arguments:
   -dna GENOME_DNA       Genome DNA file (.fa) which both annotations are based on
@@ -250,7 +250,7 @@ Please report any issues to: https://github.com/NickJD/ORForise/issues
 usage: GFF_Adder.py [-h] -dna GENOME_DNA -ref REFERENCE_ANNOTATION -at ADDITIONAL_TOOL -add ADDITIONAL_ANNOTATION -o
                     OUTPUT_FILE [-rt REFERENCE_TOOL] [-gi GENE_IDENT] [-gene_ident GENE_IDENT] [-olap OVERLAP]
 
-ORForise v1.4.1: GFF-Adder Run Parameters.
+ORForise v1.4.2: GFF-Adder Run Parameters.
 
 Required Arguments:
   -dna GENOME_DNA       Genome DNA file (.fa) which both annotations are based on
@@ -312,7 +312,7 @@ Please report any issues to: https://github.com/NickJD/ORForise/issues
 usage: GFF_Intersector.py [-h] -dna GENOME_DNA -ref REFERENCE_ANNOTATION -at ADDITIONAL_TOOL -add
                           ADDITIONAL_ANNOTATION -o OUTPUT_FILE [-rt REFERENCE_TOOL] [-gi GENE_IDENT] [-cov COVERAGE]
 
-ORForise v1.4.1: GFF-Intersector Run Parameters.
+ORForise v1.4.2: GFF-Intersector Run Parameters.
 
 Required Arguments:
   -dna GENOME_DNA       Genome DNA file (.fa) which both annotations are based on

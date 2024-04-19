@@ -47,13 +47,30 @@ comp = comparator()
 
 def is_double_range(range1, range2):
     return len(range1) >= 2 * len(range2)
-def nuc_Count(start, stop, strand):  # Gets correct seq then returns GC
-    if strand == '-':
-        r_Start = comp.genome_Size - stop
-        r_Stop = comp.genome_Size - start
-        seq = (comp.genome_Seq_Rev[r_Start:r_Stop + 1])
-    elif strand == '+':
-        seq = (comp.genome_Seq[start - 1:stop])
+def nuc_Count(verbose, start, stop, strand):  # Gets correct seq then returns GC
+    if stop >= comp.genome_Size:
+        if verbose == True:
+            print("There is a wrap around gene and I am dealing with it the best I can - Start: " + str(start) + " Stop: " + str(stop))
+        extra_stop = stop - comp.genome_Size
+        stop = comp.genome_Size
+        if strand == '-':
+            r_Start = comp.genome_Size - stop
+            r_Stop = comp.genome_Size - start
+            seq = (comp.genome_Seq_Rev[r_Start:r_Stop + 1])
+            extra_seq = (comp.genome_Seq_Rev[-extra_stop-1:])
+            seq = extra_seq+seq
+        elif strand == '+':
+            seq = comp.genome_Seq[start - 1:stop]
+            extra_seq = comp.genome_Seq[:extra_stop +1]
+            seq = seq+extra_seq
+            #seq = (comp.genome_Seq[start - 1:stop])
+    else:
+        if strand == '-':
+            r_Start = comp.genome_Size - stop
+            r_Stop = comp.genome_Size - start
+            seq = (comp.genome_Seq_Rev[r_Start:r_Stop + 1])
+        elif strand == '+':
+            seq = (comp.genome_Seq[start - 1:stop])
     c = 0
     a = 0
     g = 0
@@ -323,8 +340,8 @@ def tool_comparison(ref_genes, orfs, genome, verbose):
             comp.genes_Detected.update({str(gene_details): g_pos})
             match_Statistics(o_Start, o_Stop, g_Start, g_Stop, g_Strand)
             perfect_Matched_Genes(g_Start, g_Stop, g_Strand)
-            if verbose == True:
-                print('Perfect Match')
+            #if verbose == True:
+            #    print('Perfect Match')
         elif perfect_Match == False and len(
                 overlapping_ORFs) == 1:  # If we do not have a perfect match but 1 ORF which has passed the filtering
             orf_Pos = list(overlapping_ORFs.keys())[0]
@@ -344,8 +361,8 @@ def tool_comparison(ref_genes, orfs, genome, verbose):
             comp.matched_ORFs.update({orf_Pos: m_ORF_Details})
             comp.genes_Detected.update({str(gene_details): orf_Pos})
             match_Statistics(o_Start, o_Stop, g_Start, g_Stop, g_Strand)
-            if verbose == True:
-                print('Partial Match')
+            #if verbose == True:
+            #    print('Partial Match')
             partial_Hit_Calc(g_Start, g_Stop, g_Strand, o_Start, o_Stop)
         elif perfect_Match == False and len(
                 overlapping_ORFs) >= 1:  # If we have more than 1 potential ORF match, we check to see which is the 'best' hit
@@ -374,8 +391,8 @@ def tool_comparison(ref_genes, orfs, genome, verbose):
             genes_Unmatched(g_Start, g_Stop, g_Strand)  #
         else:
             genes_Unmatched(g_Start, g_Stop, g_Strand)  # No hit
-            if verbose == True:
-                print("No Hit")
+            #if verbose == True:
+            #    print("No Hit")
     for orf_Key in comp.matched_ORFs:  # Remove ORFs from out of frame if ORF was correctly matched to another Gene
         if orf_Key in comp.out_Of_Frame_ORFs:
             del comp.out_Of_Frame_ORFs[orf_Key]
@@ -409,7 +426,7 @@ def tool_comparison(ref_genes, orfs, genome, verbose):
         if gene_Length == 0: print(g_Start, g_Stop, "!!!!!!!!!!!!!!!!!!!!!!!!")
         comp.gene_Lengths.append(gene_Length)
         gene_Nuc_Array[g_Start - 1:g_Stop] = True  # Changing all between the two positions to 1's
-        comp.gene_GC.append(nuc_Count(g_Start, g_Stop, g_Strand))
+        comp.gene_GC.append(nuc_Count(verbose, g_Start, g_Stop, g_Strand))
         if gene_Length <= SHORT_ORF_LENGTH:  # .utils
             comp.gene_Short.append(gene_Length)
         ### Calculate overlapping Genes -
@@ -453,7 +470,7 @@ def tool_comparison(ref_genes, orfs, genome, verbose):
         orf_Length = (o_Stop - o_Start) +1
         comp.orf_Lengths.append(orf_Length)
         orf_Nuc_Array[o_Start - 1:o_Stop] = True  # Changing all between the two positions to 1's
-        comp.orf_GC.append(nuc_Count(o_Start, o_Stop, o_Strand))
+        comp.orf_GC.append(nuc_Count(verbose, o_Start, o_Stop, o_Strand))
         if orf_Length <= SHORT_ORF_LENGTH:  # .utils
             comp.orf_Short.append(orf_Length)
         ### Calculate overlapping ORFs -
@@ -487,7 +504,7 @@ def tool_comparison(ref_genes, orfs, genome, verbose):
         mo_Length = (mo_Stop - mo_Start)
         matched_ORF_Nuc_Array[mo_Start - 1:mo_Stop] = True  # This is the complete matched orf not the matched orf bits
 
-        comp.m_ORF_GC.append(nuc_Count(mo_Start, mo_Stop, mo_Strand))
+        comp.m_ORF_GC.append(nuc_Count(verbose, mo_Start, mo_Stop, mo_Strand))
         if mo_Length <= SHORT_ORF_LENGTH:  # .utils
             comp.m_ORF_Short.append(mo_Length)
         ### Calculate overlapping Matched ORFs -
