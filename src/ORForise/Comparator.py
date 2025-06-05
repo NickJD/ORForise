@@ -230,7 +230,8 @@ def candidate_ORF_Selection(gene_Set,
     for c_Pos, c_ORF_Details in candidate_ORFs.items():
         o_Start = int(c_Pos.split(',')[0])
         o_Stop = int(c_Pos.split(',')[1])
-        coverage = c_ORF_Details[3]
+        # Below is not a long term fix
+        coverage = c_ORF_Details[-1]
         orf_Set = set(range(o_Start, o_Stop + 1))
         if coverage > current_Coverage:
             current_Coverage = coverage
