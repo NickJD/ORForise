@@ -1,12 +1,14 @@
 import argparse
 import csv
 import numpy as np
+import os
 
-from ORForise.src.ORForise.utils import *  # local file
+try:
+    from ORForise.src.ORForise.utils import *  # local file
+except ImportError:
+    from ORForise.utils import *
 
-parser = argparse.ArgumentParser()
-parser.add_argument('-g', '--genome_to_compare', default='', help='Which genome to analyse?')
-args = parser.parse_args()
+
 
 
 def start_Codon_Count(start_Codons):
@@ -83,14 +85,19 @@ def revCompIterative(watson):
     watson = watson.upper()
     watsonrev = watson[::-1]
     crick = ""
+
     for nt in watsonrev:
         crick += complements[nt]
     return crick
 
 
-def genome_Metrics(genome_to_compare):
+def genome_Metrics(fasta_in, gff_in, output_file):
+
+    base_name = os.path.basename(fasta_in)  # Gets file name with extension
+    genome_name = os.path.splitext(base_name)[0]  # Removes extension
+
     genome_Seq = ""
-    with open('../Genomes/' + genome_to_compare + '.fa', 'r') as genome:
+    with open(fasta_in , 'r') as genome:
         for line in genome:
             line = line.replace("\n", "")
             if not line.startswith('>'):
@@ -100,16 +107,16 @@ def genome_Metrics(genome_to_compare):
 
     genome_Rev = revCompIterative(genome_Seq)
     genome_Size = len(genome_Seq)
-    coding_Regions = np.zeros((genome_Size), dtype=np.int)
-    non_Coding_Regions = np.zeros((genome_Size), dtype=np.int)
-    all_gene_Regions = np.zeros((genome_Size), dtype=np.int)
+    coding_Regions = np.zeros((genome_Size), dtype=int)
+    non_Coding_Regions = np.zeros((genome_Size), dtype=int)
+    all_gene_Regions = np.zeros((genome_Size), dtype=int)
     protein_coding_genes = collections.OrderedDict()
     non_protein_coding_genes = collections.OrderedDict()
     strands = collections.defaultdict(int)
     lengths_PCG, gene_Pos_Olap, gene_Neg_Olap, short_PCGs, pcg_GC = [], [], [], [], []
     prev_Gene_Stop, count, nc_Count, pos_Strand, neg_Strand = 0, 0, 0, 0, 0
     prev_Gene_Overlapped = False
-    with open('../Genomes/' + genome_to_compare + '.gff', 'r') as genome_gff:
+    with open(gff_in, 'r') as genome_gff:
         for line in genome_gff:
             line = line.split('\t')
             try:
@@ -200,7 +207,7 @@ def genome_Metrics(genome_to_compare):
     atg_P, gtg_P, ttg_P, att_P, ctg_P, other_Start_P, other_Starts = start_Codon_Count(start_Codons)
     tag_P, taa_P, tga_P, other_Stop_P, other_Stops = stop_Codon_Count(stop_Codons)
 
-    output = ("Number of Protein Coding Genes in " + genome_to_compare + " : " + str(
+    output = ("Number of Protein Coding Genes in " + genome_name + " : " + str(
         len(lengths_PCG)) + " ,Median Length of PCGs: " + str(median_PCG) + ", Min Length of PCGs: " + str(
         min(lengths_PCG)) + ", Max Length of PCGs: " + str(max(lengths_PCG)) +
               ", Number of PCGs on Pos Strand: " + str(strands['+']) + ", Number of PCGs on Neg Strand: " + str(
@@ -210,31 +217,44 @@ def genome_Metrics(genome_to_compare):
               ", Longest PCG Overlap: " + str(longest_Olap) + ", Median PCG Overlap: " + str(
                 median_PCG_Olap) + ", Number of PCGs less than 100 amino acids: " + str(len(short_PCGs)) +
 
-              '\nPercentage of Genome which is Protein Coding: ' + format(coding_Percentage,
-                                                                          '.2f') + ', Number of Non-PCGs: ' + str(
-                len(non_protein_coding_genes)) + ', Percentage of Genome Non-PCG: ' + format(non_coding_Percentage,
+              "\nPercentage of Genome which is Protein Coding: " + format(coding_Percentage,
+                                                                          '.2f') + ", Number of Non-PCGs: " + str(
+                len(non_protein_coding_genes)) + ", Percentage of Genome Non-PCG: " + format(non_coding_Percentage,
                                                                                              '.2f') +
-              ', Percentage of All Genes in Genome: ' + format(all_gene_Percentage, '.2f') +
+              ", Percentage of All Genes in Genome: " + format(all_gene_Percentage, '.2f') +
 
-              '\nPercentage of Genes starting with ATG: ' + atg_P +
-              '\nPercentage of Genes starting with GTG: ' + gtg_P +
-              '\nPercentage of Genes starting with TTG: ' + ttg_P +
-              '\nPercentage of Genes starting with ATT: ' + att_P +
-              '\nPercentage of Genes starting with CTG: ' + ctg_P +
-              '\nPercentage of Genes starting with Alternative Start Codon: ' + other_Start_P +
+              "\nPercentage of Genes starting with ATG: " + atg_P +
+              "\nPercentage of Genes starting with GTG: " + gtg_P +
+              "\nPercentage of Genes starting with TTG: " + ttg_P +
+              "\nPercentage of Genes starting with ATT: " + att_P +
+              "\nPercentage of Genes starting with CTG: " + ctg_P +
+              "\nPercentage of Genes starting with Alternative Start Codon: " + other_Start_P +
 
-              '\nPercentage of Genes ending with TAG: ' + tag_P +
-              '\nPercentage of Genes ending with TAA: ' + taa_P +
-              '\nPercentage of Genes ending with TGA: ' + tga_P +
-              '\nPercentage of Genes ending with Alternative Stop Codon: ' + other_Stop_P)
+              "\nPercentage of Genes ending with TAG: " + tag_P +
+              "\nPercentage of Genes ending with TAA: " + taa_P +
+              "\nPercentage of Genes ending with TGA: " + tga_P +
+              "\nPercentage of Genes ending with Alternative Stop Codon: " + other_Stop_P)
 
-    with open('../Genomes/' + genome_to_compare + '_metrics.csv', 'w') as out_file:
-        out = csv.writer(out_file, delimiter=',')
-        out.writerow(['Genome Metrics:'])
-        out.writerow([output])
+    with open(output_file, 'w') as out_file:
+        out_file.write('Genome Metrics:\n')
+        out_file.write(output + '\n')
 
-    print(output)
+    #print(output)
+
+
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Extract FASTA sequences based on a list of IDs from a CSV file.")
+    parser.add_argument("-f", dest='fasta_in', required=True, help="Input FASTA file")
+    parser.add_argument("-g", dest='gff_in', required=True, help="Corresponding GFF file to FASTA")
+    parser.add_argument("-o", dest='output_file', required=True, help="Output metrics file")
+
+    options = parser.parse_args()
+
+    genome_Metrics(options.fasta_in, options.gff_in, options.output_file)
+
 
 
 if __name__ == "__main__":
-    genome_Metrics(**vars(args))
+   main()
