@@ -14,14 +14,16 @@ except ImportError:
 ############################################
 
 def comparator(options):
-    genome_seq = ""
+    #genome_seq = ""
     with open(options.genome_DNA, 'r') as genome:
-        for line in genome:
-            line = line.replace("\n", "")
-            if not line.startswith('>'):
-                genome_seq += str(line)
-            else:
-                genome_ID = line.split()[0].replace('>','')
+        genome_seq = "".join(line.rstrip() for line in genome if not line.startswith('>'))
+
+        # for line in genome:
+        #     line = line.replace("\n", "")
+        #     if not line.startswith('>'):
+        #         genome_seq += str(line)
+        #     #else:
+        #         genome_ID = line.split()[0].replace('>','')
     ##############################################
     if not options.reference_tool:  # IF using Ensembl for comparison
         ref_genes = collections.OrderedDict()  # Order is important
@@ -161,7 +163,9 @@ def comparator(options):
 
 
 def main():
-    print("Thank you for using ORForise\nPlease report any issues to: https://github.com/NickJD/ORForise/issues\n#####")
+    print("Thank you for using ORForise\nPlease report any issues to: https://github.com/NickJD/ORForise/issues\n"
+          "Please Cite: https://doi.org/10.1093/bioinformatics/btab827\n"
+          "#####")
 
     parser = argparse.ArgumentParser(description='ORForise ' + ORForise_Version + ': Aggregate-Compare Run Parameters.')
     parser._action_groups.pop()

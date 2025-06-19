@@ -1,5 +1,4 @@
 import argparse
-import csv
 import numpy as np
 import os
 
@@ -41,7 +40,6 @@ def stop_Codon_Count(stop_Codons):
     tag, taa, tga, other = 0, 0, 0, 0
     other_Stops = []
     for stop in stop_Codons:
-        stop
         if stop == 'TAG':
             tag += 1
         elif stop == 'TAA':
@@ -245,7 +243,7 @@ def genome_Metrics(fasta_in, gff_in, output_file):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Extract FASTA sequences based on a list of IDs from a CSV file.")
+    parser = argparse.ArgumentParser(description="...")
     parser.add_argument("-f", dest='fasta_in', required=True, help="Input FASTA file")
     parser.add_argument("-g", dest='gff_in', required=True, help="Corresponding GFF file to FASTA")
     parser.add_argument("-o", dest='output_file', required=True, help="Output metrics file")
