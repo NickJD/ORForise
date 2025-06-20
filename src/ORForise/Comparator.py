@@ -297,8 +297,6 @@ def tool_comparison(all_orfs, dna_regions, verbose):
     for dna_region in dna_regions:  # Loop through each DNA region
         # reset comparator class variables
         comp.reset()
-        if dna_region == 'ERS715463SCcontig000004':
-            print("")
 
         ref_genes_list = dna_regions[dna_region][2]
         ref_genes = collections.OrderedDict()
@@ -755,9 +753,33 @@ def tool_comparison(all_orfs, dna_regions, verbose):
         else:
             unmatched_ORF_Metrics = ''
         #################################
-
-        all_Metrics = collections.OrderedDict(
+        # Rep_Metrics - This is the final report of metrics
+        rep_Metrics = collections.OrderedDict(
+            {'Percentage_of_Genes_Detected': genes_Detected_Percentage,
+             'genes_Undetected': comp.genes_Undetected,
+             'undetected_Gene_Metrics': undetected_Gene_Metrics,
+             'gene_Coverage_Genome': gene_Coverage_Genome,
+             'Percentage_of_ORFs_that_Detected_a_Gene': matched_ORF_Percentage,
+             'Percent_Difference_of_All_ORFs': ORFs_Difference,
+             'Median_Length_Difference': median_Length_Difference,
+             'Percentage_of_Perfect_Matches': perfect_Matches_Percentage,
+             'Median_Start_Difference_of_Matched_ORFs': median_Start_Difference,
+             'Median_Stop_Difference_of_Matched_ORFs': median_Stop_Difference,
+             'Percentage_Difference_of_Matched_Overlapping_CDSs': matched_Overlap_Difference,
+             'Percent_Difference_of_Short-Matched-ORFs': matched_Short_ORF_Difference,
+             'Precision': precision,
+             'Recall': recall,
+             'False_Discovery_Rate': false_Discovery_Rate})
+        # Pred Metrics - This is the final report of metrics
+        pred_metrics = collections.OrderedDict(
             {'Number_of_ORFs': len(current_orfs), 'Percent_Difference_of_All_ORFs': ORFs_Difference,
+             'perfect_Matches': comp.perfect_Matches,
+             'unmatched_ORFs': comp.unmatched_ORFs,
+             'unmatched_ORF_Metrics': unmatched_ORF_Metrics,
+             'orf_Coverage_Genome': orf_Coverage_Genome,
+             'matched_ORF_Coverage_Genome': matched_ORF_Coverage_Genome,
+             'multi_Matched_ORFs': comp.multi_Matched_ORFs,
+             'partial_Hits': comp.partial_Hits,
              'Number_of_ORFs_that_Detected_a_Gene': len(comp.matched_ORFs),
              'Percentage_of_ORFs_that_Detected_a_Gene': matched_ORF_Percentage,
              'Number_of_Genes_Detected': len(comp.genes_Detected),
@@ -806,46 +828,21 @@ def tool_comparison(all_orfs, dna_regions, verbose):
              'Nucleotide_False_Discovery_Rate': NT_False_Discovery_Rate,
              'ORF_Nucleotide_Coverage_of_Genome': orf_Coverage_Genome,
              'Matched_ORF_Nucleotide_Coverage_of_Genome': matched_ORF_Coverage_Genome})
-
-        rep_Metrics = collections.OrderedDict(
-            {'Percentage_of_Genes_Detected': genes_Detected_Percentage,
-             'Percentage_of_ORFs_that_Detected_a_Gene': matched_ORF_Percentage,
-             'Percent_Difference_of_All_ORFs': ORFs_Difference,
-             'Median_Length_Difference': median_Length_Difference,
-             'Percentage_of_Perfect_Matches': perfect_Matches_Percentage,
-             'Median_Start_Difference_of_Matched_ORFs': median_Start_Difference,
-             'Median_Stop_Difference_of_Matched_ORFs': median_Stop_Difference,
-             'Percentage_Difference_of_Matched_Overlapping_CDSs': matched_Overlap_Difference,
-             'Percent_Difference_of_Short-Matched-ORFs': matched_Short_ORF_Difference,
-             'Precision': precision,
-             'Recall': recall,
-             'False_Discovery_Rate': false_Discovery_Rate})
+        result = collections.OrderedDict()
+        result.update({
+            'rep_metrics': rep_Metrics,
+            'pred_metrics': pred_metrics,
+        })
 
         # To account for unbalanced data
-        for m_key, m_value in all_Metrics.items():
-            if 'nan' == m_value:
-                all_Metrics[m_key] = 'N/A'
+        for m_key, m_value in result.items():
+            if m_value == 'nan':
+                result[m_key] = 'N/A'
 
-        #results.update({dna_region: [all_Metrics, rep_Metrics, start_Difference, stop_Difference, other_Starts, other_Stops, comp.perfect_Matches, comp.genes_Undetected, comp.unmatched_ORFs, undetected_Gene_Metrics, unmatched_ORF_Metrics, orf_Coverage_Genome, matched_ORF_Coverage_Genome, gene_Coverage_Genome, comp.multi_Matched_ORFs, comp.partial_Hits]})  # Add comparator object to results
-        results[dna_region] = {
-            'all_Metrics': all_Metrics,
-            'rep_Metrics': rep_Metrics,
-            'start_Difference': start_Difference,
-            'stop_Difference': stop_Difference,
-            'other_Starts': other_Starts,
-            'other_Stops': other_Stops,
-            'perfect_Matches': comp.perfect_Matches,
-            'genes_Undetected': comp.genes_Undetected,
-            'unmatched_ORFs': comp.unmatched_ORFs,
-            'undetected_Gene_Metrics': undetected_Gene_Metrics,
-            'unmatched_ORF_Metrics': unmatched_ORF_Metrics,
-            'orf_Coverage_Genome': orf_Coverage_Genome,
-            'matched_ORF_Coverage_Genome': matched_ORF_Coverage_Genome,
-            'gene_Coverage_Genome': gene_Coverage_Genome,
-            'multi_Matched_ORFs': comp.multi_Matched_ORFs,
-            'partial_Hits': comp.partial_Hits
-        } # Add comparator object to results
-        print("Finished Calculating Metrics: ", dna_region)
+        results[dna_region] = result
+
+
+        print("Finished calculating metrics for: ", dna_region)
 
 
     return results  # Return the results dictionary containing all metrics and details

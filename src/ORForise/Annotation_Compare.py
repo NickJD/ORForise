@@ -99,87 +99,187 @@ def comparator(options):
     print('Tool Compared: ' + str(options.tool))
     print('Total Number of Reference Genes: ' + str(total_ref_genes))
     print('Number of Contigs: ' + str(len(dna_regions)))
+    if options.outname:
+        with open(options.outname, 'w', encoding='utf-8') as out_file:
+            out_file.write('Genome Used: ' + str(options.genome_dna.split('/')[-1]) + '\n')
+            if options.reference_tool:
+                out_file.write('Reference Tool Used: ' + str(options.reference_tool) + '\n')
+            else:
+                out_file.write('Reference Used: ' + str(options.reference_annotation.split('/')[-1]) + '\n')
+            out_file.write('Tool Compared: ' + str(options.tool) + '\n')
+            out_file.write('Total Number of Reference Genes: ' + str(total_ref_genes) + '\n')
+            out_file.write('Number of Contigs: ' + str(len(dna_regions)) + '\n')
+    else:
+        with open(options.outname, 'w', encoding='utf-8'):
+            pass
     for dna_region, result in results.items():
         num_current_genes = len(dna_regions[dna_region][2])
         print("These are the results for: " + dna_region + '\n')
         ############################################# To get default output filename from input file details
         genome_name = options.reference_annotation.split('/')[-1].split('.')[0]
-        metric_description = list(result['all_Metrics'].keys())
-        metrics = list(result['all_Metrics'].values())
-        rep_metric_description = list(result['rep_Metrics'].keys())
-        rep_metrics = list(result['rep_Metrics'].values())
+        metric_description = list(result['pred_metrics'].keys())
+        metrics = list(result['pred_metrics'].values())
+        rep_metric_description = list(result['rep_metrics'].keys())
+        rep_metrics = list(result['rep_metrics'].values())
 
 
-        print('Current Contig: ' + str(dna_region) + ' & Number of Genes: ' + str(num_current_genes))
-        print('Perfect Matches: ' + str(result['all_Metrics']['Number_of_Perfect_Matches']) + ' [' + str(num_current_genes)+ '] - '+ format(100 * result['all_Metrics']['Number_of_Perfect_Matches']/num_current_genes,'.2f')+'%')
-        print('Partial Matches: ' + str(len(result['partial_Hits'])) + ' [' + str(num_current_genes)+ '] - '+ format(100 * len(result['partial_Hits'])/num_current_genes,'.2f')+'%')
-        print('Missed Genes: ' + str(len(result['genes_Undetected'])) + ' [' + str(num_current_genes)+ '] - '+ format(100 * len(result['genes_Undetected'])/num_current_genes,'.2f')+'%')
-        print('Unmatched ORFs: ' + str(len(result['unmatched_ORFs'])) + ' [' + str(num_current_genes)+ '] - '+ format(100 * len(result['unmatched_ORFs'])/num_current_genes,'.2f')+'%')
+        print('Current Contig: ' + str(dna_region))
+        print('Number of Genes: ' + str(num_current_genes))
+        print('Number of ORFs: ' + str(result['pred_metrics']['Number_of_ORFs']))
+        print('Perfect Matches: ' + str(result['pred_metrics']['Number_of_Perfect_Matches']) + ' [' + str(num_current_genes)+ '] - '+ format(100 * result['pred_metrics']['Number_of_Perfect_Matches']/num_current_genes,'.2f')+'%')
+        print('Partial Matches: ' + str(len(result['pred_metrics']['partial_Hits'])) + ' [' + str(num_current_genes)+ '] - '+ format(100 * len(result['pred_metrics']['partial_Hits'])/num_current_genes,'.2f')+'%')
+        print('Missed Genes: ' + str(len(result['rep_metrics']['genes_Undetected'])) + ' [' + str(num_current_genes)+ '] - '+ format(100 * len(result['rep_metrics']['genes_Undetected'])/num_current_genes,'.2f')+'%')
+        print('Unmatched ORFs: ' + str(len(result['pred_metrics']['unmatched_ORFs'])) + ' [' + str(num_current_genes)+ '] - '+ format(100 * len(result['pred_metrics']['unmatched_ORFs'])/num_current_genes,'.2f')+'%')
+        print('Multi-matched ORFs: ' + str(len(result['pred_metrics']['multi_Matched_ORFs'])) + ' [' + str(num_current_genes)+ '] - '+ format(100 * len(result['pred_metrics']['multi_Matched_ORFs'])/num_current_genes,'.2f')+'%')
+
+        with open(options.outname, 'a', newline='\n', encoding='utf-8') as out_file:
+            out_file.write('Current Contig: ' + str(dna_region) + '\n')
+            out_file.write('Number of Genes: ' + str(num_current_genes) + '\n')
+
+
+
         if options.outname:
-            with open(options.outname, 'w', newline='\n', encoding='utf-8') as out_file:  # Clear write out of report
+            with open(options.outname, 'a', newline='\n', encoding='utf-8') as out_file:
                 tool_out = csv.writer(out_file, quoting=csv.QUOTE_NONE, escapechar=" ")
+
+                # # Representative Metrics
                 tool_out.writerow(['Representative_Metrics:'])
                 tool_out.writerow(rep_metric_description)
                 tool_out.writerow(rep_metrics)
-                tool_out.writerow(['All_Metrics:'])
-                tool_out.writerow(metric_description)
-                tool_out.writerow(metrics)
+                # All Metrics
+                tool_out.writerow(['Prediction_Metrics:'])
+                tool_out.writerow(list(result['pred_metrics'].keys()))
+                tool_out.writerow(list(result['pred_metrics'].values()))
+                # Coverage
                 tool_out.writerow(['Reference_CDS_Gene_Coverage_of_Genome'])
-                tool_out.writerow([result['gene_Coverage_Genome']])
+                tool_out.writerow([result.get('gene_Coverage_Genome', 'N/A')])
                 tool_out.writerow(['Predicted_CDS_Coverage_of_Genome'])
-                tool_out.writerow([result['orf_Coverage_Genome']])
+                tool_out.writerow([result.get('orf_Coverage_Genome', 'N/A')])
                 tool_out.writerow(['Matched_Predicted_CDS_Coverage_of_Genome'])
-                tool_out.writerow([result['matched_ORF_Coverage_Genome']])
+                tool_out.writerow([result.get('matched_ORF_Coverage_Genome', 'N/A')])
+                # Start/Stop Differences
                 tool_out.writerow(['Start_Position_Difference:'])
-                tool_out.writerow(result['start_Difference'])
+                tool_out.writerow(result.get('start_Difference', []))
                 tool_out.writerow(['Stop_Position_Difference:'])
-                tool_out.writerow(result['stop_Difference'])
+                tool_out.writerow(result.get('stop_Difference', []))
+                # Alternative Starts/Stops
                 tool_out.writerow(['Alternative_Starts_Predicted:'])
-                tool_out.writerow(result['other_Starts'])
+                tool_out.writerow(result.get('other_Starts', []))
                 tool_out.writerow(['Alternative_Stops_Predicted:'])
-                tool_out.writerow(result['other_Stops'])
+                tool_out.writerow(result.get('other_Stops', []))
+                # Undetected Gene Metrics
                 tool_out.writerow(['Undetected_Gene_Metrics:'])
                 tool_out.writerow([
-                                      'ATG_Start,GTG_Start,TTG_Start,ATT_Start,CTG_Start,Alternative_Start_Codon,TGA_Stop,TAA_Stop,TAG_Stop,Alternative_Stop_Codon,Median_Length,ORFs_on_Positive_Strand,ORFs_on_Negative_Strand'])
-                tool_out.writerow(result['undetected_Gene_Metrics'])
-                ####
+                    'ATG_Start,GTG_Start,TTG_Start,ATT_Start,CTG_Start,Alternative_Start_Codon,TGA_Stop,TAA_Stop,TAG_Stop,Alternative_Stop_Codon,Median_Length,ORFs_on_Positive_Strand,ORFs_on_Negative_Strand'
+                ])
+                tool_out.writerow(result.get('undetected_Gene_Metrics', []))
+                # Perfect Matches
                 tool_out.writerow(['Perfect_Match_Genes:'])
-                for key, value in result['perfect_Matches'].items():
-                    key = key.split(',')
-                    id = ('>' + genome_name + '_' + key[0] + '_' + key[1] + '_' + key[2])
+                for key, value in result.get('perfect_Matches', {}).items():
+                    key_parts = key.split(',')
+                    id = f">{genome_name}_{key_parts[0]}_{key_parts[1]}_{key_parts[2]}"
                     tool_out.writerow([id + '\n' + value + '\n'])
-                ####
+                # Partial Matches
                 tool_out.writerow(['Partial_Match_Genes:'])
-                for key, seqs in result['partial_Hits'].items():
-                    key = key.split(';')
+                for key, seqs in result.get('partial_Hits', {}).items():
+                    key_parts = key.split(';')
                     gene_Seq = seqs[0]
                     orf_Seq = seqs[1]
-                    partial = (key[0] + '\n' + gene_Seq + '\n' + key[1] + '\n' + orf_Seq + '\n')
+                    partial = f"{key_parts[0]}\n{gene_Seq}\n{key_parts[1]}\n{orf_Seq}\n"
                     tool_out.writerow([partial])
-                ####
+                # Missed Genes
                 tool_out.writerow(['\nMissed_Genes:'])
-                for key, value in result['genes_Undetected'].items():
-                    key = key.split(',')
-                    id = ('>' + genome_name + '_' + key[0] + '_' + key[1] + '_' + key[2])
+                for key, value in result.get('genes_Undetected', {}).items():
+                    key_parts = key.split(',')
+                    id = f">{genome_name}_{key_parts[0]}_{key_parts[1]}_{key_parts[2]}"
                     tool_out.writerow([id + '\n' + value + '\n'])
+                # Unmatched ORF Metrics
                 tool_out.writerow(['\nPredicted_CDSs_Without_Corresponding_Gene_In_Reference_Metrics:'])
                 tool_out.writerow([
-                                      'ATG_Start,GTG_Start,TTG_Start,ATT_Start,CTG_Start,Alternative_Start_Codon,TGA_Stop,TAA_Stop,TAG_Stop,Alternative_Stop_Codon,Median_Length,ORFs_on_Positive_Strand,ORFs_on_Negative_Strand'])
-                tool_out.writerow(result['unmatched_ORF_Metrics'])
+                    'ATG_Start,GTG_Start,TTG_Start,ATT_Start,CTG_Start,Alternative_Start_Codon,TGA_Stop,TAA_Stop,TAG_Stop,Alternative_Stop_Codon,Median_Length,ORFs_on_Positive_Strand,ORFs_on_Negative_Strand'
+                ])
+                tool_out.writerow(result.get('unmatched_ORF_Metrics', []))
+                # Unmatched ORFs
                 tool_out.writerow(['Predicted_CDS_Without_Corresponding_Gene_in_Reference:'])
-                for key, value in result['unmatched_ORFs'].items():
-                    key = key.split(',')
-                    id = ('>' + options.tool + '_' + key[0] + '_' + key[1] + '_' + key[2])
+                for key, value in result.get('unmatched_ORFs', {}).items():
+                    key_parts = key.split(',')
+                    id = f">{options.tool}_{key_parts[0]}_{key_parts[1]}_{key_parts[2]}"
                     tool_out.writerow([id + '\n' + value])
+                # Multi-matched ORFs
                 tool_out.writerow(['\nPredicted_CDSs_Which_Detected_more_than_one_Gene:'])
-
                 try:
-                    for key, value in result['multi_Matched_ORFs'].items():
-                        key = key.split(',')
-                        multi = ('Predicted_CDS:' + key[0] + '-' + key[1] + '_Genes:' + '|'.join(value))
+                    for key, value in result.get('multi_Matched_ORFs', {}).items():
+                        key_parts = key.split(',')
+                        multi = f"Predicted_CDS:{key_parts[0]}-{key_parts[1]}_Genes:{'|'.join(value)}"
                         tool_out.writerow([multi])
-                except IndexError:
+                except Exception:
                     pass
+        #
+        # if options.outname:
+        #     with open(options.outname, 'wa', newline='\n', encoding='utf-8') as out_file:  # Clear write out of report
+        #         tool_out = csv.writer(out_file, quoting=csv.QUOTE_NONE, escapechar=" ")
+        #         tool_out.writerow(['Representative_Metrics:'])
+        #         tool_out.writerow(rep_metric_description)
+        #         tool_out.writerow(rep_metrics)
+        #         tool_out.writerow(['All_Metrics:'])
+        #         tool_out.writerow(metric_description)
+        #         tool_out.writerow(metrics)
+        #         tool_out.writerow(['Reference_CDS_Gene_Coverage_of_Genome'])
+        #         tool_out.writerow([result['gene_Coverage_Genome']])
+        #         tool_out.writerow(['Predicted_CDS_Coverage_of_Genome'])
+        #         tool_out.writerow([result['orf_Coverage_Genome']])
+        #         tool_out.writerow(['Matched_Predicted_CDS_Coverage_of_Genome'])
+        #         tool_out.writerow([result['matched_ORF_Coverage_Genome']])
+        #         tool_out.writerow(['Start_Position_Difference:'])
+        #         tool_out.writerow(result['start_Difference'])
+        #         tool_out.writerow(['Stop_Position_Difference:'])
+        #         tool_out.writerow(result['stop_Difference'])
+        #         tool_out.writerow(['Alternative_Starts_Predicted:'])
+        #         tool_out.writerow(result['other_Starts'])
+        #         tool_out.writerow(['Alternative_Stops_Predicted:'])
+        #         tool_out.writerow(result['other_Stops'])
+        #         tool_out.writerow(['Undetected_Gene_Metrics:'])
+        #         tool_out.writerow([
+        #                               'ATG_Start,GTG_Start,TTG_Start,ATT_Start,CTG_Start,Alternative_Start_Codon,TGA_Stop,TAA_Stop,TAG_Stop,Alternative_Stop_Codon,Median_Length,ORFs_on_Positive_Strand,ORFs_on_Negative_Strand'])
+        #         tool_out.writerow(result['undetected_Gene_Metrics'])
+        #         ####
+        #         tool_out.writerow(['Perfect_Match_Genes:'])
+        #         for key, value in result['perfect_Matches'].items():
+        #             key = key.split(',')
+        #             id = ('>' + genome_name + '_' + key[0] + '_' + key[1] + '_' + key[2])
+        #             tool_out.writerow([id + '\n' + value + '\n'])
+        #         ####
+        #         tool_out.writerow(['Partial_Match_Genes:'])
+        #         for key, seqs in result['partial_Hits'].items():
+        #             key = key.split(';')
+        #             gene_Seq = seqs[0]
+        #             orf_Seq = seqs[1]
+        #             partial = (key[0] + '\n' + gene_Seq + '\n' + key[1] + '\n' + orf_Seq + '\n')
+        #             tool_out.writerow([partial])
+        #         ####
+        #         tool_out.writerow(['\nMissed_Genes:'])
+        #         for key, value in result['genes_Undetected'].items():
+        #             key = key.split(',')
+        #             id = ('>' + genome_name + '_' + key[0] + '_' + key[1] + '_' + key[2])
+        #             tool_out.writerow([id + '\n' + value + '\n'])
+        #         tool_out.writerow(['\nPredicted_CDSs_Without_Corresponding_Gene_In_Reference_Metrics:'])
+        #         tool_out.writerow([
+        #                               'ATG_Start,GTG_Start,TTG_Start,ATT_Start,CTG_Start,Alternative_Start_Codon,TGA_Stop,TAA_Stop,TAG_Stop,Alternative_Stop_Codon,Median_Length,ORFs_on_Positive_Strand,ORFs_on_Negative_Strand'])
+        #         tool_out.writerow(result['unmatched_ORF_Metrics'])
+        #         tool_out.writerow(['Predicted_CDS_Without_Corresponding_Gene_in_Reference:'])
+        #         for key, value in result['unmatched_ORFs'].items():
+        #             key = key.split(',')
+        #             id = ('>' + options.tool + '_' + key[0] + '_' + key[1] + '_' + key[2])
+        #             tool_out.writerow([id + '\n' + value])
+        #         tool_out.writerow(['\nPredicted_CDSs_Which_Detected_more_than_one_Gene:'])
+        #
+        #         try:
+        #             for key, value in result['multi_Matched_ORFs'].items():
+        #                 key = key.split(',')
+        #                 multi = ('Predicted_CDS:' + key[0] + '-' + key[1] + '_Genes:' + '|'.join(value))
+        #                 tool_out.writerow([multi])
+        #         except IndexError:
+        #             pass
 
 
 
