@@ -1,0 +1,19 @@
+Genome Used: Escherichia_coli.fasta
+Reference Used: Escherichia_coli.gff
+Tool Compared: Prodigal
+Total Number of Reference Genes: 5222
+Number of Contigs: 4
+Contig	Genes	ORFs	Perfect_Matches	Partial_Matches	Missed_Genes	Unmatched_ORFs	Multi_Matched_ORFs
+ERS715463SCcontig000003	4068	4070	4065	1	2	4	0
+ERS715463SCcontig000002	1033	1035	1033	0	0	2	0
+ERS715463SCcontig000001	75	77	75	0	0	2	0
+ERS715463SCcontig000004	46	47	45	1	0	1	0
+
+Overall Summary:
+Number of Genes: 5222
+Number of ORFs: 5229
+Perfect Matches: 5218 [5222] - 99.92%
+Partial Matches: 2 [5222] - 0.04%
+Missed Genes: 2 [5222] - 0.04%
+Unmatched ORFs: 9 [5222] - 0.17%
+Multi-matched ORFs: 0 [5222] - 0.00%

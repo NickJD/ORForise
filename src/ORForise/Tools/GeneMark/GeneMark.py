@@ -7,48 +7,54 @@ except ImportError:
     from ORForise.utils import revCompIterative
     from ORForise.utils import sortORFs
 
-def GeneMark(tool_pred, genome):
+def GeneMark(*args):
+    tool_pred = args[0]
+    dna_regions = args[1]
     geneMark_ORFs = collections.OrderedDict()
-    genome_size = len(genome)
-    genome_rev = revCompIterative(genome)
-    prev_Start = 0
-    prev_Stop = 0
-    started = False
-    with open(tool_pred, 'r') as GeneMark_input:
-        for line in GeneMark_input:
-            line = line.split()
-            if len(line) == 7:
-                started = True
-                if 'direct' in line[2] or 'complement' in line[
-                    2]:  # Strange Output requires strange code - We select the Longest ORF from each set
-                    start = int(line[0])
-                    stop = int(line[1])
-                    strand = line[2]
-                    if 'complement' in strand:  # Reverse Compliment starts and stops adjusted
-                        if start != prev_Start:
-                            r_start = genome_size - stop
-                            r_stop = genome_size - start
-                            strand = '-'
-                            startCodon = genome_rev[r_start:r_start + 3]
-                            stopCodon = genome_rev[r_stop - 2:r_stop + 1]
-                            po = str(start) + ',' + str(stop)
-                            orf = [strand, startCodon, stopCodon, 'CDS']
-                            geneMark_ORFs.update({po: orf})
-                    elif 'direct' in strand:
-                        if stop != prev_Stop:
-                            startCodon = genome[start - 1:start + 2]
-                            stopCodon = genome[stop - 3:stop]
-                            strand = '+'
-                            po = str(start) + ',' + str(stop)
-                            orf = [strand, startCodon, stopCodon, 'CDS']
-                            geneMark_ORFs.update({po: orf})
-                    prev_Start = start
-                    prev_Stop = stop
-            elif len(line) == 0 and started == True:
-                prev_Stop = 0
-                prev_Start = 0
+    for dna_region in dna_regions:
+        geneMark_ORFs[dna_region] = collections.OrderedDict()
+    for dna_region in dna_regions:
+        genome = dna_regions[dna_region][0]
+        genome_size = len(genome)
+        genome_rev = revCompIterative(genome)
+        prev_Start = 0
+        prev_Stop = 0
+        started = False
+        with open(tool_pred, 'r') as GeneMark_input:
+            for line in GeneMark_input:
+                line = line.split()
+                if len(line) == 7:
+                    started = True
+                    if 'direct' in line[2] or 'complement' in line[2] and dna_region in line[0]:  # Strange Output requires strange code - We select the Longest ORF from each set
+                        start = int(line[0])
+                        stop = int(line[1])
+                        strand = line[2]
+                        if 'complement' in strand:  # Reverse Compliment starts and stops adjusted
+                            if start != prev_Start:
+                                r_start = genome_size - stop
+                                r_stop = genome_size - start
+                                strand = '-'
+                                startCodon = genome_rev[r_start:r_start + 3]
+                                stopCodon = genome_rev[r_stop - 2:r_stop + 1]
+                                po = str(start) + ',' + str(stop)
+                                orf = [strand, startCodon, stopCodon, 'CDS', 'GeneMark']
+                                geneMark_ORFs.update({po: orf})
+                        elif 'direct' in strand:
+                            if stop != prev_Stop:
+                                startCodon = genome[start - 1:start + 2]
+                                stopCodon = genome[stop - 3:stop]
+                                strand = '+'
+                                po = str(start) + ',' + str(stop)
+                                orf = [strand, startCodon, stopCodon, 'CDS', 'GeneMark']
+                                geneMark_ORFs.update({po: orf})
+                        prev_Start = start
+                        prev_Stop = stop
+                elif len(line) == 0 and started == True:
+                    prev_Stop = 0
+                    prev_Start = 0
 
-    geneMark_ORFs = sortORFs(geneMark_ORFs)
+    for group in geneMark_ORFs:
+        geneMark_ORFs[group] = sortORFs(geneMark_ORFs[group])
     return geneMark_ORFs
 
 ############# This section can be used to select the ORF with highest probability score.

@@ -8,28 +8,35 @@ except ImportError:
     from ORForise.utils import sortORFs
 
 
-def GeneMark_S(tool_pred, genome):
+def GeneMark_S(*args):
+    tool_pred = args[0]
+    dna_regions = args[1]
     geneMark_S_ORFs = collections.OrderedDict()
-    genome_size = len(genome)
-    genome_rev = revCompIterative(genome)
-    with open(tool_pred, 'r') as prodigal_input:
-        for line in prodigal_input:
-            line = line.split()
-            if len(line) >= 9 and "CDS" in line[5]:
-                start = int(line[6])
-                stop = int(line[7])
-                strand = line[9]
-                if '-' in strand:  # Reverse Compliment starts and stops adjusted
-                    r_start = genome_size - stop
-                    r_stop = genome_size - start
-                    startCodon = genome_rev[r_start:r_start + 3]
-                    stopCodon = genome_rev[r_stop - 2:r_stop + 1]
-                elif '+' in strand:
-                    startCodon = genome[start - 1:start + 2]
-                    stopCodon = genome[stop - 3:stop]
-                po = str(start) + ',' + str(stop)
-                orf = [strand, startCodon, stopCodon, 'CDS']
-                geneMark_S_ORFs.update({po: orf})
+    for dna_region in dna_regions:
+        geneMark_S_ORFs[dna_region] = collections.OrderedDict()
+    for dna_region in dna_regions:
+        genome = dna_regions[dna_region][0]
+        genome_size = len(genome)
+        genome_rev = revCompIterative(genome)
+        with open(tool_pred, 'r') as prodigal_input:
+            for line in prodigal_input:
+                line = line.split()
+                if len(line) >= 9 and "CDS" in line[5] and dna_region in line[0]:
+                    start = int(line[6])
+                    stop = int(line[7])
+                    strand = line[9]
+                    if '-' in strand:  # Reverse Compliment starts and stops adjusted
+                        r_start = genome_size - stop
+                        r_stop = genome_size - start
+                        startCodon = genome_rev[r_start:r_start + 3]
+                        stopCodon = genome_rev[r_stop - 2:r_stop + 1]
+                    elif '+' in strand:
+                        startCodon = genome[start - 1:start + 2]
+                        stopCodon = genome[stop - 3:stop]
+                    po = str(start) + ',' + str(stop)
+                    orf = [strand, startCodon, stopCodon, 'CDS', 'GeneMark_S']
+                    geneMark_S_ORFs.update({po: orf})
 
-    geneMark_S_ORFs = sortORFs(geneMark_S_ORFs)
+    for group in geneMark_S_ORFs:
+        geneMark_S_ORFs[group] = sortORFs(geneMark_S_ORFs[group])
     return geneMark_S_ORFs

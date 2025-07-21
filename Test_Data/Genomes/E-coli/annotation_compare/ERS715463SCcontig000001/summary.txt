@@ -1,0 +1,8 @@
+Current Contig: ERS715463SCcontig000001
+Number of Genes: 75
+Number of ORFs: 77
+Perfect Matches: 75 [75] - 100.00%
+Partial Matches: 0 [75] - 0.00%
+Missed Genes: 0 [75] - 0.00%
+Unmatched ORFs: 2 [75] - 2.67%
+Multi-matched ORFs: 0 [75] - 0.00%

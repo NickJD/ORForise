@@ -11,20 +11,17 @@ except ImportError:
 def Prodigal(*args):
     tool_pred = args[0]
     dna_regions = args[1]
-    #types = args[2]
-    prodigalORFs = collections.OrderedDict()
+    prodigal_ORFs = collections.OrderedDict()
     for dna_region in dna_regions:
-        prodigalORFs[dna_region] = collections.OrderedDict()
-
+        prodigal_ORFs[dna_region] = collections.OrderedDict()
     for dna_region in dna_regions:
         genome = dna_regions[dna_region][0]
-
         genome_size = len(genome)
         genome_rev = revCompIterative(genome)
         with open(tool_pred, 'r') as prodigal_input:
             for line in prodigal_input:
                 line = line.split()
-                if dna_region in line[0] and "Prodigal" in line[1] and "CDS" in line[2]:
+                if "Prodigal" in line[1] and dna_region in line[0] and "CDS" in line[2]:
                     start = int(line[3])
                     stop = int(line[4])
                     strand = line[6]
@@ -38,9 +35,9 @@ def Prodigal(*args):
                         startCodon = genome[start - 1:start + 2]
                         stopCodon = genome[stop - 3:stop]
                     po = str(start) + ',' + str(stop)
-                    orf = [strand, startCodon, stopCodon, 'CDS', 'Prodigal|'+info]
-                    prodigalORFs[dna_region].update({po: orf})
+                    orf = [strand, startCodon, stopCodon, 'CDS', 'Prodigal']
+                    prodigal_ORFs[dna_region].update({po: orf})
 
-        #prodigalORFs = sortORFs(prodigalORFs)
-
-    return prodigalORFs
+    for group in prodigal_ORFs:
+        prodigal_ORFs[group] = sortORFs(prodigal_ORFs[group])
+    return prodigal_ORFs

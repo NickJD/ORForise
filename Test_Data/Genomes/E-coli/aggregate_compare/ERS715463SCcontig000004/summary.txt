@@ -1,0 +1,11 @@
+Current Contig: ERS715463SCcontig000004
+Number of Genes: 46
+Number of ORFs: 64
+Perfect Matches: 45 [46] - 97.83%
+Partial Matches: 1 [46] - 2.17%
+Missed Genes: 0 [46] - 0.00%
+Unmatched ORFs: 18 [46] - 39.13%
+Multi-matched ORFs: 0 [46] - 0.00%
+Tool breakdown:
+  Prodigal: Perfect=45, Partial=1, Unmatched=1, Multi-matched=0
+  GeneMark_S_2: Perfect=37, Partial=1, Unmatched=18, Multi-matched=0
