@@ -1,7 +1,10 @@
 from importlib import import_module
 import argparse
-import sys,os
-import gzip,csv
+import sys, os
+import gzip, csv
+import logging
+from datetime import datetime
+
 
 try:
     from Comparator import tool_comparison
@@ -13,9 +16,20 @@ try:
 except ImportError:
     from ORForise.utils import *
 
+
+##########################
+
+# Consolidate printing and logging into a single block
+def _pct(n, total):
+    try:
+        return format(100 * n / total, '.2f') + '%'
+    except Exception:
+        return 'N/A'
+
 ##########################
 
 def comparator(options):
+
 
     try:
         try:  # Detect whether fasta/gff files are .gz or text and read accordingly
@@ -77,36 +91,56 @@ def comparator(options):
                 'Contig\tGenes\tORFs\tPerfect_Matches\tPartial_Matches\tMissed_Genes\tUnmatched_ORFs\tMulti_Matched_ORFs\n')
 
     for dna_region, result in results.items():
-        num_current_genes = len(dna_regions[dna_region][2])
-        num_orfs = result['pred_metrics']['Number_of_ORFs']
-        num_perfect = result['pred_metrics']['Number_of_Perfect_Matches']
-        num_partial = len(result['pred_metrics']['partial_Hits'])
-        num_missed = len(result['rep_metrics']['genes_Undetected'])
-        num_unmatched = len(result['pred_metrics']['unmatched_ORFs'])
-        num_multi = len(result['pred_metrics']['multi_Matched_ORFs'])
-        # Collect summary for this contig
-        if options.outdir:
-            contig_summaries.append([
-                dna_region, num_current_genes, num_orfs, num_perfect, num_partial, num_missed, num_unmatched, num_multi
-            ])
-        ###
-        num_current_genes = len(dna_regions[dna_region][2])
-        print("These are the results for: " + dna_region + '\n')
-        ############################################# To get default output filename from input file details
-        genome_name = options.reference_annotation.split('/')[-1].split('.')[0]
-        rep_metric_description, rep_metrics = get_rep_metrics(result)
-        all_metric_description, all_metrics = get_all_metrics(result)
+        if result:
+            num_current_genes = len(dna_regions[dna_region][2])
+            num_orfs = result['pred_metrics']['Number_of_ORFs']
+            num_perfect = result['pred_metrics']['Number_of_Perfect_Matches']
+            num_partial = len(result['pred_metrics']['partial_Hits'])
+            num_missed = len(result['rep_metrics']['genes_Undetected'])
+            num_unmatched = len(result['pred_metrics']['unmatched_ORFs'])
+            num_multi = len(result['pred_metrics']['multi_Matched_ORFs'])
+            # Collect summary for this contig
+            contig_summaries.append([dna_region, num_current_genes, num_orfs, num_perfect, num_partial, num_missed, num_unmatched, num_multi])
+            num_current_genes = len(dna_regions[dna_region][2])
+            genome_name = options.reference_annotation.split('/')[-1].split('.')[0]
+            rep_metric_description, rep_metrics = get_rep_metrics(result)
+            all_metric_description, all_metrics = get_all_metrics(result)
 
-        print('Current Contig: ' + str(dna_region))
-        print('Number of Genes: ' + str(num_current_genes))
-        print('Number of ORFs: ' + str(result['pred_metrics']['Number_of_ORFs']))
-        print('Perfect Matches: ' + str(result['pred_metrics']['Number_of_Perfect_Matches']) + ' [' + str(num_current_genes)+ '] - '+ format(100 * result['pred_metrics']['Number_of_Perfect_Matches']/num_current_genes,'.2f')+'%')
-        print('Partial Matches: ' + str(len(result['pred_metrics']['partial_Hits'])) + ' [' + str(num_current_genes)+ '] - '+ format(100 * len(result['pred_metrics']['partial_Hits'])/num_current_genes,'.2f')+'%')
-        print('Missed Genes: ' + str(len(result['rep_metrics']['genes_Undetected'])) + ' [' + str(num_current_genes)+ '] - '+ format(100 * len(result['rep_metrics']['genes_Undetected'])/num_current_genes,'.2f')+'%')
-        print('Unmatched ORFs: ' + str(len(result['pred_metrics']['unmatched_ORFs'])) + ' [' + str(num_current_genes)+ '] - '+ format(100 * len(result['pred_metrics']['unmatched_ORFs'])/num_current_genes,'.2f')+'%')
-        print('Multi-matched ORFs: ' + str(len(result['pred_metrics']['multi_Matched_ORFs'])) + ' [' + str(num_current_genes)+ '] - '+ format(100 * len(result['pred_metrics']['multi_Matched_ORFs'])/num_current_genes,'.2f')+'%')
+             # Safely extract metric values
+            num_orfs = result.get('pred_metrics', {}).get('Number_of_ORFs') if isinstance(result, dict) else 'N/A'
+            perfect = result.get('pred_metrics', {}).get('Number_of_Perfect_Matches') if isinstance(result, dict) else 0
+            partial = len(result.get('pred_metrics', {}).get('partial_Hits', [])) if isinstance(result, dict) else 'N/A'
+            missed = len(result.get('rep_metrics', {}).get('genes_Undetected', [])) if isinstance(result, dict) else 'N/A'
+            unmatched = len(result.get('pred_metrics', {}).get('unmatched_ORFs', [])) if isinstance(result, dict) else 'N/A'
+            multi = len(result.get('pred_metrics', {}).get('multi_Matched_ORFs', [])) if isinstance(result, dict) else 'N/A'
 
-        if options.outdir:
+            lines = [
+                f"These are the results for: {dna_region}",
+                f"Current Contig: {dna_region}",
+                f"Number of Genes: {num_current_genes}",
+                f"Number of ORFs: {num_orfs}",
+                f"Perfect Matches: {perfect} [{num_current_genes}] - {_pct(perfect, num_current_genes) if isinstance(num_current_genes, (int, float)) else 'N/A'}",
+                f"Partial Matches: {partial} [{num_current_genes}] - {_pct(partial, num_current_genes) if isinstance(num_current_genes, (int, float)) else 'N/A'}",
+                f"Missed Genes: {missed} [{num_current_genes}] - {_pct(missed, num_current_genes) if isinstance(num_current_genes, (int, float)) else 'N/A'}",
+                f"Unmatched ORFs: {unmatched} [{num_current_genes}] - {_pct(unmatched, num_current_genes) if isinstance(num_current_genes, (int, float)) else 'N/A'}",
+                f"Multi-matched ORFs: {multi} [{num_current_genes}] - {_pct(multi, num_current_genes) if isinstance(num_current_genes, (int, float)) else 'N/A'}"
+            ]
+
+            full_msg = '\n'.join(lines) + '\n'
+            if options.verbose:
+                print(full_msg)
+            options.output_logger.info(full_msg)
+
+            # print("These are the results for: " + dna_region + '\n')
+            # print('Current Contig: ' + str(dna_region))
+            # print('Number of Genes: ' + str(num_current_genes))
+            # print('Number of ORFs: ' + str(result['pred_metrics']['Number_of_ORFs']))
+            # print('Perfect Matches: ' + str(result['pred_metrics']['Number_of_Perfect_Matches']) + ' [' + str(num_current_genes)+ '] - '+ format(100 * result['pred_metrics']['Number_of_Perfect_Matches']/num_current_genes,'.2f')+'%')
+            # print('Partial Matches: ' + str(len(result['pred_metrics']['partial_Hits'])) + ' [' + str(num_current_genes)+ '] - '+ format(100 * len(result['pred_metrics']['partial_Hits'])/num_current_genes,'.2f')+'%')
+            # print('Missed Genes: ' + str(len(result['rep_metrics']['genes_Undetected'])) + ' [' + str(num_current_genes)+ '] - '+ format(100 * len(result['rep_metrics']['genes_Undetected'])/num_current_genes,'.2f')+'%')
+            # print('Unmatched ORFs: ' + str(len(result['pred_metrics']['unmatched_ORFs'])) + ' [' + str(num_current_genes)+ '] - '+ format(100 * len(result['pred_metrics']['unmatched_ORFs'])/num_current_genes,'.2f')+'%')
+            # print('Multi-matched ORFs: ' + str(len(result['pred_metrics']['multi_Matched_ORFs'])) + ' [' + str(num_current_genes)+ '] - '+ format(100 * len(result['pred_metrics']['multi_Matched_ORFs'])/num_current_genes,'.2f')+'%')
+
             # Prepare output directory and file names for each contig
             contig_save = dna_region.replace('/', '_').replace('\\', '_')
             contig_dir = os.path.join(options.outdir, contig_save)
@@ -210,6 +244,11 @@ def comparator(options):
                     key_parts = key.split(',')
                     multi = f">Predicted_CDS:{key_parts[0]}-{key_parts[1]}_Genes:{'|'.join(value)}"
                     f.write(f"{multi}\n")
+        else:
+            if options.verbose:
+                print(f"No results to process for dna region - " + str(dna_region))
+            options.output_logger.info(f"No results to process for dna region - " + str(dna_region))
+
 
     # After all contigs, append the summary table to the main summary file
     if options.outdir and contig_summaries:
@@ -238,23 +277,21 @@ def comparator(options):
             out_file.write(
                 f'Multi-matched ORFs: {total_multi} [{total_genes}] - {format(100 * total_multi / total_genes, ".2f")}%\n')
 
-            # Print combined metrics to stdout
-            print("\nCombined metrics for all contigs:")
+            lines = [
+                f"Combined metrics for all contigs:",
+                f"Number of Genes: {total_genes}",
+                f"Number of ORFs: {total_orfs}",
+                f"Perfect Matches: {total_perfect} [{total_genes}] - {format(100 * total_perfect / total_genes, ".2f")}%",
+                f"Partial Matches: {total_partial} [{total_genes}] - {format(100 * total_partial / total_genes, ".2f")}%",
+                f"Missed Genes: {total_missed} [{total_genes}] - {format(100 * total_missed / total_genes, ".2f")}%",
+                f"Unmatched ORFs: {total_unmatched} [{total_genes}] - {format(100 * total_unmatched / total_genes, ".2f")}%",
+                f"Multi-matched ORFs: {total_multi} [{total_genes}] - {format(100 * total_multi / total_genes, ".2f")}%"
+            ]
 
-            print(f'Number of Genes: {total_genes}')
-            print(f'Number of ORFs: {total_orfs}')
-            print(
-                f'Perfect Matches: {total_perfect} [{total_genes}] - {format(100 * total_perfect / total_genes, ".2f")}%')
-            print(
-                f'Partial Matches: {total_partial} [{total_genes}] - {format(100 * total_partial / total_genes, ".2f")}%')
-            print(f'Missed Genes: {total_missed} [{total_genes}] - {format(100 * total_missed / total_genes, ".2f")}%')
-            print(
-                f'Unmatched ORFs: {total_unmatched} [{total_genes}] - {format(100 * total_unmatched / total_genes, ".2f")}%')
-            print(
-                f'Multi-matched ORFs: {total_multi} [{total_genes}] - {format(100 * total_multi / total_genes, ".2f")}%')
-
-
-
+            full_msg = '\n'.join(lines) + '\n'
+            if options.verbose:
+                print(full_msg)
+            options.output_logger.info(full_msg)
 
 
 def main():
@@ -282,18 +319,32 @@ def main():
                                '- Provide tool name to compare output from two tools')
 
     output = parser.add_argument_group('Output')
-    output.add_argument('-o', dest='outdir', required=False,
-                        help='Define directory where detailed output should be places - If not provided, summary will be printed to std-out')
+    output.add_argument('-o', dest='outdir', required=True,
+                        help='Define directory where detailed output should be places')
     output.add_argument('-n', dest='outname', required=False,
-                        help='Define output file name - Mandatory is -o is provided: <outname>_<contig_id>_ORF_Comparison.csv')
+                        help='Define output filename(s) prefix - If not provided, filename of reference '
+                             'annotation file will be used- <outname>_<contig_id>_ORF_Comparison.csv')
 
     misc = parser.add_argument_group('Misc')
     misc.add_argument('-v', dest='verbose', default='False', type=eval, choices=[True, False],
                       help='Default - False: Print out runtime status')
     options = parser.parse_args()
 
-    if options.outdir and not options.outname:
-        sys.exit("Error: If -o (outdir) is provided, you must also provide -n (outname).")
+    options.outname = options.outname if options.outname else options.reference_annotation.split('/')[-1].split('.')[0]
+
+    # Initialise loggers once and store on options
+    if not getattr(options, 'logger_initialized', False):
+        os.makedirs(options.outdir, exist_ok=True)
+        output_log = os.path.join(options.outdir, f"ORForise_{options.outname}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log")
+        logger = logging.getLogger('ORForise.output')
+        logger.setLevel(logging.INFO)
+        fh_out = logging.FileHandler(output_log, encoding='utf-8')
+        fh_out.setFormatter(logging.Formatter('%(message)s'))
+        logger.addHandler(fh_out)
+
+        options.output_logger = logger
+        options.logger_initialized = True
+
 
     comparator(options)
 

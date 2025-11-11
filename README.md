@@ -40,13 +40,7 @@ Example output files from ```Annotation-Compare```, ```GFF-Adder``` and ```GFF-I
 For Help: ```Annotation-Compare -h ```
 
 ```python
-Thank you for using ORForise
-Please report any issues to: https://github.com/NickJD/ORForise/issues
-#####
-usage: Annotation_Compare.py [-h] -dna GENOME_DNA -ref REFERENCE_ANNOTATION -t TOOL -tp TOOL_PREDICTION
-                             [-rt REFERENCE_TOOL] [-o OUTNAME] [-v {True,False}]
-
-ORForise v1.5.0: Annotatione-Compare Run Parameters.
+ORForise v1.5.1: Annotatione-Compare Run Parameters.
 
 Required Arguments:
   -dna GENOME_DNA       Genome DNA file (.fa) which both annotations are based on
@@ -61,8 +55,8 @@ Optional Arguments:
                         name to compare output from two tools
 
 Output:
-  -o OUTNAME            Define full output filename (format is CSV) - If not provided, summary will be printed to
-                        std-out
+  -o OUTDIR             Define directory where detailed output should be places
+  -n OUTNAME            Define output filename(s) prefix - If not provided, filename of reference annotation file will be used- <outname>_<contig_id>_ORF_Comparison.csv
 
 Misc:
   -v {True,False}       Default - False: Print out runtime status
@@ -90,13 +84,7 @@ ORForise can be used as the example below.
 For Help: ```Aggregate-Compare -h ```
 
 ```python
-Thank you for using ORForise
-Please report any issues to: https://github.com/NickJD/ORForise/issues
-#####
-usage: Aggregate_Compare.py [-h] -dna GENOME_DNA -t TOOLS -tp TOOL_PREDICTIONS -ref REFERENCE_ANNOTATION
-                            [-rt REFERENCE_TOOL] [-o OUTNAME] [-v {True,False}]
-
-ORForise v1.5.0: Aggregate-Compare Run Parameters.
+ORForise v1.5.1: Aggregate-Compare Run Parameters.
 
 Required Arguments:
   -dna GENOME_DNA       Genome DNA file (.fa) which both annotations are based on
@@ -244,13 +232,7 @@ The ```-gi``` option can be used to allow for different genomic elements to be a
 For Help: ```GFF-Adder -h ```
 
 ```python
-Thank you for using ORForise
-Please report any issues to: https://github.com/NickJD/ORForise/issues
-#####
-usage: GFF_Adder.py [-h] -dna GENOME_DNA -ref REFERENCE_ANNOTATION -at ADDITIONAL_TOOL -add ADDITIONAL_ANNOTATION -o
-                    OUTPUT_FILE [-rt REFERENCE_TOOL] [-gi GENE_IDENT] [-gene_ident GENE_IDENT] [-olap OVERLAP]
-
-ORForise v1.5.0: GFF-Adder Run Parameters.
+ORForise v1.5.1: GFF-Adder Run Parameters.
 
 Required Arguments:
   -dna GENOME_DNA       Genome DNA file (.fa) which both annotations are based on
@@ -306,13 +288,7 @@ The ```-gi``` option can be used to allow for different genomic elements to be a
 
 For Help: ```GFF-Intersector -h ``` 
 ```python
-Thank you for using ORForise
-Please report any issues to: https://github.com/NickJD/ORForise/issues
-#####
-usage: GFF_Intersector.py [-h] -dna GENOME_DNA -ref REFERENCE_ANNOTATION -at ADDITIONAL_TOOL -add
-                          ADDITIONAL_ANNOTATION -o OUTPUT_FILE [-rt REFERENCE_TOOL] [-gi GENE_IDENT] [-cov COVERAGE]
-
-ORForise v1.5.0: GFF-Intersector Run Parameters.
+ORForise v1.5.1: GFF-Intersector Run Parameters.
 
 Required Arguments:
   -dna GENOME_DNA       Genome DNA file (.fa) which both annotations are based on

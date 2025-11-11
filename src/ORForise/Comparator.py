@@ -206,33 +206,53 @@ def start_Codon_Count(orfs):
         else:
             other += 1
             other_Starts.append(codon)
-    atg_P = format(100 * atg / len(orfs), '.2f')
-    gtg_P = format(100 * gtg / len(orfs), '.2f')
-    ttg_P = format(100 * ttg / len(orfs), '.2f')
-    att_P = format(100 * att / len(orfs), '.2f')
-    ctg_P = format(100 * ctg / len(orfs), '.2f')
-    other_Start_P = format(100 * other / len(orfs), '.2f')
-    return atg_P, gtg_P, ttg_P, att_P, ctg_P, other_Start_P, other_Starts
 
+    total = len(orfs) if orfs is not None else 0
+
+    if total:
+        atg_P = format(100 * atg / len(orfs), '.2f')
+        gtg_P = format(100 * gtg / len(orfs), '.2f')
+        ttg_P = format(100 * ttg / len(orfs), '.2f')
+        att_P = format(100 * att / len(orfs), '.2f')
+        ctg_P = format(100 * ctg / len(orfs), '.2f')
+        other_Start_P = format(100 * other / len(orfs), '.2f')
+    else:
+        atg_P = ttg_P = gtg_P = ctg_P = att_P = other_Start_P = format(0, '.2f')
+
+    return {
+        'ATG': (atg, atg_P),
+        'TTG': (ttg, ttg_P),
+        'GTG': (gtg, gtg_P),
+        'CTG': (ctg, ctg_P),
+        'ATT': (att, att_P),
+        'Other': (other, other_Start_P),
+        'total': total
+    }
 
 def stop_Codon_Count(orfs):
     tag, taa, tga, other = 0, 0, 0, 0
     other_Stops = []
-    for orf in orfs.values():
-        codon = orf[2]
-        if codon == 'TAG':
-            tag += 1
-        elif codon == 'TAA':
-            taa += 1
-        elif codon == 'TGA':
-            tga += 1
-        else:
-            other += 1
-            other_Stops.append(codon)
-    tag_p = format(100 * tag / len(orfs), '.2f')
-    taa_p = format(100 * taa / len(orfs), '.2f')
-    tga_p = format(100 * tga / len(orfs), '.2f')
-    other_Stop_P = format(100 * other / len(orfs), '.2f')
+
+    total = len(orfs) if orfs else 0
+    if total:
+        for orf in orfs.values():
+            codon = orf[2]
+            if codon == 'TAG':
+                tag += 1
+            elif codon == 'TAA':
+                taa += 1
+            elif codon == 'TGA':
+                tga += 1
+            else:
+                other += 1
+                other_Stops.append(codon)
+        tag_p = format(100 * tag / len(orfs), '.2f')
+        taa_p = format(100 * taa / len(orfs), '.2f')
+        tga_p = format(100 * tga / len(orfs), '.2f')
+        other_Stop_P = format(100 * other / len(orfs), '.2f')
+    else:
+        tag_p = taa_p = tga_p = other_Stop_P = format(0, '.2f')
+
     return tag_p, taa_p, tga_p, other_Stop_P, other_Stops
 
 
@@ -260,8 +280,8 @@ def candidate_ORF_Selection(gene_Set,
             if len(current_ORF_Difference) > len(candidate_ORF_Difference):
                 pos = c_Pos
                 orf_Details = c_ORF_Details
-        else:
-            print("Match filtered out")
+        #else:
+            #("Match filtered out")
     return pos, orf_Details
 
 
@@ -300,6 +320,11 @@ def tool_comparison(all_orfs, dna_regions, verbose):
 
         ref_genes_list = dna_regions[dna_region][2]
         ref_genes = collections.OrderedDict()
+
+        if not ref_genes_list:
+            results[dna_region] = {}
+            continue
+
         for d in ref_genes_list:
             ref_genes.update(d)
         comp.genome_Seq = dna_regions[dna_region][0]
@@ -310,6 +335,10 @@ def tool_comparison(all_orfs, dna_regions, verbose):
         # sort the ORFs by start position
 
         better_pos_orfs_items = [[(int(pos.split(',')[0]), int(pos.split(',')[1])), orf_Details] for pos, orf_Details in current_orfs.items()] #TODO: turn pos into tuple instead of string everywhere
+
+        if not current_orfs or not better_pos_orfs_items:
+            results[dna_region] = {}
+            continue
 
         for gene_num, gene_details in ref_genes.items():  # Loop through each gene to compare against predicted ORFs
             g_Start = int(gene_details[0])
@@ -477,10 +506,13 @@ def tool_comparison(all_orfs, dna_regions, verbose):
                 comp.gene_Pos_Olap.append(0)
             elif '-' in g_Strand:
                 comp.gene_Neg_Olap.append(0)
-        ####
-        min_Gene_Length = min(comp.gene_Lengths)
-        max_Gene_Length = max(comp.gene_Lengths)
-        median_Gene_Length = np.median(comp.gene_Lengths)
+        #### avoid ValueError
+        if comp.gene_Lengths:
+            min_Gene_Length = min(comp.gene_Lengths)
+            max_Gene_Length = max(comp.gene_Lengths)
+            median_Gene_Length = np.median(comp.gene_Lengths)
+        else:
+            min_Gene_Length = max_Gene_Length = min_Length_Difference = 0
         prev_ORF_Stop = 0
         prev_ORF_Overlapped = False
         for o_Positions, orf_Details in current_orfs.items():
