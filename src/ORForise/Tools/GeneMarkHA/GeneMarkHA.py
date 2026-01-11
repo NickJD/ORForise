@@ -11,15 +11,27 @@ except ImportError:
 def GeneMark_HA(*args):
     tool_pred = args[0]
     dna_regions = args[1]
-    geneMark_HA_ORFs = collections.OrderedDict()
+    if not dna_regions: # This triggers if dna_regions is an empty dict (GFF_Intersect passed nothing)
+        dna_regions = collections.OrderedDict()
+        with open(tool_pred, 'r') as GeneMarkHA_input:
+            for line in GeneMarkHA_input:
+                line = line.split()
+                if len(line) >= 9 and "CDS" in line[5] and line[0] not in dna_regions:
+                    dna_regions[line[0]] = []  # Placeholder for genome sequence
+        return dna_regions
+
+    geneMarkHA_ORFs = collections.OrderedDict()
     for dna_region in dna_regions:
-        geneMark_HA_ORFs[dna_region] = collections.OrderedDict()
+        geneMarkHA_ORFs[dna_region] = collections.OrderedDict()
     for dna_region in dna_regions:
-        genome = dna_regions[dna_region][0]
+        try:
+            genome = dna_regions[dna_region][0]
+        except IndexError:
+            genome = dna_regions[dna_region]
         genome_size = len(genome)
         genome_rev = revCompIterative(genome)
-        with open(tool_pred, 'r') as GeneMark_HA_input:
-            for line in GeneMark_HA_input:
+        with open(tool_pred, 'r') as GeneMarkHA_input:
+            for line in GeneMarkHA_input:
                 line = line.split()
                 if len(line) >= 9 and "CDS" in line[5] and dna_region in line[0]:
                     start = int(line[6])
@@ -35,8 +47,8 @@ def GeneMark_HA(*args):
                         stopCodon = genome[stop - 3:stop]
                     po = str(start) + ',' + str(stop)
                     orf = [strand, startCodon, stopCodon, 'CDS', 'GeneMarkHA']
-                    geneMark_HA_ORFs.update({po: orf})
+                    geneMarkHA_ORFs.update({po: orf})
 
-    for group in geneMark_HA_ORFs:
-        geneMark_HA_ORFs[group] = sortORFs(geneMark_HA_ORFs[group])
-    return geneMark_HA_ORFs
+    for group in geneMarkHA_ORFs:
+        geneMarkHA_ORFs[group] = sortORFs(geneMarkHA_ORFs[group])
+    return geneMarkHA_ORFs

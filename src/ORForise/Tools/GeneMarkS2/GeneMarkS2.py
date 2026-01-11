@@ -8,18 +8,30 @@ except ImportError:
     from ORForise.utils import sortORFs
 
 
-def GeneMark_S_2(*args):
+def GeneMarkS2(*args):
     tool_pred = args[0]
     dna_regions = args[1]
-    geneMark_S_2_ORFs = collections.defaultdict()
+    if not dna_regions: # This triggers if dna_regions is an empty dict (GFF_Intersect passed nothing)
+        dna_regions = collections.OrderedDict()
+        with open(tool_pred, 'r') as GeneMarkS2_input:
+            for line in GeneMarkS2_input:
+                line = line.split()
+                if len(line) >= 9 and "CDS" in line[2] and line[0] not in dna_regions:
+                    dna_regions[line[0]] = []  # Placeholder for genome sequence
+        return dna_regions
+
+    geneMarkS2_ORFs = collections.defaultdict()
     for dna_region in dna_regions:
-        geneMark_S_2_ORFs[dna_region] = collections.OrderedDict()
+        geneMarkS2_ORFs[dna_region] = collections.OrderedDict()
     for dna_region in dna_regions:
-        genome = dna_regions[dna_region][0]
+        try:
+            genome = dna_regions[dna_region][0]
+        except IndexError:
+            genome = dna_regions[dna_region]
         genome_size = len(genome)
         genome_rev = revCompIterative(genome)
-        with open(tool_pred, 'r') as GeneMark_S_2_input:
-            for line in GeneMark_S_2_input:
+        with open(tool_pred, 'r') as GeneMarkS2_input:
+            for line in GeneMarkS2_input:
                 line = line.split('\t')
                 if len(line) >= 9 and dna_region in line[0] and "CDS" in line[2]:
                     start = int(line[3])
@@ -35,9 +47,9 @@ def GeneMark_S_2(*args):
                         startCodon = genome[start - 1:start + 2]
                         stopCodon = genome[stop - 3:stop]
                     po = str(start) + ',' + str(stop)
-                    orf = [strand, startCodon, stopCodon, 'CDS', 'GeneMark_S_2']
-                    geneMark_S_2_ORFs[dna_region].update({po: orf})
+                    orf = [strand, startCodon, stopCodon, 'CDS', 'GeneMarkS2']
+                    geneMarkS2_ORFs[dna_region].update({po: orf})
 
-    for group in geneMark_S_2_ORFs:
-        geneMark_S_2_ORFs[group] = sortORFs(geneMark_S_2_ORFs[group])
-    return geneMark_S_2_ORFs
+    for group in geneMarkS2_ORFs:
+        geneMarkS2_ORFs[group] = sortORFs(geneMarkS2_ORFs[group])
+    return geneMarkS2_ORFs

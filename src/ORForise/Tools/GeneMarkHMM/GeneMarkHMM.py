@@ -12,15 +12,27 @@ except ImportError:
 def GeneMark_HMM(*args):
     tool_pred = args[0]
     dna_regions = args[1]
-    geneMark_HMM_ORFs = collections.OrderedDict()
+    if not dna_regions: # This triggers if dna_regions is an empty dict (GFF_Intersect passed nothing)
+        dna_regions = collections.OrderedDict()
+        with open(tool_pred, 'r') as GeneMarkHMM_input:
+            for line in GeneMarkHMM_input:
+                line = line.split()
+                if len(line) >= 9 and "CDS" in line[2] and line[0] not in dna_regions:
+                    dna_regions[line[0]] = []  # Placeholder for genome sequence
+        return dna_regions
+
+    geneMarkHMM_ORFs = collections.OrderedDict()
     for dna_region in dna_regions:
-        geneMark_HMM_ORFs[dna_region] = collections.OrderedDict()
+        geneMarkHMM_ORFs[dna_region] = collections.OrderedDict()
     for dna_region in dna_regions:
-        genome = dna_regions[dna_region][0]
+        try:
+            genome = dna_regions[dna_region][0]
+        except IndexError:
+            genome = dna_regions[dna_region]
         genome_size = len(genome)
         genome_rev = revCompIterative(genome)
-        with open(tool_pred, 'r') as GeneMark_HMM_input:
-            for line in GeneMark_HMM_input:
+        with open(tool_pred, 'r') as GeneMarkHMM_input:
+            for line in GeneMarkHMM_input:
                 line = line.split('\t')
                 if len(line) >= 9 and "CDS" in line[2] and dna_region in line[0]:
                     start = int(line[3])
@@ -35,9 +47,9 @@ def GeneMark_HMM(*args):
                         startCodon = genome[start - 1:start + 2]
                         stopCodon = genome[stop - 3:stop]
                     po = str(start) + ',' + str(stop)
-                    orf = [strand, startCodon, stopCodon, 'CDS', 'GeneMark_HMM']
-                    geneMark_HMM_ORFs.update({po: orf})
+                    orf = [strand, startCodon, stopCodon, 'CDS', 'GeneMarkHMM']
+                    geneMarkHMM_ORFs.update({po: orf})
 
-    for group in geneMark_HMM_ORFs:
-        geneMark_HMM_ORFs[group] = sortORFs(geneMark_HMM_ORFs[group])
-    return geneMark_HMM_ORFs
+    for group in geneMarkHMM_ORFs:
+        geneMarkHMM_ORFs[group] = sortORFs(geneMarkHMM_ORFs[group])
+    return geneMarkHMM_ORFs

@@ -11,15 +11,27 @@ except ImportError:
 def GeneMark_S(*args):
     tool_pred = args[0]
     dna_regions = args[1]
-    geneMark_S_ORFs = collections.OrderedDict()
+    if not dna_regions: # This triggers if dna_regions is an empty dict (GFF_Intersect passed nothing)
+        dna_regions = collections.OrderedDict()
+        with open(tool_pred, 'r') as GeneMarkS_input:
+            for line in GeneMarkS_input:
+                line = line.split()
+                if len(line) >= 9 and "CDS" in line[5] and line[0] not in dna_regions:
+                    dna_regions[line[0]] = []  # Placeholder for genome sequence
+        return dna_regions
+
+    geneMarkS_ORFs = collections.OrderedDict()
     for dna_region in dna_regions:
-        geneMark_S_ORFs[dna_region] = collections.OrderedDict()
+        geneMarkS_ORFs[dna_region] = collections.OrderedDict()
     for dna_region in dna_regions:
-        genome = dna_regions[dna_region][0]
+        try:
+            genome = dna_regions[dna_region][0]
+        except IndexError:
+            genome = dna_regions[dna_region]
         genome_size = len(genome)
         genome_rev = revCompIterative(genome)
-        with open(tool_pred, 'r') as prodigal_input:
-            for line in prodigal_input:
+        with open(tool_pred, 'r') as GeneMarkS_input:
+            for line in GeneMarkS_input:
                 line = line.split()
                 if len(line) >= 9 and "CDS" in line[5] and dna_region in line[0]:
                     start = int(line[6])
@@ -34,9 +46,9 @@ def GeneMark_S(*args):
                         startCodon = genome[start - 1:start + 2]
                         stopCodon = genome[stop - 3:stop]
                     po = str(start) + ',' + str(stop)
-                    orf = [strand, startCodon, stopCodon, 'CDS', 'GeneMark_S']
-                    geneMark_S_ORFs.update({po: orf})
+                    orf = [strand, startCodon, stopCodon, 'CDS', 'GeneMarkS']
+                    geneMarkS_ORFs.update({po: orf})
 
-    for group in geneMark_S_ORFs:
-        geneMark_S_ORFs[group] = sortORFs(geneMark_S_ORFs[group])
-    return geneMark_S_ORFs
+    for group in geneMarkS_ORFs:
+        geneMarkS_ORFs[group] = sortORFs(geneMarkS_ORFs[group])
+    return geneMarkS_ORFs

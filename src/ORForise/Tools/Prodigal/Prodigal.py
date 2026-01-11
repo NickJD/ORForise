@@ -13,10 +13,10 @@ def Prodigal(*args):
     dna_regions = args[1]
     if not dna_regions: # This triggers if dna_regions is an empty dict (GFF_Intersect passed nothing)
         dna_regions = collections.OrderedDict()
-        with open(tool_pred, 'r') as EasyGene_input:
-            for line in EasyGene_input:
+        with open(tool_pred, 'r') as Prodigal_input:
+            for line in Prodigal_input:
                 line = line.split()
-                if len(line) == 10 and "CDS" in line[2] and line[0] not in dna_regions:
+                if "Prodigal" in line[1] and "CDS" in line[2] and line[0] not in dna_regions:
                     dna_regions[line[0]] = []  # Placeholder for genome sequence
         return dna_regions
 

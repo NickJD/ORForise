@@ -1,17 +1,10 @@
 from importlib import import_module
-import argparse
-import sys, os
-import gzip, csv
-import logging
-from datetime import datetime
-
+import  os
 
 try:
-    from utils import *
-    from Comparator import tool_comparison
-except ImportError:
-    from .Comparator import tool_comparison
     from .utils import *
+except (ImportError, ModuleNotFoundError):
+    from utils import *
 
 
 

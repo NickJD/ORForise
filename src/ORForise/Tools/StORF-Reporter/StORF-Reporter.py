@@ -11,18 +11,30 @@ except ImportError:
 def StORF_Reporter(*args):
     tool_pred = args[0]
     dna_regions = args[1]
+    if not dna_regions: # This triggers if dna_regions is an empty dict (GFF_Intersect passed nothing)
+        dna_regions = collections.OrderedDict()
+        with open(tool_pred, 'r') as StORF_Reporter_input:
+            for line in StORF_Reporter_input:
+                line = line.split()
+                if 'StORF-Reporter' in line[1] or 'StoRF_Reporter' in line[1]  or 'StORF' in line[1] or 'StORF-Reporter' in line[1] and line[0] not in dna_regions:
+                    dna_regions[line[0]] = []  # Placeholder for genome sequence
+        return dna_regions
+
     storf_ORFs = collections.OrderedDict()
     for dna_region in dna_regions:
         storf_ORFs[dna_region] = collections.OrderedDict()
     for dna_region in dna_regions:
-        genome = dna_regions[dna_region][0]
+        try:
+            genome = dna_regions[dna_region][0]
+        except IndexError:
+            genome = dna_regions[dna_region]
         genome_size = len(genome)
         genome_rev = revCompIterative(genome)
         with open(tool_pred, 'r') as storf_input:
             for line in storf_input:
                 if not line.startswith('#') and not line.startswith('\n'):
                     line = line.split()
-                    if 'StORF_Reporter' in line[1] or 'StoRF_Reporter' in line[1]  or 'StORF' in line[1] or 'StORF-Reporter' in line[1] and dna_region in line[0]: # need to harmonise this.
+                    if 'StORF-Reporter' in line[1] or 'StoRF_Reporter' in line[1]  or 'StORF' in line[1] or 'StORF-Reporter' in line[1] and dna_region in line[0]: # need to harmonise this.
                         start = int(line[3])
                         stop = int(line[4])
                         strand = line[6]

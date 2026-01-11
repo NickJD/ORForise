@@ -8,15 +8,27 @@ except ImportError:
     from ORForise.utils import sortORFs
 
 
-def Prokka(*args):
+def Prokka(*args): # UNFINISHED
     tool_pred = args[0]
     dna_regions = args[1]
     types = args[2]
+    if not dna_regions: # This triggers if dna_regions is an empty dict (GFF_Intersect passed nothing)
+        dna_regions = collections.OrderedDict()
+        with open(tool_pred, 'r') as PROKKA_input:
+            for line in PROKKA_input:
+                line = line.split()
+                if "Prodigal" in line[1] and "CDS" in line[2] and line[0] not in dna_regions:
+                    dna_regions[line[0]] = []  # Placeholder for genome sequence
+        return dna_regions
+
     prokkaORFs = collections.defaultdict(list)
     for dna_region in dna_regions:
         prokkaORFs[dna_region] = collections.OrderedDict()
     for dna_region in dna_regions:
-        genome = dna_regions[dna_region][0]
+        try:
+            genome = dna_regions[dna_region][0]
+        except IndexError:
+            genome = dna_regions[dna_region]
         genome_size = len(genome)
         genome_rev = revCompIterative(genome)
         with open(tool_pred, 'r') as prodigal_input:

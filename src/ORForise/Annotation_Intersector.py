@@ -11,9 +11,9 @@ if not logging.getLogger().handlers:
     logging.basicConfig(stream=sys.stdout, level=logging.INFO, format='%(levelname)s: %(message)s')
 
 try:
-    from utils import *
-except ImportError:
     from .utils import *
+except (ImportError, ModuleNotFoundError):
+    from utils import *
 
 ################################
 

@@ -11,11 +11,23 @@ except ImportError:
 def FGENESB(*args):
     tool_pred = args[0]
     dna_regions = args[1]
+    if not dna_regions: # This triggers if dna_regions is an empty dict (GFF_Intersect passed nothing)
+        dna_regions = collections.OrderedDict()
+        with open(tool_pred, 'r') as FGENESB_input:
+            for line in FGENESB_input:
+                line = line.split()
+                if len(line) == 10 and ">GENE" in line[0] and line[0] not in dna_regions:
+                    dna_regions[line[0]] = []  # Placeholder for genome sequence
+        return dna_regions
+
     FGENESB_ORFs = collections.OrderedDict()
     for dna_region in dna_regions:
         FGENESB_ORFs[dna_region] = collections.OrderedDict()
     for dna_region in dna_regions:
-        genome = dna_regions[dna_region][0]
+        try:
+            genome = dna_regions[dna_region][0]
+        except IndexError:
+            genome = dna_regions[dna_region]
         genome_size = len(genome)
         genome_rev = revCompIterative(genome)
         with open(tool_pred, 'r') as FGENESB_input:

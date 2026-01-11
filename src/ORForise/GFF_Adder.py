@@ -6,9 +6,9 @@ from datetime import date
 import sys
 
 try:
-    from utils import *
-except ImportError:
     from .utils import *
+except (ImportError, ModuleNotFoundError):
+    from utils import *
 
 
 ########################################
@@ -370,7 +370,7 @@ def gff_adder(options):
 
     else:
         # Reference tool provided: attempt to call it with dna_regions first (multi-contig aware), fallback to legacy signature
-        reference_tool = options.reference_tool if options.reference_tool != 'StORF_Reporter' else 'StORF_Reporter'
+        reference_tool = options.reference_tool if options.reference_tool != 'StORF-Reporter' else 'StORF-Reporter'
         try:
             reference_tool_mod = import_module('Tools.' + reference_tool + '.' + reference_tool, package='my_current_pkg')
         except ModuleNotFoundError:

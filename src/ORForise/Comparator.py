@@ -1,8 +1,9 @@
 import numpy as np
+
 try:
+    from .utils import *
+except (ImportError, ModuleNotFoundError):
     from utils import *
-except ImportError:
-    from ORForise.utils import *
 
 
 class comparator:  # Class to hold global-type variables

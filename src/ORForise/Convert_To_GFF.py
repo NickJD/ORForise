@@ -5,11 +5,13 @@ import os
 import sys
 
 try:
+    from .utils import *
+    from .Aux.TabToGFF.TabToGFF import TabToGFF
+except (ImportError, ModuleNotFoundError):
     from utils import *
     from ORForise.src.ORForise.Aux.TabToGFF import TabToGFF
-except ImportError:
-    from ORForise.utils import *
-    from ORForise.Aux.TabToGFF.TabToGFF import TabToGFF
+
+
 
 
 def setup_logging(outdir, verbose=False):

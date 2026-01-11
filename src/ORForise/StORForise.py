@@ -3,11 +3,11 @@ import argparse
 import csv
 
 try:
-    from utils import *
-    from Comparator import tool_comparison
-except ImportError:
     from .Comparator import tool_comparison
     from .utils import *
+except (ImportError, ModuleNotFoundError):
+    from Comparator import tool_comparison
+    from utils import *
 
 ###################
 

@@ -2,14 +2,12 @@ from importlib import import_module
 import argparse
 import csv, os, gzip, sys
 
-
 try:
-    from Comparator import tool_comparison
-    from utils import *
-except ImportError:
     from .Comparator import tool_comparison
     from .utils import *
-
+except (ImportError, ModuleNotFoundError):
+    from Comparator import tool_comparison
+    from utils import *
 ############################################
 
 def comparator(options):
