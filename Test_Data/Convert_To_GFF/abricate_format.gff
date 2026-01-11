@@ -1,0 +1,7 @@
+##gff-version	3
+#	Convert_To_GFF
+#	Run Date: 2026-01-09 13:31:10.844624
+##Original File: /home/nickd/Git/ORForise/Test_Data/Convert_To_GFF/abricate_format.tsv
+NC_017339.1	abricate	CDS	10150	10995	.	+	.	ID=abricate_anotation;accession=AP004832;database=ncbi;identity=100.000;coverage=100.00;product=betalactamase;resistance=BETA-LACTAM;PENICILLIN
+NC_017338.1	abricate	CDS	39177	41186	.	+	.	ID=abricate_anotation;accession=AB505628;database=ncbi;identity=100.000;coverage=100.00;product=n/a;resistance=FUSIDIC_ACID
+NC_017338.1	abricate	CDS	727191	728356	.	-	.	ID=abricate_anotation;accession=M97169;database=ncbi;identity=92.367;coverage=99.91;product=n/a;resistance=FOSFOMYCIN

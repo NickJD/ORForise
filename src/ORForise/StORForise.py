@@ -1,10 +1,13 @@
 from importlib import import_module
-
 import argparse
-import collections
 import csv
 
-from Comparator import tool_comparison
+try:
+    from utils import *
+    from Comparator import tool_comparison
+except ImportError:
+    from .Comparator import tool_comparison
+    from .utils import *
 
 ###################
 
@@ -98,7 +101,8 @@ def comparator(tool, input_to_analyse, storfs_to_find_missing, genome_to_compare
 
 
 def main():
-    parser = argparse.ArgumentParser()
+    print(WELCOME)
+    parser = argparse.ArgumentParser(description='ORForise ' + ORForise_Version + ': StORForise Run Parameters.')
     parser.add_argument('-t', '--tool', default='GFF', help='Which tool/format would you analyse with StORF-R?')
     parser.add_argument('-i', '--input_to_analyse', default='', help='Location of file containing missed genes')
     parser.add_argument('-stf', '--storfs_to_find_missing', default='', help='STORFs to find missing.')

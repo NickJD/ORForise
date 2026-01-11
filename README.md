@@ -1,58 +1,39 @@
-# ORForise - Prokaryote Genome Annotation Analysis and Comparison Platform
+# ORForise - Genome Annotation Analysis and Comparison Platform
 ## Published in Bioinformatics :   https://academic.oup.com/bioinformatics/article/38/5/1198/6454948
-### Platform for analysing and comparing Prokaryote CoDing Sequence (CDS) Gene Predictions. 
-### Novel genome annotations can be compared to a provided reference annotation from Ensembl and predictions from other tools (or any given GFF annotation) .
 
 # Requirements and Installation:
 
-### The ORForise platform is written in Python (3.6-3.9) and only requires the NumPy library (should be installed automatically by pip when installing ORForise) which is standard in most base installations of Python3.
+### The ORForise platform is written in Python (3.6-3.*) and only requires the NumPy library (should be installed automatically by pip when installing ORForise) which is standard in most base installations of Python3.
 
 ## Intallation:
 
-### The ORForise platform is available via the pip Python package manager ```pip3 install ORForise```. 
-### Consider using '--no-cache-dir' with pip to ensure the download of the newest version of the package.
-
-## Required Files:
-
-To run, you need:
-* Input Genome FASTA and corresponding GFF file (or CDS predictions with the annotated genes for the genome you want to use as reference in one of the tool output formats listed below).
-* A prediction output from one of the compatible tools for the same genome.
-
-### How to add your own Genome:
-
-Corresponding FASTA and GFF files must be provided for the genome the analysis is to be performed on, including the corresponding output of any tools to compare.
-
-### How to add your own tool:
-
-If the new tool reports its predictions in GFF you can present ORForise with "GFF" for either the reference ```-rt``` or prediction ```-t``` option.
-If the tool uses another non-standard format, a request can be made to add it as an option via GitHub.
-
+### ORForise is available via the pip Python package manager ```pip3 install ORForise``` and bioconda ```conda install -c bioconda ORForise```.
 
 ### Testing:
 Precomputed testing and data which includes example input and output files for all tools presented below is available in the `~ORForise/Testing` directory of the GitHub repository. 
-Example output files from ```Annotation-Compare```, ```GFF-Adder``` and ```GFF-Intersector``` are made available to validate installation.
+Example output files from ```Annotation-Compare```, ```Aggregate-Compare```, ```Convert-To-GFF``` and ```Annotation-Intersector``` are available.
 
 
-## CDS Prediction Analysis:
+## Genome Annotation Analysis:
 
 ### Use-cases: (Running if via pip)
 
 For Help: ```Annotation-Compare -h ```
 
 ```python
-ORForise v1.5.1: Annotatione-Compare Run Parameters.
+ORForise v1.6.1: Annotatione-Compare Run Parameters.
 
 Required Arguments:
   -dna GENOME_DNA       Genome DNA file (.fa) which both annotations are based on
   -ref REFERENCE_ANNOTATION
                         Which reference annotation file to use as reference?
-  -t TOOL               Which tool to analyse? (Prodigal)
-  -tp TOOL_PREDICTION   Tool genome prediction file (.gff) - Different Tool Parameters are compared individually via
-                        separate files
+  -t TOOL               Which tool to analyse? 
+  -tp TOOL_PREDICTION   Tool genome prediction file (.gff) - Different Tool Parameters are compared individually via separate files
 
 Optional Arguments:
-  -rt REFERENCE_TOOL    What type of Annotation to compare to? -- Leave blank for Ensembl reference- Provide tool
-                        name to compare output from two tools
+  -gene_ident GENE_IDENT
+                        What features to consider as genes? - Default: CDS - Provide comma separated list of features to consider as genes (e.g. CDS,exon)
+  -rt REFERENCE_TOOL    What type of Annotation to compare to? -- Leave blank for Ensembl reference- Provide tool name to compare output from two tools
 
 Output:
   -o OUTDIR             Define directory where detailed output should be places
@@ -61,18 +42,42 @@ Output:
 Misc:
   -v {True,False}       Default - False: Print out runtime status
 ```
+### Compare a *de novo* genome annotation to an Ensembl annotation:
 
-## Compare a novel genome annotation to an Ensembl annotation:
-
-Genome annotation is a difficult process, even for Prokaryotes. ORForise allows the direct and systematic analysis of
-a novel CDS prediction from a wide selection of tools to a reference Genome Annotation, such as those provided by
+Genome annotation is a difficult process, even for Prokaryotes. ORForise allows for the direct and systematic analysis of
+*de novo* gene prediction from a wide selection of tools to a reference Genome Annotation, such as those provided by
 Ensembl Bacteria.
 
-#### Example: Installation through pip will allow user to call the programs directly from the ORForise package.
+#### Example: Installation through pip will allow user to call the programs directly from the ORForise package (Prodigal and Pyrodigal provide annotations in the same format).
 ```python
-Annotation-Compare -dna ~/Testing/Myco.fa -ref ~/Testing/Myco.gff -t Prodigal -tp ~/Testing/Prodigal_Myco.gff
+Annotation-Compare -dna ~/Test_Data/Genomes/E-coli/Escherichia_coli.fasta -ref ~/Test_Data/Genomes/E-coli/Escherichia_coli.gff -t Prodigal -tp ~/Test_Data/Genomes/E-coli/Prodigal_Escherichia_coli.gff
 ```
-### Compare different novel annotations with each other on a single Genome:
+### Example Output: - See ```~/Test_Data/Genomes/E-coli/annotation_compare```
+```commandline
+Genome Used: Escherichia_coli.fasta
+Reference Used: Escherichia_coli.gff
+Tool Compared: Prodigal
+Total Number of Reference Genes: 5222
+Number of Contigs: 4
+Contig	Genes	ORFs	Perfect_Matches	Partial_Matches	Missed_Genes	Unmatched_ORFs	Multi_Matched_ORFs
+ERS715463SCcontig000003	4068	4070	4065	1	2	4	0
+ERS715463SCcontig000002	1033	1035	1033	0	0	2	0
+ERS715463SCcontig000001	75	77	75	0	0	2	0
+ERS715463SCcontig000004	46	47	45	1	0	1	0
+
+Overall Summary:
+Number of Genes: 5222
+Number of ORFs: 5229
+Perfect Matches: 5218 [5222] - 99.92%
+Partial Matches: 2 [5222] - 0.04%
+Missed Genes: 2 [5222] - 0.04%
+Unmatched ORFs: 9 [5222] - 0.17%
+Multi-matched ORFs: 0 [5222] - 0.00%
+
+```
+
+
+## Compare different novel annotations with each other on a single Genome:
 
 If a reference Genome Annotation is not available or a direct comparison between two or more tools is wanted,
 ORForise can be used as the example below.
@@ -84,253 +89,235 @@ ORForise can be used as the example below.
 For Help: ```Aggregate-Compare -h ```
 
 ```python
-ORForise v1.5.1: Aggregate-Compare Run Parameters.
+ORForise v1.6.1: Aggregate-Compare Run Parameters.
 
 Required Arguments:
   -dna GENOME_DNA       Genome DNA file (.fa) which both annotations are based on
-  -t TOOLS              Which tools to analyse? (Prodigal,GeneMarkS)
+  -t TOOLS              Which tools to analyse?
   -tp TOOL_PREDICTIONS  Tool genome prediction file (.gff) - Providefile locations for each tool comma separated
   -ref REFERENCE_ANNOTATION
                         Which reference annotation file to use as reference?
 
 Optional Arguments:
-  -rt REFERENCE_TOOL    What type of Annotation to compare to? -- Leave blank for Ensembl reference- Provide tool
-                        name to compare output from two tools
+  -gene_ident GENE_IDENT
+                        What features to consider as genes? - Default: CDS - Provide comma separated list of features to consider as genes (e.g. CDS,exon)
+  -rt REFERENCE_TOOL    What type of Annotation to compare to? -- Leave blank for Ensembl reference- Provide tool name to compare output from two tools
 
 Output:
-  -o OUTNAME            Define full output filename (format is CSV) - If not provided, summary will be printed to
-                        std-out
+  -o OUTDIR             Define directory where detailed output should be places - If not provided, summary will be printed to std-out
+  -n OUTNAME            Define output file name - Mandatory is -o is provided: <outname>_<contig_id>_ORF_Comparison.csv
 
 Misc:
   -v {True,False}       Default - False: Print out runtime status
+
 ```
 
 #### Example: 
 ```python
-Aggregate-Compare -ref ~/Testing/Myco.gff -dna ~/Testing/Myco.fa -t Prodigal,TransDecoder,GeneMark_S_2 -tp ~/Testing/Prodigal_Myco.gff,~/Testing/TransDecoder_Myco.gff,~/Testing/GeneMark_S_2_Myco.gff
+Aggregate-Compare -ref ~/Test_Data/Genomes/E-coli/Escherichia_coli.gff -dna ~/Test_Data/Genomes/E-coli/Escherichia_coli.fasta -t Prodigal,GeneMarkS2 -tp ~/Test_Data/Genomes/E-coli/Prodigal_Escherichia_coli.gff,~/Test_Data/Genomes/E-coli/GeneMarkS2_E-coli.gff
 ```
-This will compare the Aggregate the predictions of Prodigal, TransDecoder and GLIMMER 3 against the Mycoplasma reference annotation provided by
-Ensembl Bacteria.
+This will compare and agregate the predictions of Prodigal and GeneMarkS2 against the E-coli reference annotation provided by Ensembl Bacteria.
 
-## Annotation Comparison Output - The output format is the same for Annotation_Compare and Aggregate_Compare:
-### Print to screen example - Prodigal prediction compared to Ensembl Bacteria reference annotation of *Escherichia coli*:
+### Annotation Comparison Output - The output format is the same for Annotation_Compare and Aggregate_Compare:  See ```~/Test_Data/Genomes/E-coli/aggregate_compare```
 ```bash
-Annotation-Compare.py  -ref ./Testing/Myco.gff -dna ./Testing/Myco.fa -t Prodigal -tp ./Testing/Prodigal_Myco.gff
-Genome Used: Myco
-Reference Used: Testing/Myco.gff
-Tool Compared: Prodigal
-Perfect Matches:128[476] -26.89%
-Partial Matches:62[476] - 13.03%
-Missed Genes:286[476] - 60.08%
-Complete
+Genome Used: Escherichia_coli.fasta
+Reference Used: Escherichia_coli.gff
+Tool Compared: Prodigal,GeneMarkS2
+Total Number of Reference Genes: 5222
+Number of Contigs: 4
+Contig	Genes	ORFs	Perfect_Matches	Partial_Matches	Missed_Genes	Unmatched_ORFs	Multi_Matched_ORFs
+ERS715463SCcontig000003	4068	4500	4065	1	2	434	0
+ERS715463SCcontig000002	1033	1148	1033	0	0	115	0
+ERS715463SCcontig000001	75	92	75	0	0	17	0
+ERS715463SCcontig000004	46	64	45	1	0	18	0
+
+Overall Summary:
+Number of Genes: 5222
+Number of ORFs: 5804
+Perfect Matches: 5218 [5222] - 99.92%
+Partial Matches: 2 [5222] - 0.04%
+Missed Genes: 2 [5222] - 0.04%
+Unmatched ORFs: 584 [5222] - 11.18%
+Multi-matched ORFs: 0 [5222] - 0.00%
+
+  Prodigal: Perfect=5218, Partial=2, Unmatched=9, Multi-matched=0
+
+  GeneMarkS2: Perfect=4609, Partial=2, Unmatched=579, Multi-matched=0
 ```
 
-``` bash
-Aggregate-Compare -ref ./Testing/Myco.gff -dna ./Testing/Myco.fa -t Prodigal,TransDecoder,GeneMark_S_2 -tp ./Testing/Prodigal_Myco.gff,./Testing/TransDecoder_Myco.gff,./Testing/GeneMark_S_2_Myco.gff
-Prodigal
-TransDecoder
-GeneMark_S_2
-Match filtered out
-Match filtered out
-Match filtered out
-Match filtered out
-Match filtered out
-Match filtered out
-Genome Used: Myco
-Reference Used: ./Testing/Myco.gff
-Tools Compared: Prodigal,TransDecoder,GeneMark_S_2
-Perfect Matches:132[476]
-Partial Matches:58[476]
-Missed Genes:286[476]
-```
-
-This is the default output of the comparison tools. 
-
-### '-o' Example output to CSV file - Prodigal prediction compared to Ensembl Bacteria reference annotation of *Escherichia coli*:
-The output is designed to be human-readable and interpretable by the included 'ORForise_Analysis' scripts. 
-The example below presents the 12 'Representative' and 72 'All' Metrics but only shows one entry for each of the induvidual prediction reports (Perfect_Match_Genes,Partial_Match_Genes,Missed_Genes,Predicted_CDS_Without_Corresponding_Gene_in_Reference,Predicted_CDSs_Which_Detected_more_than_one_Gene).
-
-```csv
+Shown so far have been the summary outputs of the comparison tools.
+Since v 1.5.0, detailed CSV outputs are also provided for each contig analysed - See ```~/Test_Data/Genomes/E-coli/annotation_compare``` for example outputs.
+```commandline
 Representative_Metrics:
 Percentage_of_Genes_Detected,Percentage_of_ORFs_that_Detected_a_Gene,Percent_Difference_of_All_ORFs,Median_Length_Difference,Percentage_of_Perfect_Matches,Median_Start_Difference_of_Matched_ORFs,Median_Stop_Difference_of_Matched_ORFs,Percentage_Difference_of_Matched_Overlapping_CDSs,Percent_Difference_of_Short-Matched-ORFs,Precision,Recall,False_Discovery_Rate
-39.92,19.10,109.03,-62.17,67.37,67.5,-85.5,-83.71,-17.39,0.19,0.40,0.81
-All_Metrics:
+100.00,97.87,2.17,1.20,97.83,6.0,N/A,0.00,0.00,0.98,1.00,0.02
+Prediction_Metrics:
 Number_of_ORFs,Percent_Difference_of_All_ORFs,Number_of_ORFs_that_Detected_a_Gene,Percentage_of_ORFs_that_Detected_a_Gene,Number_of_Genes_Detected,Percentage_of_Genes_Detected,Median_Length_of_All_ORFs,Median_Length_Difference,Minimum_Length_of_All_ORFs,Minimum_Length_Difference,Maximum_Length_of_All_ORFs,Maximum_Length_Difference,Median_GC_content_of_All_ORFs,Percent_Difference_of_All_ORFs_Median_GC,Median_GC_content_of_Matched_ORFs,Percent_Difference_of_Matched_ORF_GC,Number_of_ORFs_which_Overlap_Another_ORF,Percent_Difference_of_Overlapping_ORFs,Maximum_ORF_Overlap,Median_ORF_Overlap,Number_of_Matched_ORFs_Overlapping_Another_ORF,Percentage_Difference_of_Matched_Overlapping_CDSs,Maximum_Matched_ORF_Overlap,Median_Matched_ORF_Overlap,Number_of_Short-ORFs,Percent_Difference_of_Short-ORFs,Number_of_Short-Matched-ORFs,Percent_Difference_of_Short-Matched-ORFs,Number_of_Perfect_Matches,Percentage_of_Perfect_Matches,Number_of_Perfect_Starts,Percentage_of_Perfect_Starts,Number_of_Perfect_Stops,Percentage_of_Perfect_Stops,Number_of_Out_of_Frame_ORFs,Number_of_Matched_ORFs_Extending_a_Coding_Region,Percentage_of_Matched_ORFs_Extending_a_Coding_Region,Number_of_Matched_ORFs_Extending_Start_Region,Percentage_of_Matched_ORFs_Extending_Start_Region,Number_of_Matched_ORFs_Extending_Stop_Region,Percentage_of_Matched_ORFs_Extending_Stop_Region,Number_of_All_ORFs_on_Positive_Strand,Percentage_of_All_ORFs_on_Positive_Strand,Number_of_All_ORFs_on_Negative_Strand,Percentage_of_All_ORFs_on_Negative_Strand,Median_Start_Difference_of_Matched_ORFs,Median_Stop_Difference_of_Matched_ORFs,ATG_Start_Percentage,GTG_Start_Percentage,TTG_Start_Percentage,ATT_Start_Percentage,CTG_Start_Percentage,Other_Start_Codon_Percentage,TAG_Stop_Percentage,TAA_Stop_Percentage,TGA_Stop_Percentage,Other_Stop_Codon_Percentage,True_Positive,False_Positive,False_Negative,Precision,Recall,False_Discovery_Rate,Nucleotide_True_Positive,Nucleotide_False_Positive,Nucleotide_True_Negative,Nucleotide_False_Negative,Nucleotide_Precision,Nucleotide_Recall,Nucleotide_False_Discovery_Rate,ORF_Nucleotide_Coverage_of_Genome,Matched_ORF_Nucleotide_Coverage_of_Genome
-995,109.03,190,19.10,190,39.92,335.0,-62.17,89,-21.24,3152,-41.81,31.50,0.20,32.83,4.42,279,26.24,135,0.00,36,-83.71,31,4.50,443,1826.09,19,-17.39,128,67.37,162,85.26,154,81.05,0,0,0.00,4,2.11,0,0.00,570,0.57,425,0.43,67.5,-85.5,63.12,15.28,21.61,0.00,0.00,0.00,11.06,27.44,61.51,0.00,0.40,1.69,0.60,0.19,0.40,0.81,0.82,0.31,0.69,0.18,0.96,0.82,0.04,77.15,24.47
-CDS_Gene_Coverage_of_Genome:
-90.62
-Start_Position_Difference:
--78,33,93,294,144,408,3,18,156,-42,45,90,333,333,-39,111,201,93,120,-354,-150,-366,117,-138,-240,123,-153,-51
-Stop_Position_Difference:
--192,-147,108,-216,87,-678,-96,-156,-321,-240,-168,-162,-51,-126,-33,-3,-93,-12,-204,-189,-156,237,-45,-219,-201,-537,-30,-78,159,243,60,21,15,183,288,6
-Alternative_Starts_Predicted:
-
-Alternative_Stops_Predicted:
-
-Undetected_Gene_Metrics:
-ATG_Start ,GTG_Start ,TTG_Start ,ATT_Start ,CTG_Start ,Alternative_Start_Codon ,TGA_Stop ,TAA_Stop ,TAG_Stop ,Alternative_Stop_Codon ,Median_Length ,ORFs_on_Positive_Strand ,ORFs_on_Negative_Strand
-88.46,7.69,3.85,0.00,0.00,0.00,0.00,74.13,25.87,0.00,1047.50,156,130
-Perfect_Match_Genes:
->Myco_686_1828_+ 
-ATGAAAATATTAATTAATAAAAGTGAATTGAATAAAATTTTGAAAAAAATGAATAACGTTATTATTTCCAATAACAAAATAAAACCACATCATTCATATTTTTTAATAGAGGCAAAAGAAAAAGAAATAAACTTTTATGCTAACAATGAATACTTTTCTGTCAAATGTAATTTAAATAAAAATATTGATATTCTTGAACAAGGCTCCTTAATTGTTAAAGGAAAAATTTTTAACGATCTTATTAATGGCATAAAAGAAGAGATTATTACTATTCAAGAAAAAGATCAAACACTTTTGGTTAAAACAAAAAAAACAAGTATTAATTTAAACACAATTAATGTGAATGAATTTCCAAGAATAAGGTTTAATGAAAAAAACGATTTAAGTGAATTTAATCAATTCAAAATAAATTATTCACTTTTAGTAAAAGGCATTAAAAAAATTTTTCACTCAGTTTCAAATAATCGTGAAATATCTTCTAAATTTAATGGAGTAAATTTCAATGGATCCAATGGAAAAGAAATATTTTTAGAAGCTTCTGACACTTATAAACTATCTGTTTTTGAGATAAAGCAAGAAACAGAACCATTTGATTTCATTTTGGAGAGTAATTTACTTAGTTTCATTAATTCTTTTAATCCTGAAGAAGATAAATCTATTGTTTTTTATTACAGAAAAGATAATAAAGATAGCTTTAGTACAGAAATGTTGATTTCAATGGATAACTTTATGATTAGTTACACATCGGTTAATGAAAAATTTCCAGAGGTAAACTACTTTTTTGAATTTGAACCTGAAACTAAAATAGTTGTTCAAAAAAATGAATTAAAAGATGCACTTCAAAGAATTCAAACTTTGGCTCAAAATGAAAGAACTTTTTTATGCGATATGCAAATTAACAGTTCTGAATTAAAAATAAGAGCTATTGTTAATAATATCGGAAATTCTCTTGAGGAAATTTCTTGTCTTAAATTTGAAGGTTATAAACTTAATATTTCTTTTAACCCAAGTTCTCTATTAGATCACATAGAGTCTTTTGAATCAAATGAAATAAATTTTGATTTCCAAGGAAATAGTAAGTATTTTTTGATAACCTCTAAAAGTGAACCTGAACTTAAGCAAATATTGGTTCCTTCAAGATAA 
-
->Myco_4812_7322_+ 
-ATGGCAAAGCAACAAGATCAAGTAGATAAGATTCGTGAAAACTTAGACAATTCAACTGTCAAAAGTATTTCATTAGCAAATGAACTTGAGCGTTCATTCATGGAATATGCTATGTCAGTTATTGTTGCTCGTGCTTTACCTGATGCTAGAGATGGACTTAAACCAGTTCATCGTCGTGTTCTTTATGGTGCTTATATTGGTGGCATGCACCATGATCGTCCTTTTAAAAAGTCTGCGAGGATTGTTGGTGATGTAATGAGTAAATTCCACCCTCATGGTGATATGGCAATATATGACACCATGTCAAGAATGGCTCAAGACTTTTCATTAAGATACCTTTTAATTGATGGTCATGGTAATTTTGGTTCTATAGATGGTGATAGACCTGCTGCACAACGTTATACAGAAGCAAGATTATCTAAACTTGCAGCAGAACTTTTAAAAGATATTGATAAAGATACAGTTGACTTTATTGCTAATTATGATGGTGAGGAAAAAGAACCAACTGTTCTACCAGCAGCTTTCCCTAACTTACTTGCAAATGGTTCTAGTGGGATTGCAGTTGGAATGTCAACATCTATTCCTTCCCATAATCTCTCTGAATTAATTGCGGGTTTAATCATGTTAATTGATAATCCTCAATGCACTTTTCAAGAATTATTAACTGTAATTAAAGGACCTGATTTTCCAACAGGAGCTAACATTATCTACACAAAAGGAATTGAAAGCTACTTTGAAACAGGTAAAGGCAATGTAGTAATTCGTTCTAAAGTTGAGATAGAACAATTGCAAACAAGAAGTGCATTAGTTGTAACTGAAATTCCTTACATGGTTAACAAAACTACCTTAATTGAAAAGATTGTAGAACTTGTTAAAGCTGAAGAGATTTCAGGAATTGCTGATATCCGTGATGAATCCTCTCGAGAAGGAATAAGGTTAGTGATTGAAGTAAAACGCGACACTGTACCTGAAGTTTTATTAAATCAACTTTTTAAATCAACAAGATTACAAGTACGCTTCCCTGTTAATATGCTTGCTTTAGTTAAAGGAGCTCCTGTACTTCTCAACATGAAACAAGCTTTGGAAGTATATCTTGATCATCAAATTGATGTTCTTGTTAGAAAAACAAAGTTTGTGCTTAATAAACAACAAGAACGTTATCACATTTTAAGCGGACTTTTAATTGCTGCTTTAAATATTGATGAGGTTGTTGCAATTATTAAAAAATCAGCAAATAACCAGGAAGCAATTAATACATTAAATACAAAGTTTAAGCTTGATGAAATTCAAGCTAAAGCAGTTCTTGACATGCGTTTAAGGAGCTTAAGCGTACTTGAAGTTAACAAACTTCAAACTGAACAAAAAGAGTTAAAAGATTCAATTGAATTTTGTAAGAAAGTGTTAGCTGATCAAAAATTACAGCTAAAAATAATCAAAGAGGAATTGCAAAAAATCAATGATCAGTTTGGTGATGAAAGAAGAAGTGAAATTCTCTATGATATCTCTGAGGAAATTGATGATGAATCATTGATAAAAGTTGAGAATGTAGTGATAACTATGTCTACAAATGGTTATCTAAAAAGGATTGGAGTTGATGCTTATAATCTTCAACATCGTGGTGGAGTTGGGGTTAAAGGGCTAACTACTTATGTTGATGATAGTATTAGTCAATTATTGGTCTGTTCAACTCACTCTGACTTATTATTTTTTACTGATAAGGGTAAGGTTTATAGAATTAGAGCTCATCAAATTCCCTATGGTTTTAGAACAAATAAAGGTATTCCCGCTGTTAACTTAATCAAAATTGAAAAGGATGAAAGAATTTGTTCATTGTTATCTGTTAATAACTATGATGATGGTTATTTCTTTTTCTGTACTAAAAATGGAATTGTTAAAAGAACGAGCTTGAATGAATTCATCAACATCTTAAGTAATGGTAAGCGGGCTATATCTTTTGATGATAATGACACTTTGTATTCAGTAATTAAAACCCACGGAAATGATGAGATTTTTATTGGTTCTACCAATGGATTTGTTGTTCGCTTCCATGAAAATCAACTCAGAGTTCTTTCAAGAACAGCAAGAGGTGTATTTGGTATCAGTTTAAATAAAGGAGAATTTGTTAATGGACTATCAACTTCAAGCAACGGTAGCTTACTTTTATCAGTCGGTCAAAATGGAATAGGTAAATTAACGAGCATAGATAAATATAGACTCACAAAACGTAATGCTAAGGGAGTTAAAACTCTAAGGGTTACTGATAGAACAGGCCCTGTTGTTACAACAACCACTGTTTTTGGTAATGAGGATCTTTTAATGATTTCCTCTGCTGGTAAAATTGTGCGTACCAGTTTACAAGAACTTTCAGAACAAGGTAAAAACACTTCTGGTGTTAAGTTAATTAGATTAAAAGATAATGAACGTTTAGAAAGAGTAACTATCTTTAAAGAAGAGTTAGAAGACAAAGAAATGCAACTAGAAGATGTTGGATCCAAACAAATTACGCAATAA 
-.........
-Partial_Match_Genes:
-Gene:9923_11251_+_ATG_TAA 
-ATGAAAAGCGAAATTAATATTTTTGCACTAGCAACTGCACCTTTTAATAGTGCATTACATATTATTAGGTTTTCTGGTCCTGATGTTTATGAGATTTTAAACAAGATAACTAATAAAAAAATAACAAGAAAAGGGATGCAAATTCAACGCACATGGATAGTTGATGAAAACAATAAGCGAATTGATGATGTGCTATTATTTAAATTTGTCTCTCCAAATTCTTATACAGGAGAAGATTTAATTGAAATTTCTTGTCATGGTAACATGTTGATCGTTAATGAAATTTGCGCACTTCTTTTAAAAAAAGGAGGTGTTTATGCCAAACCTGGTGAATTTACCCAAAGGAGTTTTTTAAATGGAAAAATGAGTTTACAACAAGCTAGTGCTGTAAATAAATTGATTTTATCTCCTAACTTATTAGTTAAAGATATAGTCTTAAATAATTTAGCGGGTGAAATGGATCAACAATTAGAACAAATAGCTCAACAAGTTAATCAATTAGTAATGCAAATGGAAGTAAACATTGATTATCCAGAATATCTTGATGAACAAGTAGAACTATCAACTTTAAATAATAAAGTTAAATTGATTATTGAAAAGCTTAAAAGAATTATTGAAAATAGTAAACAACTCAAAAAACTTCACGATCCTTTTAAAATTGCCATTATAGGCGAAACTAATGTAGGTAAATCTTCTTTACTCAACGCTTTATTAAATCAAGATAAAGCGATAGTTTCAAATATTAAAGGTAGTACACGCGATGTTGTTGAAGGGGATTTCAATTTAAATGGTTATTTAATCAAGATCTTAGATACTGCAGGTATCCGTAAACATAAAAGTGGGCTTGAAAAAGCAGGAATTAAAAAAAGCTTTGAATCTATAAAGCAAGCTAATTTGGTTATTTATCTTTTAGATGCAACACATCCAAAGAAAGATCTTGAATTAATTAGTTTTTTTAAGAAAAATAAAAAGGATTTTTTTGTTTTCTATAACAAAAAAGATTTAATTACAAATAAGTTTGAAAATAGTATTTCTGCAAAGCAAAAAGATATTAAAGAATTAGTTGATTTATTAACTAAATATATTAACGAGTTTTATAAAAAAATAGATCAAAAAATCTATCTGATTGAAAATTGACAGCAAATTTTAATTGAAAAAATTAAAGAACAATTAGAACAGTTTTTAAAGCAACAAAAAAAATATTTATTTTTCGATGTTTTAGTTACCCATCTAAGAGAAGCTCAACAAGATATTCTTAAACTACTAGGTAAGGATGTAGGTTTTGATTTAGTTAATGAAATTTTTAATAATTTTTGTTTAGGAAAATAA 
-ORF:9923_11059_+_ATG_TGA 
-ATGAAAAGCGAAATTAATATTTTTGCACTAGCAACTGCACCTTTTAATAGTGCATTACATATTATTAGGTTTTCTGGTCCTGATGTTTATGAGATTTTAAACAAGATAACTAATAAAAAAATAACAAGAAAAGGGATGCAAATTCAACGCACATGGATAGTTGATGAAAACAATAAGCGAATTGATGATGTGCTATTATTTAAATTTGTCTCTCCAAATTCTTATACAGGAGAAGATTTAATTGAAATTTCTTGTCATGGTAACATGTTGATCGTTAATGAAATTTGCGCACTTCTTTTAAAAAAAGGAGGTGTTTATGCCAAACCTGGTGAATTTACCCAAAGGAGTTTTTTAAATGGAAAAATGAGTTTACAACAAGCTAGTGCTGTAAATAAATTGATTTTATCTCCTAACTTATTAGTTAAAGATATAGTCTTAAATAATTTAGCGGGTGAAATGGATCAACAATTAGAACAAATAGCTCAACAAGTTAATCAATTAGTAATGCAAATGGAAGTAAACATTGATTATCCAGAATATCTTGATGAACAAGTAGAACTATCAACTTTAAATAATAAAGTTAAATTGATTATTGAAAAGCTTAAAAGAATTATTGAAAATAGTAAACAACTCAAAAAACTTCACGATCCTTTTAAAATTGCCATTATAGGCGAAACTAATGTAGGTAAATCTTCTTTACTCAACGCTTTATTAAATCAAGATAAAGCGATAGTTTCAAATATTAAAGGTAGTACACGCGATGTTGTTGAAGGGGATTTCAATTTAAATGGTTATTTAATCAAGATCTTAGATACTGCAGGTATCCGTAAACATAAAAGTGGGCTTGAAAAAGCAGGAATTAAAAAAAGCTTTGAATCTATAAAGCAAGCTAATTTGGTTATTTATCTTTTAGATGCAACACATCCAAAGAAAGATCTTGAATTAATTAGTTTTTTTAAGAAAAATAAAAAGGATTTTTTTGTTTTCTATAACAAAAAAGATTTAATTACAAATAAGTTTGAAAATAGTATTTCTGCAAAGCAAAAAGATATTAAAGAATTAGTTGATTTATTAACTAAATATATTAACGAGTTTTATAAAAAAATAGATCAAAAAATCTATCTGATTGAAAATTGA 
-
-Gene:11251_12039_+_ATG_TAA 
-ATGGAATACTTTGATGCACATTGTCATTTAAATTGTGAACCTTTACTGAGTGAAATTGAAAAAAGCATCGCTAATTTCAAATTAATTAATTTAAAAGCAAATGTTGTAGGTACAGATTTGGATAATTCTAAAATTGCTGTTGAATTAGCTAAAAAATATCCTGATCTTTTAAAAGCAACCATAGGTATCCATCCAAATGATGTTCATTTAGTTGATTTTAAAAAGACAAAAAAACAACTTAATGAACTATTAATAAATAACAGAAATTTCATAAGTTGTATTGGTGAATATGGTTTTGATTATCACTACACAACAGAATTTATTGAATTGCAAAACAAATTCTTTGAGATGCAATTTGAAATAGCTGAAACTAATAAATTGGTTCACATGCTTCATATTCGTGATGCTCATGAAAAAATTTATGAAATATTAACAAGATTAAAGCCAACTCAACCTGTGATTTTTCATTGTTTCAGTCAAGATATAAATATTGCTAAAAAGCTACTATCATTAAAAGATTTAAATATTGACATCTTCTTTTCTATCCCAGGGATAGTTACTTTTAAGAATGCTCAAGCATTACATGAAGCTTTAAAGATTATTCCTAGTGAATTACTTTTAAGTGAAACTGACTCACCGTGATTAACCCCTTCTCCTTTTCGAGGCAAAGTTAACTGACCTGAATATGTAGTTCATACTGTTAGCACTGTTGCTGAAATAAAAAAAATAGAAATTGCTGAAATGAAGCGAATTATTGTTAAAAATGCAAAAAAATTATTTTGACATTAA 
-ORF:11251_11892_+_ATG_TGA 
-ATGGAATACTTTGATGCACATTGTCATTTAAATTGTGAACCTTTACTGAGTGAAATTGAAAAAAGCATCGCTAATTTCAAATTAATTAATTTAAAAGCAAATGTTGTAGGTACAGATTTGGATAATTCTAAAATTGCTGTTGAATTAGCTAAAAAATATCCTGATCTTTTAAAAGCAACCATAGGTATCCATCCAAATGATGTTCATTTAGTTGATTTTAAAAAGACAAAAAAACAACTTAATGAACTATTAATAAATAACAGAAATTTCATAAGTTGTATTGGTGAATATGGTTTTGATTATCACTACACAACAGAATTTATTGAATTGCAAAACAAATTCTTTGAGATGCAATTTGAAATAGCTGAAACTAATAAATTGGTTCACATGCTTCATATTCGTGATGCTCATGAAAAAATTTATGAAATATTAACAAGATTAAAGCCAACTCAACCTGTGATTTTTCATTGTTTCAGTCAAGATATAAATATTGCTAAAAAGCTACTATCATTAAAAGATTTAAATATTGACATCTTCTTTTCTATCCCAGGGATAGTTACTTTTAAGAATGCTCAAGCATTACATGAAGCTTTAAAGATTATTCCTAGTGAATTACTTTTAAGTGAAACTGACTCACCGTGA 
-.......
-Missed_Genes:
->Myco_1828_2760_+ 
-ATGAATCTTTACGATCTTTTAGAACTACCAACTACAGCATCAATAAAAGAAATAAAAATTGCTTATAAAAGATTAGCAAAGCGTTATCACCCTGATGTAAATAAATTAGGTTCGCAAACTTTTGTTGAAATTAATAATGCTTATTCAATATTAAGTGATCCTAACCAAAAGGAAAAATATGATTCAATGCTGAAAGTTAATGATTTTCAAAATCGCATCAAAAATTTAGATATTAGTGTTAGATGACATGAAAATTTCATGGAAGAACTCGAACTTCGTAAGAACTGAGAATTTGATTTTTTTTCATCTGATGAAGATTTCTTTTATTCTCCATTTACAAAAAACAAATATGCTTCCTTTTTAGATAAAGATGTTTCTTTAGCTTTTTTTCAGCTTTACAGCAAGGGCAAAATAGATCATCAATTGGAAAAATCTTTATTGAAAAGAAGAGATGTAAAAGAAGCTTGTCAACAGAATAAAAATTTTATTGAAGTTATAAAAGAGCAATATAACTATTTTGGTTGAATTGAAGCTAAGCGTTATTTCAATATTAATGTTGAACTTGAGCTCACACAGAGAGAGATAAGAGATAGAGATGTTGTTAACCTACCTTTAAAAATTAAAGTTATTAATAATGATTTTCCAAATCAACTCTGATATGAAATTTATAAAAACTATTCATTTCGCTTATCTTGAGATATAAAAAATGGTGAAATTGCTGAATTTTTCAATAAAGGTAATAGAGCTTTAGGATGAAAAGGTGACTTAATTGTCAGAATGAAAGTAGTTAATAAAGTAAACAAAAGACTGCGTATTTTTTCAAGCTTTTTTGAGAACGATAAATCTAAATTATGGTTCCTTGTTCCAAACGATAAACAAAGTAATCCTAATAAGGGCGTTTTTAACTATAAAACTCAGCACTTTATTGATTAA 
-
->Myco_2845_4797_+ 
-ATGGAAGAAAATAACAAAGCAAATATCTATGACTCTAGTAGCATTAAGGTCCTTGAAGGACTTGAGGCTGTTAGAAAACGCCCTGGAATGTACATTGGTTCTACTGGCGAAGAAGGTTTGCATCACATGATCTGAGAGATAGTAGACAACTCAATTGATGAAGCAATGGGAGGTTTTGCCAGTTTTGTTAAGCTTACCCTTGAAGATAATTTTGTTACCCGTGTAGAGGATGATGGAAGAGGGATACCTGTTGATATCCATCCTAAGACTAATCGTTCTACAGTTGAAACAGTTTTTACAGTTCTACACGCTGGCGGTAAATTTGATAACGATAGCTATAAAGTGTCAGGTGGTTTACACGGTGTTGGTGCATCAGTTGTTAATGCGCTTAGTTCTTCTTTTAAAGTTTGAGTTTTTCGTCAAAATAAAAAGTATTTTCTCAGCTTTAGCGATGGAGGAAAGGTAATTGGAGATTTGGTCCAAGAAGGTAACTCTGAAAAAGAGCATGGAACAATTGTTGAGTTTGTTCCTGATTTCTCTGTAATGGAAAAGAGTGATTACAAACAAACTGTAATTGTAAGCAGACTCCAGCAATTAGCTTTTTTAAACAAGGGAATAAGAATTGACTTTGTTGATAATCGTAAACAAAACCCACAGTCTTTTTCTTGAAAATATGATGGGGGATTGGTTGAATATATCCACCACCTAAACAACGAAAAAGAACCACTTTTTAATGAAGTTATTGCTGATGAAAAAACTGAAACTGTAAAAGCTGTTAATCGTGATGAAAACTACACAGTAAAGGTTGAAGTTGCTTTTCAATATAACAAAACATACAACCAATCAATTTTCAGTTTTTGTAACAACATTAATACTACAGAAGGTGGAACCCATGTGGAAGGTTTTCGTAATGCACTTGTTAAGATCATTAATCGCTTTGCTGTTGAAAATAAATTCCTAAAAGATAGTGATGAAAAGATTAACCGTGATGATGTTTGTGAAGGATTAACTGCTATTATTTCCATTAAACACCCAAACCCACAATATGAAGGACAAACTAAAAAGAAGTTAGGTAATACTGAGGTAAGACCTTTAGTTAATAGTGTTGTTAGTGAAATCTTTGAACGCTTCATGTTAGAAAACCCACAAGAAGCAAACGCTATCATCAGAAAAACACTTTTAGCTCAAGAAGCGAGAAGAAGAAGTCAAGAGGCTAGGGAGTTAACTCGTCGTAAATCACCTTTTGATAGTGGTTCATTACCAGGTAAATTAGCTGATTGTACAACCAGAGATCCTTCGATTAGTGAACTTTACATTGTTGAGGGTGATAGTGCTGGTGGCACTGCTAAAACAGGAAGAGATCGTTATTTTCAAGCTATCTTACCCTTAAGAGGAAAGATTTTAAACGTTGAAAAATCTAACTTTGAACAAATCTTTAATAATGCAGAAATTTCTGCATTAGTGATGGCAATAGGCTGTGGGATTAAACCTGATTTTGAACTTGAAAAACTTAGATATAGCAAGATTGTGATCATGACAGATGCTGATGTTGATGGTGCACACATAAGAACACTTCTCTTAACTTTCTTTTTTCGCTTTATGTATCCTTTGGTTGAACAAGGCAATATTTTTATTGCTCAACCCCCACTTTATAAAGTGTCATATTCCCATAAGGATTTATACATGCACACTGATGTTCAACTTGAACAGTGAAAAAGTCAAAACCCTAACGTAAAGTTTGGGTTACAAAGATATAAAGGACTTGGAGAAATGGATGCATTGCAGCTGTGAGAAACAACAATGGATCCTAAGGTTAGAACATTGTTAAAAGTTACTGTTGAAGATGCTTCTATTGCTGATAAAGCTTTTTCACTGTTGATGGGTGATGAAGTTCCCCCAAGAAGAGAATTTATTGAAAAAAATGCTCGTAGTGTTAAAAACATTGATATTTAA 
-
->Myco_7294_8547_+ 
-ATGTTGGATCCAAACAAATTACGCAATAACTATGATTTCTTTAAAAAGAAACTGTTAGAAAGAAATGTAAATGAGCAATTATTAAATCAGTTTATTCAAACTGATAAACTAATGCGCAAAAACTTGCAACAACTTGAACTTGCTAACCAAAAACAAAGCTTGTTGGCAAAACAAGTTGCTAAGCAAAAAGATAATAAAAAGCTATTAGCTGAATCAAAAGAACTTAAGCAGAAGATTGAAAACTTAAATAATGCTTATAAAGATTCACAAAACATTAGTCAAGATTTACTTCTAAATTTTCCTAATATTGCTCATGAATCAGTTCCTGTTGGTAAAAATGAATCAGCAAACTTAGAACTTCTTAAAGAAGGGAGAAAACCAGTTTTTGATTTCAAACCTTTACCACATCGAGAGTTATGTGAAAAGTTAAATTTAGTTGCTTTTGATAAAGCTACTAAGATTAGTGGAACTAGGTTTGTTGCATATACAGATAAAGCAGCTAAACTACTTAGAGCGATAACTAATCTAATGATTGACCTTAATAAAAGCAAGTATCAAGAATGAAACCTGCCAGTTGTTATTAATGAATTAAGTTTAAGATCAACCGGACAACTACCTAAGTTTAAAGATGATGTTTTTAAACTAGAAAACACCCGTTATTATCTTTCTCCAACTTTAGAGGTACAACTTATCAATTTACATGCTAATGAAATTTTTAATGAAGAAGATTTACCTAAATACTACACTGCAACAGGTATTAACTTTCGTCAAGAAGCGGGTAGTGCTGGTAAACAAACCAAAGGAACTATTAGATTGCATCAGTTTCAAAAAACTGAGTTAGTTAAGTTTTGTAAACCTGAAAATGCTATCAATGAATTGGAAGCAATGGTTAGAGATGCTGAACAAATCTTAAAGGCACTTAAGTTACCTTTTAGAAGGTTATTGTTATGTACTGGTGATATGGGCTTTAGTGCTGAAAAAACATATGATCTTGAAGTTTGAATGGCAGCTAGCAATGAATATCGTGAAGTTTCTTCTTGTTCATCTTGTGGTGATTTTCAAGCAAGAAGAGCTATGATTCGTTACAAAGATATTAACAACGGTAAAAACAGTTATGTTGCTACTTTAAATGGAACAGCATTATCTATTGATAGAATTTTTGCTGCAATTCTAGAAAATTTTCAAACAAAAGATGGCAAAATTCTTATCCCACAAGCATTAAAAAAATACCTTGATTTTGACACAATCAAGTAA 
-......
- 
-ORFs_Without_Corresponding_Gene_In_Reference_Metrics:
-ATG_Start ,GTG_Start ,TTG_Start ,ATT_Start ,CTG_Start ,Alternative_Start_Codon ,TGA_Stop ,TAA_Stop ,TAG_Stop ,Alternative_Stop_Codon ,Median_Length ,ORFs_on_Positive_Strand ,ORFs_on_Negative_Strand
-58.39,17.14,24.47,0.00,0.00,0.00,71.55,20.62,7.83,0.00,287.00,449,356
-ORF_Without_Corresponding_Gene_in_Reference:
->Prodigal_1828_2073_+ 
-ATGAATCTTTACGATCTTTTAGAACTACCAACTACAGCATCAATAAAAGAAATAAAAATTGCTTATAAAAGATTAGCAAAGCGTTATCACCCTGATGTAAATAAATTAGGTTCGCAAACTTTTGTTGAAATTAATAATGCTTATTCAATATTAAGTGATCCTAACCAAAAGGAAAAATATGATTCAATGCTGAAAGTTAATGATTTTCAAAATCGCATCAAAAATTTAGATATTAGTGTTAGATGA
->Prodigal_2605_2760_+ 
-ATGAAAGTAGTTAATAAAGTAAACAAAAGACTGCGTATTTTTTCAAGCTTTTTTGAGAACGATAAATCTAAATTATGGTTCCTTGTTCCAAACGATAAACAAAGTAATCCTAATAAGGGCGTTTTTAACTATAAAACTCAGCACTTTATTGATTAA
->Prodigal_2845_2979_+ 
-ATGGAAGAAAATAACAAAGCAAATATCTATGACTCTAGTAGCATTAAGGTCCTTGAAGGACTTGAGGCTGTTAGAAAACGCCCTGGAATGTACATTGGTTCTACTGGCGAAGAAGGTTTGCATCACATGATCTGA
->Prodigal_3010_3255_+ 
-ATGGGAGGTTTTGCCAGTTTTGTTAAGCTTACCCTTGAAGATAATTTTGTTACCCGTGTAGAGGATGATGGAAGAGGGATACCTGTTGATATCCATCCTAAGACTAATCGTTCTACAGTTGAAACAGTTTTTACAGTTCTACACGCTGGCGGTAAATTTGATAACGATAGCTATAAAGTGTCAGGTGGTTTACACGGTGTTGGTGCATCAGTTGTTAATGCGCTTAGTTCTTCTTTTAAAGTTTGA
->Prodigal_3319_3513_+ 
-TTGGTCCAAGAAGGTAACTCTGAAAAAGAGCATGGAACAATTGTTGAGTTTGTTCCTGATTTCTCTGTAATGGAAAAGAGTGATTACAAACAAACTGTAATTGTAAGCAGACTCCAGCAATTAGCTTTTTTAAACAAGGGAATAAGAATTGACTTTGTTGATAATCGTAAACAAAACCCACAGTCTTTTTCTTGA
->Prodigal_3529_4557_+ 
-TTGGTTGAATATATCCACCACCTAAACAACGAAAAAGAACCACTTTTTAATGAAGTTATTGCTGATGAAAAAACTGAAACTGTAAAAGCTGTTAATCGTGATGAAAACTACACAGTAAAGGTTGAAGTTGCTTTTCAATATAACAAAACATACAACCAATCAATTTTCAGTTTTTGTAACAACATTAATACTACAGAAGGTGGAACCCATGTGGAAGGTTTTCGTAATGCACTTGTTAAGATCATTAATCGCTTTGCTGTTGAAAATAAATTCCTAAAAGATAGTGATGAAAAGATTAACCGTGATGATGTTTGTGAAGGATTAACTGCTATTATTTCCATTAAACACCCAAACCCACAATATGAAGGACAAACTAAAAAGAAGTTAGGTAATACTGAGGTAAGACCTTTAGTTAATAGTGTTGTTAGTGAAATCTTTGAACGCTTCATGTTAGAAAACCCACAAGAAGCAAACGCTATCATCAGAAAAACACTTTTAGCTCAAGAAGCGAGAAGAAGAAGTCAAGAGGCTAGGGAGTTAACTCGTCGTAAATCACCTTTTGATAGTGGTTCATTACCAGGTAAATTAGCTGATTGTACAACCAGAGATCCTTCGATTAGTGAACTTTACATTGTTGAGGGTGATAGTGCTGGTGGCACTGCTAAAACAGGAAGAGATCGTTATTTTCAAGCTATCTTACCCTTAAGAGGAAAGATTTTAAACGTTGAAAAATCTAACTTTGAACAAATCTTTAATAATGCAGAAATTTCTGCATTAGTGATGGCAATAGGCTGTGGGATTAAACCTGATTTTGAACTTGAAAAACTTAGATATAGCAAGATTGTGATCATGACAGATGCTGATGTTGATGGTGCACACATAAGAACACTTCTCTTAACTTTCTTTTTTCGCTTTATGTATCCTTTGGTTGAACAAGGCAATATTTTTATTGCTCAACCCCCACTTTATAAAGTGTCATATTCCCATAAGGATTTATACATGCACACTGATGTTCAACTTGAACAGTGA
-....
-ORFs_Which_Detected_more_than_one_Gene:
+47,2.17,46,97.87,46,100.00,378.0,1.20,138,0.00,1551,0.00,54.79,-0.05,54.81,0.00,36,63.64,61,0.00,22,0.00,61,3.00,13,0.00,13,0.00,45,97.83,45,97.83,46,100.00,0,0,0.00,1,2.17,0,0.00,11,0.23,36,0.77,6.0,N/A,82.98,12.77,2.13,0.00,0.00,2.13,6.38,23.40,68.09,2.13,1.00,0.02,0.00,0.98,1.00,0.02,1.00,0.16,0.84,0.00,0.96,1.00,0.04,81.98,78.63
+Reference_CDS_Gene_Coverage_of_Genome
+78.61
+Predicted_CDS_Coverage_of_Genome
+81.98
+Matched_Predicted_CDS_Coverage_of_Genome
+78.63
 
 ```
 
 
-## GFF Tools:
-
+## GFF/Annotation Manipulation Tools: ORForise also provides tools to manipulate and combine existing annotations in GFF format or other tool-specific formats.
 ### GFF-Adder:
-
-GFF-Adder allows for the addition of predicted CDSs to an existing reference annotation (GFF or another tool) which produces a new GFF containing the original
-genes plus the new CDS from another prediction. Default filtering will remove additional CDSs that overlap existing genes by more than 50 nt.
-The ```-gi``` option can be used to allow for different genomic elements to be accounted for, other than only CDSs in the reference annotation.
-
+GFF-Adder combines two existing annotations (GFF or other tool formats).
 For Help: ```GFF-Adder -h ```
 
 ```python
-ORForise v1.5.1: GFF-Adder Run Parameters.
+ORForise v1.6.1: GFF-Adder Run Parameters.
 
 Required Arguments:
   -dna GENOME_DNA       Genome DNA file (.fa) which both annotations are based on
   -ref REFERENCE_ANNOTATION
                         Which reference annotation file to use as reference?
-  -at ADDITIONAL_TOOL   Which format to use for additional annotation?
+  -at ADDITIONAL_TOOL   Which format to use for additional annotation? - Can provide multiple annotations (Tool1,Tool2)
   -add ADDITIONAL_ANNOTATION
-                        Which annotation file to add to reference annotation?
+                        Which annotation file to add to reference annotation? - Can provide multiple annotations (1.GFF,2.GFF)
   -o OUTPUT_FILE        Output filename
 
 Optional Arguments:
-  -rt REFERENCE_TOOL    Which tool format to use as reference? - If not provided, will default to standard Ensembl
-                        GFF format, can be Prodigal or any of the other tools available
-  -gi GENE_IDENT        Identifier used for extraction of "genic" regions from reference annotation "CDS,rRNA,tRNA":
-                        Default for is "CDS"
-  -gene_ident GENE_IDENT
+  -rt REFERENCE_TOOL    Which tool format to use as reference? - If not provided, will default to the standard GFF format and will only look for "CDS" features
+  --gene_ident GENE_IDENT
                         Identifier used for identifying genomic features in reference annotation "CDS,rRNA,tRNA"
-  -olap OVERLAP         Maximum overlap between reference and additional genic regions (CDS,rRNA etc) - Default: 50
-                        nt
+  -mc                   Default - False: Mark reference annotations which where present in the additional tool annotation
+  -c                    Default - False: Do not mark 9th column with "Original/Matched/Additional tag"
+  --meta                Default - False: Output metadata file
+  --olap OVERLAP        Maximum overlap between reference and additional genic regions (CDS,rRNA etc) - Default: 50 nt
+
+Misc:
+  -v {True,False}       Default - False: Print out runtime status
+
+
 ```
 
 #### Example: Running GFF-Adder to combine the additional CDS predictions made by Prodial to the canonical annotations from Ensembl.
-``` GFF-Adder -dna ~/Testing/Myco.fa -ref ~/Testing/Myco.gff  -at Prodigal -add ~/Testing/Prodigal_Myco.gff -o ~/Testing/Myco_Ensembl_GFF_Adder_Prodigal.gff ```
+``` GFF-Adder -dna ~/Test_Data/Genomes/E-coli/Escherichia_coli.fasta -ref ~/Test_Data/Genomes/E-coli/Escherichia_coli.gff  -at Prodigal -add ~/Test_Data/Genomes/E-coli/Prodigal_Escherichia_coli.gff -o ~/Test_Data/Genomes/E-coli/Ensembl_AND_Prodigal_Escherichia_coli.gff ```
 #### Example Output: ~/ORForise/Testing/Myco_Ensembl_GFF_Adder_Prodigal.gff
 ```
 ##gff-version	3
 #	GFF-Adder
-#	Run Date:2021-11-10
-##Genome DNA File:./Testing/Myco.fa
-##Original File: ./Testing/Myco.gff
-##Additional File: ./Testing/Prodigal_Myco.gff
-.......
-Chromosome	Reference_Annotation	CDS	68522	70225	.	-	.	ID=Original_Annotation
-Chromosome	Reference_Annotation	CDS	70530	72572	.	+	.	ID=Original_Annotation
-Chromosome	Reference_Annotation	CDS	72523	73434	.	+	.	ID=Original_Annotation
-Chromosome	Prodigal	CDS	73445	73648	.	+	.	ID=Additional_Annotation
-Chromosome	Reference_Annotation	CDS	73690	77685	.	+	.	ID=Original_Annotation
-Chromosome	Reference_Annotation	CDS	77685	79085	.	+	.	ID=Original_Annotation
-Chromosome	Reference_Annotation	CDS	79089	81035	.	+	.	ID=Original_Annotation
-Chromosome	Reference_Annotation	CDS	81046	82596	.	+	.	ID=Original_Annotation
-Chromosome	Reference_Annotation	CDS	82620	84044	.	+	.	ID=Original_Annotation
-Chromosome	Prodigal	CDS	84082	84312	.	+	.	ID=Additional_Annotation
-Chromosome	Prodigal	CDS	84532	84744	.	-	.	ID=Additional_Annotation
-Chromosome	Prodigal	CDS	84776	85051	.	+	.	ID=Additional_Annotation
+#	Run Date:2026-01-11
+##Genome DNA File:../../Test_Data/Genomes/E-coli/Escherichia_coli.fasta
+##Original File: ../../Test_Data/Genomes/E-coli/Escherichia_coli.gff
+##Additional File: ../../Test_Data/Genomes/E-coli/Prodigal_Escherichia_coli.gff
+ERS715463SCcontig000003	Prodigal	CDS	2	388	.	+	.	ID=Additional_Annotations;Prodigal
+ERS715463SCcontig000003	MGnify	CDS	83	388	.	+	.	ID=Original_Annotation;ID=ENSB_0kRwXBh8bjHtVl3;Parent=transcript:ENSB:0kRwXBh8bjHtVl3;protein_id=ENSB:0kRwXBh8bjHtVl3
+ERS715463SCcontig000003	MGnify	CDS	453	542	.	+	.	ID=Original_Annotation;ID=ENSB_W8Go0tx9y9dAtng;Parent=transcript:ENSB:W8Go0tx9y9dAtng;protein_id=ENSB:W8Go0tx9y9dAtng;Matched_Annotations=Prodigal
 ```
 
-### GFF-Intersector:
+### Annotation-Intersector:
 
-GFF-Intersector enables the aggregation of different genome annotations and CDS predictions and creates a single GFF
-representing the intersection of the two existing annotations.
-GFF-Intersector also provides an option to allow the retention of genes that have a user defined difference (minimum % coverage and in-frame).
-The ```-gi``` option can be used to allow for different genomic elements to be accounted for, other than only CDSs in the reference annotation.
+Annotation-Intersector combines and contracts two existing annotations (GFF or other tool formats)
 
-For Help: ```GFF-Intersector -h ``` 
+For Help: ```Annotation-Intersector -h ``` 
 ```python
-ORForise v1.5.1: GFF-Intersector Run Parameters.
+Thank you for using ORForise
+Please report any issues to: https://github.com/NickJD/ORForise/issues
+#####
+usage: Annotation_Intersector.py [-h] -ref REFERENCE_ANNOTATION -at
+                                 ADDITIONAL_TOOL -add ADDITIONAL_ANNOTATION -o
+                                 OUTPUT_FILE [-dna GENOME_DNA]
+                                 [-rt REFERENCE_TOOL] [-gi GENE_IDENT]
+                                 [-cov COVERAGE] [--report-discordance]
+                                 [--report-discordance-file REPORT_DISCORDANCE_FILE]
+
+ORForise v1.6.1: Annotation-Intersector Run Parameters
+
+options:
+  -h, --help            show this help message and exit
 
 Required Arguments:
-  -dna GENOME_DNA       Genome DNA file (.fa) which both annotations are based on
   -ref REFERENCE_ANNOTATION
-                        Which reference annotation file to use as reference?
-  -at ADDITIONAL_TOOL   Which format to use for additional annotation?
+                        Reference annotation GFF file
+  -at ADDITIONAL_TOOL   Tool name/format for additional annotation (module
+                        under Tools/)
   -add ADDITIONAL_ANNOTATION
-                        Which annotation file to add to reference annotation?
-  -o OUTPUT_FILE        Output filename
+                        Additional annotation file to compare
+  -o OUTPUT_FILE        Output GFF filename for kept genes
 
 Optional Arguments:
-  -rt REFERENCE_TOOL    Which tool format to use as reference? - If not provided, will default to standard Ensembl
-                        GFF format, can be Prodigal or any of the other tools available
-  -gi GENE_IDENT        Identifier used for extraction of "genic" regions from reference annotation "CDS,rRNA,tRNA":
-                        Default for is "CDS"
-  -cov COVERAGE         Percentage coverage of reference annotation needed to confirm intersection - Default: 100 ==
-                        exact match
+  -dna GENOME_DNA       Genome DNA file (.fa) which both annotations are based
+                        on
+  -rt REFERENCE_TOOL    Reference tool parser name (if not provided, GFF is
+                        expected)
+  -gi GENE_IDENT        Comma-separated feature types to consider from
+                        reference (default: CDS)
+  -cov COVERAGE, --coverage COVERAGE
+                        Percentage coverage threshold for intersection
+                        (default 100)
+  --report-discordance  If set, produce discordance reports (three GFFs)
+  --report-discordance-file REPORT_DISCORDANCE_FILE
+                        Optional base path for discordance reports
+
 ```
 
-#### Example: Running GFF-Intersector to combine the additional CDS predictions made by Prodial to the canonical annotations from Ensembl.
-``` GFF-Intersector -dna ~/Testing/Myco.fa -ref ~/Testing/Myco.gff -at Prodigal -add ~/Testing/Prodigal_Myco.gff -o ~/Testing/Myco_Ensembl_GFF_Intersector_Prodigal.gff```
+#### Example: Running Annotation-Intersector to combine and contract annotations from multiple tools or reference files.
+``` Annotation-Intersector  -ref .../ORForise/Tools/EasyGene/EasyGene_E-coli_E-coli.gff -rt EasyGene -at Prodigal -add .../ORForise/Tools/Prodigal/Prodigal_E-coli.gff -o .../Test_Data/Annotation-Intersector/Annotation-Intersect.gff --report-discordance ```
 
-#### Example Output: ~/Testing/Myco_Ensembl_GFF_Intersector_Prodigal.gff
+#### Example Output:
+##### .../Test_Data/Annotation-Intersector/Annotation-Intersect.gff
 ```
 ##gff-version	3
-#	GFF-Intersector
-#	Run Date:2021-11-10
-##Genome DNA File:./Testing/Myco.fa
-##Original File: ./Testing/Myco.gff
-##Intersecting File: ./Testing/Prodigal_Myco.gff
-Chromosome	original	CDS	686	1828	.	+	.	ID=Original_Annotation;Coverage=100
-Chromosome	original	CDS	4812	7322	.	+	.	ID=Original_Annotation;Coverage=100
-Chromosome	original	CDS	8551	9183	.	+	.	ID=Original_Annotation;Coverage=100
-Chromosome	original	CDS	22389	23558	.	+	.	ID=Original_Annotation;Coverage=100
-Chromosome	original	CDS	29552	30124	.	+	.	ID=Original_Annotation;Coverage=100
-Chromosome	original	CDS	31705	32325	.	-	.	ID=Original_Annotation;Coverage=100
-Chromosome	original	CDS	49376	49642	.	+	.	ID=Original_Annotation;Coverage=100
-Chromosome	original	CDS	59082	59753	.	+	.	ID=Original_Annotation;Coverage=100
-Chromosome	original	CDS	61014	61406	.	+	.	ID=Original_Annotation;Coverage=100
-Chromosome	original	CDS	82620	84044	.	+	.	ID=Original_Annotation;Coverage=100
+#	Annotation-Intersector
+#	Run Date:2026-01-09
+##Original File: .../ORForise/Tools/EasyGene/EasyGene_E-coli_E-coli.gff
+##Intersecting File: .../ORForise/Tools/Prodigal/Prodigal_E-coli.gff
+Chromosome	EasyGene	CDS	337	2799	.	+	.	ID=Original_Annotation=EasyGene;Additional_Annotation=Prodigal;Coverage=100.0
+Chromosome	EasyGene	CDS	3734	5020	.	+	.	ID=Original_Annotation=EasyGene;Additional_Annotation=Prodigal;Coverage=100.0
+Chromosome	EasyGene	CDS	5683	6459	.	-	.	ID=Original_Annotation=EasyGene;Additional_Annotation=Prodigal;Coverage=100.0
+Chromosome	EasyGene	CDS	6529	7959	.	-	.	ID=Original_Annotation=EasyGene;Additional_Annotation=Prodigal;Coverage=100.0
+Chromosome	EasyGene	CDS	8238	9191	.	+	.	ID=Original_Annotation=EasyGene;Additional_Annotation=Prodigal;Coverage=100.0
+```
+#### .../Test_Data/Annotation-Intersector/Annotation-Intersect.only_in_reference.gff
+```
+##gff-version	3
+#	Annotation-Intersector discordance report
+#	Run Date:2026-01-09
+##Original File: EasyGene_E-coli_E-coli
+Chromosome	EasyGene	CDS	408401	408484	.	.	.	Status=only_in_ref;Coverage=0.00;Ref_info=EasyGene
+Chromosome	EasyGene	CDS	1272584	1272886	.	.	.	Status=only_in_ref;Coverage=0.00;Ref_info=EasyGene
+Chromosome	EasyGene	CDS	2574901	2574960	.	.	.	Status=only_in_ref;Coverage=0.00;Ref_info=EasyGene
+Chromosome	EasyGene	CDS	2710019	2710081	.	.	.	Status=only_in_ref;Coverage=0.00;Ref_info=EasyGene
+```
+#### .../Test_Data/Annotation-Intersector/Annotation-Intersect.mismatches.gff
+```
+##gff-version	3
+#	Annotation-Intersector discordance report
+#	Run Date:2026-01-09
+##Original File: EasyGene_E-coli_E-coli
+Chromosome	EasyGene	CDS	18715	19620	.	.	.	Status=found_in_additional_but_below_coverage;Coverage=99.34;Ref_info=EasyGene;Add_info=Prodigal
+Chromosome	EasyGene	CDS	19811	20314	.	.	.	Status=found_in_additional_but_below_coverage;Coverage=75.00;Ref_info=EasyGene;Add_info=Prodigal
+Chromosome	EasyGene	CDS	29624	30799	.	.	.	Status=found_in_additional_but_below_coverage;Coverage=97.70;Ref_info=EasyGene;Add_info=Prodigal
+Chromosome	EasyGene	CDS	70378	71265	.	.	.	Status=found_in_additional_but_below_coverage;Coverage=98.99;Ref_info=EasyGene;Add_info=Prodigal
+
 ```
 
+#### Convert-To-GFF: Converts tool-specific output files to standard GFF3 format for use in ORForise analyses.
+For Help: ```Convert_To_GFF.py -h ```
+```
+Thank you for using ORForise
+Please report any issues to: https://github.com/NickJD/ORForise/issues
+#####
+usage: Convert_To_GFF.py [-h] [-dna GENOME_DNA] -i INPUT_ANNOTATION -fmt FORMAT -o OUTPUT_DIR [-gi GENE_IDENT] [--verbose]
+
+ORForise v1.6.1: Convert-To-GFF Run Parameters
+
+Required Arguments:
+  -dna GENOME_DNA      Genome DNA file (.fa)
+  -i INPUT_ANNOTATION  Input annotation file (tabular)
+  -fmt FORMAT          Input format: blast, abricate, genemark
+  -o OUTPUT_DIR        Output directory
+
+Optional Arguments:
+  -gi GENE_IDENT       Gene identifier types to extract (unused)
+  --verbose            Verbose logging with logfile
+```
 
 # Genomes Available:
 
@@ -343,17 +330,17 @@ The .fa and .gff files (from Ensembl Bacteria Release 46) below are available in
 * *Pseudomonas fluorescens* - Strain UK4 - Assembly ASM73042v1
 * *Staphylococcus aureus* - Strain 502A - Assembly ASM59796v1
 
-# Prediction Tools Available:
 
-There are two Groups of tools - Those which do require a pre-built model and those which do not. \
-For the example runs provided, each tool is listed with the non-default options used and their predictions for each of the 6 model organisms are available in their respective
-directories.
-ORForise only needs the tool name and the annotation file produced from any available model to undertake the analysis.
 
-## GFF Standard Format:
+# Prediction Tool Formats Currently Available:
+ORForise currently supports the comparison of multiple gene prediction tools via their output in GFF3 format. \
+This can be used to compare different annotations with eachother or additional tools which use the GFF3 format.
 
-The GFF Tool directory allows for the analysis of user-provided annotations in the standard GFF3 format. \
-This can be used to compare different cannonical annotations with eachother or additional tools which use the GFF3 format.
+## Tool Specific Formats:
+Run ```List-Tools``` to see the available tools. \
+ORForise only needs the tool name and the annotation file produced from any compatible tool to undertake the analysis.
+
+**If the tool uses another non-standard format, a request can be made to add it as an option via GitHub.**
 
 ## Model Based Tools:
 
@@ -377,16 +364,16 @@ This tool has two comparisons with the organism models *E. coli - K12 - MG165* a
 **FragGeneScan - Version 1.3.0** - https://omics.informatics.indiana.edu/FragGeneScan/    
 The 'complete' genome option was selected and GFF was chosen as output type.
 
-**GeneMark HA - Version 3.25** - http://exon.gatech.edu/GeneMark/heuristic_gmhmmp.cgi  
+**GeneMarkHA - Version 3.25** - http://exon.gatech.edu/GeneMark/heuristic_gmhmmp.cgi  
 GFF was chosen as output type.
 
 **GeneMarkS - Version 4.25** - http://exon.gatech.edu/GeneMark/genemarks.cgi  
 GFF was chosen as output type.
 
-**GeneMarkS-2 - Version '2020'** - http://exon.gatech.edu/GeneMark/genemarks2.cgi   
+**GeneMarkS2 - Version '2020'** - http://exon.gatech.edu/GeneMark/genemarks2.cgi   
 GFF3 was chosen as output type.
 
-**GLIMMER-3 - Version 3.02** - http://ccb.jhu.edu/software/glimmer/index.shtml  
+**GLIMMER3 - Version 3.02** - http://ccb.jhu.edu/software/glimmer/index.shtml  
 Default parameters from manual were used.
 
 **MetaGene - Version 2.24.0** - https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1636498/  

@@ -7,15 +7,11 @@ from datetime import datetime
 
 
 try:
+    from utils import *
     from Comparator import tool_comparison
 except ImportError:
     from .Comparator import tool_comparison
-
-try:
-    from utils import *
-except ImportError:
-    from ORForise.utils import *
-
+    from .utils import *
 
 ##########################
 
@@ -131,16 +127,6 @@ def comparator(options):
                 print(full_msg)
             options.output_logger.info(full_msg)
 
-            # print("These are the results for: " + dna_region + '\n')
-            # print('Current Contig: ' + str(dna_region))
-            # print('Number of Genes: ' + str(num_current_genes))
-            # print('Number of ORFs: ' + str(result['pred_metrics']['Number_of_ORFs']))
-            # print('Perfect Matches: ' + str(result['pred_metrics']['Number_of_Perfect_Matches']) + ' [' + str(num_current_genes)+ '] - '+ format(100 * result['pred_metrics']['Number_of_Perfect_Matches']/num_current_genes,'.2f')+'%')
-            # print('Partial Matches: ' + str(len(result['pred_metrics']['partial_Hits'])) + ' [' + str(num_current_genes)+ '] - '+ format(100 * len(result['pred_metrics']['partial_Hits'])/num_current_genes,'.2f')+'%')
-            # print('Missed Genes: ' + str(len(result['rep_metrics']['genes_Undetected'])) + ' [' + str(num_current_genes)+ '] - '+ format(100 * len(result['rep_metrics']['genes_Undetected'])/num_current_genes,'.2f')+'%')
-            # print('Unmatched ORFs: ' + str(len(result['pred_metrics']['unmatched_ORFs'])) + ' [' + str(num_current_genes)+ '] - '+ format(100 * len(result['pred_metrics']['unmatched_ORFs'])/num_current_genes,'.2f')+'%')
-            # print('Multi-matched ORFs: ' + str(len(result['pred_metrics']['multi_Matched_ORFs'])) + ' [' + str(num_current_genes)+ '] - '+ format(100 * len(result['pred_metrics']['multi_Matched_ORFs'])/num_current_genes,'.2f')+'%')
-
             # Prepare output directory and file names for each contig
             contig_save = dna_region.replace('/', '_').replace('\\', '_')
             contig_dir = os.path.join(options.outdir, contig_save)
@@ -176,8 +162,8 @@ def comparator(options):
 
 
             # Write metrics to CSV
-            with open(csv_file, 'w', newline='\n', encoding='utf-8') as out_file:
                 tool_out = csv.writer(out_file, quoting=csv.QUOTE_NONE, escapechar=" ")
+                tool_out = csv.writer(out_file, quoting=csv.QUOTE_NONE, escapechar=" ")  # type: ignore[arg-type]
                 tool_out.writerow(['Representative_Metrics:'])
                 tool_out.writerow(rep_metric_description.split(','))
                 tool_out.writerow([*rep_metrics])
@@ -190,24 +176,6 @@ def comparator(options):
                 tool_out.writerow([''.join(map(str, result['pred_metrics']['orf_Coverage_Genome']))])
                 tool_out.writerow(['Matched_Predicted_CDS_Coverage_of_Genome'])
                 tool_out.writerow([''.join(map(str, result['pred_metrics']['matched_ORF_Coverage_Genome']))])
-                # tool_out.writerow(['Start_Position_Difference:'])
-                # tool_out.writerow(result.get('start_Difference', []))
-                # tool_out.writerow(['Stop_Position_Difference:'])
-                # tool_out.writerow(result.get('stop_Difference', []))
-                # tool_out.writerow(['Alternative_Starts_Predicted:'])
-                # tool_out.writerow(result.get('other_Starts', []))
-                # tool_out.writerow(['Alternative_Stops_Predicted:'])
-                # tool_out.writerow(result.get('other_Stops', []))
-                # tool_out.writerow(['Undetected_Gene_Metrics:'])
-                # tool_out.writerow([
-                #     'ATG_Start,GTG_Start,TTG_Start,ATT_Start,CTG_Start,Alternative_Start_Codon,TGA_Stop,TAA_Stop,TAG_Stop,Alternative_Stop_Codon,Median_Length,ORFs_on_Positive_Strand,ORFs_on_Negative_Strand'
-                # ])
-                # tool_out.writerow(result.get('undetected_Gene_Metrics', []))
-                # tool_out.writerow(['\nPredicted_CDSs_Without_Corresponding_Gene_In_Reference_Metrics:'])
-                # tool_out.writerow([
-                #     'ATG_Start,GTG_Start,TTG_Start,ATT_Start,CTG_Start,Alternative_Start_Codon,TGA_Stop,TAA_Stop,TAG_Stop,Alternative_Stop_Codon,Median_Length,ORFs_on_Positive_Strand,ORFs_on_Negative_Strand'
-                # ])
-                # tool_out.writerow(result.get('unmatched_ORF_Metrics', []))
 
             # Write perfect matches to FASTA
             with open(perfect_fasta, 'w', encoding='utf-8') as f:
@@ -266,26 +234,21 @@ def comparator(options):
             out_file.write('\nOverall Summary:\n')
             out_file.write(f'Number of Genes: {total_genes}\n')
             out_file.write(f'Number of ORFs: {total_orfs}\n')
-            out_file.write(
-                f'Perfect Matches: {total_perfect} [{total_genes}] - {format(100 * total_perfect / total_genes, ".2f")}%\n')
-            out_file.write(
-                f'Partial Matches: {total_partial} [{total_genes}] - {format(100 * total_partial / total_genes, ".2f")}%\n')
-            out_file.write(
-                f'Missed Genes: {total_missed} [{total_genes}] - {format(100 * total_missed / total_genes, ".2f")}%\n')
-            out_file.write(
-                f'Unmatched ORFs: {total_unmatched} [{total_genes}] - {format(100 * total_unmatched / total_genes, ".2f")}%\n')
-            out_file.write(
-                f'Multi-matched ORFs: {total_multi} [{total_genes}] - {format(100 * total_multi / total_genes, ".2f")}%\n')
+            out_file.write(f'Perfect Matches: {total_perfect} [{total_genes}] - {100 * total_perfect / total_genes:.2f}%\n')
+            out_file.write(f'Partial Matches: {total_partial} [{total_genes}] - {100 * total_partial / total_genes:.2f}%\n')
+            out_file.write(f'Missed Genes: {total_missed} [{total_genes}] - {100 * total_missed / total_genes:.2f}%\n')
+            out_file.write(f'Unmatched ORFs: {total_unmatched} [{total_genes}] - {100 * total_unmatched / total_genes:.2f}%\n')
+            out_file.write(f'Multi-matched ORFs: {total_multi} [{total_genes}] - {100 * total_multi / total_genes:.2f}%\n')
 
             lines = [
                 f"Combined metrics for all contigs:",
                 f"Number of Genes: {total_genes}",
                 f"Number of ORFs: {total_orfs}",
-                f"Perfect Matches: {total_perfect} [{total_genes}] - {format(100 * total_perfect / total_genes, ".2f")}%",
-                f"Partial Matches: {total_partial} [{total_genes}] - {format(100 * total_partial / total_genes, ".2f")}%",
-                f"Missed Genes: {total_missed} [{total_genes}] - {format(100 * total_missed / total_genes, ".2f")}%",
-                f"Unmatched ORFs: {total_unmatched} [{total_genes}] - {format(100 * total_unmatched / total_genes, ".2f")}%",
-                f"Multi-matched ORFs: {total_multi} [{total_genes}] - {format(100 * total_multi / total_genes, ".2f")}%"
+                f"Perfect Matches: {total_perfect} [{total_genes}] - {100 * total_perfect / total_genes:.2f}%",
+                f"Partial Matches: {total_partial} [{total_genes}] - {100 * total_partial / total_genes:.2f}%",
+                f"Missed Genes: {total_missed} [{total_genes}] - {100 * total_missed / total_genes:.2f}%",
+                f"Unmatched ORFs: {total_unmatched} [{total_genes}] - {100 * total_unmatched / total_genes:.2f}%",
+                f"Multi-matched ORFs: {total_multi} [{total_genes}] - {100 * total_multi / total_genes:.2f}%"
             ]
 
             full_msg = '\n'.join(lines) + '\n'
@@ -295,7 +258,7 @@ def comparator(options):
 
 
 def main():
-    print("Thank you for using ORForise\nPlease report any issues to: https://github.com/NickJD/ORForise/issues\n#####")
+    print(WELCOME)
 
     parser = argparse.ArgumentParser(description='ORForise ' + ORForise_Version + ': Annotatione-Compare Run Parameters.')
     parser._action_groups.pop()
@@ -305,7 +268,7 @@ def main():
                                                                     'are based on')
     required.add_argument('-ref', dest='reference_annotation', required=True,
                         help='Which reference annotation file to use as reference?')
-    required.add_argument('-t', dest='tool', required=True, help='Which tool to analyse? (Prodigal)')
+    required.add_argument('-t', dest='tool', required=True, help='Which tool to analyse?')
     required.add_argument('-tp', dest='tool_prediction', required=True,
                         help='Tool genome prediction file (.gff) - Different Tool Parameters'
                              ' are compared individually via separate files')

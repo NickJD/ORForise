@@ -1,0 +1,8 @@
+##gff-version	3
+#	Annotation-Intersector discordance report
+#	Run Date:2026-01-09
+##Original File: EasyGene_E-coli_E-coli
+Chromosome	EasyGene	CDS	408401	408484	.	.	.	Status=only_in_ref;Coverage=0.00;Ref_info=EasyGene
+Chromosome	EasyGene	CDS	1272584	1272886	.	.	.	Status=only_in_ref;Coverage=0.00;Ref_info=EasyGene
+Chromosome	EasyGene	CDS	2574901	2574960	.	.	.	Status=only_in_ref;Coverage=0.00;Ref_info=EasyGene
+Chromosome	EasyGene	CDS	2710019	2710081	.	.	.	Status=only_in_ref;Coverage=0.00;Ref_info=EasyGene

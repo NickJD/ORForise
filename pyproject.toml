@@ -1,7 +1,58 @@
 [build-system]
-requires = [
-    "setuptools",
-    "wheel",
-    "numpy"
-]
+requires = ["setuptools", "wheel", "levenshtein"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "ORForise"
+version = "1.6.1"
+authors = [
+    {name = "Nicholas Dimonaco", email = "nicholas@dimonaco.co.uk"}
+]
+description = "ORForise - A platform for analysing and comparing genome annotations."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+keywords = ["Genome annotation", "Gene Prediction"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+
+]
+
+[project.urls]
+Homepage = "https://github.com/NickJD/ORForise"
+"Bug Tracker" = "https://github.com/NickJD/ORForise/issues"
+
+[project.scripts]
+    Annotation-Compare = "ORForise.Annotation_Compare:main"
+    annotation-compare = "ORForise.Annotation_Compare:main"
+    Aggregate-Compare = "ORForise.Aggregate_Compare:main"
+    aggregate-compare = "ORForise.Aggregate_Compare:main"
+    StORForise = "ORForise.StORForise:main"
+    storforise = "ORForise.StORForise:main"
+    GFF-Adder = "ORForise.GFF_Adder:main"
+    gff-adder = "ORForise.GFF_Adder:main"
+    Annotation-Intersector = "ORForise.Annotation_Intersector:main"
+    annotation-intersector = "ORForise.Annotation_Intersector:main"
+    Convert-To-GFF = "ORForise.Convert_To_GFF:main"
+    convert-to-gff = "ORForise.Convert_To_GFF:main"
+    List-Tools = "ORForise.List_Tools:main"
+    list-tools = "ORForise.List_Tools:main"
+
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["ORForise*"]
+
+[tool.setuptools.package-data]
+ORForise = [
+]
+
+
+

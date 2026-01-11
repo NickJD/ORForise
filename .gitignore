@@ -1,2 +1,6 @@
 
 __pycache__/
+
+src/ORForise.egg-info/
+
+dist/

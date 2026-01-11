@@ -1,0 +1,63 @@
+GFF-Adder Metadata Report
+=========================
+Run Date: 2026-01-11
+Genome DNA: ../../Test_Data/Genomes/E-coli/Escherichia_coli.fasta
+Reference annotation: ../../Test_Data/Genomes/E-coli/Escherichia_coli.gff
+Additional annotation(s): ../../Test_Data/Genomes/E-coli/Prodigal_Escherichia_coli.gff
+
+Summary counts
+--------------
+Reference-only genes (no matching additional annotation): 4
+Reference genes with additional matches (combined): 5218
+TOTAL reference genes observed: 5222
+Additional-only genes (not present in reference): 11
+
+Distribution of matches for reference-combined entries (num matched tools -> count)
+    1    5218
+
+Distribution of matches for non-reference entries (num matched tools -> count)
+    1    11
+
+Per-tool additional-only annotation totals
+-----------------------------------------
+  Prodigal: 11
+
+Per-contig breakdown for additional-only annotations (only contigs with additions shown)
+---------------------------------------------------------------------------------------
+  ERS715463SCcontig000001:
+    Prodigal: 2
+
+  ERS715463SCcontig000002:
+    Prodigal: 2
+
+  ERS715463SCcontig000003:
+    Prodigal: 5
+
+  ERS715463SCcontig000004:
+    Prodigal: 2
+
+Per-tool totals for reference genes matched by additional tools
+---------------------------------------------------------------
+  Prodigal: 5218
+
+Per-contig breakdown for reference genes matched by additional tools
+--------------------------------------------------------------------
+  ERS715463SCcontig000001:
+    Prodigal: 75
+
+  ERS715463SCcontig000002:
+    Prodigal: 1033
+
+  ERS715463SCcontig000003:
+    Prodigal: 4065
+
+  ERS715463SCcontig000004:
+    Prodigal: 45
+
+Notes
+-----
+ - 'Reference-only' are reference entries that had no recorded additional annotation information.
+ - 'Per-tool' counts are based on the tool names extracted from the additional-annotation provenance
+   (expected format in combined entries: 'ToolName:info'). Entries with no tool detected are shown as 'unassigned'.
+
+End of report

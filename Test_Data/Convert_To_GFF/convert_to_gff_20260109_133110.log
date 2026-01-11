@@ -1,0 +1,6 @@
+2026-01-09 13:31:10,844 - INFO - Starting Convert_To_GFF
+2026-01-09 13:31:10,844 - INFO - Genome DNA: (not provided)
+2026-01-09 13:31:10,844 - INFO - Input annotation: /home/nickd/Git/ORForise/Test_Data/Convert_To_GFF/abricate_format.tsv
+2026-01-09 13:31:10,844 - INFO - Format: abricate
+2026-01-09 13:31:10,844 - INFO - Wrote GFF to /home/nickd/Git/ORForise/Test_Data/Convert_To_GFF/abricate_format.gff
+2026-01-09 13:31:10,844 - INFO - Logfile: /home/nickd/Git/ORForise/Test_Data/Convert_To_GFF/convert_to_gff_20260109_133110.log

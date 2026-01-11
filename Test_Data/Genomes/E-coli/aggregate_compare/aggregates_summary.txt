@@ -1,6 +1,6 @@
 Genome Used: Escherichia_coli.fasta
 Reference Used: Escherichia_coli.gff
-Tool Compared: Prodigal,GeneMark_S_2
+Tool Compared: Prodigal,GeneMarkS2
 Total Number of Reference Genes: 5222
 Number of Contigs: 4
 Contig	Genes	ORFs	Perfect_Matches	Partial_Matches	Missed_Genes	Unmatched_ORFs	Multi_Matched_ORFs
@@ -20,4 +20,4 @@ Multi-matched ORFs: 0 [5222] - 0.00%
 
   Prodigal: Perfect=5218, Partial=2, Unmatched=9, Multi-matched=0
 
-  GeneMark_S_2: Perfect=4609, Partial=2, Unmatched=579, Multi-matched=0
+  GeneMarkS2: Perfect=4609, Partial=2, Unmatched=579, Multi-matched=0

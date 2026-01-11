@@ -1,4 +1,4 @@
-1423481##gff-version  3
+##gff-version  3
 # Sequence Data: seqnum=1;seqlen=6064456;seqhdr="Chromosome dna:chromosome chromosome:ASM73042v1:Chromosome:1:6064456:1 REF"
 # Model Data: version=Prodigal.v2.6.2;run_type=Single;model="Ab initio";gc_cont=60.13;transl_table=11;uses_sd=1
 Chromosome	Prodigal_v2.6.2	CDS	422	2314	303.6	+	0	ID=1_1;partial=00;start_type=ATG;rbs_motif=GGA/GAG/AGG;rbs_spacer=11-12bp;gc_cont=0.598;conf=99.99;score=303.58;cscore=298.75;sscore=4.83;rscore=-1.38;uscore=1.21;tscore=4.99;

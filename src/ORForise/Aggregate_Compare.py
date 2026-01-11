@@ -339,9 +339,7 @@ def comparator(options):
 
 
 def main():
-    print("Thank you for using ORForise\nPlease report any issues to: https://github.com/NickJD/ORForise/issues\n"
-          "Please Cite: https://doi.org/10.1093/bioinformatics/btab827\n"
-          "#####")
+    print(WELCOME)
 
     parser = argparse.ArgumentParser(description='ORForise ' + ORForise_Version + ': Aggregate-Compare Run Parameters.')
     parser._action_groups.pop()
@@ -350,7 +348,7 @@ def main():
 
     required.add_argument('-dna', dest='genome_dna', required=True, help='Genome DNA file (.fa) which both annotations '
                                                                     'are based on')
-    required.add_argument('-t', dest='tools', required=True, help='Which tools to analyse? (Prodigal,GeneMarkS)')
+    required.add_argument('-t', dest='tools', required=True, help='Which tools to analyse?')
     required.add_argument('-tp', dest='tool_predictions', required=True, help='Tool genome prediction file (.gff) - Provide'
                                                                          'file locations for each tool comma separated')
     required.add_argument('-ref', dest='reference_annotation', required=True,

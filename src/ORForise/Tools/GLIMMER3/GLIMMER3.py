@@ -19,7 +19,7 @@ def GLIMMER_3(*args):
         genome_size = len(genome)
         genome_rev = revCompIterative(genome)
         with open(tool_pred,
-                  'r') as glimmer_input:  # GLIMMER_3 reverses the start and stop positions for ORFS on the negative strand
+                  'r') as glimmer_input:  # GLIMMER3 reverses the start and stop positions for ORFS on the negative strand
             for line in glimmer_input:
                 if '>' not in line:  # This will not work with multiple contigs
                     line = line.split()
@@ -39,7 +39,7 @@ def GLIMMER_3(*args):
                             startCodon = genome[start - 1:start + 3]
                             stopCodon = genome[stop - 3:stop]
                         po = str(start) + ',' + str(stop)
-                        orf = [strand, startCodon, stopCodon, 'CDS', 'GLIMMER_3']
+                        orf = [strand, startCodon, stopCodon, 'CDS', 'GLIMMER3']
                         GLIMMER_ORFs.update({po: orf})
 
     for group in GLIMMER_ORFs:

@@ -34,7 +34,7 @@ def GeneMark_HA(*args):
                         startCodon = genome[start - 1:start + 2]
                         stopCodon = genome[stop - 3:stop]
                     po = str(start) + ',' + str(stop)
-                    orf = [strand, startCodon, stopCodon, 'CDS', 'GeneMark_HA']
+                    orf = [strand, startCodon, stopCodon, 'CDS', 'GeneMarkHA']
                     geneMark_HA_ORFs.update({po: orf})
 
     for group in geneMark_HA_ORFs:
