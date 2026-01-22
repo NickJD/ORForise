@@ -26,13 +26,12 @@ def gff_writer(genome_ID, genome_DNA, reference_annotation, reference_tool, ref_
     if out_dir:
         os.makedirs(out_dir, exist_ok=True)
 
-    # Always open the file and write the header first. Use a broad try so we can log any issue.
     try:
         with open(output_file, 'w', encoding='utf-8') as write_out:
             write_out.write("##gff-version\t3\n#\tAnnotation-Intersector\n#\tRun Date:" + str(date.today()) + '\n')
             if genome_DNA:
                 write_out.write("##Genome DNA File:" + genome_DNA + '\n')
-            write_out.write("##Original File: " + reference_annotation + "\n##Intersecting File: " + additional_annotation + '\n')
+            write_out.write("##Original File: " + (reference_annotation or '') + "\n##Intersecting File: " + (additional_annotation or '') + '\n')
 
             entries_written = 0
 
@@ -43,7 +42,7 @@ def gff_writer(genome_ID, genome_DNA, reference_annotation, reference_tool, ref_
 
                 # Parse reference annotation and write features matching gene_ident
                 try:
-                    if reference_annotation.endswith('.gz'):
+                    if reference_annotation and reference_annotation.endswith('.gz'):
                         rf = gzip.open(reference_annotation, 'rt')
                     else:
                         rf = open(reference_annotation, 'r', encoding='unicode_escape')
@@ -68,10 +67,11 @@ def gff_writer(genome_ID, genome_DNA, reference_annotation, reference_tool, ref_
                                 stop = parts[4]
                                 strand = parts[6]
                                 info = parts[8]
+                                source = parts[1] if len(parts) > 1 else ''
                             except Exception:
                                 continue
-                            # write entry with coverage 0 and empty additional annotation
-                            entry = f"{seqid}\t{os.path.splitext(os.path.basename(reference_annotation))[0]}\t{ftype}\t{start}\t{stop}\t.\t{strand}\t.\tID=Original_Annotation={info};Additional_Annotation=;Coverage=0\n"
+                            # write entry with coverage 0 and empty additional annotation; use source from input GFF
+                            entry = f"{seqid}\t{source}\t{ftype}\t{start}\t{stop}\t.\t{strand}\t.\tID=Original_Annotation={info}\n"
                             write_out.write(entry)
                             entries_written += 1
                 except Exception as e:
@@ -81,25 +81,26 @@ def gff_writer(genome_ID, genome_DNA, reference_annotation, reference_tool, ref_
                 logging.info('Wrote %d fallback reference entries to %s', entries_written, output_file)
                 return
 
+            # Iterate contigs and write kept entries. Kept entry layout expected:
+            # [strand, coverage, additional_type, ref_type, additional_info, ref_info, ref_source]
             for contig, genes in genes_To_Keep_by_contig.items():
-                # Use basename without extension for the source field
-                ref = os.path.splitext(os.path.basename(reference_annotation))[0].split('_')[0]
+                fallback_source = os.path.splitext(os.path.basename(reference_annotation))[0].split('_')[0] if reference_annotation else 'reference'
                 for pos, data in genes.items():
                     try:
                         pos_ = pos.split(',')
                         start = pos_[0]
                         stop = pos_[-1]
-                        strand = data[0]
-                        # Ensure indices exist and are strings
+                        strand = data[0] if len(data) > 0 else '.'
                         add_ann = str(data[4]) if len(data) > 4 else ''
                         orig_ann = str(data[5]) if len(data) > 5 else ''
+                        source_field = data[6] if len(data) > 6 and data[6] else fallback_source
+                        feat_type = data[3] if len(data) > 3 and data[3] else (data[2] if len(data) > 2 else 'CDS')
                         entry = (
-                            contig + '\t' + ref + '\t' + data[2] + '\t' + start + '\t' + stop + '\t.\t' + strand + '\t.\tID=Original_Annotation=' + orig_ann + ';Additional_Annotation=' + add_ann + ';Coverage=' + str(
+                            contig + '\t' + source_field + '\t' + feat_type + '\t' + start + '\t' + stop + '\t.\t' + strand + '\t.\tID=Original_Annotation=' + orig_ann + ';Additional_Annotation=' + add_ann + ';Coverage=' + str(
                                 data[1]) + '\n')
                         write_out.write(entry)
                         entries_written += 1
                     except Exception as e:
-                        # Log the bad entry and continue
                         logging.warning('Skipping bad GFF entry for contig %s pos %s: %s', contig, pos, e)
                         continue
 
@@ -179,7 +180,9 @@ def _write_discordance_report(report_path, entries):
 
 
 def _write_discordance_gff(report_path, entries, reference_annotation_basename):
-    """Write a list of discordance entries (dicts) to a GFF file."""
+    """Write a list of discordance entries (dicts) to a GFF file.
+    The GFF source column is taken from carried 'ref_source' or 'add_source' when available.
+    """
     report_path = os.path.expanduser(report_path)
     out_dir = os.path.dirname(report_path)
     if out_dir:
@@ -189,40 +192,35 @@ def _write_discordance_gff(report_path, entries, reference_annotation_basename):
             fh.write('##gff-version\t3\n')
             fh.write('#\tAnnotation-Intersector discordance report\n')
             fh.write('#\tRun Date:' + str(date.today()) + '\n')
-            fh.write('##Original File: ' + reference_annotation_basename + '\n')
+            fh.write('##Original File: ' + (reference_annotation_basename or '') + '\n')
             entries_written = 0
-            for e in entries:
+            for e in (entries or []):
                 try:
                     contig = str(e.get('contig', '.'))
-                    # prefer reference coords if present
                     ref_pos = e.get('ref_pos', '')
                     add_pos = e.get('add_pos', '')
                     if ref_pos:
                         start, stop = ref_pos.split(',')
                         ftype = e.get('ref_type', '') or 'CDS'
-                        source = reference_annotation_basename.split('_')[0] or 'reference'
+                        source = e.get('ref_source') or (reference_annotation_basename.split('_')[0] if reference_annotation_basename else 'reference')
                         info_attr = e.get('ref_info', '')
                     else:
-                        # No ref pos, use add_pos coords
-                        start, stop = add_pos.split(',') if add_pos else ('0','0')
+                        start, stop = add_pos.split(',') if add_pos else ('0', '0')
                         ftype = e.get('add_type', '') or 'CDS'
-                        source = e.get('add_type', '') or 'additional'
+                        source = e.get('add_source') or 'additional'
                         info_attr = e.get('add_info', '')
-                    # attributes
                     attrs = []
                     attrs.append('Status=' + str(e.get('status', '')))
                     attrs.append('Coverage=' + str(e.get('coverage', '')))
                     if e.get('ref_info', ''):
-                        attrs.append('Ref_info=' + str(e.get('ref_info', '')).replace(';','%3B'))
+                        attrs.append('Ref_info=' + str(e.get('ref_info', '')).replace(';', '%3B'))
                     if e.get('add_info', ''):
-                        attrs.append('Add_info=' + str(e.get('add_info', '')).replace(';','%3B'))
+                        attrs.append('Add_info=' + str(e.get('add_info', '')).replace(';', '%3B'))
                     attr_str = ';'.join(attrs)
-                    # construct GFF line
                     line = f"{contig}\t{source}\t{ftype}\t{start}\t{stop}\t.\t.\t.\t{attr_str}\n"
                     fh.write(line)
                     entries_written += 1
                 except Exception:
-                    # skip bad entry
                     continue
         logging.info('Wrote %d discordance GFF entries to %s', entries_written, report_path)
     except OSError as e:
@@ -236,12 +234,9 @@ def compute_discordance(ref_map_by_contig, add_map_by_contig, options):
     - only_in_additional: additional ORFs that don't overlap any reference entry
     - mismatches: reference entries with overlapping additional ORFs that don't meet match criteria
 
-    This version is strand-aware and will classify mismatches that are due to strand
-    differences separately from type/coverage differences.
-
     Expected layouts:
-    - ref entry: [strand, 'ref', type, info]
-    - add entry: [strand, ..., type (index 3), info (last element)]
+    - ref entry: [strand, 'ref', type, info, source]
+    - add entry: [strand, ..., type (index 3), info (last element), (optional) source]
     """
     only_in_ref = []
     only_in_additional = []
@@ -255,7 +250,6 @@ def compute_discordance(ref_map_by_contig, add_map_by_contig, options):
         ref_map = ref_map_by_contig.get(contig, {}) or {}
         add_map = add_map_by_contig.get(contig, {}) or {}
 
-        # For each reference feature, find best overlapping additional ORF and classify
         for rpos, rdata in ref_map.items():
             rstart, rstop = _parse_pos(rpos)
             if rstart is None:
@@ -266,10 +260,10 @@ def compute_discordance(ref_map_by_contig, add_map_by_contig, options):
             best_add_data = None
             matched = False
 
-            # reference fields
             r_strand = rdata[0] if len(rdata) > 0 else ''
-            r_type = rdata[3] if len(rdata) > 2 else ''
-            r_info = rdata[-1] if len(rdata) > 3 else ''
+            r_type = rdata[2] if len(rdata) > 2 else ''
+            r_info = rdata[3] if len(rdata) > 3 else ''
+            r_source = rdata[4] if len(rdata) > 4 else ''
 
             for apos, adata in add_map.items():
                 astart, astop = _parse_pos(apos)
@@ -284,27 +278,25 @@ def compute_discordance(ref_map_by_contig, add_map_by_contig, options):
                     best_add = apos
                     best_add_data = adata
 
-                # additional fields
                 a_strand = adata[0] if len(adata) > 0 else ''
                 a_type = adata[3] if len(adata) > 3 else ''
-                # frame check (distance of stops mod 3)
+                a_info = adata[-1] if len(adata) > 0 else ''
+                a_source = adata[4] if len(adata) > 4 else ''
+
                 try:
                     frame_ok = ((abs(astop - rstop) % 3) == 0)
                 except Exception:
                     frame_ok = True
 
-                # check for a fully satisfactory match: type, coverage, strand and frame
                 if a_type == r_type and cov >= cov_thresh and (a_strand == r_strand) and frame_ok:
                     matched = True
                     matched_adds.add((contig, apos))
                     break
 
             if matched:
-                # good match -> not discordant
                 continue
 
             if best_add is None:
-                # no overlapping additional ORF found
                 only_in_ref.append({
                     'contig': contig,
                     'ref_pos': rpos,
@@ -314,26 +306,24 @@ def compute_discordance(ref_map_by_contig, add_map_by_contig, options):
                     'status': 'only_in_ref',
                     'coverage': '0.00',
                     'ref_info': r_info,
+                    'ref_source': r_source,
                     'add_info': ''
                 })
             else:
-                # overlapping additional ORF(s) exist but none satisfied the match criteria
                 a_type = best_add_data[3] if len(best_add_data) > 3 else ''
                 a_info = best_add_data[-1] if len(best_add_data) > 0 else ''
                 a_strand = best_add_data[0] if len(best_add_data) > 0 else ''
+                a_source = best_add_data[4] if len(best_add_data) > 4 else ''
 
-                # compute reason flags
                 type_match = (a_type == r_type)
                 strand_match = (a_strand == r_strand)
                 cov_ok = (best_cov >= cov_thresh)
                 try:
-                    # use frame between best add and ref
                     astart, astop = _parse_pos(best_add)
                     frame_ok = ((abs(astop - rstop) % 3) == 0) if (astop is not None) else True
                 except Exception:
                     frame_ok = True
 
-                # classify mismatch with strand-awareness
                 if not cov_ok:
                     status = 'found_in_additional_but_below_coverage'
                 elif not type_match and not strand_match:
@@ -356,13 +346,14 @@ def compute_discordance(ref_map_by_contig, add_map_by_contig, options):
                     'status': status,
                     'coverage': f"{best_cov:.2f}",
                     'ref_info': r_info,
+                    'ref_source': r_source,
                     'add_info': a_info,
+                    'add_source': a_source,
                 })
 
                 if best_add:
                     matched_adds.add((contig, best_add))
 
-        # Additional-only ORFs: those not matched and not overlapping any reference
         for apos, adata in add_map.items():
             if (contig, apos) in matched_adds:
                 continue
@@ -378,6 +369,7 @@ def compute_discordance(ref_map_by_contig, add_map_by_contig, options):
                     overlapped = True
                     break
             if not overlapped:
+                add_source = adata[4] if len(adata) > 4 else ''
                 only_in_additional.append({
                     'contig': contig,
                     'ref_pos': '',
@@ -388,9 +380,11 @@ def compute_discordance(ref_map_by_contig, add_map_by_contig, options):
                     'coverage': '0.00',
                     'ref_info': '',
                     'add_info': adata[-1] if len(adata) > 0 else '',
+                    'add_source': add_source,
                 })
 
-    return only_in_ref, only_in_additional, mismatches
+    # Return discordance lists and the set of matched additional ORFs (for overlap counts)
+    return only_in_ref, only_in_additional, mismatches, matched_adds
 
 
 def comparator(options):
@@ -491,11 +485,14 @@ def comparator(options):
                     strand = parts[6]
                     pos = f"{start},{stop}"
                     info = parts[8]
+                    source = parts[1] if len(parts) > 1 else ''
                 except (IndexError, ValueError):
                     continue
                 if seqid not in ref_genes_by_contig:
                     ref_genes_by_contig[seqid] = OrderedDict()
-                ref_genes_by_contig[seqid].update({pos: [strand, 'ref', ftype, info]})
+                # Store source from column 1 as well. Layout becomes:
+                # [strand, 'ref', type, info, source]
+                ref_genes_by_contig[seqid].update({pos: [strand, 'ref', ftype, info, source]})
     else:
         # Use a tool parser to produce ref_genes; expect tool to return mapping contig->dict
         try:
@@ -558,12 +555,14 @@ def comparator(options):
                 ref_entry = ref_genes.get(f"{o_Start},{o_Stop}")
                 if not ref_entry:
                     continue
-                # ref_entry layout: [strand, 'ref', type, info]
-                ref_type = ref_entry[3] if len(ref_entry) > 2 else ''
-                ref_info = ref_entry[-1] if len(ref_entry) > 3 else ''
+                # ref_entry layout now: [strand, 'ref', type, info, source]
+                ref_type = ref_entry[2] if len(ref_entry) > 2 else ''
+                ref_info = ref_entry[3] if len(ref_entry) > 3 else ''
+                ref_source = ref_entry[4] if len(ref_entry) > 4 else ''
 
                 if additional_type == ref_type and o_Strand == ref_entry[0]:
-                    kept.update({f"{o_Start},{o_Stop}": [o_Strand, options.coverage, additional_type, ref_type, additional_info, ref_info]})
+                    # kept layout: [strand, coverage, additional_type, ref_type, additional_info, ref_info, ref_source]
+                    kept.update({f"{o_Start},{o_Stop}": [o_Strand, options.coverage, additional_type, ref_type, additional_info, ref_info, ref_source]})
         else:
             cov_thresh = options.coverage
             for orf, data in orfs.items():
@@ -598,42 +597,43 @@ def comparator(options):
                     cov = 100.0 * overlap / gene_len
 
                     g_Strand = r_data[0]
-                    # r_data layout: [strand, 'ref', type, info]
-                    ref_type = r_data[3] if len(r_data) > 2 else ''
-                    ref_info = r_data[-1] if len(r_data) > 3 else ''
+                    # r_data layout now: [strand, 'ref', type, info, source]
+                    ref_type = r_data[2] if len(r_data) > 2 else ''
+                    ref_info = r_data[3] if len(r_data) > 3 else ''
+                    ref_source = r_data[4] if len(r_data) > 4 else ''
 
                     if abs(o_Stop - g_Stop) % 3 == 0 and o_Strand == g_Strand and cov >= cov_thresh:
                         if additional_type == ref_type:
-                            kept[f"{g_Start},{g_Stop}"] = [g_Strand, int(cov), additional_type, ref_type,
-                                                           additional_info, ref_info]
+                            # keep ref_source with the kept entry
+                            kept[f"{g_Start},{g_Stop}"] = [g_Strand, int(cov), additional_type, ref_type, additional_info, ref_info, ref_source]
         genes_To_Keep_by_contig[contig] = sortORFs(kept)
 
     # Log counts for debugging why GFF might be empty
-    try:
-        total_ref = sum(len(v) for v in ref_genes_by_contig.values()) if ref_genes_by_contig else 0
-    except Exception:
-        total_ref = 0
-    try:
-        total_add = sum(len(v) for v in additional_by_contig.values()) if additional_by_contig else 0
-    except Exception:
-        total_add = 0
-    try:
-        total_kept = sum(len(v) for v in genes_To_Keep_by_contig.values()) if genes_To_Keep_by_contig else 0
-    except Exception:
-        total_kept = 0
-    logging.info('Reference genes loaded: %d', total_ref)
-    logging.info('Additional ORFs loaded: %d', total_add)
-    logging.info('Kept genes after intersection: %d', total_kept)
+    # Compute summary metrics (safe/simple)
+    total_ref = sum(len(v) for v in ref_genes_by_contig.values()) if ref_genes_by_contig else 0
+    total_add = sum(len(v) for v in additional_by_contig.values()) if additional_by_contig else 0
+    total_kept = sum(len(v) for v in genes_To_Keep_by_contig.values()) if genes_To_Keep_by_contig else 0
+    # Print totals in requested order: reference, additional, then overlap/kept and a percentage
+    logging.info('Totals -- reference_genes=%d, additional_genes=%d, overlapping/kept=%d', total_ref, total_add, total_kept)
+    if total_ref:
+        logging.info('Overlap relative to reference: %.2f%%', (100.0 * total_kept / total_ref))
 
     # If requested, compute discordance lists and write three GFF outputs
     if getattr(options, 'report_discordance', False):
-        # Compute discordance lists
-        only_in_ref, only_in_additional, mismatches = compute_discordance(ref_genes_by_contig, additional_by_contig, options)
+        # Compute discordance lists and matched additional ORFs
+        only_in_ref, only_in_additional, mismatches, matched_adds = compute_discordance(ref_genes_by_contig, additional_by_contig, options)
         base = os.path.splitext(os.path.basename(options.output_file))[0] if getattr(options, 'output_file', None) else 'discordance'
         outdir = os.path.dirname(options.output_file) if getattr(options, 'output_file', None) else '.'
         ref_base = os.path.splitext(os.path.basename(options.reference_annotation))[0]
 
-        # Keep the three detailed GFF outputs (backward compatible)
+        # Compute and log clear summary metrics
+        total_ref = sum(len(v) for v in ref_genes_by_contig.values()) if ref_genes_by_contig else 0
+        total_add = sum(len(v) for v in additional_by_contig.values()) if additional_by_contig else 0
+        overlapping_additional = len(matched_adds) if matched_adds is not None else 0
+        overlapping_reference = max(0, total_ref - (len(only_in_ref) if only_in_ref is not None else 0))
+        logging.info('Summary: reference_genes=%d, additional_geness=%d, additional_genes_overlapping_any_reference=%d, reference_genes_overlapped=%d', total_ref, total_add, overlapping_additional, overlapping_reference)
+
+         # Keep the three detailed GFF outputs (backward compatible)
         gff_ref = os.path.join(outdir, f"{base}.only_in_reference.gff")
         gff_add = os.path.join(outdir, f"{base}.only_in_additional.gff")
         gff_mis = os.path.join(outdir, f"{base}.mismatches.gff")
@@ -679,6 +679,7 @@ def comparator(options):
             contig_summary = {}
         logging.info('Kept genes by contig (sample): %s', dict(list(contig_summary.items())[:10]))
         logging.info('Writing combined GFF to %s', options.output_file)
+        # single correct invocation of gff_writer
         gff_writer(genome_ID, genome_DNA_path, options.reference_annotation, getattr(options, 'reference_tool', None), None, options.additional_annotation, options.additional_tool, genes_To_Keep_by_contig, options.output_file, getattr(options, 'gene_ident', None))
         logging.info('gff_writer finished (check output file)')
     except Exception as e:
@@ -688,8 +689,6 @@ def comparator(options):
 
 
 def main():
-    print(WELCOME)
-
     parser = argparse.ArgumentParser(description='ORForise ' + ORForise_Version + ': Annotation-Intersector Run Parameters')
 
     required = parser.add_argument_group('Required Arguments')
@@ -721,6 +720,20 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
-    print('Complete')
+    try:
+        try:
+            main()
+        except Exception:
+            logging.exception('Unhandled exception in main')
+    finally:
+        print(CLOSING)
+
+
+
+
+
+
+
+
+
 

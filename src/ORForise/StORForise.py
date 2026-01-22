@@ -101,7 +101,6 @@ def comparator(tool, input_to_analyse, storfs_to_find_missing, genome_to_compare
 
 
 def main():
-    print(WELCOME)
     parser = argparse.ArgumentParser(description='ORForise ' + ORForise_Version + ': StORForise Run Parameters.')
     parser.add_argument('-t', '--tool', default='GFF', help='Which tool/format would you analyse with StORF-R?')
     parser.add_argument('-i', '--input_to_analyse', default='', help='Location of file containing missed genes')
@@ -112,4 +111,10 @@ def main():
     comparator(**vars(args))
 
 if __name__ == "__main__":
-    main()
+    try:
+        try:
+            main()
+        except Exception:
+            print('Unhandled exception in main')
+    finally:
+        print(CLOSING)

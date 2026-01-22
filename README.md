@@ -21,7 +21,7 @@ Example output files from ```Annotation-Compare```, ```Aggregate-Compare```, ```
 For Help: ```Annotation-Compare -h ```
 
 ```python
-ORForise v1.6.3: Annotatione-Compare Run Parameters.
+ORForise v1.6.4: Annotatione-Compare Run Parameters.
 
 Required Arguments:
   -dna GENOME_DNA       Genome DNA file (.fa) which both annotations are based on
@@ -89,7 +89,7 @@ ORForise can be used as the example below.
 For Help: ```Aggregate-Compare -h ```
 
 ```python
-ORForise v1.6.3: Aggregate-Compare Run Parameters.
+ORForise v1.6.4: Aggregate-Compare Run Parameters.
 
 Required Arguments:
   -dna GENOME_DNA       Genome DNA file (.fa) which both annotations are based on
@@ -170,7 +170,7 @@ GFF-Adder combines two existing annotations (GFF or other tool formats).
 For Help: ```GFF-Adder -h ```
 
 ```python
-ORForise v1.6.3: GFF-Adder Run Parameters.
+ORForise v1.6.4: GFF-Adder Run Parameters.
 
 Required Arguments:
   -dna GENOME_DNA       Genome DNA file (.fa) which both annotations are based on
@@ -227,7 +227,7 @@ usage: Annotation_Intersector.py [-h] -ref REFERENCE_ANNOTATION -at
                                  [-cov COVERAGE] [--report-discordance]
                                  [--report-discordance-file REPORT_DISCORDANCE_FILE]
 
-ORForise v1.6.3: Annotation-Intersector Run Parameters
+ORForise v1.6.4: Annotation-Intersector Run Parameters
 
 options:
   -h, --help            show this help message and exit
@@ -306,7 +306,7 @@ Please report any issues to: https://github.com/NickJD/ORForise/issues
 #####
 usage: Convert_To_GFF.py [-h] [-dna GENOME_DNA] -i INPUT_ANNOTATION -fmt FORMAT -o OUTPUT_DIR [-gi GENE_IDENT] [--verbose]
 
-ORForise v1.6.3: Convert-To-GFF Run Parameters
+ORForise v1.6.4: Convert-To-GFF Run Parameters
 
 Required Arguments:
   -dna GENOME_DNA      Genome DNA file (.fa)

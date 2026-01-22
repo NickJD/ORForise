@@ -259,8 +259,6 @@ def comparator(options):
 
 
 def main():
-    print(WELCOME)
-
     parser = argparse.ArgumentParser(description='ORForise ' + ORForise_Version + ': Annotatione-Compare Run Parameters.')
     parser._action_groups.pop()
 
@@ -313,5 +311,10 @@ def main():
     comparator(options)
 
 if __name__ == "__main__":
-    main()
-    print("Complete")
+    try:
+        try:
+            main()
+        except Exception:
+            logging.exception('Unhandled exception in main')
+    finally:
+        print(CLOSING)

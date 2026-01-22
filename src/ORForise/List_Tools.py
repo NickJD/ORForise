@@ -11,8 +11,6 @@ except (ImportError, ModuleNotFoundError):
 
 
 def main():
-    print(WELCOME)
-
     print('ORForise ' + ORForise_Version + ': List Tools Run Parameters')
 
     tools = set()
@@ -52,5 +50,10 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
-    print("Complete")
+    try:
+        try:
+            main()
+        except Exception:
+            print('Unhandled exception in main')
+    finally:
+        print(CLOSING)

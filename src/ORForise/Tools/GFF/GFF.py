@@ -31,7 +31,7 @@ def GFF(*args):
         genome_rev = revCompIterative(genome)
         with open(tool_pred, 'r') as gff_input:
             for line in gff_input:
-                if '#' not in line:
+                if not line.startswith('#'):
                     line = line.split('\t')
                     #gene_types = types.split(',') - Temporary fix
                     #if any(gene_type == line[2] for gene_type in gene_types) and len(line) == 9:  # line[2] for normalrun
@@ -68,7 +68,7 @@ def GFF(*args):
                                 stopCodon = genome[stop - 3:stop]
                         po = str(start) + ',' + str(stop)
                         orf = [strand, startCodon, stopCodon, line[2], 'GFF-Standard'] # This needs to detect the type
-                        GFF_ORFs.update({po: orf})
+                        GFF_ORFs[dna_region].update({po: orf})
                     # elif "CDS" in line[2]:
                     #     sys.exit("SAS")
 
