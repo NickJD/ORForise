@@ -4,13 +4,13 @@ from datetime import datetime
 import os
 import sys
 
+
 try:
     from .utils import *
-    from .Aux.TabToGFF.TabToGFF import TabToGFF
+    from .Tools.TabToGFF.TabToGFF import TabToGFF
 except (ImportError, ModuleNotFoundError):
     from utils import *
-    from ORForise.src.ORForise.Aux.TabToGFF import TabToGFF
-
+    from Tools.TabToGFF.TabToGFF import TabToGFF
 
 
 
@@ -50,10 +50,37 @@ def write_gff(outpath, genome_ID, genome_DNA, input_annotation, fmt, features):
             pos_ = pos.split(',')
             start = pos_[0]
             stop = pos_[-1]
-            strand = data['strand']
+            strand = data.get('strand', '.')
             if fmt == 'abricate': # Currently only supports abricate format
-                info = 'abricate_anotation;accession='+data['accession']+';database='+data['database']+';identity='+str(data['identity'])+';coverage='+str(data['coverage'])+';product='+data['product']+';resistance='+data['resistance']
-            entry = f"{data['seqid']}\t{fmt}\t{'CDS'}\t{start}\t{stop}\t.\t{strand}\t.\t{'ID='}{info}\n"
+                info = 'abricate_annotation;accession={};database={};identity={};coverage={};product={};resistance={}'.format(
+                    data.get('accession', 'unknown'),
+                    data.get('database', 'unknown'),
+                    data.get('identity', ''),
+                    data.get('coverage', ''),
+                    data.get('product', ''),
+                    data.get('resistance', '')
+                )
+            elif fmt in ('amrfinder', 'amrfinderplus', 'amr'):
+                # Build a compact attribute string for amrfinder-plus output
+                info = ('amrfinder_annotation;element={};element_name={};protein_id={};type={};class={};subclass={};method={};pct_cov={};pct_id={};closest_acc={};closest_name={}').format(
+                    data.get('element_symbol', ''),
+                    data.get('element_name', ''),
+                    data.get('protein_id', ''),
+                    data.get('type', ''),
+                    data.get('class', ''),
+                    data.get('subclass', ''),
+                    data.get('method', ''),
+                    data.get('pct_coverage', ''),
+                    data.get('pct_identity', ''),
+                    data.get('closest_accession', ''),
+                    data.get('closest_name', '')
+                )
+            else:
+                # Generic fallback: try to include any seqid/gene info if present
+                gene_id = data.get('gene') or data.get('ID') or ''
+                info = f"annotation;id={gene_id}"
+
+            entry = f"{data.get('seqid', genome_ID)}\t{fmt}\tCDS\t{start}\t{stop}\t.\t{strand}\t.\tID={info}\n"
             out.write(entry)
 
 
@@ -79,7 +106,7 @@ def main():
     required = parser.add_argument_group('Required Arguments')
 
     required.add_argument('-i', dest='input_annotation', required=True, help='Input annotation file (tabular)')
-    required.add_argument('-fmt', dest='format', required=True, help='Input format: blast, abricate, genemark')
+    required.add_argument('-fmt', dest='format', required=True, help='Input format: amrfinder, abricate, blast')
     required.add_argument('-o', dest='output_dir', required=True, help='Output directory')
 
     optional = parser.add_argument_group('Optional Arguments')

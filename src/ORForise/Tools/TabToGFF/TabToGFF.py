@@ -128,6 +128,76 @@ def parse_genemark(path, genome_seq, gene_ident=None):
     return results
 
 
+def parse_amrfinderplus(path, genome_seq, gene_ident=None):
+    """
+    Parse amrfinder-plus TSV (header line present). Produces an OrderedDict
+    keyed by "start,stop" -> attrs dict similar to parse_abricate.
+    """
+    results = collections.OrderedDict()
+    count = 0
+    with open(path, 'r') as fh:
+        header = None
+        header_map = {}
+        for i, line in enumerate(fh, 1):
+            line = line.rstrip('\n')
+            if not line:
+                continue
+            # Skip comment lines but treat the first non-empty non-comment line as header
+            if line.startswith('#'):
+                continue
+            if header is None:
+                header = line.split('\t')
+                header_map = {h.strip(): idx for idx, h in enumerate(header)}
+                continue
+            parts = line.split('\t')
+            # allow lines with fewer/more columns but avoid crashes
+            if header and len(parts) < len(header):
+                logging.warning(f"Line {i}: unexpected number of columns in amrfinder line")
+                continue
+            try:
+                start = int(parts[header_map.get('Start')])
+                end = int(parts[header_map.get('Stop')])
+            except Exception:
+                logging.warning(f"Line {i}: invalid Start/Stop in amrfinder line")
+                continue
+            strand = parts[header_map.get('Strand', '')]
+            seqid = parts[header_map.get('Contig id', '')]
+            protein_id = parts[header_map.get('Protein id', '')]
+            element_symbol = parts[header_map.get('Element symbol', '')]
+            element_name = parts[header_map.get('Element name', '')]
+            amr_type = parts[header_map.get('Type', '')]
+            amr_subtype = parts[header_map.get('Subtype', '')]
+            amr_class = parts[header_map.get('Class', '')]
+            amr_subclass = parts[header_map.get('Subclass', '')]
+            method = parts[header_map.get('Method', '')]
+            pct_cov = parts[header_map.get('% Coverage of reference', '')]
+            pct_id = parts[header_map.get('% Identity to reference', '')]
+            closest_acc = parts[header_map.get('Closest reference accession', '')]
+            closest_name = parts[header_map.get('Closest reference name', '')]
+
+            attrs = {
+                'seqid': seqid,
+                'start': start,
+                'end': end,
+                'strand': strand,
+                'protein_id': protein_id,
+                'element_symbol': element_symbol,
+                'element_name': element_name,
+                'type': amr_type,
+                'subtype': amr_subtype,
+                'class': amr_class,
+                'subclass': amr_subclass,
+                'method': method,
+                'pct_coverage': pct_cov,
+                'pct_identity': pct_id,
+                'closest_accession': closest_acc,
+                'closest_name': closest_name
+            }
+            results[f"{start},{end}"] = attrs
+            count += 1
+    return results
+
+
 def TabToGFF(input_file, genome_seq, gene_ident='CDS', fmt='blast'):
     # Should be cleaned up to use consistent format names
     fmt = fmt.lower()
@@ -137,4 +207,6 @@ def TabToGFF(input_file, genome_seq, gene_ident='CDS', fmt='blast'):
         return parse_abricate(input_file, genome_seq, gene_ident)
     if fmt in ('genemark', 'gene_mark'):
         return parse_genemark(input_file, genome_seq, gene_ident)
+    if fmt in ('amrfinder', 'amrfinderplus', 'amr'):
+        return parse_amrfinderplus(input_file, genome_seq, gene_ident)
     raise ValueError(f"Unknown format: {fmt}")

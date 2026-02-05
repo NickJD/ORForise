@@ -4,7 +4,7 @@ import collections
 # Constants
 SHORT_ORF_LENGTH = 300
 MIN_COVERAGE = 75
-ORForise_Version = 'v1.6.4'
+ORForise_Version = 'v1.6.5'
 CLOSING=("\n####\nThank you for using ORForise\nPlease report any issues to: https://github.com/NickJD/ORForise/issues\n"
         "Please Cite: https://doi.org/10.1093/bioinformatics/btab827\n"
         "#####")
