@@ -4,7 +4,7 @@ import collections
 # Constants
 SHORT_ORF_LENGTH = 300
 MIN_COVERAGE = 75
-ORForise_Version = 'v1.6.5'
+ORForise_Version = 'v1.6.6'
 CLOSING=("\n####\nThank you for using ORForise\nPlease report any issues to: https://github.com/NickJD/ORForise/issues\n"
         "Please Cite: https://doi.org/10.1093/bioinformatics/btab827\n"
         "#####")
@@ -14,8 +14,20 @@ def revCompIterative(watson):  # Gets Reverse Complement
     return watson.upper()[::-1].translate(str.maketrans("ATCGRYKMVBHD","TAGCYRMKBVDH"))
 
 
-def sortORFs(tool_ORFs):  # Will only sort by given start position
-    tool_ORFs_Sorted = sorted(tool_ORFs.items(), key=lambda v: int(v[0].split(",")[0]))
+def sortORFs(tool_ORFs):  # Will sort by stored numeric start if available, else by key
+    # tool_ORFs is an OrderedDict-like mapping of pos->value
+    try:
+        # If values are lists and include a numeric start at index 7, use that
+        first_val = next(iter(tool_ORFs.values()))
+        if isinstance(first_val, (list, tuple)) and len(first_val) > 7 and first_val[7] is not None:
+            tool_ORFs_Sorted = sorted(tool_ORFs.items(), key=lambda kv: int(kv[1][7]))
+        else:
+            tool_ORFs_Sorted = sorted(tool_ORFs.items(), key=lambda v: int(v[0].split(",")[0]))
+    except StopIteration:
+        return collections.OrderedDict()
+    except Exception:
+        # Fallback: try splitting key
+        tool_ORFs_Sorted = sorted(tool_ORFs.items(), key=lambda v: int(v[0].split(",")[0]))
     tool_ORFs_Sorted = collections.OrderedDict(tool_ORFs_Sorted)
     return tool_ORFs_Sorted
 

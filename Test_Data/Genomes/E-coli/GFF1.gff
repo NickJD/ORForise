@@ -1,0 +1,13 @@
+##gff-version 3
+##sequence-region   ERS715463SCcontig000001 1 62994
+##sequence-region   ERS715463SCcontig000002 1 1119053
+##sequence-region   ERS715463SCcontig000003 1 4185175
+##sequence-region   ERS715463SCcontig000004 1 27125
+#!genome-build SC 38389_B01
+#!genome-version 38389_B01
+#!genome-build-accession GCA_900448835.1
+
+###
+ERS715463SCcontig000001	MGnify	CDS	2	388	.	-	0	ID=ENSB_F3HN74TSl8G2c1F;Parent=transcript:ENSB:F3HN74TSl8G2c1F;protein_id=ENSB:F3HN74TSl8G2c1F
+###
+ERS715463SCcontig000001	MGnify	CDS	553	750	.	+	0	ID=ENSB_METtescGGnrtNVi;Parent=transcript:ENSB:METtescGGnrtNVi;protein_id=ENSB:METtescGGnrtNVi

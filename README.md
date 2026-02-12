@@ -21,7 +21,7 @@ Example output files from ```Annotation-Compare```, ```Aggregate-Compare```, ```
 For Help: ```Annotation-Compare -h ```
 
 ```python
-ORForise v1.6.5: Annotatione-Compare Run Parameters.
+ORForise v1.6.6: Annotatione-Compare Run Parameters.
 
 Required Arguments:
   -dna GENOME_DNA       Genome DNA file (.fa) which both annotations are based on
@@ -89,7 +89,7 @@ ORForise can be used as the example below.
 For Help: ```Aggregate-Compare -h ```
 
 ```python
-ORForise v1.6.5: Aggregate-Compare Run Parameters.
+ORForise v1.6.6: Aggregate-Compare Run Parameters.
 
 Required Arguments:
   -dna GENOME_DNA       Genome DNA file (.fa) which both annotations are based on
@@ -170,10 +170,10 @@ GFF-Adder combines two existing annotations (GFF or other tool formats).
 For Help: ```GFF-Adder -h ```
 
 ```python
-ORForise v1.6.5: GFF-Adder Run Parameters.
+ORForise v1.6.6: GFF-Adder combine reference and additional GFFs with overlap matching
 
 Required Arguments:
-  -dna GENOME_DNA       Genome DNA file (.fa) which both annotations are based on
+  -dna GENOME_DNA       (Optional) Genome DNA file (.fa). If omitted the script will use contig names from GFFs and not require a FASTA
   -ref REFERENCE_ANNOTATION
                         Which reference annotation file to use as reference?
   -at ADDITIONAL_TOOL   Which format to use for additional annotation? - Can provide multiple annotations (Tool1,Tool2)
@@ -185,19 +185,25 @@ Optional Arguments:
   -rt REFERENCE_TOOL    Which tool format to use as reference? - If not provided, will default to the standard GFF format and will only look for "CDS" features
   --gene_ident GENE_IDENT
                         Identifier used for identifying genomic features in reference annotation "CDS,rRNA,tRNA"
-  -mc                   Default - False: Mark reference annotations which where present in the additional tool annotation
-  -c                    Default - False: Do not mark 9th column with "Original/Matched/Additional tag"
-  --meta                Default - False: Output metadata file
-  --olap OVERLAP        Maximum overlap between reference and additional genic regions (CDS,rRNA etc) - Default: 50 nt
+  --mark-consensus, -mc
+                        (Default: True) Mark reference annotations which were present in the additional tool annotation; use --no-consensus to disable
+  --annotate            (Default: True) Include Original/Matched/Additional tags in the 9th (attributes) column; use --no-annotate to disable
+  --olap OVERLAP        (Optional) Percent overlap threshold (0-100) used to match additional annotations to reference entries; e.g. --olap 90 (default: 100 meaning complete overlap with referenece)
 
 Misc:
-  -v {True,False}       Default - False: Print out runtime status
+  -v                    Default - False: Print out runtime status
+  --meta                Write a separate metadata report file with detailed matched-pair metrics
 
+####
+Thank you for using ORForise
+Please report any issues to: https://github.com/NickJD/ORForise/issues
+Please Cite: https://doi.org/10.1093/bioinformatics/btab827
+#####
 
 ```
 
 #### Example: Running GFF-Adder to combine the additional CDS predictions made by Prodial to the canonical annotations from Ensembl.
-``` GFF-Adder -dna ~/Test_Data/Genomes/E-coli/Escherichia_coli.fasta -ref ~/Test_Data/Genomes/E-coli/Escherichia_coli.gff  -at Prodigal -add ~/Test_Data/Genomes/E-coli/Prodigal_Escherichia_coli.gff -o ~/Test_Data/Genomes/E-coli/Ensembl_AND_Prodigal_Escherichia_coli.gff ```
+``` GFF-Adder -ref ~/Test_Data/Genomes/E-coli/Escherichia_coli.gff  -at Prodigal -add ~/Test_Data/Genomes/E-coli/Prodigal_Escherichia_coli.gff -o ~/Test_Data/Genomes/E-coli/Ensembl_AND_Prodigal_Escherichia_coli.gff ```
 #### Example Output: ~/ORForise/Testing/Myco_Ensembl_GFF_Adder_Prodigal.gff
 ```
 ##gff-version	3
@@ -227,7 +233,7 @@ usage: Annotation_Intersector.py [-h] -ref REFERENCE_ANNOTATION -at
                                  [-cov COVERAGE] [--report-discordance]
                                  [--report-discordance-file REPORT_DISCORDANCE_FILE]
 
-ORForise v1.6.5: Annotation-Intersector Run Parameters
+ORForise v1.6.6: Annotation-Intersector Run Parameters
 
 options:
   -h, --help            show this help message and exit
@@ -306,7 +312,7 @@ Please report any issues to: https://github.com/NickJD/ORForise/issues
 #####
 usage: Convert_To_GFF.py [-h] [-dna GENOME_DNA] -i INPUT_ANNOTATION -fmt FORMAT -o OUTPUT_DIR [-gi GENE_IDENT] [--verbose]
 
-ORForise v1.6.5: Convert-To-GFF Run Parameters
+ORForise v1.6.6: Convert-To-GFF Run Parameters
 
 Required Arguments:
   -dna GENOME_DNA      Genome DNA file (.fa)
